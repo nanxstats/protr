@@ -1,0 +1,21 @@
+citHeader("To cite package 'rdpi' in publications use:")
+
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("rdpi")
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
+vers <- paste("R package version", meta$Version)
+     
+citEntry(entry = "Manual",
+title = "rdpi: Protein Sequence Feature Extraction with R",
+author = personList(as.person("Xiao Nan"),
+                    as.person("Dongsheng Cao"),
+                    as.person("Qingsong Xu"),
+                    as.person("Yizeng Liang")),
+              year = year,
+              note = vers,
+
+textVersion =
+paste("Xiao Nan, Dongsheng Cao, Qingsong Xu, Yizeng Liang (",
+       year,
+       "). rdpi: Protein Sequence Feature Extraction with R. ",
+       vers, ".", sep=""))
+
