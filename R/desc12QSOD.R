@@ -1,0 +1,3 @@
+extractQSOD = function () {
+  NULL
+}

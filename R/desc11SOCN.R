@@ -1,0 +1,3 @@
+extractSOCN = function () {
+  NULL
+}

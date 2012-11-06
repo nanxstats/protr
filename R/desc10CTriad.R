@@ -1,0 +1,3 @@
+extractCTriad = function () {
+  NULL
+}

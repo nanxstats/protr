@@ -1,0 +1,3 @@
+extractAPAAC = function () {
+  NULL
+}

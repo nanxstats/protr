@@ -1,0 +1,3 @@
+extractAAC = function () {
+  NULL
+}

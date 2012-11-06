@@ -1,0 +1,3 @@
+extractTC = function () {
+  NULL
+}

@@ -1,0 +1,3 @@
+extractMoran = function () {
+  NULL
+}

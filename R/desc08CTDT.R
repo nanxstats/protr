@@ -1,0 +1,3 @@
+extractCTDT = function () {
+  NULL
+}

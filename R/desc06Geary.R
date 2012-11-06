@@ -1,0 +1,3 @@
+extractGeary = function () {
+  NULL
+}

@@ -1,0 +1,115 @@
+#' Read Protein Sequences in FASTA Format
+#'
+#' Read Protein Sequences in FASTA Format
+#' 
+#' This function reads protein sequences in FASTA format
+#' 
+#' @param file   The name of the file which the sequences in fasta format are 
+#'               to be read from. If it does not contain an absolute or 
+#'               relative path, the file name is relative to the current 
+#'               working directory, \code{\link{getwd}}. 
+#'               The default here is to read the \code{AAseq.fasta} file which 
+#'               is present in the \code{AAseq} folder of the rdpi package.
+#' 
+#' @param as.string   If set to \code{TRUE}, sequences are returned as a string 
+#'                    instead of a vector of single characters. 
+#'                    Default value is \code{FALSE}.
+#' @param legacy.mode If set to \code{TRUE}, lines starting with a semicolon ';'
+#'                    are ignored. Default value is \code{TRUE}.
+#' @param seqonly     If set to \code{TRUE}, only sequences as returned without 
+#'                    attempt to modify them or to get their names and 
+#'                    annotations (execution time is divided approximately
+#'                    by a factor 3). Default value is \code{FALSE}.
+#' 
+#' @return The result character vector
+#'
+#' The three returned argument are just different forms of the same output.
+#' If one is interested in a Mahalanobis metric over the original data space, 
+#' the first argument is all she/he needs. If a transformation into another
+#' space (where one can use the Euclidean metric) is preferred, the second
+#' returned argument is sufficient. Using A and B is equivalent in the 
+#' following sense.
+#' 
+#' @keywords rdpi FASTA readFASTA
+#'
+#' @aliases readFASTA FASTA
+#' 
+#' @note Note that any different sets of instances (chunklets),
+#'       e.g. {1, 3, 7} and {4, 6}, might belong to the 
+#'       same class and might belong to different classes.
+#' 
+#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' 
+#' @seealso See \code{\link{extract}} for extracting features from 
+#'          protein sequences.
+#' 
+#' @export readFASTA
+#' 
+#' @references
+#' Pearson, W.R. and Lipman, D.J. (1988) 
+#' Improved tools for biological sequence comparison. 
+#' \emph{Proceedings of the National Academy of Sciences 
+#' of the United States of America}, \bold{85}:2444-2448
+#' 
+#' @examples
+#' require(seqinr)
+#' AAseq = read.fasta(system.file('AAseq/AAseq.fasta', package = 'rdpi'))
+#' # extract(AAseq, 'AAC')
+#' 
+
+readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"), 
+                      as.string = FALSE, legacy.mode = TRUE, seqonly = FALSE) {
+
+    # Read the fasta file as a vector of strings
+    
+    lines = readLines(file)
+    
+    # Remove comment lines starting with a semicolon ';'
+    
+    if (legacy.mode) {
+      comments = grep("^;", lines)
+      if (length(comments) > 0) {
+        lines = lines[-comments]
+      }
+    }
+    
+    # Get the line numbers where sequences names are
+    
+    ind = which(substr(lines, 1L, 1L) == ">")
+    
+    # Compute the total number of sequences
+    
+    nseq = length(ind)
+    
+    if (nseq == 0) stop("no line starting with a > character found")
+    
+    # Localize sequence data
+    
+    start = ind + 1
+    end = ind - 1
+    end = c(end[-1], length(lines))
+    
+    # Read in sequences
+    
+    sequences = lapply(seq_len(nseq), 
+                       function(i) paste(lines[start[i]:end[i]], collapse = ""))
+    
+    if (seqonly) return(sequences)
+    
+    # Read in sequence names
+    
+    nomseq = lapply(seq_len(nseq), function (i) {
+      firstword = strsplit(lines[ind[i]], " ")[[1]][1]
+      substr(firstword, 2, nchar(firstword))
+      })
+    
+    # Turn it into a vector of single chars if required
+    
+    if(as.string == FALSE) sequences = lapply(sequences, s2c)
+    
+    # Give the sequences names to the list elements
+    
+    names(sequences) = nomseq
+    return(sequences)
+}
+

@@ -1,0 +1,3 @@
+extractDC = function () {
+  NULL
+}

@@ -37,9 +37,14 @@
 #' The associated website for this package:
 #' \url{http://cbdd.csu.edu.cn/rdpi/}
 #'
-#' @seealso Add \code{\link{rca}}, \code{\link{lfda}}, 
-#'              \code{\link{klfda}}, \code{\link{dca}},
-#'              \code{\link{kdca}}, etc.
+#' @seealso See \code{\link{extract}}, \code{\link{extractAAC}}, 
+#'              \code{\link{extractDC}}, \code{\link{extractTC}},
+#'              \code{\link{extractMoreauBroto}}, \code{\link{extractMoran}},
+#'              \code{\link{extractGeary}}, \code{\link{extractCTDC}},
+#'              \code{\link{extractCTDT}}, \code{\link{extractCTDD}},
+#'              \code{\link{extractCTriad}}, \code{\link{extractSOCN}},
+#'              \code{\link{extractQSOD}}, \code{\link{extractPAAC}},
+#'              \code{\link{extractAPAAC}} for details.
 #' 
 #' @keywords package protein sequence amino acid feature extraction descriptors
 #'           chemoinformatics bioinforamtics chemogenomics
