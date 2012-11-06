@@ -28,13 +28,28 @@
   preferred, the second returned argument is sufficient.
   Using A and B is equivalent in the following sense:
 
-  \describe{ \item{\code{'ReliefFequalK'}}{ReliefF
-  algorithm where k nearest instances have equal weight.
-  ReliefF algorithm where k nearest instances have equal
-  weight.} \item{\code{'ReliefFequalK'}}{ReliefF algorithm
-  where k nearest instances have equal weight.}
-  \item{\code{'ReliefFequalK'}}{ReliefF algorithm where k
-  nearest instances have equal weight.} }
+  \describe{ \item{\code{'AAC'}}{Amino Acid Composition
+  (Amino Acid Composition Descriptor)}
+  \item{\code{'DC'}}{Dipeptide Composition (Amino Acid
+  Composition Descriptor)} \item{\code{'TC'}}{Tripeptide
+  Composition (Amino Acid Composition Descriptor)}
+  \item{\code{'Moreau-Broto'}}{Normalized Moreau-Broto
+  Autocorrelation (Autocorrelation Descriptor)}
+  \item{\code{'Moran'}}{Moran Autocorrelation
+  (Autocorrelation Descriptor)} \item{\code{'Geary'}}{Geary
+  Autocorrelation (Autocorrelation Descriptor)}
+  \item{\code{'CTD-C'}}{Composition (CTD Descriptor)}
+  \item{\code{'CTD-T'}}{Transition (CTD Descriptor)}
+  \item{\code{'CTD-D'}}{Distribution (CTD Descriptor)}
+  \item{\code{'C-Triad'}}{Conjoint Triad}
+  \item{\code{'SOCN'}}{Sequence Order Coupling Number
+  (Quasi-sequence Order Descriptor)}
+  \item{\code{'QSOD'}}{Quasi-sequence Order Descriptors
+  (Quasi-sequence Order Descriptor)}
+  \item{\code{'PAAC'}}{Pseudo Amino Acid Composition
+  (Pseudo Amino Acid Composition Descriptor)}
+  \item{\code{'APAAC'}}{Pseudo Amino Acid Composition -
+  Amphiphilic Pseudo Amino Acid Composition}}
 }
 \description{
   Feature Extraction for Protein Sequences
@@ -49,9 +64,8 @@
   and might belong to different classes.
 }
 \examples{
-require(seqinr)
-AAseq = read.fasta(system.file('AAseq/AAseq.fasta', package = 'rdpi'))
-extract(AAseq, 'AAC')
+A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
+# extract(A06852, 'AAC')
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>

@@ -4,6 +4,8 @@
 #' 
 #' This function reads protein sequences in FASTA format
 #' 
+#' @useDynLib rdpi
+#' 
 #' @param file   The name of the file which the sequences in fasta format are 
 #'               to be read from. If it does not contain an absolute or 
 #'               relative path, the file name is relative to the current 
@@ -52,9 +54,7 @@
 #' of the United States of America}, \bold{85}:2444-2448
 #' 
 #' @examples
-#' require(seqinr)
-#' AAseq = read.fasta(system.file('AAseq/AAseq.fasta', package = 'rdpi'))
-#' # extract(AAseq, 'AAC')
+#' A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
 #' 
 
 readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"), 

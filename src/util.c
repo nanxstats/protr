@@ -7,9 +7,7 @@
 #include <ctype.h>
 #include <math.h>
 
-/*##################################################*/
-/*# Converts a String into a vector of characters  #*/
-/*##################################################*/
+/* Converts a string into a vector of characters */
 
 SEXP s2c(SEXP seq){
   char *string;

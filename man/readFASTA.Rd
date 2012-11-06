@@ -52,9 +52,7 @@
   and might belong to different classes.
 }
 \examples{
-require(seqinr)
-AAseq = read.fasta(system.file('AAseq/AAseq.fasta', package = 'rdpi'))
-# extract(AAseq, 'AAC')
+A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>

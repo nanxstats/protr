@@ -1,3 +1,7 @@
 export(extract)
+export(extractAAC)
+export(extractDC)
+export(extractTC)
 export(readFASTA)
 exportPattern("^[^\\.]")
+useDynLib(rdpi)

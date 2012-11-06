@@ -26,7 +26,7 @@ The protein sequence features listed in this package include
     * Transition
     * Distribution
 
-  * Conjoint Traid
+  * Conjoint Triad
 
   * Quasi-sequence Order
   
