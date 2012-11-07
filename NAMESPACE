@@ -1,5 +1,6 @@
 export(extract)
 export(extractAAC)
+export(extractCTriad)
 export(extractDC)
 export(extractTC)
 export(readFASTA)
