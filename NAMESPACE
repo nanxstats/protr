@@ -1,6 +1,7 @@
 export(extract)
 export(extractAAC)
 export(extractCTDC)
+export(extractCTDT)
 export(extractCTriad)
 export(extractDC)
 export(extractGeary)

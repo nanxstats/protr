@@ -69,6 +69,8 @@ extractCTDC = function (x) {
   G = vector('list', 7)
   for (i in 1:7) G[[i]] = rep(NA, n)
   
+  # Get groups for each property & each amino acid
+  
   for (i in 1:7) {
     try(G[[i]][which(xSplitted %in% group1[[i]])] <- 'G1')
     try(G[[i]][which(xSplitted %in% group2[[i]])] <- 'G2')
