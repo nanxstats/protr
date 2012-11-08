@@ -9,7 +9,16 @@
 #' 
 #' @param props A character vector, specifying the 
 #'              Accession Number of the target properties. 
-#'              8 properties are used by default.
+#'              8 properties are used by default, as listed below:
+#'              \describe{
+#'              \item{AccNo. CIDH920105}{Normalized average hydrophobicity scales (Cid et al., 1992)}
+#'              \item{AccNo. BHAR880101}{Average flexibility indices (Bhaskaran-Ponnuswamy, 1988)}
+#'              \item{AccNo. CHAM820101}{Polarizability parameter (Charton-Charton, 1982)}
+#'              \item{AccNo. CHAM820102}{Free energy of solution in water, kcal/mole (Charton-Charton, 1982)}
+#'              \item{AccNo. CHOC760101}{Residue accessible surface area in tripeptide (Chothia, 1976)}
+#'              \item{AccNo. BIGC670101}{Residue volume (Bigelow, 1967)}
+#'              \item{AccNo. CHAM810101}{Steric parameter (Charton, 1981)}
+#'              \item{AccNo. DAYM780201}{Relative mutability (Dayhoff et al., 1978b)}}
 #'              
 #' @param nlag Maximum value of the lag parameter. Default is \code{30}.
 #'
@@ -37,10 +46,10 @@
 #' extractMoreauBroto(x)
 #' 
 
-extractMoreauBroto = function (x, props = c('ANDN920101', 'ARGP820101', 
-                                            'ARGP820102', 'ARGP820103', 
-                                            'BEGF750101', 'BEGF750102', 
-                                            'BEGF750103', 'BHAR880101'), 
+extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
+                                            'CHAM820101', 'CHAM820102',
+                                            'CHOC760101', 'BIGC670101',
+                                            'CHAM810101', 'DAYM780201'), 
                                nlag = 30L) {
   
   # 1. Compute Pr values for each type of property

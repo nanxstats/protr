@@ -1,7 +1,7 @@
-extractGeary = function (x, props = c('ANDN920101', 'ARGP820101', 
-                                      'ARGP820102', 'ARGP820103', 
-                                      'BEGF750101', 'BEGF750102', 
-                                      'BEGF750103', 'BHAR880101'), 
+extractGeary = function (x, props = c('CIDH920105', 'BHAR880101',
+                                      'CHAM820101', 'CHAM820102',
+                                      'CHOC760101', 'BIGC670101',
+                                      'CHAM810101', 'DAYM780201'), 
                          lag = 30L) {
   NULL
 }
