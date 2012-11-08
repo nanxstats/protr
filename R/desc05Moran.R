@@ -3,7 +3,7 @@
 #' Moran Autocorrelation Descriptor
 #' 
 #' This function calculates the Moran
-#' autocorrelation descriptor (total \code{length(props) * nlag}).
+#' autocorrelation descriptor (Dim: \code{length(props) * nlag}).
 #' 
 #' @param x A character vector, as the input protein sequence. 
 #' 

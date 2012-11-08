@@ -37,7 +37,7 @@
 }
 \details{
   This function calculates the Geary autocorrelation
-  descriptor (total \code{length(props) * nlag}).
+  descriptor (Dim: \code{length(props) * nlag}).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))

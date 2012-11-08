@@ -2,7 +2,7 @@
 #'
 #' Tripeptide Composition Descriptor
 #' 
-#' This function calculates the Tripeptide Composition descriptor (total 8000).
+#' This function calculates the Tripeptide Composition descriptor (Dim: 8000).
 #' 
 #' @param x A character vector, as the input protein sequence. 
 #'

@@ -16,7 +16,7 @@
 }
 \details{
   This function calculates the Tripeptide Composition
-  descriptor (total 8000).
+  descriptor (Dim: 8000).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))

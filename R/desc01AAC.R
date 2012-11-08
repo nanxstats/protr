@@ -2,7 +2,7 @@
 #'
 #' Amino Acid Composition Descriptor
 #' 
-#' This function calculates the Amino Acid Composition descriptor (total 20).
+#' This function calculates the Amino Acid Composition descriptor (Dim: 20).
 #' 
 #' @param x A character vector, as the input protein sequence. 
 #'

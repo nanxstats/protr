@@ -16,7 +16,7 @@
 }
 \details{
   This function calculates the Amino Acid Composition
-  descriptor (total 20).
+  descriptor (Dim: 20).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))

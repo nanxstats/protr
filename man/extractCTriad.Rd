@@ -16,7 +16,7 @@
 }
 \details{
   This function calculates the Conjoint Triad descriptor
-  (total 343).
+  (Dim: 343).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))

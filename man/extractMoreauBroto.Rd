@@ -37,7 +37,7 @@
 }
 \details{
   This function calculates the normalized Moreau-Broto
-  autocorrelation descriptor (total \code{length(props) *
+  autocorrelation descriptor (Dim: \code{length(props) *
   nlag}).
 }
 \examples{

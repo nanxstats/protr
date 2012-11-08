@@ -2,7 +2,7 @@
 #'
 #' Dipeptide Composition Descriptor
 #' 
-#' This function calculates the Dipeptide Composition descriptor (total 400).
+#' This function calculates the Dipeptide Composition descriptor (Dim: 400).
 #' 
 #' @param x A character vector, as the input protein sequence. 
 #'

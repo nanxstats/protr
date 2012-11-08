@@ -16,7 +16,7 @@
 }
 \details{
   This function calculates the Dipeptide Composition
-  descriptor (total 400).
+  descriptor (Dim: 400).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))

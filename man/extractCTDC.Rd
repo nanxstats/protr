@@ -1,0 +1,52 @@
+\name{extractCTDC}
+\alias{extractCTDC}
+\title{CTD Descriptors - Composition}
+\usage{
+  extractCTDC(x)
+}
+\arguments{
+  \item{x}{A character vector, as the input protein
+  sequence.}
+}
+\value{
+  A length 21 named vector
+}
+\description{
+  CTD Descriptors - Composition
+}
+\details{
+  This function calculates the Composition descriptor of
+  the CTD descriptors (Dim: 21).
+}
+\examples{
+A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
+x = 'MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEEPQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSNLNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIARLC'
+extractCTDC(x)
+}
+\author{
+  Xiao Nan <\url{http://www.road2stat.com}>
+}
+\references{
+  Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and
+  Sung-Hou Kim. Prediction of protein folding class using
+  global description of amino acid sequence.
+  \emph{Proceedings of the National Academy of Sciences}.
+  USA, 1995, 92, 8700-8704.
+
+  Inna Dubchak, Ilya Muchink, Christopher Mayor, Igor
+  Dralyuk and Sung-Hou Kim. Recognition of a Protein Fold
+  in the Context of the SCOP classification.
+  \emph{Proteins: Structure, Function and Genetics}, 1999,
+  35, 401-407.
+}
+\seealso{
+  See \code{\link{extractCTDT}} and
+  \code{\link{extractCTDD}} for Transition and Distribution
+  of the CTD descriptors.
+}
+\keyword{Composition}
+\keyword{CTD}
+\keyword{CTDC}
+\keyword{extract}
+\keyword{extractCTDC}
+
