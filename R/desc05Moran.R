@@ -52,6 +52,7 @@ extractMoran = function (x, props = c('CIDH920105', 'BHAR880101',
                          nlag = 30L) {
   
   # 1. Compute Pr values for each type of property
+  
   AAidx = read.csv(system.file('AAidx.csv', package = 'rdpi'), header = TRUE)
   aaidx = AAidx[, -1]
   row.names(aaidx) = AAidx[, 1]
