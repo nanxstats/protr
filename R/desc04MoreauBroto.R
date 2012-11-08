@@ -58,9 +58,8 @@ extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
   aaidx = AAidx[, -1]
   row.names(aaidx) = AAidx[, 1]
   n = length(props)
-  # is this *n* for sigma right?
   pmean = rowMeans(aaidx[props, ])
-  psd   = apply(aaidx[props, ], 1, sd) * sqrt((20 - 1)/20)
+  psd   = apply(aaidx[props, ], 1, sd) * sqrt((20 - 1)/20) # sd() uses (n-1)
   
   Pr = data.frame(matrix(ncol = 20, nrow = n))
   for (i in 1:n) Pr[i, ] = (aaidx[props[i], ] - pmean[i])/psd[i]
@@ -83,7 +82,7 @@ extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
   
   P = lapply(P, as.numeric)
   
-  # 3. Compute Moreau-Broto Descriptor
+  # 3. Compute Moreau-Broto Autocorrelation Descriptor
   
   MB = vector('list', n)
   N  = length(xSplitted)
@@ -97,7 +96,7 @@ extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
   MB = unlist(MB)
   
   names(MB) = as.vector(t(outer(props, 
-                                paste('Lag', 1:nlag, sep = ''), 
+                                paste('.lag', 1:nlag, sep = ''), 
                                 paste, sep = '')))
   
   return(MB)
