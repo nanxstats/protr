@@ -5,11 +5,16 @@ Version 0.1-0 (2012-11-05)
   
   NEW FEATURES
   
-  * initial version of Amino Acid Composition Descriptor
-  * initial version of Dipeptide Composition Descriptor
-  * initial version of Tripeptide Composition Descriptor
-  * initial version of Normalized Moreau-Broto Autocorrelation Descriptor
-  * initial version of Moran Autocorrelation Descriptor
-  * initial version of Geary Autocorrelation Descriptor
-  * initial version of Conjoint Triad Descriptor
-
+  * initial version of Amino Acid Composition descriptor
+  * initial version of Dipeptide Composition descriptor
+  * initial version of Tripeptide Composition descriptor
+  * initial version of Normalized Moreau-Broto Autocorrelation descriptor
+  * initial version of Moran Autocorrelation descriptor
+  * initial version of Geary Autocorrelation descriptor
+  * initial version of CTD - Composition descriptor
+  * initial version of CTD - Transition descriptor
+  * initial version of CTD - Distribution descriptor
+  * initial version of Conjoint Triad descriptor
+  * initial version of Sequence Order Coupling Number descriptor
+  * initial version of Quasi-Sequence-Order descriptor
+  

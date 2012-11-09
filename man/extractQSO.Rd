@@ -1,29 +1,32 @@
-\name{extractSOCN}
-\alias{extractSOCN}
-\title{Sequence-Order-Coupling Numbers}
+\name{extractQSO}
+\alias{extractQSO}
+\title{Quasi-Sequence-Order (QSO) Descriptor}
 \usage{
-  extractSOCN(x, nlag = 30)
+  extractQSO(x, nlag = 30, w = 0.1)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 
   \item{nlag}{The maximum lag, defualt is 30.}
+
+  \item{w}{The weighting factor, default is 0.1.}
 }
 \value{
-  A length \code{nlag * 2} named vector
+  A length \code{20 + 20 + (2 * nlag)} named vector
 }
 \description{
-  Sequence-Order-Coupling Numbers
+  Quasi-Sequence-Order (QSO) Descriptor
 }
 \details{
-  This function calculates the Sequence-Order-Coupling
-  Numbers (Dim: \code{nlag * 2}, default is 60).
+  This function calculates the Quasi-Sequence-Order (QSO)
+  descriptor (Dim: \code{20 + 20 + (2 * nlag)}, default is
+  100).
 }
 \examples{
 A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
 x = 'MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEEPQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSNLNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIARLC'
-extractSOCN(x)
+extractQSO(x)
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
@@ -46,14 +49,14 @@ extractSOCN(x)
   1994, 66, 335-344.
 }
 \seealso{
-  See \code{\link{extractQSO}} for quasi-sequence-order
-  descriptors.
+  See \code{\link{extractSOCN}} for sequence-order-coupling
+  numbers.
 }
-\keyword{Coupling}
 \keyword{extract}
-\keyword{extractSOCN}
-\keyword{Number}
+\keyword{extractQSO}
 \keyword{Order}
+\keyword{QSO}
+\keyword{Quasi}
+\keyword{Quasi-Sequence-Order}
 \keyword{Sequence}
-\keyword{SOCN}
 
