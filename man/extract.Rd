@@ -44,7 +44,7 @@
   \item{\code{'C-Triad'}}{Conjoint Triad}
   \item{\code{'SOCN'}}{Sequence Order Coupling Number
   (Quasi-sequence Order Descriptor)}
-  \item{\code{'QSOD'}}{Quasi-sequence Order Descriptors
+  \item{\code{'QSO'}}{Quasi-sequence Order Descriptors
   (Quasi-sequence Order Descriptor)}
   \item{\code{'PAAC'}}{Pseudo Amino Acid Composition
   (Pseudo Amino Acid Composition Descriptor)}

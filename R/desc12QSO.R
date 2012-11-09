@@ -1,0 +1,3 @@
+extractQSO = function () {
+  NULL
+}

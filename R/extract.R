@@ -36,7 +36,7 @@
 #' \item{\code{'CTD-D'}}{Distribution (CTD Descriptor)}
 #' \item{\code{'C-Triad'}}{Conjoint Triad}
 #' \item{\code{'SOCN'}}{Sequence Order Coupling Number (Quasi-sequence Order Descriptor)}
-#' \item{\code{'QSOD'}}{Quasi-sequence Order Descriptors (Quasi-sequence Order Descriptor)}
+#' \item{\code{'QSO'}}{Quasi-sequence Order Descriptors (Quasi-sequence Order Descriptor)}
 #' \item{\code{'PAAC'}}{Pseudo Amino Acid Composition (Pseudo Amino Acid Composition Descriptor)}
 #' \item{\code{'APAAC'}}{Pseudo Amino Acid Composition - Amphiphilic Pseudo Amino Acid Composition}}
 #' 
@@ -71,7 +71,7 @@ extract = function (x, type, ...) {
            'Moreau-Broto', 'Moran', 'Geary', 
            'CTD-C', 'CTD-T', 'CTD-D',
            'C-Triad', 
-           'SOCN', 'QSOD', 
+           'SOCN', 'QSO', 
            'PAAC', 'APAAC')
   
 }
