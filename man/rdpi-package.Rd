@@ -55,7 +55,7 @@ set.seed(1001)
   \code{\link{extractMoran}}, \code{\link{extractGeary}},
   \code{\link{extractCTDC}}, \code{\link{extractCTDT}},
   \code{\link{extractCTDD}}, \code{\link{extractCTriad}},
-  \code{\link{extractSOCN}}, \code{\link{extractQSOD}},
+  \code{\link{extractSOCN}}, \code{\link{extractQSO}},
   \code{\link{extractPAAC}}, \code{\link{extractAPAAC}} for
   details.
 }

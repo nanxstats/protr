@@ -43,7 +43,7 @@
 #'              \code{\link{extractGeary}}, \code{\link{extractCTDC}},
 #'              \code{\link{extractCTDT}}, \code{\link{extractCTDD}},
 #'              \code{\link{extractCTriad}}, \code{\link{extractSOCN}},
-#'              \code{\link{extractQSOD}}, \code{\link{extractPAAC}},
+#'              \code{\link{extractQSO}}, \code{\link{extractPAAC}},
 #'              \code{\link{extractAPAAC}} for details.
 #' 
 #' @keywords package protein sequence amino acid feature extraction descriptors

@@ -61,8 +61,8 @@
 #' Machine Learning (ICML2003)}.
 #' 
 #' @examples
-#' A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
-#' # extract(A06852, 'AAC')
+#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' # extract(x, 'AAC')
 #' 
 
 extract = function (x, type, ...) {

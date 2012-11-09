@@ -64,8 +64,8 @@
   and might belong to different classes.
 }
 \examples{
-A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
-# extract(A06852, 'AAC')
+x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+# extract(x, 'AAC')
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>

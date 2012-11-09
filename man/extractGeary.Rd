@@ -40,8 +40,7 @@
   descriptor (Dim: \code{length(props) * nlag}).
 }
 \examples{
-A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
-x = 'MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEEPQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSNLNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIARLC'
+x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
 extractGeary(x)
 }
 \author{

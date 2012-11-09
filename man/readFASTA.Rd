@@ -48,7 +48,7 @@
   and might belong to different classes.
 }
 \examples{
-A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
+P00750 = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>

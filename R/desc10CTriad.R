@@ -23,8 +23,7 @@
 #' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337-4341.
 #' 
 #' @examples
-#' A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
-#' x = 'MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEEPQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSNLNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIARLC'
+#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractCTriad(x)
 #' 
 

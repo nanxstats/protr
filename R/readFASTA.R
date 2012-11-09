@@ -49,7 +49,7 @@
 #' of the United States of America}, \bold{85}:2444-2448
 #' 
 #' @examples
-#' A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
+#' P00750 = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))
 #' 
 
 readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"), 

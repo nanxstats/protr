@@ -31,8 +31,7 @@
 #' \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 #' 
 #' @examples
-#' A06852 = readFASTA(system.file('AAseq/A06852.fasta', package = 'rdpi'))
-#' x = 'MPRLFSYLLGVWLLLSQLPREIPGQSTNDFIKACGRELVRLWVEICGSVSWGRTALSLEEPQLETGPPAETMPSSITKDAEILKMMLEFVPNLPQELKATLSERQPSLRELQQSASKDSNLNFEEFKKIILNRQNEAEDKSLLELKNLGLDKHSRKKRLFRMTLSEKCCQVGCIRKDIARLC'
+#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractCTDC(x)
 #' 
 
