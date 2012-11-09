@@ -4,7 +4,7 @@
 \title{Read Protein Sequences in FASTA Format}
 \usage{
   readFASTA(file = system.file("AAseq/AAseq.fasta", package = "rdpi"),
-    as.string = FALSE, legacy.mode = TRUE, seqonly = FALSE)
+    legacy.mode = TRUE, seqonly = FALSE)
 }
 \arguments{
   \item{file}{The name of the file which the sequences in
@@ -14,10 +14,6 @@
   The default here is to read the \code{AAseq.fasta} file
   which is present in the \code{AAseq} folder of the rdpi
   package.}
-
-  \item{as.string}{If set to \code{TRUE}, sequences are
-  returned as a string instead of a vector of single
-  characters.  Default value is \code{FALSE}.}
 
   \item{legacy.mode}{If set to \code{TRUE}, lines starting
   with a semicolon ';' are ignored. Default value is
@@ -44,7 +40,7 @@
   Read Protein Sequences in FASTA Format
 }
 \details{
-  This function reads protein sequences in FASTA format
+  This function reads protein sequences in FASTA format.
 }
 \note{
   Note that any different sets of instances (chunklets),

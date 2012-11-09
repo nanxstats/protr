@@ -2,9 +2,7 @@
 #'
 #' Read Protein Sequences in FASTA Format
 #' 
-#' This function reads protein sequences in FASTA format
-#' 
-#' @useDynLib rdpi
+#' This function reads protein sequences in FASTA format.
 #' 
 #' @param file   The name of the file which the sequences in fasta format are 
 #'               to be read from. If it does not contain an absolute or 
@@ -13,9 +11,6 @@
 #'               The default here is to read the \code{AAseq.fasta} file which 
 #'               is present in the \code{AAseq} folder of the rdpi package.
 #' 
-#' @param as.string   If set to \code{TRUE}, sequences are returned as a string 
-#'                    instead of a vector of single characters. 
-#'                    Default value is \code{FALSE}.
 #' @param legacy.mode If set to \code{TRUE}, lines starting with a semicolon ';'
 #'                    are ignored. Default value is \code{TRUE}.
 #' @param seqonly     If set to \code{TRUE}, only sequences as returned without 
@@ -58,7 +53,7 @@
 #' 
 
 readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"), 
-                      as.string = FALSE, legacy.mode = TRUE, seqonly = FALSE) {
+                      legacy.mode = TRUE, seqonly = FALSE) {
 
     # Read the fasta file as a vector of strings
     
@@ -103,13 +98,10 @@ readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"),
       substr(firstword, 2, nchar(firstword))
       })
     
-    # Turn it into a vector of single chars if required
-    
-    if(as.string == FALSE) sequences = lapply(sequences, s2c)
-    
     # Give the sequences names to the list elements
     
     names(sequences) = nomseq
     return(sequences)
+    
 }
 

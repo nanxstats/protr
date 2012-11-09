@@ -25,7 +25,6 @@ Collate:
     'extract.R'
     'readFASTA.R'
     'getUniProt.R'
-    'misc.R'
     'desc01AAC.R'
     'desc02DC.R'
     'desc03TC.R'
