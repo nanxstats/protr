@@ -6,30 +6,20 @@
 }
 \arguments{
   \item{x}{A character vector, as the input protein
-  sequence.  Length \code{n}.}
+  sequence.}
 
-  \item{type}{a vector of size n * 1 describing the
-  chunklets: -1 in the i'th place says that point i doesn't
-  belong to any chunklet; integer j in place i says that
-  point i belongs to chunklet j.  The chunklets indexes
-  should be 1:(number of chunklets).}
+  \item{type}{a character vector specifying the descriptor
+  types to be calculated. See below for details.}
 
   \item{\dots}{Additional options used by specific
   descriptor as described below.}
 }
 \value{
-  The result data frame
+  The result named vector
 
-  The three returned argument are just different forms of
-  the same output. If one is interested in a Mahalanobis
-  metric over the original data space, the first argument
-  is all she/he needs. If a transformation into another
-  space (where one can use the Euclidean metric) is
-  preferred, the second returned argument is sufficient.
-  Using A and B is equivalent in the following sense:
-
-  \describe{ \item{\code{'AAC'}}{Amino Acid Composition
-  (Amino Acid Composition Descriptor)}
+  The elements that could be used in the \code{type}
+  argument: \describe{ \item{\code{'AAC'}}{Amino Acid
+  Composition (Amino Acid Composition Descriptor)}
   \item{\code{'DC'}}{Dipeptide Composition (Amino Acid
   Composition Descriptor)} \item{\code{'TC'}}{Tripeptide
   Composition (Amino Acid Composition Descriptor)}
@@ -56,31 +46,31 @@
 }
 \details{
   This function takes a protein sequence and descriptor
-  type as arguments and returns the result as a data frame.
-}
-\note{
-  Note that any different sets of instances (chunklets),
-  e.g. {1, 3, 7} and {4, 6}, might belong to the same class
-  and might belong to different classes.
+  type(s) as arguments and returns the calculated
+  descriptors. This is basically a wrapper function for the
+  \code{extractXXX()} functions in this package.
 }
 \examples{
-x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
-# extract(x, 'AAC')
+# Load protein sequences
+# prot  = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+# prots =
+# extract single feature type of single protein sequence
+# extract(prot, 'AAC')
+# extract multiple feature type of single protein sequence
+# extract(prot, type = c('AAC', 'PAAC', 'APAAC'))
+# extract single feature type of multiple protein sequence
+# lapply(prots, extract, 'AAC')
+# extract multiple feature type of multiple protein sequences
+# lapply(prots, extract, type = c('AAC', 'PAAC', 'APAAC'))
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
-}
-\references{
-  Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna
-  Weinshall (2003). Learning Distance Functions using
-  Equivalence Relations. \emph{Proceedings of 20th
-  International Conference on Machine Learning (ICML2003)}.
 }
 \seealso{
   See \code{\link{extractAAC}} for Amino Acid Composition,
   etc.
 }
-\keyword{descriptors}
+\keyword{descriptor}
 \keyword{extract}
 \keyword{extraction}
 \keyword{feature}

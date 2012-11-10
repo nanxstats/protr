@@ -18,12 +18,7 @@
   \item{\code{'Hydrophilicity'}}{Hydrophilicity value of
   the 20 amino acids}
   \item{\code{'SideChainMass'}}{Side-chain mass of the 20
-  amino acids}} Note these \code{20 * 3} values have been
-  already independently given in the function.  Users could
-  also specify other (up to 544) properties with the
-  Accession Number in the \code{\link{AAindex}} data, with
-  or without the above three properties, which means users
-  should explicitly specify the properties to use.}
+  amino acids}}}
 
   \item{lambda}{The lambda parameter for the PAAC
   descriptors, default is 30.}
@@ -40,6 +35,14 @@
   This function calculates the Pseudo Amino Acid
   Composition (PAAC) descriptor (Dim: \code{20 + lambda},
   default is 50).
+}
+\note{
+  Note the default \code{20 * 3} \code{prop} values have
+  been already independently given in the function. Users
+  could also specify other (up to 544) properties with the
+  Accession Number in the \code{\link{AAindex}} data, with
+  or without the default three properties, which means
+  users should explicitly specify the properties to use.
 }
 \examples{
 x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]

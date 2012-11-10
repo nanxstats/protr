@@ -13,12 +13,6 @@
 #'              \item{\code{'Hydrophobicity'}}{Hydrophobicity value of the 20 amino acids}
 #'              \item{\code{'Hydrophilicity'}}{Hydrophilicity value of the 20 amino acids}
 #'              \item{\code{'SideChainMass'}}{Side-chain mass of the 20 amino acids}}
-#'              Note these \code{20 * 3} values have been already independently
-#'              given in the function.
-#'              Users could also specify other (up to 544) properties with the 
-#'              Accession Number in the \code{\link{AAindex}} data, 
-#'              with or without the above three properties, which means 
-#'              users should explicitly specify the properties to use.
 #' 
 #' @param lambda The lambda parameter for the PAAC descriptors, default is 30.
 #'             
@@ -26,6 +20,13 @@
 #' 
 #'
 #' @return A length \code{20 + lambda} named vector
+#' 
+#' @note Note the default \code{20 * 3} \code{prop} values have been already 
+#'       independently given in the function. Users could also specify 
+#'       other (up to 544) properties with the Accession Number in 
+#'       the \code{\link{AAindex}} data, with or without the default 
+#'       three properties, which means users should explicitly specify
+#'       the properties to use.
 #' 
 #' @keywords extract PAAC extractPAAC Pseudo Amino Acid Composition
 #'

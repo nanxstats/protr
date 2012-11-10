@@ -2,28 +2,22 @@
 #'
 #' Feature Extraction for Protein Sequences
 #' 
-#' This function takes a protein sequence and descriptor type 
-#' as arguments and returns the result as a data frame.
+#' This function takes a protein sequence and descriptor type(s)
+#' as arguments and returns the calculated descriptors.
+#' This is basically a wrapper function for the \code{extractXXX()}
+#' functions in this package.
 #' 
-#' @param x      A character vector, as the input protein sequence. 
-#'               Length \code{n}.
+#' @param x      A character vector, as the input protein sequence.
 #' 
-#' @param type   a vector of size n * 1 describing the chunklets:
-#'               -1 in the i'th place says that point i doesn't belong to any chunklet;
-#'               integer j in place i says that point i belongs to chunklet j.
-#'               The chunklets indexes should be 1:(number of chunklets).
+#' @param type   a character vector specifying the descriptor types
+#'               to be calculated. See below for details.
+#'               
 #' @param \dots  Additional options used by specific descriptor 
 #'               as described below.
 #' 
-#' @return The result data frame
+#' @return The result named vector
 #'
-#' The three returned argument are just different forms of the same output.
-#' If one is interested in a Mahalanobis metric over the original data space, 
-#' the first argument is all she/he needs. If a transformation into another
-#' space (where one can use the Euclidean metric) is preferred, the second
-#' returned argument is sufficient. Using A and B is equivalent in the 
-#' following sense:
-#' 
+#' The elements that could be used in the \code{type} argument:
 #' \describe{
 #' \item{\code{'AAC'}}{Amino Acid Composition (Amino Acid Composition Descriptor)}
 #' \item{\code{'DC'}}{Dipeptide Composition (Amino Acid Composition Descriptor)}
@@ -40,13 +34,9 @@
 #' \item{\code{'PAAC'}}{Pseudo Amino Acid Composition (Pseudo Amino Acid Composition Descriptor)}
 #' \item{\code{'APAAC'}}{Pseudo Amino Acid Composition - Amphiphilic Pseudo Amino Acid Composition}}
 #' 
-#' @keywords rdpi extract feature extraction descriptors
+#' @keywords rdpi extract feature extraction descriptor
 #'
 #' @aliases extract
-#' 
-#' @note Note that any different sets of instances (chunklets),
-#'       e.g. {1, 3, 7} and {4, 6}, might belong to the 
-#'       same class and might belong to different classes.
 #' 
 #' @author Xiao Nan <\url{http://www.road2stat.com}>
 #' 
@@ -54,15 +44,18 @@
 #' 
 #' @export extract
 #' 
-#' @references
-#' Aharon Bar-Hillel, Tomer Hertz, Noam Shental, and Daphna Weinshall (2003).
-#' Learning Distance Functions using Equivalence Relations.
-#' \emph{Proceedings of 20th International Conference on
-#' Machine Learning (ICML2003)}.
-#' 
 #' @examples
-#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
-#' # extract(x, 'AAC')
+#' # Load protein sequences
+#' # prot  = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' # prots = 
+#' # extract single feature type of single protein sequence
+#' # extract(prot, 'AAC')
+#' # extract multiple feature type of single protein sequence
+#' # extract(prot, type = c('AAC', 'PAAC', 'APAAC'))
+#' # extract single feature type of multiple protein sequence
+#' # lapply(prots, extract, 'AAC')
+#' # extract multiple feature type of multiple protein sequences
+#' # lapply(prots, extract, type = c('AAC', 'PAAC', 'APAAC'))
 #' 
 
 extract = function (x, type, ...) {
@@ -75,3 +68,4 @@ extract = function (x, type, ...) {
            'PAAC', 'APAAC')
   
 }
+
