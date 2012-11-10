@@ -45,7 +45,7 @@
 extractSOCN = function (x, nlag = 30) {
   
   N = nchar(x)
-  if (N < nlag) stop("Length of the protein sequence must be larger than 'nlag'")
+  if (N < nlag) stop("Length of the protein sequence must be no less than 'nlag'")
   
   DistMat1 = read.csv(system.file('Schneider-Wrede.csv', package = 'rdpi'), header = TRUE)
   DistMat2 = read.csv(system.file('Grantham.csv', package = 'rdpi'), header = TRUE)

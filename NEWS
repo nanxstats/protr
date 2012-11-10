@@ -17,6 +17,7 @@ Version 0.1-0 (2012-11-05)
   * initial version of Conjoint Triad descriptor
   * initial version of Sequence Order Coupling Number descriptor
   * initial version of Quasi-Sequence-Order descriptor
+  * initial version of Pseudo Amino Acid Composition descriptor
   * initial version of extract()
   * initial version of readFASTA()
   * initial version of getUniProt()
