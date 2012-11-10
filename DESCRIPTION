@@ -22,7 +22,6 @@ URL: http://cbdd.csu.edu.cn/rdpi/
 BugReports: https://github.com/road2stat/rdpi/issues
 Collate:
     'rdpi-package.R'
-    'extract.R'
     'readFASTA.R'
     'getUniProt.R'
     'desc01AAC.R'

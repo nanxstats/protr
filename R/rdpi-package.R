@@ -37,7 +37,7 @@
 #' The associated website for this package:
 #' \url{http://cbdd.csu.edu.cn/rdpi/}
 #'
-#' @seealso See \code{\link{extract}}, \code{\link{extractAAC}}, 
+#' @seealso See \code{\link{extractAAC}}, 
 #'              \code{\link{extractDC}}, \code{\link{extractTC}},
 #'              \code{\link{extractMoreauBroto}}, \code{\link{extractMoran}},
 #'              \code{\link{extractGeary}}, \code{\link{extractCTDC}},
@@ -46,8 +46,8 @@
 #'              \code{\link{extractQSO}}, \code{\link{extractPAAC}},
 #'              \code{\link{extractAPAAC}} for details.
 #' 
-#' @keywords package protein sequence amino acid feature extraction descriptors
-#'           chemoinformatics bioinforamtics chemogenomics
+#' @keywords rdpi package protein sequence amino acid feature extraction
+#'           descriptors chemoinformatics bioinforamtics chemogenomics
 #' 
 #' @example inst/examples/rdpi-package-ex.R
 NULL

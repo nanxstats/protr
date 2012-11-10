@@ -37,8 +37,8 @@
 #' 
 #' @author Xiao Nan <\url{http://www.road2stat.com}>
 #' 
-#' @seealso See \code{\link{extract}} for extracting features from 
-#'          protein sequences.
+#' @seealso See \code{\link{getUniProt}} for retrieving protein sequences 
+#'          from uniprot.org
 #' 
 #' @export readFASTA
 #' 

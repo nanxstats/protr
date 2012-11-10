@@ -60,8 +60,8 @@ P00750 = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))
   America}, \bold{85}:2444-2448
 }
 \seealso{
-  See \code{\link{extract}} for extracting features from
-  protein sequences.
+  See \code{\link{getUniProt}} for retrieving protein
+  sequences from uniprot.org
 }
 \keyword{FASTA}
 \keyword{rdpi}

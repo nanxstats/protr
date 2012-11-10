@@ -49,8 +49,8 @@ set.seed(1001)
   \url{http://cbdd.csu.edu.cn/rdpi/}
 }
 \seealso{
-  See \code{\link{extract}}, \code{\link{extractAAC}},
-  \code{\link{extractDC}}, \code{\link{extractTC}},
+  See \code{\link{extractAAC}}, \code{\link{extractDC}},
+  \code{\link{extractTC}},
   \code{\link{extractMoreauBroto}},
   \code{\link{extractMoran}}, \code{\link{extractGeary}},
   \code{\link{extractCTDC}}, \code{\link{extractCTDT}},
@@ -69,5 +69,6 @@ set.seed(1001)
 \keyword{feature}
 \keyword{package}
 \keyword{protein}
+\keyword{rdpi}
 \keyword{sequence}
 
