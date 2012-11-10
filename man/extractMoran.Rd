@@ -47,7 +47,21 @@ extractMoran(x)
   Xiao Nan <\url{http://www.road2stat.com}>
 }
 \references{
-  References needed here!
+  AAindex: Amino acid index database.
+  \url{http://www.genome.ad.jp/dbget/aaindex.html}
+
+  Feng, Z.P. and Zhang, C.T. (2000) Prediction of membrane
+  protein types based on the hydrophobic index of amino
+  acids. \emph{Journal of Protein Chemistry}, 19, 269-275.
+
+  Horne, D.S. (1988) Prediction of protein helix content
+  from an autocorrelation analysis of sequence
+  hydrophobicities. \emph{Biopolymers}, 27, 451-477.
+
+  Sokal, R.R. and Thomson, B.A. (2006) Population structure
+  inferred by local spatial autocorrelation: an Usage from
+  an Amerindian tribal population. \emph{American Journal
+  of Physical Anthropology}, 129, 121-131.
 }
 \seealso{
   See \code{\link{extractMoreauBroto}} and
