@@ -18,7 +18,6 @@
 #'             
 #' @param w The weighting factor, default is 0.05.
 #' 
-#'
 #' @return A length \code{20 + lambda} named vector
 #' 
 #' @note Note the default \code{20 * 3} \code{prop} values have been already 
@@ -120,7 +119,7 @@ extractPAAC = function (x, props = c('Hydrophobicity', 'Hydrophilicity',
   
   # Compute first 20 features
   
-  fc = summary(factor(xSplitted, levels = AADict), maxsum = 21)
+  fc  = summary(factor(xSplitted, levels = AADict), maxsum = 21)
   Xc1 = fc/(1 + (w * sum(theta)))
   names(Xc1) = paste('Xc1.', names(Xc1), sep = '')
   
