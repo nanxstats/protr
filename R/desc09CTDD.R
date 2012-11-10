@@ -98,5 +98,7 @@ extractCTDD = function (x) {
                    rep(paste('.residue', c('0', '25', '50', '75', '100'), 
                              sep = ''), times = 21), sep = '')
   
+  return(D)
+  
 }
 

@@ -82,5 +82,7 @@ extractCTDC = function (x) {
   names(CTDC) = paste('prop', rep(1:7, each = 3), 
                       '.', names(CTDC), sep = '')
   
+  return(CTDC)
+  
 }
 

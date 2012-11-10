@@ -98,5 +98,7 @@ extractCTDT = function (x) {
   names(CTDT) = paste('prop', rep(1:7, each = 3), '.', 
                       rep(c('Tr1221', 'Tr1331', 'Tr2332'), times = 7) , sep = '')
   
+  return(CTDT)
+  
 }
 
