@@ -28,10 +28,10 @@ The protein sequence features listed in this package include
 
   * Conjoint Triad
 
-  * Quasi-sequence Order
+  * Quasi-sequence-order Descriptors
   
-    * Sequence Order Coupling Number
-    * Quasi-sequence Order Descriptors
+    * Sequence-order-coupling Number
+    * Quasi-sequence-order Descriptors
   
   * Pseudo Amino Acid Composition
   

@@ -6,7 +6,9 @@
 %\VignettePackage{rdpi}
 
 \author{Xiao Nan\\Central South University \And 
-        Dongsheng Cao\\Central South University}
+        Dongsheng Cao\\Central South University \AND
+        Qingsong Xu\\Central South University \And
+        Yizeng Liang\\Central South University}
 \Plainauthor{Xiao Nan, Dongsheng Cao}
 
 \title{\pkg{rdpi}: Protein Sequence Feature Extraction with \proglang{R}}
@@ -22,8 +24,9 @@
   CTD (Composition/Transition/Distribution), Conjoint Traid, Quasi-Sequence 
   Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors),
   and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
-  Pseudo Amino Acid Composition). The package is developed by Computational 
-  Biology and Drug Design Group, Central South University.
+  Pseudo Amino Acid Composition). Total 14 descriptors in 6 categories.
+  The package is collaboratively developed by Computational Biology and 
+  Drug Design Group, Central South University.
 }
 
 \Keywords{\proglang{R}, rdpi, protein sequence, amino acid, feature extraction}
@@ -50,6 +53,19 @@
   Changsha, Hunan, P. R. China\\
   E-mail: \email{oriental-cds@163.com}\\
   URL: \url{http://cbdd.csu.edu.cn/}
+  
+  Qingsong Xu\\
+  School of Math Science \& Statistics\\
+  Central South University\\
+  Changsha, Hunan, P. R. China\\
+  E-mail: \email{dasongxu@gmail.com}\\
+  
+  Yizeng Liang\\
+  School of Chemistry \& Chemical Engineering\\
+  Central South University\\
+  Changsha, Hunan, P. R. China\\
+  E-mail: \email{yizeng\_liang@263.net}\\
+  
 }
 
 %% need no \usepackage{Sweave.sty}
@@ -67,37 +83,217 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 
 \section{Introduction}\label{sec:intro}
 
-In this article, we discuss the functionality of the \pkg{rdpi}
-package \citep{CRAN:rdpi}, which ... 
+In this article, we discuss the functionality of the \pkg{rdpi} package \citep{CRAN:rdpi}, which aims for protein sequence feature extraction. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{rdpi}. Many more examples are available within the package.
 
-Several examples are included to illustrate the benefits of using \pkg{rdpi}.
-Many more examples are available within
-the package, both as explicit examples and as part of the numerous unit tests.
-%
-The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN)
-at \url{http://CRAN.R-project.org/package=rdpi}.
+The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=rdpi} for more details. This vignette corresponds to \pkg{rdpi} version \Sexpr{rdpi.version} and was typeset on \Sexpr{now.date}.
 
-\makeatletter
-\if@nojss
-  This vignette corresponds to the paper published in the \textsl{Journal of
-    Statistical Software}. It is currently still identical to
-  the published paper.  Over time, this vignette version may receive minor
-  updates. For citations, please use the publication \citep{JSS:rdpi}.
+\section{Descriptors}\label{sec:descriptors}
 
-This version corresponds to \pkg{rdpi} version % \Sexpr{rdpi.version} and was
-typeset on \Sexpr{now.date}.
-\fi
-\makeatother
+A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
 
-\section{More Intro}\label{sec:moreintro}
+A protein sequence could be divided equally into segments and the methods, described as follows for the global sequence, could be applied to each segment.
 
-\subsection[rdpi sample subsec]{\pkg{rdpi} sample subsec}\label{sec:sample}
+\subsection{Amino Acid Composition (AAC)}\label{subsec:aac}
 
-\proglang{R}, \pkg{rdpi}, \code{try}/\code{catch}
+The Amino Acid Composition (AAC) is the fraction of each amino acid type within a protein. The fractions of all 20 natural amino acids are calculated as:
 
-In this section, we present several different ways to leverage \pkg{rdpi} to rewrite the example from `Writing \proglang{R} Extensions' \citep[Chapter 5]{R:Extensions} first discussed in Section~\ref{sec:intro}.
+$$
+f(r) = \frac{N_r}{N} \quad r = 1, 2, \ldots, 20.
+$$
 
-The STL offers a variety of generic algorithms\footnote{A discussion of template metaprogramming \citep{Vandevoorde+Josuttis:2003:Templates,Abrahams+Gurtovoy:2004:TemplateMetaprogramming} is beyond the scope of this article.} designed to be used on ranges of elements \citep{Plauger+Et+Al:2000:STL}.
+where $N_r$ is the number of the amino acid type $r$ and $N$ is the length of the sequence.
+
+\subsection{Dipeptide Composition (DC)}\label{subsec:dc}
+
+The Dipeptide Composition (DC) gives 400 features, defined as:
+
+$$
+f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
+$$
+
+where $N_{rs}$ is the number of dipeptide represented by amino acid type $r$ and type $s$.
+
+\subsection{Tripeptide Composition (TC)}\label{subsec:tc}
+
+The Tripeptide Composition (TC) gives 8000 features, defined as:
+
+$$
+f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
+$$
+
+where $N_{rst}$ is the number of tripeptides represented by amino acid type $r$, $s$ and $t$.
+
+\subsection{Autocorrelation Descriptors}\label{subsec:autocorr}
+
+Autocorrelation descriptors are defined based on the distribution of amino acid properties along the sequence. The amino acid properties used here are various types of amino acids index (Retrieved from AAindex Database \url{http://www.genome.ad.jp/dbget/aaindex.html}). Three types of autocorrelation descriptors are defined here and described below.
+
+All the amino acid indices are centralized and standardized before the calculation, i.e.
+
+$$
+P_r = \frac{P_r - \bar{P}}{\sigma}
+$$
+
+where $\bar{P}$ is the average of the property of the 20 amino acids:
+
+$$
+\bar{P} = \frac{\sum_{r=1}^{20} P_r}{20} \quad \textrm{and} \quad \sigma = \sqrt{\frac{1}{2} \sum_{r=1}^{20} (P_r - \bar{P})^2}
+$$
+
+[[Fig2.]] An illustrated example in the AAIndex database
+
+\textbf{\subsubsection{Normalized Moreau-Broto Autocorrelation Descriptors}}\label{sssec:moreaubroto}
+
+Moreau-Broto autocorrelation descriptors application to protein sequences could be defined as:
+
+$$
+AC(d) = \sum_{i=1}^{N-d} P_i P_{i + d} \quad d = 1, 2, \ldots, \textrm{nlag}
+$$
+
+where $d$ is called the lag of the autocorrelation and $P_i$ and $P_{i+d}$ are the properties of the amino acids at position $i$ and $i+d$, respectively. $\textrm{nlag}$ is the maximum value of the lag.
+
+The normalized Moreau-Broto autocorrelation descriptors are defined as:
+
+$$
+ATS(d) = \frac{AC(d)}{N-d} \quad d = 1, 2, \ldots, \textrm{nlag}
+$$
+
+\textbf{\subsubsection{Moran Autocorrelation Descriptors}}\label{sssec:moran}
+
+Moran autocorrelation descriptors application to protein sequence may be defined as:
+
+$$
+I(d) = \frac{\frac{1}{N-d} \sum_{i=1}^{N-d} (P_i - \bar{P}') (P_{i+d} - \bar{P}')}{\frac{1}{N} \sum_{i=1}^{N} (P_i - \bar{P}')^2} \quad d = 1, 2, \ldots, 30
+$$
+
+where $d$ and $P_i$ and $P_{i+d}$ are defined in the same way as in the first place, and $\bar{P}'$ is the considered property $P$ along the sequence, i.e.,
+
+$$
+\bar{P}' = \frac{\sum_{i=1}^N P_i}{N}
+$$
+
+$d$, $P$, $P_i$ and $P_{i+d}$, $\textrm{nlag}$ have the same meaning as above.
+
+\textbf{\subsubsection{Geary Autocorrelation Descriptors}}\label{sssec:geary}
+
+Geary autocorrelation descriptors for protein sequence could be defined as:
+
+$$
+C(d) = \frac{\frac{1}{2(N-d)} \sum_{i=1}^{N-d} (P_i - P_{i+d})^2}{\frac{1}{N-1} \sum_{i=1}^{N} (P_i - \bar{P}')^2} \quad d = 1, 2, \ldots, 30
+$$
+
+where $d$, $P$, $P_i$ and $P_{i+d}$, $\textrm{nlag}$ have the same meaning as above.
+
+For each amino acid index, there will be $3 \times \textrm{nlag}$ autocorrelation descriptors.
+
+\subsection{Composition / Transition / Distribution}\label{subsec:ctd}
+
+These descriptors are developed by Dubchak, et.al.
+
+[[Fig3.]] The sequence of a hypothetic protein indicating the construction of composition, transition and distribution descriptors of a protein. Sequence index indicates the position of an amino acid in the sequence. The index for each type of amino acids in the sequence (`1', `2' or `3') indicates the position of the first, second, third, ... of that type of amino acid. 1/2 transition indicates the position of `12' or `21' pairs in the sequence (1/3 and 2/3 are defined in the same way.).
+
+\textbf{Step1. Sequence encoding}
+
+The amino acids are divided in three classes according to its attribute and each amino acid is encoded by one of the indices 1, 2, 3 according to which class it belonged. The attributes used here include hydrophobicity, normalized van der Waals volume polarity, and polarizability, as in the references. The corresponding division is in the table 1.
+
+[[Table 1]] Amino acid attributes and the division of the amino acids into three groups for each attribute
+
+For example, for a given sequence ``MTEITAAMVKELRESTGAGA'', it will be encoded as ``32132223311311222222'' according to its hydrophobicity division.
+
+\textbf{Step 2: Composition, Transition and Distribution descriptors}
+
+Three descriptors, ``Composition (C)'', ``Transition (T)'', and ``Distribution (D)'' were calculated for a given attribute as follows:
+
+\textbf{\subsubsection{Composition}}
+
+It is the global percent for each encoded class in the sequence. In the above example using hydrophobicity division, the numbers for encoded classes ``1'', ``2'', ``3'' are 5, 10, 5 respectively, so the compositions for them are $5/20=25\%$, $10/20=10\%$, and $5/20=25\%$ respectively, where 20 is the length of the protein sequence. Composition can be defined as
+
+$$
+C_r = \frac{n_r}{n} \quad r = 1, 2, 3
+$$
+
+where $n_r$ is the number of amino acid type $r$ in the encoded sequence and $N$ is the length of the sequence.
+
+\textbf{\subsubsection{Transition}}
+
+A transition from class 1 to 2 is the percent frequency with which 1 is followed by 2 or 2 is followed by 1 in the encoded sequence. Transition descriptor can be calculated as
+
+$$
+T_{rs} = \frac{n_{rs} + n_{sr}}{N - 1} \quad rs = \textrm{`12'}, \textrm{`13'}, \textrm{`23'}
+$$
+
+where $n_{rs}$, $n_{sr}$ is the numbers of dipeptide encoded as ``rs'' and ``sr'' respectively in the sequence and $N$ is the length of the sequence.
+
+\textbf{\subsubsection{Distribution}}
+
+The ``distribution'' descriptor describes the distribution of each attribute in the sequence.
+
+There are five ``distribution'' descriptors for each attribute and they are the position percents in the whole sequence for the first residue, 25\% residues, 50\% residues, 75\% residues and 100\% residues, respectively, for a specified encoded class. For example, there are 10 residues encoded as ``2'' in the above example, the positions for the first residue ``2'', the 2th residue ``2'' (25\%*10=2), the 5th ``2'' residue (50\%*10=5), the 7th ``2'' (75\%*10=7) and the 10th residue ``2'' (100\%*10) in the encoded sequence are 2, 5, 15, 17, 20 respectively, so the distribution descriptors for ``2'' are: 10.0 (2/20*100), 25.0 (5/20*100), 75.0 (15/20*100), 85.0 (17/20*100) , 100.0 (20/20*100), respectively.
+
+\subsection{Conjoint Triad Descriptors}\label{ssec:ctraid}
+
+Conjoint triad descriptors are proposed by J.W. Shen et.al. These conjoint triad features abstracts the features of protein pairs based on the classification of amino acids. In this approach, each protein sequence is represented by a vector space consisting of features of amino acids. To reduce the dimensions of vector space, the 20 amino acids were clustered into several classes according to their dipoles and volumes of the side chains. The conjoint triad features are calculated as follows:
+
+\textbf{Step 1: Classification of Amino Acids}
+
+Electrostatic and hydrophobic interactions dominate protein-protein interactions. These two kinds of interactions may be reflected by the dipoles and volumes of the side chains of amino acids, respectively. Accordingly, these two parameters were calculated, respectively, by using the density-functional theory method B3LYP/6-31G and molecular modeling approach. Based on the dipoles and volumes of the side chains, the 20 amino acids could be clustered into seven classes (See Table 2). Amino acids within the same class likely involve synonymous mutations because of their similar characteristics.
+
+[[Table 2]] Classification of amino acids based on dipoles and volumes of the side chains
+
+a Dipole scale (Debye): $-$, Dipole<1.0; $+$, 1.0<Dipole<2.0; $++$, 2.0<Dipole<3.0; $+++$, Dipole>3.0; $+'+'+'$, Dipole>3.0 with opposite orientation. b Volume scale (\AA$^3$): $-$, Volume<50; $+$, Volume> 50. c Cys is separated from class 3 because of its ability to form disulfide bonds.
+
+\textbf{Step 2: Conjoint Triad Calculation}
+
+The conjoint triad descriptors considered the properties of one amino acid and its vicinal amino acids and regarded any three continuous amino acids as a unit. Thus, the triads can be differentiated according to the classes of amino acids, i.e., triads composed by three amino acids belonging to the same classes, such as ART and VKS, could be treated identically. To conveniently represent a protein, we first use a binary space  $(\mathbf{V}, \mathbf{F})$ to represent a protein sequence. Here, $\mathbf{V}$ is the vector space of the sequence features, and each feature $v_i$ represents a sort of triad type; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the ith dimension of $\mathbf{F} (f_i)$ is the frequency of type $v_i$ appearing in the protein sequence. For the amino acids that have been catogorized into seven classes, the size of $\mathbf{V}$ should be $7 \times 7 \times 7$; thus $i = 1, 2, \ldots, 343$. The detailed description for ($\mathbf{V}$, $\mathbf{F}$) is illustrated in Figure 3.
+
+[[Fig 3]] Schematic diagram for constructing the vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence. $\mathbf{V}$ is the vector space of the sequence features; each feature ($v_i$) represents a triad composed of three consecutive amino acids; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency that $v_i$ triad appeared in the protein sequence.
+
+Clearly, each protein correlates to the length (number of amino acids) of protein. In general, a long protein would have a large value of $f_i$, which complicates the comparison between two heterogeneous proteins. Thus, we defined a new parameter, $d_i$, by normalizing $f_i$ with the following equation:
+
+$$
+d_i = (f_i - \min\{\,f_1, f_2 , \ldots, f_{343}\,\})/\max\{\,f_1, f_2, \ldots, f_{343}\,\}
+$$
+
+The numerical value of $d_i$ of each protein ranges from 0 to 1, which thereby enables the comparison between proteins. Accordingly, we obtain another vector space (designated $\mathbf{D}$) consisting of $d_i$ to represent protein.
+
+\subsection{Quasi-sequence-order Descriptors}\label{subsec:qsod}
+
+The quasi-sequence-order descriptors are proposed by K.C. Chou, et.al. They are derived from the distance matrix between the 20 amino acids.
+
+\textbf{\subsubsection{Sequence-order-coupling Number}}\label{sssec:socn}
+
+The $d$-th rank sequence-order-coupling number is defined as:
+
+$$
+\tau_d = \sum_{i=1}^{N-d} (d_{i, i+d})^2 \quad d = 1, 2, \ldots, \textrm{maxlag}
+$$
+
+where $d_{i, i+d}$ is the distance between the two amino acids at position $i$ and $i+d$.
+
+\textbf{Note}: maxlag is the maximum lag and the length of the protein must be not less than $\textrm{maxlag}$.
+
+\textbf{\subsubsection{Quasi-sequence-order Descriptors}}\label{sssec:qso}
+
+For each amino acid type, a quasi-sequence-order descriptor can be defined as:
+
+$$
+X_r = \frac{f_r}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} quad r = 1, 2, \ldots, 20
+$$
+
+where $f_r$ is the normalized occurrence for amino acid type $i$ and $w$ is a weighting factor ($w=0.1$). These are the first 20 quasi-sequence-order descriptors. The other 30 quasi-sequence-order are defined as:
+
+$$
+X_r = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
+$$
+
+In addition to Schneider-Wrede physicochemical distance matrix used by Chou et al, another chemical distance matrix by Grantham is also used here.
+
+[[Figure 4]] A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues.
+
+\subsection{Pseudo-Amino Acid Composition (PAAC)}\label{subsec:paac}
+
+This groups of descriptors are proposed by Kuo-chen Chou. PAAC descriptors (\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}) are also called the type 1 pseudo-amino acid composition. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
+
+
 
 %
 \begin{CodeChunk}
