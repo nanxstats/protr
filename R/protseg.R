@@ -57,5 +57,7 @@ protseg = function (x, aa = c('A', 'R', 'N', 'D', 'C',
   
   names(Segments) = as.character(CenterIdx)
   
+  return(Segments)
+  
 }
 
