@@ -31,11 +31,13 @@
 #' \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 #' 
 #' @examples
-#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractCTDT(x)
 #' 
 
 extractCTDT = function (x) {
+  
+  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
   group1 = list(hydrophobicity  = c('R', 'K', 'E', 'D', 'Q', 'N'),
                 normwaalsvolume = c('G', 'A', 'S', 'T', 'P', 'D', 'C'),

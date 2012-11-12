@@ -23,11 +23,13 @@
 #' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337-4341.
 #' 
 #' @examples
-#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractCTriad(x)
 #' 
 
 extractCTriad = function (x) {
+  
+  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
   # To achieve maximum performance, here we use dictionary directly
   # CTDict could also be generated with

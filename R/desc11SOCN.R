@@ -38,17 +38,19 @@
 #' \emph{Biophys Journal}, 1994, 66, 335-344.
 #' 
 #' @examples
-#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractSOCN(x)
 #' 
 
 extractSOCN = function (x, nlag = 30) {
   
+  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  
   N = nchar(x)
   if (N < nlag) stop("Length of the protein sequence must be no less than 'nlag'")
   
-  DistMat1 = read.csv(system.file('Schneider-Wrede.csv', package = 'rdpi'), header = TRUE)
-  DistMat2 = read.csv(system.file('Grantham.csv', package = 'rdpi'), header = TRUE)
+  DistMat1 = read.csv(system.file('sysdata/Schneider-Wrede.csv', package = 'rdpi'), header = TRUE)
+  DistMat2 = read.csv(system.file('sysdata/Grantham.csv', package = 'rdpi'), header = TRUE)
   row.names(DistMat1) = as.character(DistMat1[, 1])
   DistMat1 = DistMat1[, -1]
   row.names(DistMat2) = as.character(DistMat2[, 1])

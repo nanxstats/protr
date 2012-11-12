@@ -21,4 +21,6 @@ Version 0.1-0 (2012-11-05)
   * initial version of Amphiphilic Pseudo Amino Acid Composition descriptor
   * initial version of readFASTA()
   * initial version of getUniProt()
+  * initial version of protcheck()
+  * initial version of protseg()
 

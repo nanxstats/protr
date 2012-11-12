@@ -26,11 +26,13 @@
 #' \emph{Journal of Biological Chemistry}, 2004, 279, 23262.
 #' 
 #' @examples
-#' x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
 #' extractAAC(x)
 #' 
 
 extractAAC = function (x) {
+  
+  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
 
   # The 20 Amino Acid Abbrevation Dictionary is from
   # http://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties

@@ -23,7 +23,7 @@
 #' 
 #' @examples
 #' ids = c('P00750', 'P00751', 'P00752')
-#' getUniProt(ids)
+#' \dontrun{getUniProt(ids)}
 #' 
 
 getUniProt = function (id) {

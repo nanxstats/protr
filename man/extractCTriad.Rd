@@ -19,7 +19,7 @@
   (Dim: 343).
 }
 \examples{
-x = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))[[1]]
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
 extractCTriad(x)
 }
 \author{

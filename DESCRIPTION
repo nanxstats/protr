@@ -24,6 +24,8 @@ Collate:
     'rdpi-package.R'
     'readFASTA.R'
     'getUniProt.R'
+    'protseg.R'
+    'protcheck.R'
     'desc01AAC.R'
     'desc02DC.R'
     'desc03TC.R'

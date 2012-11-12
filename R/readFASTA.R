@@ -8,8 +8,8 @@
 #'               to be read from. If it does not contain an absolute or 
 #'               relative path, the file name is relative to the current 
 #'               working directory, \code{\link{getwd}}. 
-#'               The default here is to read the \code{AAseq.fasta} file which 
-#'               is present in the \code{AAseq} folder of the rdpi package.
+#'               The default here is to read the \code{P00750.fasta} file which 
+#'               is present in the \code{protseq} directory of the rdpi package.
 #' 
 #' @param legacy.mode If set to \code{TRUE}, lines starting with a semicolon ';'
 #'                    are ignored. Default value is \code{TRUE}.
@@ -49,10 +49,10 @@
 #' of the United States of America}, \bold{85}:2444-2448
 #' 
 #' @examples
-#' P00750 = readFASTA(system.file('AAseq/P00750.fasta', package = 'rdpi'))
+#' P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))
 #' 
 
-readFASTA = function (file = system.file("AAseq/AAseq.fasta", package = "rdpi"), 
+readFASTA = function (file = system.file('protseq/P00750.fasta', package = 'rdpi'), 
                       legacy.mode = TRUE, seqonly = FALSE) {
 
     # Read the fasta file as a vector of strings

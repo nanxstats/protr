@@ -1,0 +1,172 @@
+%% use JSS class -- use 'nojss' to turn off header
+\documentclass[shortnames,nojss,article]{jss}
+\usepackage{booktabs}
+%\VignetteIndexEntry{rdpi}
+%\VignetteKeywords{R, rdpi, protein sequence, amino acid, feature extraction}
+%\VignettePackage{rdpi}
+
+\author{Xiao Nan\\Central South University \And 
+        Dongsheng Cao\\Central South University}
+\Plainauthor{Xiao Nan, Dongsheng Cao}
+
+\title{\pkg{rdpi}: Protein Sequence Feature Extraction with \proglang{R}}
+\Plaintitle{rdpi: Protein Sequence Feature Extraction with R}
+
+\Abstract{
+  The \pkg{rdpi} package aims for protein sequence feature extraction, 
+  which could be easily applied in Chemoinformatics, Bioinforamtics and 
+  Chemogenomics research. The descriptors listed in this package include 
+  Amino Acid Composition (Amino Acid Composition/Dipeptide 
+  Composition/Tripeptide Composition), Autocorrelation (Normalized 
+  Moreau-Broto Autocorrelation/Moran Autocorrelation/Geary Autocorrelation), 
+  CTD (Composition/Transition/Distribution), Conjoint Traid, Quasi-Sequence 
+  Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors),
+  and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
+  Pseudo Amino Acid Composition). The package is developed by Computational 
+  Biology and Drug Design Group, Central South University.
+}
+
+\Keywords{\proglang{R}, rdpi, protein sequence, amino acid, feature extraction}
+\Plainkeywords{R, rdpi, protein sequence, amino acid, feature extraction}
+
+\Volume{xx}
+\Issue{x}
+\Month{Xxxxx}
+\Year{2012}
+\Submitdate{2012-xx-xx}
+\Acceptdate{2012-xx-xx}
+
+\Address{
+  Xiao Nan \\
+  School of Math Science \& Statistics\\
+  Central South University\\
+  Changsha, Hunan, P. R. China\\
+  E-mail: \email{road2stat@gmail.com}\\
+  URL: \url{http://www.road2stat.com/}\\
+
+  Dongsheng Cao\\
+  School of Chemistry \& Chemical Engineering\\
+  Central South University\\
+  Changsha, Hunan, P. R. China\\
+  E-mail: \email{oriental-cds@163.com}\\
+  URL: \url{http://cbdd.csu.edu.cn/}
+}
+
+%% need no \usepackage{Sweave.sty}
+
+<<prelim,echo=FALSE,print=FALSE>>=
+# library(rdpi)
+# rdpi.version = packageDescription("rdpi")$Version
+rdpi.version = '0.1-0'
+# rdpi.date = packageDescription("rdpi")$Date
+now.date = strftime(Sys.Date(), "%Y-%m-%d")
+@
+%
+
+\begin{document}
+
+\section{Introduction}\label{sec:intro}
+
+In this article, we discuss the functionality of the \pkg{rdpi}
+package \citep{CRAN:rdpi}, which ... 
+
+Several examples are included to illustrate the benefits of using \pkg{rdpi}.
+Many more examples are available within
+the package, both as explicit examples and as part of the numerous unit tests.
+%
+The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN)
+at \url{http://CRAN.R-project.org/package=rdpi}.
+
+\makeatletter
+\if@nojss
+  This vignette corresponds to the paper published in the \textsl{Journal of
+    Statistical Software}. It is currently still identical to
+  the published paper.  Over time, this vignette version may receive minor
+  updates. For citations, please use the publication \citep{JSS:rdpi}.
+
+This version corresponds to \pkg{rdpi} version % \Sexpr{rdpi.version} and was
+typeset on \Sexpr{now.date}.
+\fi
+\makeatother
+
+\section{More Intro}\label{sec:moreintro}
+
+\subsection[rdpi sample subsec]{\pkg{rdpi} sample subsec}\label{sec:sample}
+
+\proglang{R}, \pkg{rdpi}, \code{try}/\code{catch}
+
+In this section, we present several different ways to leverage \pkg{rdpi} to rewrite the example from `Writing \proglang{R} Extensions' \citep[Chapter 5]{R:Extensions} first discussed in Section~\ref{sec:intro}.
+
+The STL offers a variety of generic algorithms\footnote{A discussion of template metaprogramming \citep{Vandevoorde+Josuttis:2003:Templates,Abrahams+Gurtovoy:2004:TemplateMetaprogramming} is beyond the scope of this article.} designed to be used on ranges of elements \citep{Plauger+Et+Al:2000:STL}.
+
+%
+\begin{CodeChunk}
+
+\begin{CodeInput}
+R> f <- function(x) .Call("fun", x)
+R> tryCatch(f(12), "std::range_error" = function(e) { conditionMessage(e) })
+\end{CodeInput}
+
+\begin{CodeOutput}
+[1] "too big"
+\end{CodeOutput}
+
+\begin{CodeInput}
+R> tryCatch(f(12), "std::range_error" = function(e) { class(e) })
+\end{CodeInput}
+
+\begin{CodeOutput}
+[1] "std::range_error" "C++Error"         "error"            "condition"
+\end{CodeOutput}
+
+\end{CodeChunk}
+%
+
+%
+\begin{Code}
+Plain Code here
+\end{Code}
+%
+
+\begin{itemize}
+\item primitive types: \code{int}, \code{double} into the corresponding atomic \proglang{R} vectors;
+\item STL maps which use \code{std::string} for keys;
+\item any type that implements implicit \code{SEXP}
+\end{itemize}
+
+\begin{table}[t]
+  \begin{center}
+    \begin{small}
+      \begin{tabular}{lrr}
+        \toprule
+        Implementation                    & Time in millisec. & Relative to \proglang{R} API \\
+        \cmidrule(r){2-3}
+        \proglang{R} API (as benchmark)             &  218       & \\
+        \pkg{Rcpp} sugar                        &  145       & 0.67 \\
+        \code{NumericVector::iterator}    &  217       & 1.00 \\
+        \code{NumericVector::operator[]}  &  282       & 1.29 \\
+        \bottomrule
+      \end{tabular}
+    \end{small}
+    \caption{Run-time performance of the different convolution examples.}
+    \label{tab:benchmark}
+  \end{center}
+\end{table}
+
+\section{Summary}
+
+The \pkg{rdpi} package presented in this paper implemented most of
+the state-of-the-art supervised distance metric learning algorithms with \proglang{R}.
+
+More Summary Words.
+
+\section*{Acknowledgments}
+
+Acknowledgments
+
+\bibliography{rdpi}
+
+\vspace*{-0.35cm}
+
+\end{document}
+

@@ -38,6 +38,14 @@ The protein sequence features listed in this package include
     * Pseudo Amino Acid Composition
     * Amphiphilic Pseudo Amino Acid Composition
 
+## Miscellaneous Tools
+
+  * Retrieving protein sequences from http://www.uniprot.org/
+  
+  * Protein sequence segmentation
+  
+  * Loading protein sequences in FASTA format
+
 ## Links
 
   * CRAN Page: http://cran.r-project.org/web/packages/rdpi/
