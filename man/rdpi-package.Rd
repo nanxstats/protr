@@ -25,21 +25,18 @@
   Version: \tab 0.1-0\cr License: \tab BSD\cr }
 }
 \note{
+  The comprehensive user's guide could be opened with
+  \code{vignette('rdpi')}, which explains each descriptor
+  included in this package and corresponding usage.
+
   Bug reports and feature requests should be sent to
   \url{https://github.com/road2stat/rdpi/issues}.
-}
-\section{Amino Acid Composition}{
-  put AAC description here.
-}
-
-\section{Dipeptide Composition}{
-  put DC description here.
 }
 \examples{
 set.seed(1001)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}> Dongsheng Cao
+  Xiao Nan <\email{road2stat@gmail.com}> Dongsheng Cao
   \email{oriental-cds@163.com} Qingsong Xu
   \email{dasongxu@gmail.com} Yizeng Liang
   \email{yizeng_liang@263.net}

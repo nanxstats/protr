@@ -1,6 +1,9 @@
 %% use JSS class -- use 'nojss' to turn off header
 \documentclass[shortnames,nojss,article]{jss}
 \usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tablefootnote}
 %\VignetteIndexEntry{rdpi}
 %\VignetteKeywords{R, rdpi, protein sequence, amino acid, feature extraction}
 %\VignettePackage{rdpi}
@@ -87,7 +90,7 @@ In this article, we discuss the functionality of the \pkg{rdpi} package \citep{C
 
 The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=rdpi} for more details. This vignette corresponds to \pkg{rdpi} version \Sexpr{rdpi.version} and was typeset on \Sexpr{now.date}.
 
-\section{Descriptors}\label{sec:descriptors}
+\section{Descriptors in rdpi}\label{sec:descriptors}
 
 A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
 
@@ -139,7 +142,11 @@ $$
 \bar{P} = \frac{\sum_{r=1}^{20} P_r}{20} \quad \textrm{and} \quad \sigma = \sqrt{\frac{1}{2} \sum_{r=1}^{20} (P_r - \bar{P})^2}
 $$
 
-[[Fig2.]] An illustrated example in the AAIndex database
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/AAindex.pdf}
+\caption{An illustrated example in the AAIndex database} \label{fig:AAindex}
+\end{figure}
 
 \textbf{\subsubsection{Normalized Moreau-Broto Autocorrelation Descriptors}}\label{sssec:moreaubroto}
 
@@ -189,13 +196,50 @@ For each amino acid index, there will be $3 \times \textrm{nlag}$ autocorrelatio
 
 These descriptors are developed by Dubchak, et.al.
 
-[[Fig3.]] The sequence of a hypothetic protein indicating the construction of composition, transition and distribution descriptors of a protein. Sequence index indicates the position of an amino acid in the sequence. The index for each type of amino acids in the sequence (`1', `2' or `3') indicates the position of the first, second, third, ... of that type of amino acid. 1/2 transition indicates the position of `12' or `21' pairs in the sequence (1/3 and 2/3 are defined in the same way.).
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig/CTD.pdf}
+\caption{The sequence of a hypothetic protein indicating the construction of composition, transition and distribution descriptors of a protein. Sequence index indicates the position of an amino acid in the sequence. The index for each type of amino acids in the sequence (`1', `2' or `3') indicates the position of the first, second, third, ... of that type of amino acid. 1/2 transition indicates the position of `12' or `21' pairs in the sequence (1/3 and 2/3 are defined in the same way.).} \label{fig:ctd}
+\end{figure}
 
 \textbf{Step1. Sequence encoding}
 
 The amino acids are divided in three classes according to its attribute and each amino acid is encoded by one of the indices 1, 2, 3 according to which class it belonged. The attributes used here include hydrophobicity, normalized van der Waals volume polarity, and polarizability, as in the references. The corresponding division is in the table 1.
 
-[[Table 1]] Amino acid attributes and the division of the amino acids into three groups for each attribute
+\begin{table}[htbp]
+  \centering
+  \caption{Amino acid attributes and the division of the amino acids into three groups for each attribute}
+  \scriptsize{
+    \begin{tabular}{cccc}
+    \addlinespace
+    \toprule
+          & \textbf{Group 1} & \textbf{Group 2} & \textbf{Group 3} \\
+    \midrule
+    Hydrophobicity & Polar & Neutral & Hydrophobicity \\
+          & R, K, E, D, Q, N & G, A, S, T, P, H, Y & C, L, V, I, M, F, W \\
+          \midrule
+    Normalized van der  & 0-2.78  & 2.95-4.0  & 4.03-8.08 \\
+    Waals Volume    & G, A, S, T, P, D, C & N, V, E, Q, I, L  & M, H, K, F, R, Y, W \\
+    \midrule
+    Polarity & 4.9-6.2  & 8.0-9.2  & 10.4-13.0 \\
+          & L, I, F, W, C, M, V, Y  & P, A, T, G, S  & H, Q, R, K, N, E, D \\
+          \midrule
+    Polarizability & 0-1.08  & 0.128-0.186  & 0.219-0.409 \\
+          & G, A, S, D, T & C, P, N, V, E, Q, I, L  & K, M, H, F, R, Y, W \\
+          \midrule
+    Charge & Positive  & Neutral  & Negative \\
+          & K, R  & \tiny{A, N, C, Q, G, H, I, L, M, F, P, S, T, W, Y, V}  & D, E \\
+          \midrule
+    Secondary & Helix  & Strand  & Coil \\
+    Structure & E, A, L, M, Q, K, R, H  & V, I, Y, C, W, F, T  & G, N, P, S, D \\
+    \midrule
+    Solvent  & Buried  & Exposed  & Intermediate \\
+    Accessibility & A, L, F, C, G, I, V, W  & R, K, Q, E, N, D  & M, S, P, T, H, Y \\
+    \bottomrule
+    \end{tabular}
+  }
+  \label{tab:ctd}
+\end{table}
 
 For example, for a given sequence ``MTEITAAMVKELRESTGAGA'', it will be encoded as ``32132223311311222222'' according to its hydrophobicity division.
 
@@ -237,15 +281,35 @@ Conjoint triad descriptors are proposed by J.W. Shen et.al. These conjoint triad
 
 Electrostatic and hydrophobic interactions dominate protein-protein interactions. These two kinds of interactions may be reflected by the dipoles and volumes of the side chains of amino acids, respectively. Accordingly, these two parameters were calculated, respectively, by using the density-functional theory method B3LYP/6-31G and molecular modeling approach. Based on the dipoles and volumes of the side chains, the 20 amino acids could be clustered into seven classes (See Table 2). Amino acids within the same class likely involve synonymous mutations because of their similar characteristics.
 
-[[Table 2]] Classification of amino acids based on dipoles and volumes of the side chains
-
-a Dipole scale (Debye): $-$, Dipole<1.0; $+$, 1.0<Dipole<2.0; $++$, 2.0<Dipole<3.0; $+++$, Dipole>3.0; $+'+'+'$, Dipole>3.0 with opposite orientation. b Volume scale (\AA$^3$): $-$, Volume<50; $+$, Volume> 50. c Cys is separated from class 3 because of its ability to form disulfide bonds.
+\begin{table}[htbp]
+  \centering
+  \caption{Classification of amino acids based on dipoles and volumes of the side chains}
+    \begin{tabular}{cccc}
+    \addlinespace
+    \toprule
+    No.   & Dipole Scale\tablefootnote{Dipole Scale (Debye): $-$, Dipole < 1.0; $+$, 1.0 < Dipole < 2.0; $++$, 2.0 < Dipole < 3.0; $+++$, Dipole > 3.0; $+'+'+'$, Dipole > 3.0 with opposite orientation.} & Volume Scale\tablefootnote{Volume Scale (\AA$^3$): $-$, Volume < 50; $+$, Volume > 50.} & Class \\
+    \midrule
+    1     & $-$      & $-$     & Ala, Gly, Val \\
+    2     & $-$      & $+$     & Ile, Leu, Phe, Pro \\
+    3     & $+$      & $+$     & Tyr, Met, Thr, Ser \\
+    4     & $++$     & $+$     & His, Asn, Gln, Tpr \\
+    5     & $+++$    & $+$     & Arg, Lys \\
+    6     & $+'+'+'$ & $+$     & Asp, Glu \\
+    7     & $+$\tablefootnote{Cys is separated from class 3 because of its ability to form disulfide bonds.} & $+$     & Cys \\
+    \bottomrule
+    \end{tabular}
+  \label{tab:ctriad}
+\end{table}
 
 \textbf{Step 2: Conjoint Triad Calculation}
 
 The conjoint triad descriptors considered the properties of one amino acid and its vicinal amino acids and regarded any three continuous amino acids as a unit. Thus, the triads can be differentiated according to the classes of amino acids, i.e., triads composed by three amino acids belonging to the same classes, such as ART and VKS, could be treated identically. To conveniently represent a protein, we first use a binary space  $(\mathbf{V}, \mathbf{F})$ to represent a protein sequence. Here, $\mathbf{V}$ is the vector space of the sequence features, and each feature $v_i$ represents a sort of triad type; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the ith dimension of $\mathbf{F} (f_i)$ is the frequency of type $v_i$ appearing in the protein sequence. For the amino acids that have been catogorized into seven classes, the size of $\mathbf{V}$ should be $7 \times 7 \times 7$; thus $i = 1, 2, \ldots, 343$. The detailed description for ($\mathbf{V}$, $\mathbf{F}$) is illustrated in Figure 3.
 
-[[Fig 3]] Schematic diagram for constructing the vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence. $\mathbf{V}$ is the vector space of the sequence features; each feature ($v_i$) represents a triad composed of three consecutive amino acids; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency that $v_i$ triad appeared in the protein sequence.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{fig/ctriad.png}
+\caption{Schematic diagram for constructing the vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence. $\mathbf{V}$ is the vector space of the sequence features; each feature ($v_i$) represents a triad composed of three consecutive amino acids; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency that $v_i$ triad appeared in the protein sequence.} \label{fig:ctriad}
+\end{figure}
 
 Clearly, each protein correlates to the length (number of amino acids) of protein. In general, a long protein would have a large value of $f_i$, which complicates the comparison between two heterogeneous proteins. Thus, we defined a new parameter, $d_i$, by normalizing $f_i$ with the following equation:
 
@@ -276,24 +340,125 @@ where $d_{i, i+d}$ is the distance between the two amino acids at position $i$ a
 For each amino acid type, a quasi-sequence-order descriptor can be defined as:
 
 $$
-X_r = \frac{f_r}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} quad r = 1, 2, \ldots, 20
+X_r = \frac{f_r}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} \quad r = 1, 2, \ldots, 20
 $$
 
 where $f_r$ is the normalized occurrence for amino acid type $i$ and $w$ is a weighting factor ($w=0.1$). These are the first 20 quasi-sequence-order descriptors. The other 30 quasi-sequence-order are defined as:
 
 $$
-X_r = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
+X_d = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} \quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
 $$
 
 In addition to Schneider-Wrede physicochemical distance matrix used by Chou et al, another chemical distance matrix by Grantham is also used here.
 
-[[Figure 4]] A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{fig/QSO.png}
+\caption{A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues.} \label{fig:qso}
+\end{figure}
 
 \subsection{Pseudo-Amino Acid Composition (PAAC)}\label{subsec:paac}
 
 This groups of descriptors are proposed by Kuo-chen Chou. PAAC descriptors (\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}) are also called the type 1 pseudo-amino acid composition. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
 
+$$
+H_1 (i) = \frac{H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i)}{\sqrt{\frac{\sum_{i=1}^{20} [H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i) ]^2}{20}}}
+$$
 
+$H_2^o (i)$ and $M^o (i)$ are normalized as $H_2 (i)$ and $M (i)$ in the same way.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{fig/PAAC.png}
+\caption{A schematic drawing to show (a) the first-tier, (b) the second-tier, and (3) the third-tiersequence order correlation mode along a protein sequence. Panel (a) reflects the correlation mode between all the most contiguous residues, panel (b) that between all the second-most contiguous residues, and panel (c) that between all the third-most contiguous residues.} \label{fig:paac}
+\end{figure}
+
+Then, a correlation function could be defines as
+
+$$
+\Theta (R_i, R_j) = \frac{1}{3} \bigg\{ [ H_1 (R_i) - H_1 (R_j) ]^2 + [ H_2 (R_i) - H_2 (R_j) ]^2 + [ M (R_i) - M (R_j) ]^2 \bigg\}
+$$
+
+This correlation function is actually an averaged value for the three amino acid properties: hydrophobicity value, hydrophilicity value and side chain mass. Therefore we can extend this definition of correlation function for one amino acid property or for a set of n amino acid properties.
+
+For one amino acid property, the correlation can be defined as:
+
+$$
+\Theta (R_i, R_j) = [H_1 (R_i) - H_1(R_j)]^2
+$$
+
+where $H (R_i)$ is the amino acid property of amino acid $R_i$ after standardization.
+
+For a set of n amino acid properties, it can be defined as: where $H_k (R_i)$ is the $k$-th property in the amino acid property set for amino acid $R_i$.
+
+$$
+\Theta (R_i, R_j) = \frac{1}{n} \sum_{k=1}^{n} [H_k (R_i) - H_k (R_j)]^2
+$$
+
+where $H_k(R_i)$ is the $k$-th property in the amino acid property set for amino acid $R_i$.
+
+A set of descriptors called sequence order-correlated factors are defined as:
+
+\begin{align*}
+\theta_1  & = \frac{1}{N-1} \sum_{i=1}^{N-1} \Theta (R_i, R_{i+1})\\
+\theta_2  & = \frac{1}{N-2} \sum_{i=1}^{N-2} \Theta (R_i, R_{i+2})\\
+\theta_3  & = \frac{1}{N-3} \sum_{i=1}^{N-3} \Theta (R_i, R_{i+3})\\
+          & \ldots \\
+\theta_\lambda  & = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} \Theta (R_i, R_{i+\lambda})
+\end{align*}
+
+$\lambda$ ($\lambda < L$) is a parameter to be chosen. Let $f_i$ be the normalized occurrence frequency of the 20 amino acids in the protein sequence, a set of $20 + \lambda$ descriptors called the pseudo-amino acid composition for a protein sequence can be defines as:
+
+$$
+X_c = \frac{f_c}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (1 < c < 20)
+$$
+
+$$
+X_c = \frac{w \theta_{c-20}}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (21 < c < 20 + \lambda)
+$$
+
+where $w$ is the weighting factor for the sequence-order effect and is set as $w = 0.05$ in \pkg{rdpi} as suggested by Chou KC.
+
+\textbf{Note}: In the work of Chou KC, the definition for ``normalized occurrence frequency'' is not given and in this work we define it as the occurrence frequency of amino acid in the sequence normalized to $100\%$ and hence our calculated values are not the same as values by them.
+
+\subsection{Amphiphilic Pseudo-Amino Acid Composition (APAAC)}\label{subsec:apaac}
+
+Amphiphilic Pseudo-Amino Acid Composition (APAAC, \url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm}) are also called type 2 pseudo-amino acid composition. The definitions of these qualities are similar to the above PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before, the hydrophobicity and hydrophilicity correlation functions are defined respectively as:
+
+\begin{align*}
+H_{i, j}^1  & = H_1 (i) H_1 (j)\\
+H_{i, j}^2  & = H_2 (i) H_2 (j)
+\end{align*}
+
+From these qualities, sequence order factors can be defines as:
+
+\begin{align*}
+\tau_1  & = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^1\\
+\tau_2  & = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^2\\
+\tau_3  & = \frac{1}{N-2} \sum_{i=1}^{N-2} H_{i, i+2}^1\\
+\tau_4  & = \frac{1}{N-2} \sum_{i=1}^{N-2} H_{i, i+2}^2\\
+        & \ldots \\
+\tau_{2 \lambda - 1} & = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^1\\
+\tau_{2 \lambda}     & = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^2
+\end{align*}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.65\textwidth]{fig/APAAC.pdf}
+\caption{A schematic diagram to show (\textbf{a1}/\textbf{a2}) the first-rank, (\textbf{b1}/\textbf{b2}) the second-rank and (\textbf{c1}/\textbf{c2}) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.} \label{fig:apaac}
+\end{figure}
+
+Then a set of descriptors called \emph{Amphiphilic Pseudo-Amino Acid Composition} (\emph{APAAC}) are defined as:
+
+$$
+P_c = \frac{f_c}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \quad (1 < c < 20)
+$$
+
+$$
+P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \quad (21 < u < 20 + 2 \lambda)
+$$
+
+where $w$ is the weighting factor and is taken as $w = 0.5$ in \pkg{rdpi} as in the work of Chou KC.
 
 %
 \begin{CodeChunk}
@@ -323,31 +488,6 @@ R> tryCatch(f(12), "std::range_error" = function(e) { class(e) })
 Plain Code here
 \end{Code}
 %
-
-\begin{itemize}
-\item primitive types: \code{int}, \code{double} into the corresponding atomic \proglang{R} vectors;
-\item STL maps which use \code{std::string} for keys;
-\item any type that implements implicit \code{SEXP}
-\end{itemize}
-
-\begin{table}[t]
-  \begin{center}
-    \begin{small}
-      \begin{tabular}{lrr}
-        \toprule
-        Implementation                    & Time in millisec. & Relative to \proglang{R} API \\
-        \cmidrule(r){2-3}
-        \proglang{R} API (as benchmark)             &  218       & \\
-        \pkg{Rcpp} sugar                        &  145       & 0.67 \\
-        \code{NumericVector::iterator}    &  217       & 1.00 \\
-        \code{NumericVector::operator[]}  &  282       & 1.29 \\
-        \bottomrule
-      \end{tabular}
-    \end{small}
-    \caption{Run-time performance of the different convolution examples.}
-    \label{tab:benchmark}
-  \end{center}
-\end{table}
 
 \section{Summary}
 

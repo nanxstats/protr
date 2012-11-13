@@ -16,20 +16,20 @@
 #' \tabular{ll}{ Package: \tab rdpi\cr Type: \tab Package\cr
 #' Version: \tab 0.1-0\cr License: \tab BSD\cr }
 #'
-#' @section Amino Acid Composition: put AAC description here.
-#'
-#' @section Dipeptide Composition: put DC description here.
-#'
 #' @name rdpi-package
 #' @aliases rdpi
 #' @docType package
 #' @exportPattern "^[^\\.]"
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Xiao Nan <\email{road2stat@@gmail.com}>
 #'         Dongsheng Cao \email{oriental-cds@@163.com}
 #'         Qingsong Xu \email{dasongxu@@gmail.com}
 #'         Yizeng Liang \email{yizeng_liang@@263.net}
 #' 
 #' @note
+#' The comprehensive user's guide could be opened with \code{vignette('rdpi')},
+#' which explains each descriptor included in this package and corresponding
+#' usage.
+#' 
 #' Bug reports and feature requests should be sent to
 #' \url{https://github.com/road2stat/rdpi/issues}.
 #' 
@@ -60,8 +60,11 @@ NULL
 #' 
 #' The data was extracted from the AAindex1 database ver 9.1 
 #' (\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of Nov. 2012
-#' (Data Last Modified 2006-08-14). 
-#' Visit \url{http://www.genome.jp/dbget/aaindex.html} for more details.
+#' (Data Last Modified 2006-08-14).
+#' 
+#' With this data, users could investigate each property's accession number 
+#' and other details. Visit \url{http://www.genome.jp/dbget/aaindex.html} 
+#' for more information.
 #' 
 #' @docType data
 #' @name AAindex
