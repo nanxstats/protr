@@ -128,7 +128,7 @@ where $N_{rst}$ is the number of tripeptides represented by amino acid type $r$,
 
 \subsection{Autocorrelation Descriptors}\label{subsec:autocorr}
 
-Autocorrelation descriptors are defined based on the distribution of amino acid properties along the sequence. The amino acid properties used here are various types of amino acids index (Retrieved from AAindex Database \url{http://www.genome.ad.jp/dbget/aaindex.html}). Three types of autocorrelation descriptors are defined here and described below.
+Autocorrelation descriptors are defined based on the distribution of amino acid properties along the sequence. The amino acid properties used here are various types of amino acids index (Retrieved from AAindex Database: \url{http://www.genome.jp/dbget/aaindex.html}). Three types of autocorrelation descriptors are defined here and described below.
 
 All the amino acid indices are centralized and standardized before the calculation, i.e.
 
@@ -500,6 +500,7 @@ More Summary Words.
 
 Acknowledgments
 
+\nocite{*} % list uncited bibs
 \bibliography{rdpi}
 
 \vspace*{-0.35cm}
