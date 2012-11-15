@@ -18,7 +18,7 @@
 
 \Abstract{
   The \pkg{rdpi} package aims for protein sequence feature extraction, 
-  which could be easily applied in Chemoinformatics, Bioinforamtics and 
+  which could be easily applied in Bioinforamtics and 
   Chemogenomics research. The descriptors listed in this package include 
   Amino Acid Composition (Amino Acid Composition/Dipeptide 
   Composition/Tripeptide Composition), Autocorrelation (Normalized 
@@ -537,7 +537,7 @@ $$
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{fig/QSO.png}
-\caption{A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues.} \label{fig:qso}
+\caption{A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues. This figure is from \citet{chouqsoe}.} \label{fig:qso}
 \end{figure}
 
 An minimal example for \code{extractQSO()} could be:
@@ -563,7 +563,7 @@ $H_2^o (i)$ and $M^o (i)$ are normalized as $H_2 (i)$ and $M (i)$ in the same wa
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{fig/PAAC.png}
-\caption{A schematic drawing to show (a) the first-tier, (b) the second-tier, and (3) the third-tiersequence order correlation mode along a protein sequence. Panel (a) reflects the correlation mode between all the most contiguous residues, panel (b) that between all the second-most contiguous residues, and panel (c) that between all the third-most contiguous residues.} \label{fig:paac}
+\caption{A schematic drawing to show (a) the first-tier, (b) the second-tier, and (3) the third-tiersequence order correlation mode along a protein sequence. Panel (a) reflects the correlation mode between all the most contiguous residues, panel (b) that between all the second-most contiguous residues, and panel (c) that between all the third-most contiguous residues. This figure is from \citet{choupaac}.} \label{fig:paac}
 \end{figure}
 
 Then, a correlation function could be defines as
@@ -648,7 +648,7 @@ From these qualities, sequence order factors can be defines as:
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{fig/APAAC.pdf}
-\caption{A schematic diagram to show (\textbf{a1}/\textbf{a2}) the first-rank, (\textbf{b1}/\textbf{b2}) the second-rank and (\textbf{c1}/\textbf{c2}) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.} \label{fig:apaac}
+\caption{A schematic diagram to show (\textbf{a1}/\textbf{a2}) the first-rank, (\textbf{b1}/\textbf{b2}) the second-rank and (\textbf{c1}/\textbf{c2}) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.  This figure is from \citet{chouapaac}.} \label{fig:apaac}
 \end{figure}
 
 Then a set of descriptors called \emph{Amphiphilic Pseudo-Amino Acid Composition} (\emph{APAAC}) are defined as:
