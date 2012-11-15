@@ -10,7 +10,7 @@
 #'           \code{'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 
 #'           'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'}
 #'           
-#' @param k An positive integer, specifys the window size (half of the window), 
+#' @param k A positive integer, specifys the window size (half of the window), 
 #'          default is 7.
 #'
 #' @return A named list, each component contains one of the 

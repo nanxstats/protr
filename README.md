@@ -8,7 +8,7 @@ The rdpi package aims for protein sequence feature extraction, which could be ea
 
 The protein sequence features listed in this package include
 
-  * Amino Acid Composition 
+  * Amino Acid Composition
   
     * Amino Acid Composition
     * Dipeptide Composition

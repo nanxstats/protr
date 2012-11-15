@@ -1,4 +1,3 @@
-%% use JSS class -- use 'nojss' to turn off header
 \documentclass[shortnames,nojss,article]{jss}
 \usepackage{booktabs}
 \usepackage{amssymb}
@@ -71,13 +70,9 @@
   
 }
 
-%% need no \usepackage{Sweave.sty}
-
+%
 <<prelim,echo=FALSE,print=FALSE>>=
-# library(rdpi)
-# rdpi.version = packageDescription("rdpi")$Version
 rdpi.version = '0.1-0'
-# rdpi.date = packageDescription("rdpi")$Date
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -86,11 +81,50 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 
 \section{Introduction}\label{sec:intro}
 
-In this article, we discuss the functionality of the \pkg{rdpi} package \citep{CRAN:rdpi}, which aims for protein sequence feature extraction. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{rdpi}. Many more examples are available within the package.
+The \pkg{rdpi} package \citep{CRAN:rdpi} presented in this article implemented most of the state-of-the-art protein sequence feature extraction methods with \proglang{R}. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{rdpi}. Many more examples are available within the package.
 
 The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=rdpi} for more details. This vignette corresponds to \pkg{rdpi} version \Sexpr{rdpi.version} and was typeset on \Sexpr{now.date}.
 
-\section{Descriptors in rdpi}\label{sec:descriptors}
+Generally, each type of the descriptors(features) could be extracted with a function named \code{extractX()} in the \pkg{rdpi} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
+
+\begin{itemize}
+  \item Amino Acid Composition
+  \begin{itemize}
+  \item \code{extractAAC()} - Amino Acid Composition
+  \item \code{extractDC()} - Dipeptide Composition
+  \item \code{extractTC()} - Tripeptide Composition
+  \end{itemize}
+  \item Autocorrelation
+  \begin{itemize}
+  \item \code{extractMoreauBroto()} - Normalized Moreau-Broto Autocorrelation
+  \item \code{extractMoran()} - Moran Autocorrelation
+  \item \code{extractGeary()} - Geary Autocorrelation
+  \end{itemize}
+  \item CTD
+  \begin{itemize}
+  \item \code{extractCTDC()} - Composition
+  \item \code{extractCTDT()} - Transition
+  \item \code{extractCTDD()} - Distribution
+  \end{itemize}
+  \item Conjoint Triad
+  \begin{itemize}
+  \item \code{extractCTriad()} - Conjoint Triad
+  \end{itemize}
+  \item Quasi-sequence-order Descriptors
+  \begin{itemize}
+  \item \code{extractSOCN()} - Sequence-order-coupling Number
+  \item \code{extractQSO()} - Quasi-sequence-order Descriptors
+  \end{itemize}
+  \item Pseudo-Amino Acid Composition
+  \begin{itemize}
+  \item \code{extractPAAC()} - Pseudo-Amino Acid Composition
+  \item \code{extractAPAAC()} - Amphiphilic Pseudo-Amino Acid Composition
+  \end{itemize}    
+\end{itemize}
+
+In the next section, we'll introduce these descriptors and the function usages in this order.
+
+\section{Protein Sequence Descriptors in rdpi}\label{sec:descriptors}
 
 A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
 
@@ -106,6 +140,18 @@ $$
 
 where $N_r$ is the number of the amino acid type $r$ and $N$ is the length of the sequence.
 
+As was described above, we could use the function \code{extractAAC()} to extract the features from protein sequences:
+
+%
+<<extractAAC>>=
+require(rdpi)
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+extractAAC(x)
+@
+%
+
+Here with the function \code{readFASTA()} we loaded a single protein sequence (P00750, Tissue-type plasminogen activator) from a FASTA format file. Then extracted the AAC descriptors with \code{extractAAC()}. The result returned is a named vector, whose elements are tagged with the name of each amino acid.
+
 \subsection{Dipeptide Composition (DC)}\label{subsec:dc}
 
 The Dipeptide Composition (DC) gives 400 features, defined as:
@@ -114,7 +160,16 @@ $$
 f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
 $$
 
-where $N_{rs}$ is the number of dipeptide represented by amino acid type $r$ and type $s$.
+where $N_{rs}$ is the number of dipeptide represented by amino acid type $r$ and type $s$. Similar to \code{extractAAC()}, here we use \code{extractDC()} to compute the features:
+
+%
+<<extractDC>>=
+dc = extractDC(x)
+head(dc, n = 30L)
+@
+%
+
+Here we only showed the first 30 elements of the result vector and omitted the rest of the result. The element names of the returned vector are self-explanatory as before.
 
 \subsection{Tripeptide Composition (TC)}\label{subsec:tc}
 
@@ -124,11 +179,18 @@ $$
 f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
 $$
 
-where $N_{rst}$ is the number of tripeptides represented by amino acid type $r$, $s$ and $t$.
+where $N_{rst}$ is the number of tripeptides represented by amino acid type $r$, $s$ and $t$. With function \code{extractTC()}, we could easily obtain the length-8000 descriptor, to save some space, here we also omitted the tedious outputs:
+
+%
+<<extractTC>>=
+tc = extractTC(x)
+head(tc, n = 36L)
+@
+%
 
 \subsection{Autocorrelation Descriptors}\label{subsec:autocorr}
 
-Autocorrelation descriptors are defined based on the distribution of amino acid properties along the sequence. The amino acid properties used here are various types of amino acids index (Retrieved from AAindex Database: \url{http://www.genome.jp/dbget/aaindex.html}). Three types of autocorrelation descriptors are defined here and described below.
+Autocorrelation descriptors are defined based on the distribution of amino acid properties along the sequence. The amino acid properties used here are various types of amino acids index (Retrieved from AAindex Database: \url{http://www.genome.jp/dbget/aaindex.html}, see \citet{aaindex1999}, \citet{aaindex2000}, and \citet{aaindex2008}, see Figure \ref{fig:AAindex} for an illustrated example). Three types of autocorrelation descriptors are defined here and described below.
 
 All the amino acid indices are centralized and standardized before the calculation, i.e.
 
@@ -164,6 +226,57 @@ $$
 ATS(d) = \frac{AC(d)}{N-d} \quad d = 1, 2, \ldots, \textrm{nlag}
 $$
 
+The corresponding function for this descriptor is \code{extractMoreauBroto()}. A typical call could be:
+
+%
+<<extractMoreau1>>=
+moreau = extractMoreauBroto(x)
+head(moreau, n = 36L)
+@
+%
+
+The 8 default properties used here are:
+
+\begin{itemize}
+\item \textbf{AccNo. CIDH920105} --- {Normalized Average Hydrophobicity Scales}
+\item \textbf{AccNo. BHAR880101} --- {Average Flexibility Indices}
+\item \textbf{AccNo. CHAM820101} --- {Polarizability Parameter}
+\item \textbf{AccNo. CHAM820102} --- {Free Energy of Solution in Water, kcal/mole}
+\item \textbf{AccNo. CHOC760101} --- {Residue Accessible Surface Area in Tripeptide}
+\item \textbf{AccNo. BIGC670101} --- {Residue Volume}
+\item \textbf{AccNo. CHAM810101} --- {Steric Parameter}
+\item \textbf{AccNo. DAYM780201} --- {Relative Mutability}
+\end{itemize}
+
+Users could change the property names of AAindex database with the argument \code{props}.
+ The AAindex data shipped with \pkg{rdpi} could be loaded by \code{data(AAindex)}, which has the detailed information of each property. With the argument \code{customprops} and \code{nlag}, users could specify their own properties and lag value to calculate with. For illustration, we could use:
+
+%
+<<extractMoreau2>>=
+# Define 3 custom properties
+myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"), 
+                     A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101), 
+                     N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59), 
+                     C = c(0.29,    -1, 47),  E = c(-0.74,   3, 73), 
+                     Q = c(-0.85,  0.2, 72),  G = c(0.48,    0, 1), 
+                     H = c(-0.4,  -0.5, 82),  I = c(1.38, -1.8, 57), 
+                     L = c(1.06,  -1.8, 57),  K = c(-1.5,    3, 73), 
+                     M = c(0.64,  -1.3, 75),  F = c(1.19, -2.5, 91), 
+                     P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31), 
+                     T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130), 
+                     Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43))
+
+# Use 4 properties in the AAindex database, and 3 cutomized properties
+moreau2 = extractMoreauBroto(x, customprops = myprops,
+                             props = c('CIDH920105', 'BHAR880101',
+                                       'CHAM820101', 'CHAM820102',
+                                       'MyProp1', 'MyProp2', 'MyProp3'))
+head(moreau2, n = 36L)
+@
+%
+
+About the standard input format of \code{props} and \code{customprops}, see \code{?extractMoreauBroto} for details.
+
 \textbf{\subsubsection{Moran Autocorrelation Descriptors}}\label{sssec:moran}
 
 Moran autocorrelation descriptors application to protein sequence may be defined as:
@@ -180,6 +293,20 @@ $$
 
 $d$, $P$, $P_i$ and $P_{i+d}$, $\textrm{nlag}$ have the same meaning as above.
 
+With \code{extractMoran()}, which has exactly the same arguments with \code{extractMoreauBroto()}, we could compute the Moran autocorrelation descriptors (only output the first 36 elements of the result):
+
+%
+<<extractMoran>>=
+# Use the 3 custom properties defined before
+# and 4 properties in the AAindex database
+moran = extractMoran(x, customprops = myprops,
+                     props = c('CIDH920105', 'BHAR880101',
+                               'CHAM820101', 'CHAM820102',
+                               'MyProp1', 'MyProp2', 'MyProp3'))
+head(moran, n = 36L)
+@
+%
+
 \textbf{\subsubsection{Geary Autocorrelation Descriptors}}\label{sssec:geary}
 
 Geary autocorrelation descriptors for protein sequence could be defined as:
@@ -190,11 +317,23 @@ $$
 
 where $d$, $P$, $P_i$ and $P_{i+d}$, $\textrm{nlag}$ have the same meaning as above.
 
-For each amino acid index, there will be $3 \times \textrm{nlag}$ autocorrelation descriptors.
+For each amino acid index, there will be $3 \times \textrm{nlag}$ autocorrelation descriptors. The usage of \code{extractGeary()} is exactly the same with \code{extractMoreauBroto()} and \code{extractMoran()}:
+
+%
+<<extractGeary>>=
+# Use the 3 custom properties defined before
+# and 4 properties in the AAindex database
+geary = extractGeary(x, customprops = myprops,
+                     props = c('CIDH920105', 'BHAR880101',
+                               'CHAM820101', 'CHAM820102',
+                               'MyProp1', 'MyProp2', 'MyProp3'))
+head(geary, n = 36L)
+@
+%
 
 \subsection{Composition / Transition / Distribution}\label{subsec:ctd}
 
-These descriptors are developed by Dubchak, et.al.
+These descriptors are developed and described by \citet{dubchak1} and \citet{dubchak2}.
 
 \begin{figure}[htbp]
 \centering
@@ -202,7 +341,7 @@ These descriptors are developed by Dubchak, et.al.
 \caption{The sequence of a hypothetic protein indicating the construction of composition, transition and distribution descriptors of a protein. Sequence index indicates the position of an amino acid in the sequence. The index for each type of amino acids in the sequence (`1', `2' or `3') indicates the position of the first, second, third, ... of that type of amino acid. 1/2 transition indicates the position of `12' or `21' pairs in the sequence (1/3 and 2/3 are defined in the same way.).} \label{fig:ctd}
 \end{figure}
 
-\textbf{Step1. Sequence encoding}
+\textbf{Step 1: Sequence Encoding}
 
 The amino acids are divided in three classes according to its attribute and each amino acid is encoded by one of the indices 1, 2, 3 according to which class it belonged. The attributes used here include hydrophobicity, normalized van der Waals volume polarity, and polarizability, as in the references. The corresponding division is in the table 1.
 
@@ -243,9 +382,9 @@ The amino acids are divided in three classes according to its attribute and each
 
 For example, for a given sequence ``MTEITAAMVKELRESTGAGA'', it will be encoded as ``32132223311311222222'' according to its hydrophobicity division.
 
-\textbf{Step 2: Composition, Transition and Distribution descriptors}
+\textbf{Step 2: Compute Composition, Transition and Distribution Descriptors}
 
-Three descriptors, ``Composition (C)'', ``Transition (T)'', and ``Distribution (D)'' were calculated for a given attribute as follows:
+Three descriptors, \emph{Composition} (\emph{C}), \emph{Transition} (\emph{T}), and \emph{Distribution} (\emph{D}) were calculated for a given attribute as follows.
 
 \textbf{\subsubsection{Composition}}
 
@@ -255,7 +394,15 @@ $$
 C_r = \frac{n_r}{n} \quad r = 1, 2, 3
 $$
 
-where $n_r$ is the number of amino acid type $r$ in the encoded sequence and $N$ is the length of the sequence.
+where $n_r$ is the number of amino acid type $r$ in the encoded sequence and $N$ is the length of the sequence. An example for \code{extractCTDC()} could be:
+
+%
+<<extractCTDC>>=
+extractCTDC(x)
+@
+%
+
+The result shows the elements whose names are \code{PropertyNumber.GroupNumber} in the returned vector.
 
 \textbf{\subsubsection{Transition}}
 
@@ -265,7 +412,13 @@ $$
 T_{rs} = \frac{n_{rs} + n_{sr}}{N - 1} \quad rs = \textrm{`12'}, \textrm{`13'}, \textrm{`23'}
 $$
 
-where $n_{rs}$, $n_{sr}$ is the numbers of dipeptide encoded as ``rs'' and ``sr'' respectively in the sequence and $N$ is the length of the sequence.
+where $n_{rs}$, $n_{sr}$ is the numbers of dipeptide encoded as ``rs'' and ``sr'' respectively in the sequence and $N$ is the length of the sequence. An example for \code{extractCTDT()} could be:
+
+%
+<<extractCTDT>>=
+extractCTDT(x)
+@
+%
 
 \textbf{\subsubsection{Distribution}}
 
@@ -273,9 +426,17 @@ The ``distribution'' descriptor describes the distribution of each attribute in 
 
 There are five ``distribution'' descriptors for each attribute and they are the position percents in the whole sequence for the first residue, 25\% residues, 50\% residues, 75\% residues and 100\% residues, respectively, for a specified encoded class. For example, there are 10 residues encoded as ``2'' in the above example, the positions for the first residue ``2'', the 2th residue ``2'' (25\%*10=2), the 5th ``2'' residue (50\%*10=5), the 7th ``2'' (75\%*10=7) and the 10th residue ``2'' (100\%*10) in the encoded sequence are 2, 5, 15, 17, 20 respectively, so the distribution descriptors for ``2'' are: 10.0 (2/20*100), 25.0 (5/20*100), 75.0 (15/20*100), 85.0 (17/20*100) , 100.0 (20/20*100), respectively.
 
+Finally, an example for \code{extractCTDD()} could be:
+
+%
+<<extractCTDD>>=
+extractCTDD(x)
+@
+%
+
 \subsection{Conjoint Triad Descriptors}\label{ssec:ctraid}
 
-Conjoint triad descriptors are proposed by J.W. Shen et.al. These conjoint triad features abstracts the features of protein pairs based on the classification of amino acids. In this approach, each protein sequence is represented by a vector space consisting of features of amino acids. To reduce the dimensions of vector space, the 20 amino acids were clustered into several classes according to their dipoles and volumes of the side chains. The conjoint triad features are calculated as follows:
+Conjoint triad descriptors are proposed by \citet{shenjw}. These conjoint triad features abstracts the features of protein pairs based on the classification of amino acids. In this approach, each protein sequence is represented by a vector space consisting of features of amino acids. To reduce the dimensions of vector space, the 20 amino acids were clustered into several classes according to their dipoles and volumes of the side chains. The conjoint triad features are calculated as follows:
 
 \textbf{Step 1: Classification of Amino Acids}
 
@@ -303,25 +464,36 @@ Electrostatic and hydrophobic interactions dominate protein-protein interactions
 
 \textbf{Step 2: Conjoint Triad Calculation}
 
-The conjoint triad descriptors considered the properties of one amino acid and its vicinal amino acids and regarded any three continuous amino acids as a unit. Thus, the triads can be differentiated according to the classes of amino acids, i.e., triads composed by three amino acids belonging to the same classes, such as ART and VKS, could be treated identically. To conveniently represent a protein, we first use a binary space  $(\mathbf{V}, \mathbf{F})$ to represent a protein sequence. Here, $\mathbf{V}$ is the vector space of the sequence features, and each feature $v_i$ represents a sort of triad type; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the ith dimension of $\mathbf{F} (f_i)$ is the frequency of type $v_i$ appearing in the protein sequence. For the amino acids that have been catogorized into seven classes, the size of $\mathbf{V}$ should be $7 \times 7 \times 7$; thus $i = 1, 2, \ldots, 343$. The detailed description for ($\mathbf{V}$, $\mathbf{F}$) is illustrated in Figure 3.
+The conjoint triad descriptors considered the properties of one amino acid and its vicinal amino acids and regarded any three continuous amino acids as a unit. Thus, the triads can be differentiated according to the classes of amino acids, i.e., triads composed by three amino acids belonging to the same classes, such as ART and VKS, could be treated identically. To conveniently represent a protein, we first use a binary space  $(\mathbf{V}, \mathbf{F})$ to represent a protein sequence. Here, $\mathbf{V}$ is the vector space of the sequence features, and each feature $v_i$ represents a sort of triad type; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency of type $v_i$ appearing in the protein sequence. For the amino acids that have been catogorized into seven classes, the size of $\mathbf{V}$ should be $7 \times 7 \times 7$; thus $i = 1, 2, \ldots, 343$. The detailed description for ($\mathbf{V}$, $\mathbf{F}$) is illustrated in Figure \ref{fig:ctriad}.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.65\textwidth]{fig/ctriad.png}
+\includegraphics[width=\textwidth]{fig/ctriad.pdf}
 \caption{Schematic diagram for constructing the vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence. $\mathbf{V}$ is the vector space of the sequence features; each feature ($v_i$) represents a triad composed of three consecutive amino acids; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency that $v_i$ triad appeared in the protein sequence.} \label{fig:ctriad}
 \end{figure}
 
 Clearly, each protein correlates to the length (number of amino acids) of protein. In general, a long protein would have a large value of $f_i$, which complicates the comparison between two heterogeneous proteins. Thus, we defined a new parameter, $d_i$, by normalizing $f_i$ with the following equation:
 
 $$
-d_i = (f_i - \min\{\,f_1, f_2 , \ldots, f_{343}\,\})/\max\{\,f_1, f_2, \ldots, f_{343}\,\}
+d_i = \frac{f_i - \min\{\,f_1, f_2 , \ldots, f_{343}\,\}}{\max\{\,f_1, f_2, \ldots, f_{343}\,\}}
 $$
 
 The numerical value of $d_i$ of each protein ranges from 0 to 1, which thereby enables the comparison between proteins. Accordingly, we obtain another vector space (designated $\mathbf{D}$) consisting of $d_i$ to represent protein.
 
+To compute conjoint triads of protein sequences, we could simply use:
+
+%
+<<extractCTriad>>=
+ctriad = extractCTriad(x)
+head(ctriad, n = 65L)
+@
+%
+
+by which we only outputted the first 65 of total 343 dimension to save space.
+
 \subsection{Quasi-sequence-order Descriptors}\label{subsec:qsod}
 
-The quasi-sequence-order descriptors are proposed by K.C. Chou, et.al. They are derived from the distance matrix between the 20 amino acids.
+The quasi-sequence-order descriptors are proposed by \citet{chouqsoe}. They are derived from the distance matrix between the 20 amino acids.
 
 \textbf{\subsubsection{Sequence-order-coupling Number}}\label{sssec:socn}
 
@@ -334,6 +506,19 @@ $$
 where $d_{i, i+d}$ is the distance between the two amino acids at position $i$ and $i+d$.
 
 \textbf{Note}: maxlag is the maximum lag and the length of the protein must be not less than $\textrm{maxlag}$.
+
+
+The function \code{extractSOCN(x)} is used for computing the sequence-order-coupling numbers:
+
+%
+<<extractSOCN>>=
+extractSOCN(x)
+@
+%
+
+Users could also specify the maximum lag value with the \code{nlag} argument.
+
+\textbf{Note}: In addition to Schneider-Wrede physicochemical distance matrix \citep{wrede} used by Kuo-Chen Chou, another chemical distance matrix by \citet{grantham} is also used here. So the feature dimension will be \code{nlag * 2}. The quasi-sequence-order descriptors described next also utilized the two matrices.
 
 \textbf{\subsubsection{Quasi-sequence-order Descriptors}}\label{sssec:qso}
 
@@ -349,17 +534,25 @@ $$
 X_d = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} \quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
 $$
 
-In addition to Schneider-Wrede physicochemical distance matrix used by Chou et al, another chemical distance matrix by Grantham is also used here.
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{fig/QSO.png}
 \caption{A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues.} \label{fig:qso}
 \end{figure}
 
+An minimal example for \code{extractQSO()} could be:
+
+%
+<<extractQSO>>=
+extractQSO(x)
+@
+%
+
+where users could also specify the maximum lag with argument \code{nlag} and the weighting factor with argument \code{w}.
+
 \subsection{Pseudo-Amino Acid Composition (PAAC)}\label{subsec:paac}
 
-This groups of descriptors are proposed by Kuo-chen Chou. PAAC descriptors (\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}) are also called the type 1 pseudo-amino acid composition. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
+This groups of descriptors are proposed in \citet{choupaac}. PAAC descriptors (\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}) are also called the \emph{type 1 pseudo-amino acid composition}. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
 
 $$
 H_1 (i) = \frac{H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i)}{\sqrt{\frac{\sum_{i=1}^{20} [H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i) ]^2}{20}}}
@@ -417,13 +610,23 @@ $$
 X_c = \frac{w \theta_{c-20}}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (21 < c < 20 + \lambda)
 $$
 
-where $w$ is the weighting factor for the sequence-order effect and is set as $w = 0.05$ in \pkg{rdpi} as suggested by Chou KC.
+where $w$ is the weighting factor for the sequence-order effect and is set as $w = 0.05$ in \pkg{rdpi} as suggested by Kuo-Chen Chou.
 
-\textbf{Note}: In the work of Chou KC, the definition for ``normalized occurrence frequency'' is not given and in this work we define it as the occurrence frequency of amino acid in the sequence normalized to $100\%$ and hence our calculated values are not the same as values by them.
+With \code{extractPAAC()}, we could compute the PAAC descriptors:
+
+%
+<<extractPAAC>>=
+extractPAAC(x)
+@
+%
+
+The \code{extractPAAC()} fucntion also provides the \code{props} and \code{customprops} arguments, which is similar to the functions for Moreau-Broto/Moran/Geary autocorrelation descriptors. For minor differences, see \code{?extracPAAC}. Users could specify the lambda parameter and the weighting factor with arguments \code{lambda} and \code{w}.
+
+\textbf{Note}: In the work of Kuo-Chen Chou, the definition for ``normalized occurrence frequency'' was not given. In this work, we define it as the occurrence frequency of amino acid in the sequence normalized to $100\%$ and hence our calculated values are not the same as values by them.
 
 \subsection{Amphiphilic Pseudo-Amino Acid Composition (APAAC)}\label{subsec:apaac}
 
-Amphiphilic Pseudo-Amino Acid Composition (APAAC, \url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm}) are also called type 2 pseudo-amino acid composition. The definitions of these qualities are similar to the above PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before, the hydrophobicity and hydrophilicity correlation functions are defined respectively as:
+Amphiphilic Pseudo-Amino Acid Composition (APAAC, \url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm}) was proposed in \citet{choupaac}. APAAC is also recognized as the \emph{type 2 pseudo-amino acid composition}. The definitions of these qualities are similar to the PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before, the hydrophobicity and hydrophilicity correlation functions are defined respectively as:
 
 \begin{align*}
 H_{i, j}^1  & = H_1 (i) H_1 (j)\\
@@ -444,7 +647,7 @@ From these qualities, sequence order factors can be defines as:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.65\textwidth]{fig/APAAC.pdf}
+\includegraphics[width=\textwidth]{fig/APAAC.pdf}
 \caption{A schematic diagram to show (\textbf{a1}/\textbf{a2}) the first-rank, (\textbf{b1}/\textbf{b2}) the second-rank and (\textbf{c1}/\textbf{c2}) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.} \label{fig:apaac}
 \end{figure}
 
@@ -460,45 +663,142 @@ $$
 
 where $w$ is the weighting factor and is taken as $w = 0.5$ in \pkg{rdpi} as in the work of Chou KC.
 
+A minimal example for \code{extracAPAAC()} is:
+
+%
+<<extractAPAAC>>=
+extractAPAAC(x)
+@
+%
+
+This function has the same arguments as \code{extractPAAC()}.
+
+\clearpage
+
+\section{Miscellaneous Tools}\label{sec:misc}
+
+In this section, we will briefly introduce some useful tools provided by the \pkg{rdpi} package.
+
+\subsection{Retrieve Protein Sequences from UniProt}
+
+This function \code{getUniProt()} gets protein sequences from uniprot.org by protein ID(s). The input \code{ID} is a character vector specifying the protein ID(s). The returned sequences are stored in a list:
+
 %
 \begin{CodeChunk}
 
 \begin{CodeInput}
-R> f <- function(x) .Call("fun", x)
-R> tryCatch(f(12), "std::range_error" = function(e) { conditionMessage(e) })
+> ids = c('P00750', 'P00751', 'P00752')
+> prots = getUniProt(ids)
+> print(prots)
 \end{CodeInput}
 
 \begin{CodeOutput}
-[1] "too big"
+[[1]]
+[1] "MDAMKRGLCCVLLLCGAVFVSPSQEIHARFRRGARSYQVICRDEKTQMIYQQHQSWLRPVLRSNRVEYCWCN
+SGRAQCHSVPVKSCSEPRCFNGGTCQQALYFSDFVCQCPEGFAGKCCEIDTRATCYEDQGISYRGTWSTAESGAECT
+NWNSSALAQKPYSGRRPDAIRLGLGNHNYCRNPDRDSKPWCYVFKAGKYSSEFCSTPACSEGNSDCYFGNGSAYRGT
+HSLTESGASCLPWNSMILIGKVYTAQNPSAQALGLGKHNYCRNPDGDAKPWCHVLKNRRLTWEYCDVPSCSTCGLRQ
+YSQPQFRIKGGLFADIASHPWQAAIFAKHRRSPGERFLCGGILISSCWILSAAHCFQERFPPHHLTVILGRTYRVVP
+GEEEQKFEVEKYIVHKEFDDDTYDNDIALLQLKSDSSRCAQESSVVRTVCLPPADLQLPDWTECELSGYGKHEALSP
+FYSERLKEAHVRLYPSSRCTSQHLLNRTVTDNMLCAGDTRSGGPQANLHDACQGDSGGPLVCLNDGRMTLVGIISWG
+LGCGQKDVPGVYTKVTNYLDWIRDNMRP"
+
+[[2]]
+[1] "MGSNLSPQLCLMPFILGLLSGGVTTTPWSLARPQGSCSLEGVEIKGGSFRLLQEGQALEYVCPSGFYPYPVQ
+TRTCRSTGSWSTLKTQDQKTVRKAECRAIHCPRPHDFENGEYWPRSPYYNVSDEISFHCYDGYTLRGSANRTCQVNG
+RWSGQTAICDNGAGYCSNPGIPIGTRKVGSQYRLEDSVTYHCSRGLTLRGSQRRTCQEGGSWSGTEPSCQDSFMYDT
+PQEVAEAFLSSLTETIEGVDAEDGHGPGEQQKRKIVLDPSGSMNIYLVLDGSDSIGASNFTGAKKCLVNLIEKVASY
+GVKPRYGLVTYATYPKIWVKVSEADSSNADWVTKQLNEINYEDHKLKSGTNTKKALQAVYSMMSWPDDVPPEGWNRT
+RHVIILMTDGLHNMGGDPITVIDEIRDLLYIGKDRKNPREDYLDVYVFGVGPLVNQVNINALASKKDNEQHVFKVKD
+MENLEDVFYQMIDESQSLSLCGMVWEHRKGTDYHKQPWQAKISVIRPSKGHESCMGAVVSEYFVLTAAHCFTVDDKE
+HSIKVSVGGEKRDLEIEVVLFHPNYNINGKKEAGIPEFYDYDVALIKLKNKLKYGQTIRPICLPCTEGTTRALRLPP
+TTTCQQQKEELLPAQDIKALFVSEEEKKLTRKEVYIKNGDKKGSCERDAQYAPGYDKVKDISEVVTPRFLCTGGVSP
+YADPNTCRGDSGGPLIVHKRSRFIQVGVISWGVVDVCKNQKRQKQVPAHARDFHINLFQVLPWLKEKLQDEDLGFL"
+
+[[3]]
+[1] "APPIQSRIIGGRECEKNSHPWQVAIYHYSSFQCGGVLVNPKWVLTAAHCKNDNYEVWLGRHNLFENENTAQF
+FGVTADFPHPGFNLSLLKXHTKADGKDYSHDLMLLRLQSPAKITDAVKVLELPTQEPELGSTCEASGWGSIEPGPDB
+FEFPDEIQCVQLTLLQNTFCABAHPBKVTESMLCAGYLPGGKDTCMGDSGGPLICNGMWQGITSWGHTPCGSANKPS
+IYTKLIFYLDWINDTITENP"
 \end{CodeOutput}
-
-\begin{CodeInput}
-R> tryCatch(f(12), "std::range_error" = function(e) { class(e) })
-\end{CodeInput}
-
-\begin{CodeOutput}
-[1] "std::range_error" "C++Error"         "error"            "condition"
-\end{CodeOutput}
-
 \end{CodeChunk}
 %
 
+\subsection{Read FASTA format files}
+
+The \code{readFASTA()} function provides a convenient way to read protein sequences stored in FASTA format files. See \code{?readFASTA} for details. The returned sequences are stored in a named list, whose components are named with the protein sequences' names.
+
+\subsection{Check Protein Sequences}
+
+The \code{protcheck()} function checks if the protein sequence's amino acid types are in the 20 default types, which returns a \code{TRUE} if all the amino acids in the sequence belongs to the 20 default types:
+
 %
-\begin{Code}
-Plain Code here
-\end{Code}
+<<protcheck>>=
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+# A real sequence
+protcheck(x)
+# An artificial sequence
+protcheck(paste(x, 'Z', sep = ''))
+@
 %
+
+\subsection{Protein Sequence Segmentation}
+
+The \code{protseg()} function extracts the segmentations from the protein sequence. Users could specify a sequence \code{x}, and a character \code{aa}, one of the 20 amino acid types, and a positive integer \code{k}, which controls the window size (half of the window).
+
+This function returns a named list, each component contains one of the segmentations (a character string), names of the list components are the positions of the specified amino acid in the sequence. See the example below:
+
+%
+<<protseg>>=
+protseg(x, aa = 'M', k = 5)
+@
+%
+
+\clearpage
 
 \section{Summary}
 
-The \pkg{rdpi} package presented in this paper implemented most of
-the state-of-the-art supervised distance metric learning algorithms with \proglang{R}.
+The descriptors' information has been listed in table \ref{tab:all}.
 
-More Summary Words.
+\begin{table}[htbp]
+  \centering
+  \caption{List of \pkg{rdpi} computed features for protein sequences}
+  \footnotesize{
+    \begin{tabular}{ccc}
+    \addlinespace
+    \toprule
+    Feature Group & Feature Name & Feature Dimension \\
+    \midrule
+    Amino Acid Composition & Amino Acid Composition & 20 \\
+          & Dipeptide Composition & 400 \\
+          & Tripeptide Composition & 8000 \\
+    Autocorrelation & Normalized Moreau-Broto Autocorrelation & 240\footnotemark[1]  \\
+          & Moran Autocorrelation & 240\footnotemark[1] \\
+          & Geary Autocorrelation & 240\footnotemark[1] \\
+    CTD   & Composition & 21 \\
+          & Transition & 21 \\
+          & Distribution & 105 \\
+    Conjoint Triad & Conjoint Triad & 343 \\
+    Quasi-sequence-order Descriptors & Sequence-order-coupling Number & 60\footnotemark[2] \\
+          & Quasi-sequence-order Descriptors & 100\footnotemark[2] \\
+    Pseudo-Amino Acid Composition & Pseudo-Amino Acid Composition & 50\footnotemark[3] \\
+          & Amphiphilic Pseudo-Amino Acid Composition & 80\footnotemark[4] \\
+    \bottomrule
+    \end{tabular}
+  }
+  \label{tab:all}
+\end{table}
+
+\footnotetext[1]{The number depends on the choice of the number of properties of amino acids and the choice of the maximum values of the \code{lag}. The default is use 8 types of properties and \code{lag} = 30.}
+\footnotetext[2]{The number depends on the maximum value of \code{lag}. By default \code{lag} = 30. And two distance matrices were used, so the feature dimension is $30 \times 2 = 60$ and $(20 + 30) \times 2 = 100$.}
+\footnotetext[3]{The number depends on the choice of the number of the set of amino acid properties and the choice of the $\lambda$ value. The default is use 3 types of properties proposed by Kuo-Chen Chou and $\lambda = 30$.}
+\footnotetext[4]{The number depends on the choice of the $\lambda$ vlaue. The default is that $\lambda = 30$.}
+
+In this article, we discussed the functionality of the \pkg{rdpi} package, which is trying to offer a comprehensive and neat choice for protein sequence feature extraction.
 
 \section*{Acknowledgments}
 
-Acknowledgments
+We'd like to thank the Computational Biology and Drug Design Group (\url{http://cbdd.csu.edu.cn/index/}) of Central South University for supporting the development of this \proglang{R} package. Further suggestions and comments are welcomed.
 
 \nocite{*} % list uncited bibs
 \bibliography{rdpi}

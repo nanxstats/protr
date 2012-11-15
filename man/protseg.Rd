@@ -14,7 +14,7 @@
   \code{'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
   'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'}}
 
-  \item{k}{An positive integer, specifys the window size
+  \item{k}{A positive integer, specifys the window size
   (half of the window), default is 7.}
 }
 \value{
