@@ -1,5 +1,4 @@
 \name{readFASTA}
-\alias{FASTA}
 \alias{readFASTA}
 \title{Read Protein Sequences in FASTA Format}
 \usage{
@@ -57,7 +56,7 @@ P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
   Pearson, W.R. and Lipman, D.J. (1988) Improved tools for
   biological sequence comparison. \emph{Proceedings of the
   National Academy of Sciences of the United States of
-  America}, \bold{85}:2444-2448
+  America}, \bold{85}: 2444-2448
 }
 \seealso{
   See \code{\link{getUniProt}} for retrieving protein

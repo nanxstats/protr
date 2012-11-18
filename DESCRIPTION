@@ -3,17 +3,16 @@ Version: 0.1-0
 Date: 2012-11-18
 Title: Protein Sequence Feature Extraction with R
 Description: The protr package aims for protein sequence feature extraction,
-    which could be easily applied in Chemoinformatics, Bioinforamtics and
-    Chemogenomics research. The descriptors listed in this package include
-    Amino Acid Composition (Amino Acid Composition/Dipeptide
-    Composition/Tripeptide Composition), Autocorrelation (Normalized
-    Moreau-Broto Autocorrelation/Moran Autocorrelation/Geary Autocorrelation),
-    CTD (Composition/Transition/Distribution), Conjoint Traid, Quasi-sequence
-    Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors),
-    and Pseudo Amino Acid Composition (Pseudo Amino Acid
-    Composition/Amphiphilic Pseudo Amino Acid Composition). The package is
-    developed by Computational Biology and Drug Design Group, Central South
-    University.
+    which could be easily applied in Bioinformatics and Chemogenomics research.
+    The descriptors listed in this package include Amino Acid Composition
+    (Amino Acid Composition/Dipeptide Composition/Tripeptide Composition),
+    Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran
+    Autocorrelation/Geary Autocorrelation), CTD
+    (Composition/Transition/Distribution), Conjoint Traid, Quasi-sequence Order
+    (Sequence Order Coupling Number/Quasi-sequence Order Descriptors), and
+    Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
+    Pseudo Amino Acid Composition). The package is developed by Computational
+    Biology and Drug Design Group, Central South University.
 Author: Xiao Nan <road2stat@gmail.com>, Dongsheng Cao <oriental-cds@163.com>,
     Qingsong Xu <dasongxu@gmail.com>, Yizeng Liang <yizeng_liang@263.net>
 Maintainer: Xiao Nan <road2stat@gmail.com>

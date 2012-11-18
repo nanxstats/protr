@@ -29,7 +29,7 @@
 #' 
 #' @keywords protr FASTA readFASTA
 #'
-#' @aliases readFASTA FASTA
+#' @aliases readFASTA
 #' 
 #' @note Note that any different sets of instances (chunklets),
 #'       e.g. {1, 3, 7} and {4, 6}, might belong to the 
@@ -46,7 +46,7 @@
 #' Pearson, W.R. and Lipman, D.J. (1988) 
 #' Improved tools for biological sequence comparison. 
 #' \emph{Proceedings of the National Academy of Sciences 
-#' of the United States of America}, \bold{85}:2444-2448
+#' of the United States of America}, \bold{85}: 2444-2448
 #' 
 #' @examples
 #' P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
