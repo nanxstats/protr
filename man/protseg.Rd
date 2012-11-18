@@ -31,7 +31,7 @@
   sequence.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 protseg(x, aa = 'R', k = 5)
 }
 \author{

@@ -1,10 +1,10 @@
 \docType{package}
-\name{rdpi-package}
-\alias{rdpi}
-\alias{rdpi-package}
+\name{protr-package}
+\alias{protr}
+\alias{protr-package}
 \title{Protein Sequence Feature Extraction with R}
 \description{
-  The rdpi package aims for protein sequence feature
+  The protr package aims for protein sequence feature
   extraction, which could be easily applied in
   Chemoinformatics, Bioinforamtics and Chemogenomics
   research. The features listed in this package include
@@ -21,19 +21,19 @@
   Drug Design Group, Central South University.
 }
 \details{
-  \tabular{ll}{ Package: \tab rdpi\cr Type: \tab Package\cr
-  Version: \tab 0.1-0\cr License: \tab BSD\cr }
+  \tabular{ll}{ Package: \tab protr\cr Type: \tab
+  Package\cr Version: \tab 0.1-0\cr License: \tab BSD\cr }
 }
 \note{
   The comprehensive user's guide could be opened with
-  \code{vignette('rdpi')}, which explains each descriptor
+  \code{vignette('protr')}, which explains each descriptor
   included in this package and corresponding usage.
 
   Bug reports and feature requests should be sent to
-  \url{https://github.com/road2stat/rdpi/issues}.
+  \url{https://github.com/road2stat/protr/issues}.
 }
 \examples{
-set.seed(1001)
+NULL
 }
 \author{
   Xiao Nan <\email{road2stat@gmail.com}> Dongsheng Cao
@@ -43,7 +43,7 @@ set.seed(1001)
 }
 \references{
   The associated website for this package:
-  \url{http://cbdd.csu.edu.cn/rdpi/}
+  \url{http://cbdd.csu.edu.cn/protr/}
 }
 \seealso{
   See \code{\link{extractAAC}}, \code{\link{extractDC}},
@@ -66,6 +66,6 @@ set.seed(1001)
 \keyword{feature}
 \keyword{package}
 \keyword{protein}
-\keyword{rdpi}
+\keyword{protr}
 \keyword{sequence}
 

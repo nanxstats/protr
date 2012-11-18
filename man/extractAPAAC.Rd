@@ -58,7 +58,7 @@
   users should explicitly specify the properties to use.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractAPAAC(x)
 
 myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"),

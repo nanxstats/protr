@@ -3,9 +3,9 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{rdpi}
-%\VignetteKeywords{R, rdpi, protein sequence, amino acid, feature extraction}
-%\VignettePackage{rdpi}
+%\VignetteIndexEntry{protr}
+%\VignetteKeywords{R, protr, protein sequence, amino acid, feature extraction}
+%\VignettePackage{protr}
 
 \author{Xiao Nan\\Central South University \And 
         Dongsheng Cao\\Central South University \AND
@@ -13,11 +13,11 @@
         Yizeng Liang\\Central South University}
 \Plainauthor{Xiao Nan, Dongsheng Cao}
 
-\title{\pkg{rdpi}: Protein Sequence Feature Extraction with \proglang{R}}
-\Plaintitle{rdpi: Protein Sequence Feature Extraction with R}
+\title{\pkg{protr}: Protein Sequence Feature Extraction with \proglang{R}}
+\Plaintitle{protr: Protein Sequence Feature Extraction with R}
 
 \Abstract{
-  The \pkg{rdpi} package aims for protein sequence feature extraction, 
+  The \pkg{protr} package aims for protein sequence feature extraction, 
   which could be easily applied in Bioinforamtics and 
   Chemogenomics research. The descriptors listed in this package include 
   Amino Acid Composition (Amino Acid Composition/Dipeptide 
@@ -31,8 +31,8 @@
   Drug Design Group, Central South University.
 }
 
-\Keywords{\proglang{R}, rdpi, protein sequence, amino acid, feature extraction}
-\Plainkeywords{R, rdpi, protein sequence, amino acid, feature extraction}
+\Keywords{\proglang{R}, protr, protein sequence, amino acid, feature extraction}
+\Plainkeywords{R, protr, protein sequence, amino acid, feature extraction}
 
 \Volume{xx}
 \Issue{x}
@@ -72,7 +72,7 @@
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-rdpi.version = '0.1-0'
+protr.version = '0.1-0'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -81,11 +81,11 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 
 \section{Introduction}\label{sec:intro}
 
-The \pkg{rdpi} package \citep{CRAN:rdpi} presented in this article implemented most of the state-of-the-art protein sequence feature extraction methods with \proglang{R}. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{rdpi}. Many more examples are available within the package.
+The \pkg{protr} package \citep{CRAN:protr} presented in this article implemented most of the state-of-the-art protein sequence feature extraction methods with \proglang{R}. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{protr}. Many more examples are available within the package.
 
-The \pkg{rdpi} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=rdpi} for more details. This vignette corresponds to \pkg{rdpi} version \Sexpr{rdpi.version} and was typeset on \Sexpr{now.date}.
+The \pkg{protr} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=protr} for more details. This vignette corresponds to \pkg{protr} version \Sexpr{protr.version} and was typeset on \Sexpr{now.date}.
 
-Generally, each type of the descriptors(features) could be extracted with a function named \code{extractX()} in the \pkg{rdpi} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
+Generally, each type of the descriptors(features) could be extracted with a function named \code{extractX()} in the \pkg{protr} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
 
 \begin{itemize}
   \item Amino Acid Composition
@@ -124,7 +124,7 @@ Generally, each type of the descriptors(features) could be extracted with a func
 
 In the next section, we'll introduce these descriptors and the function usages in this order.
 
-\section{Protein Sequence Descriptors in rdpi}\label{sec:descriptors}
+\section{Protein Sequence Descriptors in protr}\label{sec:descriptors}
 
 A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
 
@@ -144,8 +144,8 @@ As was described above, we could use the function \code{extractAAC()} to extract
 
 %
 <<extractAAC>>=
-require(rdpi)
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+require(protr)
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractAAC(x)
 @
 %
@@ -249,7 +249,7 @@ The 8 default properties used here are:
 \end{itemize}
 
 Users could change the property names of AAindex database with the argument \code{props}.
- The AAindex data shipped with \pkg{rdpi} could be loaded by \code{data(AAindex)}, which has the detailed information of each property. With the argument \code{customprops} and \code{nlag}, users could specify their own properties and lag value to calculate with. For illustration, we could use:
+ The AAindex data shipped with \pkg{protr} could be loaded by \code{data(AAindex)}, which has the detailed information of each property. With the argument \code{customprops} and \code{nlag}, users could specify their own properties and lag value to calculate with. For illustration, we could use:
 
 %
 <<extractMoreau2>>=
@@ -610,7 +610,7 @@ $$
 X_c = \frac{w \theta_{c-20}}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (21 < c < 20 + \lambda)
 $$
 
-where $w$ is the weighting factor for the sequence-order effect and is set as $w = 0.05$ in \pkg{rdpi} as suggested by Kuo-Chen Chou.
+where $w$ is the weighting factor for the sequence-order effect and is set as $w = 0.05$ in \pkg{protr} as suggested by Kuo-Chen Chou.
 
 With \code{extractPAAC()}, we could compute the PAAC descriptors:
 
@@ -661,7 +661,7 @@ $$
 P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \quad (21 < u < 20 + 2 \lambda)
 $$
 
-where $w$ is the weighting factor and is taken as $w = 0.5$ in \pkg{rdpi} as in the work of Chou KC.
+where $w$ is the weighting factor and is taken as $w = 0.5$ in \pkg{protr} as in the work of Chou KC.
 
 A minimal example for \code{extracAPAAC()} is:
 
@@ -677,7 +677,7 @@ This function has the same arguments as \code{extractPAAC()}.
 
 \section{Miscellaneous Tools}\label{sec:misc}
 
-In this section, we will briefly introduce some useful tools provided by the \pkg{rdpi} package.
+In this section, we will briefly introduce some useful tools provided by the \pkg{protr} package.
 
 \subsection{Retrieve Protein Sequences from UniProt}
 
@@ -734,7 +734,7 @@ The \code{protcheck()} function checks if the protein sequence's amino acid type
 
 %
 <<protcheck>>=
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 # A real sequence
 protcheck(x)
 # An artificial sequence
@@ -762,7 +762,7 @@ The descriptors' information has been listed in table \ref{tab:all}.
 
 \begin{table}[htbp]
   \centering
-  \caption{List of \pkg{rdpi} computed features for protein sequences}
+  \caption{List of \pkg{protr} computed features for protein sequences}
   \footnotesize{
     \begin{tabular}{ccc}
     \addlinespace
@@ -794,14 +794,14 @@ The descriptors' information has been listed in table \ref{tab:all}.
 \footnotetext[3]{The number depends on the choice of the number of the set of amino acid properties and the choice of the $\lambda$ value. The default is use 3 types of properties proposed by Kuo-Chen Chou and $\lambda = 30$.}
 \footnotetext[4]{The number depends on the choice of the $\lambda$ vlaue. The default is that $\lambda = 30$.}
 
-In this article, we discussed the functionality of the \pkg{rdpi} package, which is trying to offer a comprehensive and neat choice for protein sequence feature extraction.
+In this article, we discussed the functionality of the \pkg{protr} package, which is trying to offer a comprehensive and neat choice for protein sequence feature extraction.
 
 \section*{Acknowledgments}
 
 We'd like to thank the Computational Biology and Drug Design Group (\url{http://cbdd.csu.edu.cn/index/}) of Central South University for supporting the development of this \proglang{R} package. Further suggestions and comments are welcomed.
 
 \nocite{*} % list uncited bibs
-\bibliography{rdpi}
+\bibliography{protr}
 
 \vspace*{-0.35cm}
 

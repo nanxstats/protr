@@ -1,8 +1,8 @@
-Package: rdpi
+Package: protr
 Version: 0.1-0
-Date: 2012-11-05
+Date: 2012-11-18
 Title: Protein Sequence Feature Extraction with R
-Description: The rdpi package aims for protein sequence feature extraction,
+Description: The protr package aims for protein sequence feature extraction,
     which could be easily applied in Chemoinformatics, Bioinforamtics and
     Chemogenomics research. The descriptors listed in this package include
     Amino Acid Composition (Amino Acid Composition/Dipeptide
@@ -18,10 +18,10 @@ Author: Xiao Nan <road2stat@gmail.com>, Dongsheng Cao <oriental-cds@163.com>,
     Qingsong Xu <dasongxu@gmail.com>, Yizeng Liang <yizeng_liang@263.net>
 Maintainer: Xiao Nan <road2stat@gmail.com>
 License: BSD
-URL: http://cbdd.csu.edu.cn/rdpi/
-BugReports: https://github.com/road2stat/rdpi/issues
+URL: https://github.com/road2stat/protr/
+BugReports: https://github.com/road2stat/protr/issues
 Collate:
-    'rdpi-package.R'
+    'protr-package.R'
     'readFASTA.R'
     'getUniProt.R'
     'protseg.R'

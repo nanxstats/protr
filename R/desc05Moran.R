@@ -68,7 +68,7 @@
 #' \emph{American Journal of Physical Anthropology}, 129, 121-131.
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractMoran(x)
 #' 
 #' myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"), 
@@ -100,7 +100,7 @@ extractMoran = function (x, props = c('CIDH920105', 'BHAR880101',
   
   # 1. Compute Pr values for each type of property
   
-  AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'rdpi'), header = TRUE)
+  AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'protr'), header = TRUE)
   
   if (!is.null(customprops)) AAidx = rbind(AAidx, customprops)
   

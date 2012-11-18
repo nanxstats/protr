@@ -3,7 +3,7 @@
 \alias{readFASTA}
 \title{Read Protein Sequences in FASTA Format}
 \usage{
-  readFASTA(file = system.file("protseq/P00750.fasta", package = "rdpi"),
+  readFASTA(file = system.file("protseq/P00750.fasta", package = "protr"),
     legacy.mode = TRUE, seqonly = FALSE)
 }
 \arguments{
@@ -13,7 +13,7 @@
   to the current working directory, \code{\link{getwd}}.
   The default here is to read the \code{P00750.fasta} file
   which is present in the \code{protseq} directory of the
-  rdpi package.}
+  protr package.}
 
   \item{legacy.mode}{If set to \code{TRUE}, lines starting
   with a semicolon ';' are ignored. Default value is
@@ -48,7 +48,7 @@
   and might belong to different classes.
 }
 \examples{
-P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))
+P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
@@ -64,6 +64,6 @@ P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))
   sequences from uniprot.org
 }
 \keyword{FASTA}
-\keyword{rdpi}
+\keyword{protr}
 \keyword{readFASTA}
 

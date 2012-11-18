@@ -73,7 +73,7 @@
 #' (The side-chain mass data)
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractPAAC(x)
 #' 
 #' myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"), 
@@ -102,7 +102,7 @@ extractPAAC = function (x, props = c('Hydrophobicity', 'Hydrophilicity', 'SideCh
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
-  AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'rdpi'), header = TRUE)
+  AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'protr'), header = TRUE)
     
   tmp = data.frame(AccNo = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"), 
                    A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101), 

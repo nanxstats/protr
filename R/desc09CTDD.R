@@ -31,7 +31,7 @@
 #' \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractCTDD(x)
 #' 
 

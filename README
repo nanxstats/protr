@@ -1,8 +1,8 @@
-# rdpi
+# protr
 
 ## Introduction
 
-The rdpi package aims for protein sequence feature extraction, which could be easily applied in Chemoinformatics, Bioinforamtics and Chemogenomics research. The package is developed by Computational Biology and Drug Design Group, Central South University.
+The protr package aims for protein sequence feature extraction, which could be easily applied in Chemoinformatics, Bioinforamtics and Chemogenomics research. The package is developed by Computational Biology and Drug Design Group, Central South University.
 
 ## Protein Sequence Features
 
@@ -48,11 +48,11 @@ The protein sequence features listed in this package include
 
 ## Links
 
-  * CRAN Page: http://cran.r-project.org/web/packages/rdpi/
+  * CRAN Page: http://cran.r-project.org/web/packages/protr/
 
-  * Track Devel: https://github.com/road2stat/rdpi
+  * Track Devel: https://github.com/road2stat/protr
 
-  * Report Bugs: https://github.com/road2stat/rdpi/issues
+  * Report Bugs: https://github.com/road2stat/protr/issues
 
 ## Contact
 

@@ -18,7 +18,7 @@
 #' @export protcheck
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' protcheck(x) # TRUE
 #' protcheck(paste(x, 'Z', sep = '')) # FALSE
 #' 

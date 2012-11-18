@@ -23,7 +23,7 @@
 #' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337-4341.
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractCTriad(x)
 #' 
 

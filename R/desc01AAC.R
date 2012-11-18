@@ -26,7 +26,7 @@
 #' \emph{Journal of Biological Chemistry}, 2004, 279, 23262.
 #' 
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'rdpi'))[[1]]
+#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractAAC(x)
 #' 
 
