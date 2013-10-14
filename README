@@ -2,11 +2,13 @@
 
 ## Introduction
 
-The protr package aims for protein sequence feature extraction, which could be easily applied in Bioinformatics and Chemogenomics research. The package is developed by Computational Biology and Drug Design Group, Central South University.
+The protr package aims for protein sequence feature extraction, which could be applied in Bioinformatics and Chemogenomics research. The package is developed by Computational Biology and Drug Design Group, Central South University ([http://cbdd.csu.edu.cn/](http://cbdd.csu.edu.cn/) ).
 
-## Protein Sequence Features
+## Package Features
 
-The protein sequence features listed in this package include
+### Commonly Used Descriptors
+
+The commonly used protein sequence features listed in this package include:
 
   * Amino Acid Composition
   
@@ -38,7 +40,34 @@ The protein sequence features listed in this package include
     * Pseudo Amino Acid Composition
     * Amphiphilic Pseudo Amino Acid Composition
 
-## Miscellaneous Tools
+### Proteochemometric Modeling (PCM) Descriptors
+
+Proteochemometric Modeling (PCM) descriptors listed in this package include:
+
+  * Z-scales
+  * T-scales
+  * ST-scales
+  * Vectors of Hydrophobic, Steric, and Electronic (VHSE)
+  * MS-WHIM
+  * Factor Analysis Scales of Generalized AA Information (FASGAI)
+  * BLOSUM
+  * Protein fingerprint (ProtFP)
+
+### Sequence Alignment
+
+Sequence alignment for protein sequences:
+
+  * Needleman-Wunsch (global alignment)
+  * Smith-Waterman (local alignment)
+
+### GO Semantic Similarity
+
+GO-terms semantic similarity measures:
+
+  * Based on Entrez Gene ID
+  * Similarity measures between protein sequences and between two groups of proteins (original similarity matrices, and three combination strategies: AvgTotal, AvgMax, MaxTotal)
+
+### Miscellaneous Tools
 
   * Retrieving protein sequences from http://www.uniprot.org/
   
@@ -56,7 +85,7 @@ The protein sequence features listed in this package include
 
   * Report Bugs: https://github.com/road2stat/protr/issues
 
-## Contact
+## Authors
 
   * Xiao Nan <road2stat@gmail.com>
 
@@ -64,5 +93,6 @@ The protein sequence features listed in this package include
 
   * Qingsong Xu <dasongxu@gmail.com>
 
-  * Yizeng Liang <yizeng_liang@263.net>
+## Publication
 
+  * Nan Xiao, Qingsong Xu and Dongsheng Cao. "protr: a comprehensive, flexible, open-source R package for protein sequence feature extraction." (to appear)

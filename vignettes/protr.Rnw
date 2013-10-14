@@ -3,15 +3,14 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{protr}
+%\VignetteIndexEntry{Protein Sequence Feature Extraction with R}
 %\VignetteKeywords{R, protr, protein sequence, amino acid, feature extraction}
 %\VignettePackage{protr}
 
 \author{Xiao Nan\\Central South University \And 
         Dongsheng Cao\\Central South University \AND
-        Qingsong Xu\\Central South University \And
-        Yizeng Liang\\Central South University}
-\Plainauthor{Xiao Nan, Dongsheng Cao}
+        Qingsong Xu\\Central South University}
+\Plainauthor{Xiao Nan, Dongsheng Cao, Qingsong Xu}
 
 \title{\pkg{protr}: Protein Sequence Feature Extraction with \proglang{R}}
 \Plaintitle{protr: Protein Sequence Feature Extraction with R}
@@ -60,13 +59,7 @@
   School of Math Science \& Statistics\\
   Central South University\\
   Changsha, Hunan, P. R. China\\
-  E-mail: \email{dasongxu@gmail.com}\\
-  
-  Yizeng Liang\\
-  School of Chemistry \& Chemical Engineering\\
-  Central South University\\
-  Changsha, Hunan, P. R. China\\
-  E-mail: \email{yizeng\_liang@263.net}\\
+  E-mail: \email{dasongxu@gmail.com}
   
 }
 
@@ -78,6 +71,7 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 %
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \section{Introduction}\label{sec:intro}
 

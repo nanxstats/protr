@@ -1,41 +1,30 @@
 Package: protr
-Version: 0.1-0
-Date: 2012-11-18
+Version: 0.2-0
+Date: 2013-10-14
 Title: Protein Sequence Feature Extraction with R
 Description: The protr package aims for protein sequence feature extraction,
     which could be easily applied in Bioinformatics and Chemogenomics research.
     The descriptors listed in this package include Amino Acid Composition
-    (Amino Acid Composition/Dipeptide Composition/Tripeptide Composition),
-    Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran
-    Autocorrelation/Geary Autocorrelation), CTD
-    (Composition/Transition/Distribution), Conjoint Traid, Quasi-sequence Order
-    (Sequence Order Coupling Number/Quasi-sequence Order Descriptors), and
-    Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
-    Pseudo Amino Acid Composition). The package is developed by Computational
-    Biology and Drug Design Group, Central South University.
+    (Amino Acid Composition/Dipeptide Composition/Tripeptide Composition)
+    descriptor, Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran
+    Autocorrelation/Geary Autocorrelation) descriptor, CTD
+    (Composition/Transition/Distribution) descriptor, Conjoint Traid
+    descriptor, Quasi-sequence Order (Sequence Order Coupling
+    Number/Quasi-sequence Order Descriptors) descriptor and Pseudo Amino Acid
+    Composition (Pseudo Amino Acid Composition/Amphiphilic Pseudo Amino Acid
+    Composition) descriptor. For Proteochemometric Modeling (PCM) descriptors,
+    it includs the Z-scales descriptor, T-scales descriptor, ST-scales
+    descriptor, Vectors of Hydrophobic, Steric, and Electronic (VHSE)
+    descriptor, MS-WHIM descriptor, Factor Analysis Scales of Generalized AA
+    Information (FASGAI) descriptor, BLOSUM descriptor, and Protein fingerprint
+    (ProtFP). It also integrates the functionality of protein sequence
+    alignment and GO-terms semantic similarity measures between protein
+    sequences, and combination strategy between groups of proteins. The package
+    is developed by Computational Biology and Drug Design Group, Central South
+    University.
 Author: Xiao Nan <road2stat@gmail.com>, Dongsheng Cao <oriental-cds@163.com>,
-    Qingsong Xu <dasongxu@gmail.com>, Yizeng Liang <yizeng_liang@263.net>
+    Qingsong Xu <dasongxu@gmail.com>
 Maintainer: Xiao Nan <road2stat@gmail.com>
 License: BSD
 URL: https://github.com/road2stat/protr/
 BugReports: https://github.com/road2stat/protr/issues
-Collate:
-    'protr-package.R'
-    'readFASTA.R'
-    'getUniProt.R'
-    'protseg.R'
-    'protcheck.R'
-    'desc01AAC.R'
-    'desc02DC.R'
-    'desc03TC.R'
-    'desc04MoreauBroto.R'
-    'desc05Moran.R'
-    'desc06Geary.R'
-    'desc07CTDC.R'
-    'desc08CTDT.R'
-    'desc09CTDD.R'
-    'desc10CTriad.R'
-    'desc11SOCN.R'
-    'desc12QSO.R'
-    'desc13PAAC.R'
-    'desc14APAAC.R'

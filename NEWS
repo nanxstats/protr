@@ -23,3 +23,19 @@ Version 0.1-0 (2012-11-18)
   * initial version of protcheck()
   * initial version of protseg()
 
+Version 0.2-0 (2013-10-14)
+------------------------------------------------------------------------------
+
+  NEW FEATURES
+  
+  * second release
+  * initial version of Z-scales descriptor
+  * initial version of T-scales descriptor
+  * initial version of ST-scales descriptor
+  * initial version of Vectors of Hydrophobic, Steric, and Electronic (VHSE) descriptor
+  * initial version of MS-WHIM descriptor
+  * initial version of Factor Analysis Scales of Generalized AA Information (FASGAI) descriptor
+  * initial version of BLOSUM descriptor
+  * initial version of Protein fingerprint (ProtFP)
+  * initial version of sequence alignment for protein sequences
+  * initial version of GO semantic similarity for proteins
