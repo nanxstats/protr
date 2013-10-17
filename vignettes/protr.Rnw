@@ -3,7 +3,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{Protein Sequence Feature Extraction with R}
+%\VignetteIndexEntry{protr}
 %\VignetteKeywords{R, protr, protein sequence, amino acid, feature extraction}
 %\VignettePackage{protr}
 
