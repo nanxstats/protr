@@ -32,7 +32,7 @@
 #'
 #' @aliases extractScales
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{extractDescScales}} for generalized 
 #' AA property based scales descriptors, and \code{\link{extractPropScales}}

@@ -19,9 +19,10 @@ Description: The protr package aims for protein sequence feature extraction,
     Information (FASGAI) descriptor, BLOSUM descriptor. It also integrates the
     functionality of parallellized computation for protein sequence alignment
     and GO-terms semantic similarity measures between protein sequences, and
-    combination strategy between groups of proteins. This R package is
-    developed by Computational Biology and Drug Design Group, Central South
-    University.
+    combination strategy between groups of proteins. The web interface for
+    protr, ProtrWeb, is located at: http://cbdd.csu.edu.cn:8080/protrweb/ . The
+    protr package is developed by Computational Biology and Drug Design Group,
+    Central South University.
 Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
     Dongsheng Cao <oriental-cds@163.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>
@@ -48,10 +49,11 @@ Collate:
     'desc13PAAC.R'
     'desc14APAAC.R'
     'misc01readFASTA.R'
-    'misc02protcheck.R'
-    'misc03protseg.R'
-    'misc04getUniProt.R'
-    'misc05acc.R'
+    'misc02readPDB.R'
+    'misc03protcheck.R'
+    'misc04protseg.R'
+    'misc05getUniProt.R'
+    'misc06acc.R'
     'par01parSeqSim.R'
     'par02parGOSim.R'
     'pcm01extractScales.R'

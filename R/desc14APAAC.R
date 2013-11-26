@@ -45,7 +45,7 @@
 #'
 #' @aliases extractAPAAC
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{extractPAAC}} for pseudo 
 #'          amino acid composition descriptor.

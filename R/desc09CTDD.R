@@ -13,7 +13,7 @@
 #'
 #' @aliases extractCTDD
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{extractCTDC}} and \code{\link{extractCTDT}} 
 #'          for Composition and Transition of the CTD descriptors.

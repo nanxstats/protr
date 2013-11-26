@@ -35,7 +35,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 protseg(x, aa = 'R', k = 5)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \keyword{acid}
 \keyword{amino}

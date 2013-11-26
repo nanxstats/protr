@@ -14,29 +14,32 @@
 #' Biology and Drug Design Group, Central South University.
 #'
 #' \tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
-#' Version: \tab 0.1-0\cr License: \tab BSD\cr }
+#' Version: \tab 0.2-0\cr License: \tab BSD 3-clause License\cr }
 #'
 #' @name protr-package
 #' @aliases protr
 #' @docType package
 #' @exportPattern "^[^\\.]"
-#' @author Xiao Nan <\email{road2stat@@gmail.com}>
-#'         Dongsheng Cao \email{oriental-cds@@163.com}
-#'         Qingsong Xu \email{dasongxu@@gmail.com}
-#'         Yizeng Liang \email{yizeng_liang@@263.net}
+#' @author Nan Xiao <\email{road2stat@@gmail.com}>
+#'         Qingsong Xu <\email{dasongxu@@gmail.com}>
+#'         Dongsheng Cao <\email{oriental-cds@@163.com}>
 #' 
 #' @note
 #' The comprehensive user's guide could be opened with \code{vignette('protr')},
 #' which explains each descriptor included in this package and corresponding
 #' usage.
 #' 
+#' The web interface for this package, \code{ProtrWeb} is located at:
+#' \url{http://cbdd.csu.edu.cn:8080/protrweb/}.
+#' 
 #' Bug reports and feature requests should be sent to
 #' \url{https://github.com/road2stat/protr/issues}.
 #' 
 #' @references
-#' The associated website for this package:
-#' \url{http://cbdd.csu.edu.cn/protr/}
-#'
+#' Nan Xiao, Qingsong Xu and Dongsheng Cao. 
+#' protr: a comprehensive, flexible, open-source R package for 
+#' protein sequence feature extraction. (to appear)
+#' 
 #' @seealso See \code{\link{extractAAC}}, 
 #'              \code{\link{extractDC}}, \code{\link{extractTC}},
 #'              \code{\link{extractMoreauBroto}}, \code{\link{extractMoran}},

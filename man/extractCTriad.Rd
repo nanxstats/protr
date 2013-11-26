@@ -23,7 +23,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractCTriad(x)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   J.W. Shen, J. Zhang, X.M. Luo, W.L. Zhu, K.Q. Yu, K.X.

@@ -1,6 +1,6 @@
-#' Scales-Based Descriptors with 19 classes of Molecular Descriptors from DRAGON
+#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE
 #'
-#' Scales-Based Descriptors with 19 classes of Molecular Descriptors from DRAGON
+#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE
 #'
 #' This function calculates the scales-based descriptors with DRAGON descriptors.
 #' Users could provide customized amino acid property matrices.
@@ -30,7 +30,7 @@
 #'
 #' @aliases extractDescScales
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{extractScales}} for generalized 
 #' AA-descriptor based scales descriptors.

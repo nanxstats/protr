@@ -1,9 +1,9 @@
-#' Large-Scale Parallelled Protein Sequence Similarity Calculation based on Smith-Waterman Local Alignment
+#' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
 #'
-#' Large-Scale Parallelled Protein Sequence Similarity Calculation based on Smith-Waterman Local Alignment
+#' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
 #'
-#' This function implemented the parallelled version for calculating 
-#' protein sequence similarity based on Smith-Waterman local alignment.
+#' This function implemented the parallellized version for calculating 
+#' protein sequence similarity based on sequence alignment.
 #' 
 #' @param x A character vector, as the input protein sequence.
 #' @param propmat A matrix containing the properties for the amino acids. 
@@ -29,7 +29,7 @@
 #'
 #' @aliases parSeqSim
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{parGOSim}} for paralleled protein similarity
 #' calculation based on Gene Ontology (GO) similarity.
@@ -38,7 +38,6 @@
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 #' scales = parSeqSim(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 #' 
 

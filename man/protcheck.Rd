@@ -26,7 +26,7 @@ protcheck(x) # TRUE
 protcheck(paste(x, 'Z', sep = '')) # FALSE
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \keyword{acid}
 \keyword{amino}

@@ -52,10 +52,14 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 # extractFASGAI(x)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  TBD
+  Liang, G., & Li, Z. (2007). Factor analysis scale of
+  generalized amino acid information as the source of a new
+  set of descriptors for elucidating the structure and
+  activity relationships of cationic antimicrobial
+  peptides. QSAR & Combinatorial Science, 26(6), 754--763.
 }
 \keyword{FASGAI}
 \keyword{PCM}

@@ -1,8 +1,8 @@
-#' Large-Scale Parallelled Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
+#' Parallellized Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
 #'
-#' Large-Scale Parallelled Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
+#' Parallellized Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
 #'
-#' This function implemented the parallelled version for calculating 
+#' This function implemented the parallellized version for calculating 
 #' protein sequence similarity based on Gene Ontology (GO) similarity.
 #' 
 #' @param x A character vector, as the input protein sequence.
@@ -29,7 +29,7 @@
 #'
 #' @aliases parGOSim
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{parSeqSim}} for paralleled protein similarity
 #' calculation based on Smith-Waterman local alignment.
@@ -38,7 +38,6 @@
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 #' scales = parGOSim(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 #' 
 

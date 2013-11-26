@@ -17,7 +17,7 @@
 #'
 #' @aliases extractQSO
 #' 
-#' @author Xiao Nan <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
 #' @seealso See \code{\link{extractSOCN}} for sequence-order-coupling numbers.
 #' 

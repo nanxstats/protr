@@ -82,7 +82,7 @@ extractPAAC(x, customprops = myprops,
                       'MyProp1', 'MyProp2', 'MyProp3'))
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   Kuo-Chen Chou. Prediction of Protein Cellular Attributes

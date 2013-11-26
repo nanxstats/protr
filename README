@@ -6,9 +6,9 @@ The protr package aims for protein sequence feature extraction, which could be a
 
 ## Package Features
 
-### Commonly Used Descriptors
+### Qualitative Descriptors
 
-The commonly used protein sequence features listed in this package include:
+The commonly used qualitative protein sequence features implemented in protr include:
 
   * Amino Acid Composition
   
@@ -40,28 +40,31 @@ The commonly used protein sequence features listed in this package include:
     * Pseudo Amino Acid Composition
     * Amphiphilic Pseudo Amino Acid Composition
 
-### Proteochemometric Modeling (PCM) Descriptors
+### Quantitative Descriptors
 
-Proteochemometric Modeling (PCM) descriptors listed in this package include:
+The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) implemented in protr include:
 
-  * Z-scales
-  * T-scales
-  * ST-scales
-  * Vectors of Hydrophobic, Steric, and Electronic (VHSE)
-  * MS-WHIM
-  * Factor Analysis Scales of Generalized AA Information (FASGAI)
-  * BLOSUM
-  * Protein fingerprint (ProtFP)
-  * Multidimensional Scaling (MDS) based scales
+  * Generalized Scales-Based Descriptors
 
-### Sequence Alignment
+    * Generalized AA-Properties Based Scales Descriptors
+    * Scales-Based Descriptors with 20+ classes of Molecular Descriptors
+
+  * Generalized Factor Analysis Scales of Generalized AA Information (FASGAI)
+
+  * Generalized Multidimensional Scaling (MDS) Based Scales
+  
+  * Generalized BLOSUM Matrix-Derived Descriptors
+
+  * Total 20+ Pre-computed Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
+
+### Parallelized Sequence Alignment Similarity Computation
 
 Sequence alignment for protein sequences:
 
   * Needleman-Wunsch (global alignment)
   * Smith-Waterman (local alignment)
 
-### GO Semantic Similarity
+### Parallelized GO Semantic Similarity Computation
 
 GO-terms semantic similarity measures:
 
@@ -70,13 +73,25 @@ GO-terms semantic similarity measures:
 
 ### Miscellaneous Tools
 
-  * Retrieving protein sequences from http://www.uniprot.org/
+  * Retrieve protein sequences from UniProt
   
-  * Loading protein sequences in FASTA format
+  * Read protein sequences in FASTA format
+
+  * Read protein sequences in PDB format
   
-  * Checking the protein sequences' amino acid types
+  * Sanity check for the amino acid types appeared in the protein sequences
   
   * Protein sequence segmentation
+
+  * Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
+
+## Web Interface
+
+The web interface for protr, ProtrWeb, is located at:
+
+http://cbdd.csu.edu.cn:8080/protrweb/
+
+ProtrWeb does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein features presented in the protr package.
 
 ## Links
 
@@ -88,11 +103,11 @@ GO-terms semantic similarity measures:
 
 ## Authors
 
-  * Xiao Nan <road2stat@gmail.com>
-
-  * Dongsheng Cao <oriental-cds@163.com>
+  * Nan Xiao <road2stat@gmail.com>
 
   * Qingsong Xu <dasongxu@gmail.com>
+
+  * Dongsheng Cao <oriental-cds@163.com>
 
 ## Publication
 

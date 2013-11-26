@@ -28,7 +28,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractQSO(x)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   Kuo-Chen Chou. Prediction of Protein Subcellar Locations

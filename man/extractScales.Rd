@@ -55,7 +55,7 @@ AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
   See \code{\link{extractDescScales}} for generalized AA

@@ -23,7 +23,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractCTDT(x)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and

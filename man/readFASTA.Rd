@@ -50,7 +50,7 @@
 P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   Pearson, W.R. and Lipman, D.J. (1988) Improved tools for

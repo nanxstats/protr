@@ -38,7 +38,7 @@ mat = matrix(rnorm(p * n), nrow = p, ncol = n)
 acc(mat, lag)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg,

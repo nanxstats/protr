@@ -76,7 +76,7 @@ extractMoreauBroto(x, customprops = myprops,
                              'MyProp1', 'MyProp2', 'MyProp3'))
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
   AAindex: Amino acid index database.

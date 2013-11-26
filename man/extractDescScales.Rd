@@ -1,6 +1,6 @@
 \name{extractDescScales}
 \alias{extractDescScales}
-\title{Scales-Based Descriptors with 19 classes of Molecular Descriptors from DRAGON}
+\title{Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE}
 \usage{
   extractDescScales(x, propmat, k, lag, scale = TRUE,
     silent = TRUE)
@@ -36,8 +36,8 @@
   number of scales selected.
 }
 \description{
-  Scales-Based Descriptors with 19 classes of Molecular
-  Descriptors from DRAGON
+  Scales-Based Descriptors with 20+ classes of Molecular
+  Descriptors from DRAGON, DS and MOE
 }
 \details{
   This function calculates the scales-based descriptors
@@ -53,7 +53,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 # scales = extractDescScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Xiao Nan <\url{http://www.road2stat.com}>
+  Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
   See \code{\link{extractScales}} for generalized
