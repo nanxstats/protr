@@ -1,17 +1,19 @@
 \docType{data}
 \name{OptAA3d}
 \alias{OptAA3d}
-\title{OptAA3d.sdf semiempirical AM1}
+\title{OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 [Semiempirical AM1]}
 \description{
-  OptAA3d.sdf semiempirical AM1
+  OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10
+  [Semiempirical AM1]
 }
 \details{
-  OptAA3d.sdf semiempirical AM1
+  OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10
+  [Semiempirical AM1]
 }
 \examples{
 # This operation requires the rcdk package
 # require(rcdk)
-# read.csv(OptAA3d.sdf, package = 'protr')
+# optaa3d = load.molecules(system.file('sysdata/OptAA3d.sdf', package = 'protr'), type = 'sdf')
 }
 \keyword{Acid}
 \keyword{Amino}

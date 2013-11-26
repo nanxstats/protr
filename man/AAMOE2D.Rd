@@ -1,0 +1,19 @@
+\docType{data}
+\name{AAMOE2D}
+\alias{AAMOE2D}
+\title{2D Descriptors for 20 Amino Acids calculated by MOE 2011.10}
+\description{
+  2D Descriptors for 20 Amino Acids calculated by MOE
+  2011.10
+}
+\details{
+  This dataset includes the 2D descriptors of the 20 amino
+  acids calculated by MOE 2011.10 used for scales
+  extraction in this package.
+}
+\examples{
+data(AAMOE2D)
+}
+\keyword{AAMOE2D}
+\keyword{datasets}
+
