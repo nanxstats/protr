@@ -49,10 +49,10 @@ extractSOCN(x)
   descriptors.
 }
 \keyword{Coupling}
-\keyword{extract}
-\keyword{extractSOCN}
 \keyword{Number}
 \keyword{Order}
-\keyword{Sequence}
 \keyword{SOCN}
+\keyword{Sequence}
+\keyword{extract}
+\keyword{extractSOCN}
 

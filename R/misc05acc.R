@@ -24,9 +24,8 @@
 #' 
 #' @seealso See \code{\link{extractScales}} for 
 #' generalized scales-based descriptors.
-#' See \code{\link{extractZscales}}, \code{\link{extractTscales}}, 
-#' \code{\link{extractSTscales}} and \code{\link{extractVHSE}} 
-#' for Z-scales, T-scales, ST-scales and VHSE descriptors.
+#' For more details, see \code{\link{extractDescScales}}
+#' and \code{\link{extractPropScales}}.
 #' 
 #' @export acc
 #' 
@@ -37,7 +36,7 @@
 #' to latent structures. 
 #' \emph{Analytica chimica acta}, 277(2), 239--253.
 #' 
-#' Sj\"{o}str\"{o}m, M., R\"{a}nnar, S., & Wieslander, Å. (1995). 
+#' Sj\"{o}str\"{o}m, M., R\"{a}nnar, S., & Wieslander, A. (1995). 
 #' Polypeptide sequence property relationships in \emph{Escherichia coli} 
 #' based on auto cross covariances. 
 #' \emph{Chemometrics and intelligent laboratory systems}, 29(2), 295--305.
@@ -90,4 +89,3 @@ acc = function (mat, lag) {
   return(ACC)
   
 }
-

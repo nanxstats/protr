@@ -1,15 +1,15 @@
-\name{extractScales}
-\alias{extractScales}
-\title{Generalized Scales-Based Descriptors}
+\name{extractPropScales}
+\alias{extractPropScales}
+\title{Generalized AA-Properties Based Scales Descriptors}
 \usage{
-  extractScales(x, propmat, pc, lag, scale = TRUE,
+  extractPropScales(x, descmat, pc, lag, scale = TRUE,
     silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 
-  \item{propmat}{A matrix containing the properties for the
+  \item{descmat}{A matrix containing the properties for the
   amino acids.  Each row represent one amino acid type,
   each column represents one property.  Note that the
   one-letter row names must be provided for we need them to
@@ -23,7 +23,7 @@
   acids.}
 
   \item{scale}{Logical. Should we auto-scale the property
-  matrix (\code{propmat}) before PCA? Default is
+  matrix (\code{descmat}) before PCA? Default is
   \code{TRUE}.}
 
   \item{silent}{Logical. Whether we print the standard
@@ -36,35 +36,32 @@
   number of scales (principal components) selected.
 }
 \description{
-  Generalized Scales-Based Descriptors
+  Generalized AA-Properties Based Scales Descriptors
 }
 \details{
-  This function calculates the generalized scales-based
-  descriptors. Users could provide customized amino acid
-  property matrices. This function implements the core
-  computation procedure needed for Z-scales T-scales,
-  ST-scales and VHSE descriptors in the protr package.
+  This function calculates the generalized amino acid
+  properties based scales descriptors. Users could provide
+  customized amino acid descriptor matrices.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-data(AAindex)
-AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+# data(AAindex)
+# AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
+# scales = extractPropScales(x, descmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{extractDescScales}} for generalized AA
-  property based scales descriptors, and
-  \code{\link{extractPropScales}} for (19 classes) AA
-  descriptor based scales descriptors.
+  See \code{\link{extractScales}} for generalized
+  scales-based descriptors.
 }
 \keyword{PCM}
+\keyword{descriptor}
 \keyword{extract}
-\keyword{extractScales}
+\keyword{extractPropScales}
 \keyword{scales}
 

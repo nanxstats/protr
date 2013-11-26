@@ -32,6 +32,6 @@ ids = c('P00750', 'P00751', 'P00752')
   See \code{\link{readFASTA}} for reading FASTA format
   files.
 }
-\keyword{getUniProt}
 \keyword{UniProt}
+\keyword{getUniProt}
 

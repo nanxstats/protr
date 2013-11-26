@@ -32,9 +32,9 @@ extractCTriad(x)
   \emph{Proceedings of the National Academy of Sciences}.
   007, 104, 4337-4341.
 }
-\keyword{Conjoint}
 \keyword{CTriad}
+\keyword{Conjoint}
+\keyword{Triad}
 \keyword{extract}
 \keyword{extractCTriad}
-\keyword{Triad}
 

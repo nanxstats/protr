@@ -1,8 +1,8 @@
-\name{extractScales}
-\alias{extractScales}
-\title{Generalized Scales-Based Descriptors}
+\name{extractMDSScales}
+\alias{extractMDSScales}
+\title{Generalized Multidimensional Scaling (MDS) Based Descriptors}
 \usage{
-  extractScales(x, propmat, pc, lag, scale = TRUE,
+  extractMDSScales(x, propmat, k, lag, scale = TRUE,
     silent = TRUE)
 }
 \arguments{
@@ -15,15 +15,15 @@
   one-letter row names must be provided for we need them to
   seek the properties for each AA type.}
 
-  \item{pc}{Integer. Use the first pc principal components
-  as the scales.  Must be no greater than the number of AA
-  properties provided.}
+  \item{k}{Integer. The maximum dimension of the space
+  which the data are to be represented in.  Must be no
+  greater than the number of AA properties provided.}
 
   \item{lag}{The lag parameter. Must be less than the amino
   acids.}
 
   \item{scale}{Logical. Should we auto-scale the property
-  matrix (\code{propmat}) before PCA? Default is
+  matrix (\code{propmat}) before doing MDS? Default is
   \code{TRUE}.}
 
   \item{silent}{Logical. Whether we print the standard
@@ -33,17 +33,16 @@
 }
 \value{
   A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales (principal components) selected.
+  number of scales selected.
 }
 \description{
-  Generalized Scales-Based Descriptors
+  Generalized Multidimensional Scaling (MDS) Based
+  Descriptors
 }
 \details{
-  This function calculates the generalized scales-based
-  descriptors. Users could provide customized amino acid
-  property matrices. This function implements the core
-  computation procedure needed for Z-scales T-scales,
-  ST-scales and VHSE descriptors in the protr package.
+  This function calculates the generalized Multidimensional
+  Scaling (MDS) based descriptors. Users could provide
+  customized amino acid property matrices.
 }
 \note{
   Note
@@ -58,13 +57,11 @@ scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
   Xiao Nan <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{extractDescScales}} for generalized AA
-  property based scales descriptors, and
-  \code{\link{extractPropScales}} for (19 classes) AA
-  descriptor based scales descriptors.
+  See \code{\link{extractScales}} for generalized
+  AA-descriptor based scales descriptors.
 }
 \keyword{PCM}
 \keyword{extract}
-\keyword{extractScales}
+\keyword{extractMDSScales}
 \keyword{scales}
 

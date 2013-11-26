@@ -52,6 +52,7 @@ Proteochemometric Modeling (PCM) descriptors listed in this package include:
   * Factor Analysis Scales of Generalized AA Information (FASGAI)
   * BLOSUM
   * Protein fingerprint (ProtFP)
+  * Multidimensional Scaling (MDS) based scales
 
 ### Sequence Alignment
 

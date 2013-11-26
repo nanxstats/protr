@@ -45,7 +45,7 @@ extractCTDT(x)
 }
 \keyword{CTD}
 \keyword{CTDT}
+\keyword{Transition}
 \keyword{extract}
 \keyword{extractCTDT}
-\keyword{Transition}
 

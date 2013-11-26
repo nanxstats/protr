@@ -1,6 +1,6 @@
 Package: protr
 Version: 0.2-0
-Date: 2013-10-14
+Date: 2013-11-26
 Title: Protein Sequence Feature Extraction with R
 Description: The protr package aims for protein sequence feature extraction,
     which could be easily applied in Bioinformatics and Chemogenomics research.
@@ -16,18 +16,22 @@ Description: The protr package aims for protein sequence feature extraction,
     it includs the Z-scales descriptor, T-scales descriptor, ST-scales
     descriptor, Vectors of Hydrophobic, Steric, and Electronic (VHSE)
     descriptor, MS-WHIM descriptor, Factor Analysis Scales of Generalized AA
-    Information (FASGAI) descriptor, BLOSUM descriptor, and Protein fingerprint
-    (ProtFP). It also integrates the functionality of protein sequence
-    alignment and GO-terms semantic similarity measures between protein
-    sequences, and combination strategy between groups of proteins. The package
-    is developed by Computational Biology and Drug Design Group, Central South
+    Information (FASGAI) descriptor, BLOSUM descriptor. It also integrates the
+    functionality of parallellized computation for protein sequence alignment
+    and GO-terms semantic similarity measures between protein sequences, and
+    combination strategy between groups of proteins. This R package is
+    developed by Computational Biology and Drug Design Group, Central South
     University.
-Author: Xiao Nan <road2stat@gmail.com>, Dongsheng Cao <oriental-cds@163.com>,
-    Qingsong Xu <dasongxu@gmail.com>
-Maintainer: Xiao Nan <road2stat@gmail.com>
-License: BSD
+Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
+    Dongsheng Cao <oriental-cds@163.com>
+Maintainer: Nan Xiao <road2stat@gmail.com>
+License: BSD 3-clause License
 URL: https://github.com/road2stat/protr/
 BugReports: https://github.com/road2stat/protr/issues
+LazyData: yes
+Suggests:
+    Biostrings,
+    GOSemSim
 Collate:
     'desc01AAC.R'
     'desc02DC.R'
@@ -43,18 +47,18 @@ Collate:
     'desc12QSO.R'
     'desc13PAAC.R'
     'desc14APAAC.R'
-    'desc15Zscales.R'
-    'desc16Tscales.R'
-    'desc17STscales.R'
-    'desc18VHSE.R'
-    'desc19WHIM.R'
-    'desc20FASGAI.R'
-    'desc21BLOSUM.R'
-    'desc22ProtFP.R'
-    'getUniProt.R'
-    'protcheck.R'
+    'misc01readFASTA.R'
+    'misc02protcheck.R'
+    'misc03protseg.R'
+    'misc04getUniProt.R'
+    'misc05acc.R'
+    'par01parSeqSim.R'
+    'par02parGOSim.R'
+    'pcm01extractScales.R'
+    'pcm02extractDescScales.R'
+    'pcm03extractPropScales.R'
+    'pcm04extractFA.R'
+    'pcm05extractMDS.R'
+    'pcm06extractBLOSUM.R'
+    'protr-datalist.R'
     'protr-package.R'
-    'protseg.R'
-    'readFASTA.R'
-    'acc.R'
-    'extractScales.R'

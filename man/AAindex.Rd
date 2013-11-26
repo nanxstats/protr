@@ -20,7 +20,7 @@ for 20 Amino Acids}
 \examples{
 data(AAindex)
 }
-\keyword{aaindex}
 \keyword{AAindex}
+\keyword{aaindex}
 \keyword{datasets}
 

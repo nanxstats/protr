@@ -100,8 +100,8 @@ extractGeary(x, customprops = myprops,
   autocorrelation descriptors and Moran autocorrelation
   descriptors.
 }
+\keyword{Geary}
 \keyword{autocorrelation}
 \keyword{extract}
 \keyword{extractGeary}
-\keyword{Geary}
 

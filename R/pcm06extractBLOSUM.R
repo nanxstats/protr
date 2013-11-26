@@ -1,8 +1,8 @@
-#' Protein Fingerprint (ProtFP)
+#' BLOSUM Descriptor
 #'
-#' Protein Fingerprint (ProtFP)
+#' BLOSUM Descriptor
 #' 
-#' This function calculates the Protein Fingerprint (ProtFP)
+#' This function calculates the BLOSUM descriptor
 #' (Dim: \code{20 + (n * lambda)}, 
 #' \code{n} is the number of properties selected, default is 80).
 #' 
@@ -13,23 +13,23 @@
 #' 
 #' @note Note
 #' 
-#' @keywords extract fingerprint ProtFP extractProtFP PCM
+#' @keywords extract BLOSUM extractBLOSUM PCM
 #'
-#' @aliases extractProtFP
+#' @aliases extractBLOSUM
 #' 
 #' @author Xiao Nan <\url{http://www.road2stat.com}>
 #' 
-#' @export extractProtFP
+#' @export extractBLOSUM
 #' 
 #' @references
 #' TBD
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' extractProtFP(x)
+#' # extractBLOSUM(x)
 #' 
 
-extractProtFP = function (x) {
+extractBLOSUM = function (x) {
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   

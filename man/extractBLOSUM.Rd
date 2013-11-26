@@ -25,7 +25,7 @@
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-extractBLOSUM(x)
+# extractBLOSUM(x)
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
@@ -34,7 +34,7 @@ extractBLOSUM(x)
   TBD
 }
 \keyword{BLOSUM}
+\keyword{PCM}
 \keyword{extract}
 \keyword{extractBLOSUM}
-\keyword{PCM}
 

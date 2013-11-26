@@ -117,8 +117,8 @@ extractPAAC(x, customprops = myprops,
 \keyword{Acid}
 \keyword{Amino}
 \keyword{Composition}
-\keyword{extract}
-\keyword{extractPAAC}
 \keyword{PAAC}
 \keyword{Pseudo}
+\keyword{extract}
+\keyword{extractPAAC}
 

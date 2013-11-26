@@ -51,11 +51,11 @@ extractQSO(x)
   See \code{\link{extractSOCN}} for sequence-order-coupling
   numbers.
 }
-\keyword{extract}
-\keyword{extractQSO}
 \keyword{Order}
 \keyword{QSO}
 \keyword{Quasi}
 \keyword{Quasi-Sequence-Order}
 \keyword{Sequence}
+\keyword{extract}
+\keyword{extractQSO}
 

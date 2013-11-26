@@ -1,8 +1,8 @@
-\name{extractScales}
-\alias{extractScales}
-\title{Generalized Scales-Based Descriptors}
+\name{parSeqSim}
+\alias{parSeqSim}
+\title{Large-Scale Parallelled Protein Sequence Similarity Calculation based on Smith-Waterman Local Alignment}
 \usage{
-  extractScales(x, propmat, pc, lag, scale = TRUE,
+  parSeqSim(x, propmat, pc, lag, scale = TRUE,
     silent = TRUE)
 }
 \arguments{
@@ -36,35 +36,35 @@
   number of scales (principal components) selected.
 }
 \description{
-  Generalized Scales-Based Descriptors
+  Large-Scale Parallelled Protein Sequence Similarity
+  Calculation based on Smith-Waterman Local Alignment
 }
 \details{
-  This function calculates the generalized scales-based
-  descriptors. Users could provide customized amino acid
-  property matrices. This function implements the core
-  computation procedure needed for Z-scales T-scales,
-  ST-scales and VHSE descriptors in the protr package.
+  This function implemented the parallelled version for
+  calculating protein sequence similarity based on
+  Smith-Waterman local alignment.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-data(AAindex)
 AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+scales = parSeqSim(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
   Xiao Nan <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{extractDescScales}} for generalized AA
-  property based scales descriptors, and
-  \code{\link{extractPropScales}} for (19 classes) AA
-  descriptor based scales descriptors.
+  See \code{\link{parGOSim}} for paralleled protein
+  similarity calculation based on Gene Ontology (GO)
+  similarity.
 }
-\keyword{PCM}
-\keyword{extract}
-\keyword{extractScales}
-\keyword{scales}
+\keyword{alignment}
+\keyword{local}
+\keyword{parSeqSim}
+\keyword{parallel}
+\keyword{sequence}
+\keyword{similarity}
+\keyword{smith-waterman}
 

@@ -43,9 +43,9 @@ extractCTDD(x)
   \code{\link{extractCTDT}} for Composition and Transition
   of the CTD descriptors.
 }
-\keyword{Composition}
 \keyword{CTD}
 \keyword{CTDD}
+\keyword{Composition}
 \keyword{extract}
 \keyword{extractCTDD}
 

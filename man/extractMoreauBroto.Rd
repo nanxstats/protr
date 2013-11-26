@@ -100,12 +100,12 @@ extractMoreauBroto(x, customprops = myprops,
   \code{\link{extractGeary}} for Moran autocorrelation
   descriptors and Geary autocorrelation descriptors.
 }
-\keyword{autocorrelation}
 \keyword{Broto}
-\keyword{extract}
-\keyword{extractMoreauBroto}
 \keyword{Moreau}
 \keyword{Moreau-Broto}
 \keyword{MoreauBroto}
+\keyword{autocorrelation}
+\keyword{extract}
+\keyword{extractMoreauBroto}
 \keyword{normalized}
 

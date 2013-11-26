@@ -100,8 +100,8 @@ extractMoran(x, customprops = myprops,
   autocorrelation descriptors and Geary autocorrelation
   descriptors.
 }
+\keyword{Moran}
 \keyword{autocorrelation}
 \keyword{extract}
 \keyword{extractMoran}
-\keyword{Moran}
 

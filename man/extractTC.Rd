@@ -37,8 +37,8 @@ extractTC(x)
   descriptors.
 }
 \keyword{Composition}
-\keyword{extract}
-\keyword{extractTC}
 \keyword{TC}
 \keyword{Tripeptide}
+\keyword{extract}
+\keyword{extractTC}
 

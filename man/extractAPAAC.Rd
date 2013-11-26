@@ -106,12 +106,12 @@ extractAPAAC(x, customprops = myprops,
   See \code{\link{extractPAAC}} for pseudo amino acid
   composition descriptor.
 }
+\keyword{APAAC}
 \keyword{Acid}
 \keyword{Amino}
 \keyword{Amphiphilic}
-\keyword{APAAC}
 \keyword{Composition}
+\keyword{Pseudo}
 \keyword{extract}
 \keyword{extractAPAAC}
-\keyword{Pseudo}
 

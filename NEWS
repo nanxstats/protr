@@ -29,6 +29,7 @@ Version 0.2-0 (2013-10-14)
   NEW FEATURES
   
   * second release
+  * Added PCM(Proteochemometric Modeling) features, parallel computation function for protein sequence alignment, and protein GO semantic similarities
   * initial version of Z-scales descriptor
   * initial version of T-scales descriptor
   * initial version of ST-scales descriptor
@@ -37,5 +38,6 @@ Version 0.2-0 (2013-10-14)
   * initial version of Factor Analysis Scales of Generalized AA Information (FASGAI) descriptor
   * initial version of BLOSUM descriptor
   * initial version of Protein fingerprint (ProtFP)
-  * initial version of sequence alignment for protein sequences
-  * initial version of GO semantic similarity for proteins
+  * initial version of Generalized Multidimensional Scaling (MDS) based descriptor
+  * initial version of (paralleled) sequence alignment for protein sequences
+  * initial version of (paralleled) GO semantic similarity computation for proteins
