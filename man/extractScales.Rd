@@ -1,6 +1,6 @@
 \name{extractScales}
 \alias{extractScales}
-\title{Generalized Scales-Based Descriptors}
+\title{Generalized Scales-Based Descriptors derived by Principal Components Analysis}
 \usage{
   extractScales(x, propmat, pc, lag, scale = TRUE,
     silent = TRUE)
@@ -36,14 +36,19 @@
   number of scales (principal components) selected.
 }
 \description{
-  Generalized Scales-Based Descriptors
+  Generalized Scales-Based Descriptors derived by Principal
+  Components Analysis
 }
 \details{
   This function calculates the generalized scales-based
-  descriptors. Users could provide customized amino acid
-  property matrices. This function implements the core
-  computation procedure needed for Z-scales T-scales,
-  ST-scales and VHSE descriptors in the protr package.
+  descriptors derived by Principal Components Analysis
+  (PCA). Users could provide customized amino acid property
+  matrices. This function implements the core computation
+  procedure needed for the generalized scales-based
+  descriptors derived by AA-Properties (AAindex) and
+  generalized scales-based descriptors derived by 20+
+  classes of 2D and 3D molecular descriptors (Topological,
+  WHIM, VHSE, etc.) in the protr package.
 }
 \note{
   Note

@@ -1,8 +1,9 @@
-#' Generalized Multidimensional Scaling (MDS) Based Descriptors
+#' Generalized Scales-Based Descriptors derived by Multidimensional Scaling
 #'
-#' Generalized Multidimensional Scaling (MDS) Based Descriptors
-#'
-#' This function calculates the generalized Multidimensional Scaling (MDS) based descriptors.
+#' Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+#' 
+#' This function calculates the generalized scales-based descriptors 
+#' derived by Multidimensional Scaling (MDS).
 #' Users could provide customized amino acid property matrices.
 #' 
 #' @param x A character vector, as the input protein sequence.
@@ -36,6 +37,12 @@
 #' AA-descriptor based scales descriptors.
 #' 
 #' @export extractMDSScales
+#' 
+#' @references
+#' Venkatarajan, M. S., & Braun, W. (2001). 
+#' New quantitative descriptors of amino acids based on multidimensional scaling 
+#' of a large number of physical–chemical properties. 
+#' Molecular modeling annual, 7(12), 445-453.
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]

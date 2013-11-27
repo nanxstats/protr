@@ -1,9 +1,9 @@
-#' Factor Analysis Scales of Generalized AA Information (FASGAI) Descriptor
+#' Generalized Scales-Based Descriptors derived by Factor Analysis
 #'
-#' Factor Analysis Scales of Generalized AA Information (FASGAI) Descriptor
+#' Generalized Scales-Based Descriptors derived by Factor Analysis
 #' 
-#' This function calculates the (generalized) Factor Analysis Scales 
-#' of Generalized AA Information (FASGAI) descriptors.
+#' This function calculates the generalized scales-based descriptors 
+#' derived by Factor Analysis (FA).
 #' Users could provide customized amino acid property matrices.
 #' 
 #' @param x A character vector, as the input protein sequence.
@@ -16,7 +16,8 @@
 #' @param scores Type of scores to produce. The default is \code{"regression"}, 
 #'        which gives Thompson's scores, \code{"Bartlett"} given Bartlett's weighted 
 #'        least-squares scores.
-#' @param lag The lag parameter. Must be less than the amino acids.
+#' @param lag The lag parameter. Must be less than the amino acids number 
+#'            in the protein sequence.
 #' @param silent Logical. Whether we print the SS loadings, 
 #'        proportion of variance and the cumulative proportion of 
 #'        the selected factors or not.
@@ -36,27 +37,41 @@
 #' @export extractFASGAI
 #' 
 #' @references
-#' Liang, G., & Li, Z. (2007). 
-#' Factor analysis scale of generalized amino acid information 
-#' as the source of a new set of descriptors for elucidating 
-#' the structure and activity relationships of cationic antimicrobial peptides. 
-#' QSAR & Combinatorial Science, 26(6), 754--763.
+#' Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T. (2005). 
+#' Solving the protein sequence metric problem. 
+#' Proceedings of the National Academy of Sciences of the United States of America, 
+#' 102(18), 6395-6400.
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' # extractFASGAI(x)
+#' data(AATopo)
+#' tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
+#' fasgai = extractFASGAI(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 #' 
 
-extractFASGAI = function (x, propmat, factors, scores, lag, silent) {
+extractFASGAI = function (x, propmat, factors, scores = 'regression', lag, silent = TRUE) {
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
   factors = min(factors, ncol(propmat), nrow(propmat))
   
   prop.fa = factanal(propmat, factors = factors, scores = scores)
-  prop.pred = predict(prop.fa)
+  prop.scores = prop.fa$scores
   
-  return(NULL)
+  accmat = matrix(0, factors, nchar(x))
+  x.split = strsplit(x, '')[[1]]
+  
+  for (i in 1:nchar(x)) {
+    accmat[, i] = prop.scores[x.split[i], 1:factors]
+  }
+  
+  result = acc(accmat, lag)
+  
+  if (!silent) {
+    cat('Summary of the factor analysis result:\n')
+    print(prop.fa)
+  }
+  
+  return(result)
   
 }
-

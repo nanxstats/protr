@@ -1,6 +1,6 @@
 \name{extractMDSScales}
 \alias{extractMDSScales}
-\title{Generalized Multidimensional Scaling (MDS) Based Descriptors}
+\title{Generalized Scales-Based Descriptors derived by Multidimensional Scaling}
 \usage{
   extractMDSScales(x, propmat, k, lag, scale = TRUE,
     silent = TRUE)
@@ -36,13 +36,14 @@
   number of scales selected.
 }
 \description{
-  Generalized Multidimensional Scaling (MDS) Based
-  Descriptors
+  Generalized Scales-Based Descriptors derived by
+  Multidimensional Scaling
 }
 \details{
-  This function calculates the generalized Multidimensional
-  Scaling (MDS) based descriptors. Users could provide
-  customized amino acid property matrices.
+  This function calculates the generalized scales-based
+  descriptors derived by Multidimensional Scaling (MDS).
+  Users could provide customized amino acid property
+  matrices.
 }
 \note{
   Note
@@ -55,6 +56,12 @@ scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
+}
+\references{
+  Venkatarajan, M. S., & Braun, W. (2001). New quantitative
+  descriptors of amino acids based on multidimensional
+  scaling of a large number of physical–chemical
+  properties. Molecular modeling annual, 7(12), 445-453.
 }
 \seealso{
   See \code{\link{extractScales}} for generalized

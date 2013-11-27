@@ -1,8 +1,8 @@
-#' BLOSUM Descriptor
-#'
-#' BLOSUM Descriptor
+#' Generalized BLOSUM Matrix-Derived Descriptors
 #' 
-#' This function calculates the BLOSUM descriptor
+#' Generalized BLOSUM Matrix-Derived Descriptors
+#' 
+#' This function calculates the generalized BLOSUM matrix-derived descriptors
 #' (Dim: \code{20 + (n * lambda)}, 
 #' \code{n} is the number of properties selected, default is 80).
 #' 

@@ -1,12 +1,14 @@
-#' Generalized Scales-Based Descriptors
+#' Generalized Scales-Based Descriptors derived by Principal Components Analysis
 #'
-#' Generalized Scales-Based Descriptors
+#' Generalized Scales-Based Descriptors derived by Principal Components Analysis
 #'
-#' This function calculates the generalized scales-based descriptors.
+#' This function calculates the generalized scales-based descriptors 
+#' derived by Principal Components Analysis (PCA).
 #' Users could provide customized amino acid property matrices.
 #' This function implements the core computation procedure needed for 
-#' Z-scales T-scales, ST-scales and VHSE descriptors
-#' in the protr package.
+#' the generalized scales-based descriptors derived by AA-Properties (AAindex)
+#' and generalized scales-based descriptors derived by 20+ classes of 2D and 3D 
+#' molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.
 #' 
 #' @param x A character vector, as the input protein sequence.
 #' @param propmat A matrix containing the properties for the amino acids. 
@@ -46,6 +48,8 @@
 #' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 #' scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 #' 
+
+
 
 extractScales = function (x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
   

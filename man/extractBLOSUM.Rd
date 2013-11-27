@@ -1,6 +1,6 @@
 \name{extractBLOSUM}
 \alias{extractBLOSUM}
-\title{BLOSUM Descriptor}
+\title{Generalized BLOSUM Matrix-Derived Descriptors}
 \usage{
   extractBLOSUM(x)
 }
@@ -13,12 +13,13 @@
   the number of properties selected.
 }
 \description{
-  BLOSUM Descriptor
+  Generalized BLOSUM Matrix-Derived Descriptors
 }
 \details{
-  This function calculates the BLOSUM descriptor (Dim:
-  \code{20 + (n * lambda)}, \code{n} is the number of
-  properties selected, default is 80).
+  This function calculates the generalized BLOSUM
+  matrix-derived descriptors (Dim: \code{20 + (n *
+  lambda)}, \code{n} is the number of properties selected,
+  default is 80).
 }
 \note{
   Note

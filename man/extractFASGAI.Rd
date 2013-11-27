@@ -1,8 +1,9 @@
 \name{extractFASGAI}
 \alias{extractFASGAI}
-\title{Factor Analysis Scales of Generalized AA Information (FASGAI) Descriptor}
+\title{Generalized Scales-Based Descriptors derived by Factor Analysis}
 \usage{
-  extractFASGAI(x, propmat, factors, scores, lag, silent)
+  extractFASGAI(x, propmat, factors, scores = "regression",
+    lag, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -24,7 +25,7 @@
   scores.}
 
   \item{lag}{The lag parameter. Must be less than the amino
-  acids.}
+  acids number in the protein sequence.}
 
   \item{silent}{Logical. Whether we print the SS loadings,
   proportion of variance and the cumulative proportion of
@@ -35,31 +36,31 @@
   number of scales (factors) selected.
 }
 \description{
-  Factor Analysis Scales of Generalized AA Information
-  (FASGAI) Descriptor
+  Generalized Scales-Based Descriptors derived by Factor
+  Analysis
 }
 \details{
-  This function calculates the (generalized) Factor
-  Analysis Scales of Generalized AA Information (FASGAI)
-  descriptors. Users could provide customized amino acid
-  property matrices.
+  This function calculates the generalized scales-based
+  descriptors derived by Factor Analysis (FA). Users could
+  provide customized amino acid property matrices.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-# extractFASGAI(x)
+data(AATopo)
+tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
+fasgai = extractFASGAI(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Liang, G., & Li, Z. (2007). Factor analysis scale of
-  generalized amino acid information as the source of a new
-  set of descriptors for elucidating the structure and
-  activity relationships of cationic antimicrobial
-  peptides. QSAR & Combinatorial Science, 26(6), 754--763.
+  Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T.
+  (2005). Solving the protein sequence metric problem.
+  Proceedings of the National Academy of Sciences of the
+  United States of America, 102(18), 6395-6400.
 }
 \keyword{FASGAI}
 \keyword{PCM}

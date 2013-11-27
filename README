@@ -44,18 +44,18 @@ The commonly used qualitative protein sequence features implemented in protr inc
 
 The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) implemented in protr include:
 
-  * Generalized Scales-Based Descriptors
+  * Generalized Scales-Based Descriptors derived by Principal Components Analysis
 
-    * Generalized AA-Properties Based Scales Descriptors
-    * Scales-Based Descriptors with 20+ classes of Molecular Descriptors
+    * Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
+    * Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
 
-  * Generalized Factor Analysis Scales of Generalized AA Information (FASGAI)
+  * Generalized Scales-Based Descriptors derived by Factor Analysis
 
-  * Generalized Multidimensional Scaling (MDS) Based Scales
+  * Generalized Scales-Based Descriptors derived by Multidimensional Scaling
   
   * Generalized BLOSUM Matrix-Derived Descriptors
 
-  * Total 20+ Pre-computed Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
+  * Total 20+ Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
 
 ### Parallelized Sequence Alignment Similarity Computation
 
