@@ -68,7 +68,11 @@ scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
   \code{\link{extractPropScales}} for (19 classes) AA
   descriptor based scales descriptors.
 }
+\keyword{Analysis}
+\keyword{Components}
+\keyword{PCA}
 \keyword{PCM}
+\keyword{Principal}
 \keyword{extract}
 \keyword{extractScales}
 \keyword{scales}

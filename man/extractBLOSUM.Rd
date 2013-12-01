@@ -1,32 +1,58 @@
 \name{extractBLOSUM}
 \alias{extractBLOSUM}
-\title{Generalized BLOSUM Matrix-Derived Descriptors}
+\title{Generalized BLOSUM and PAM Matrix-Derived Descriptors}
 \usage{
-  extractBLOSUM(x)
+  extractBLOSUM(x, submat = "AABLOSUM62", k, lag,
+    scale = TRUE, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
+
+  \item{submat}{Substitution matrix for the 20 amino acids.
+  Should be one of \code{AABLOSUM45}, \code{AABLOSUM50},
+  \code{AABLOSUM62}, \code{AABLOSUM80}, \code{AABLOSUM100},
+  \code{AAPAM30}, \code{AAPAM40}, \code{AAPAM70},
+  \code{AAPAM120}, \code{AAPAM250}.  Default is
+  \code{'AABLOSUM62'}.}
+
+  \item{k}{Integer. The number of selected scales (i.e. the
+  first \code{k} scales) derived by the substitution
+  matrix.  This could be selected according to the printed
+  relative importance values.}
+
+  \item{lag}{The lag parameter. Must be less than the amino
+  acids.}
+
+  \item{scale}{Logical. Should we auto-scale the
+  substitution matrix (\code{submat}) before doing eigen
+  decomposition? Default is \code{TRUE}.}
+
+  \item{silent}{Logical. Whether we print the relative
+  importance of each scales (diagnal value of the eigen
+  decomposition result matrix B) or not.  Default is
+  \code{TRUE}.}
 }
 \value{
-  A length \code{20 + n * lambda} named vector, \code{n} is
-  the number of properties selected.
+  A length \code{lag * p^2} named vector, \code{p} is the
+  number of scales selected.
 }
 \description{
-  Generalized BLOSUM Matrix-Derived Descriptors
+  Generalized BLOSUM and PAM Matrix-Derived Descriptors
 }
 \details{
   This function calculates the generalized BLOSUM
-  matrix-derived descriptors (Dim: \code{20 + (n *
-  lambda)}, \code{n} is the number of properties selected,
-  default is 80).
+  matrix-derived descriptors. For users' convenience,
+  \code{protr} provides the BLOSUM45, BLOSUM50, BLOSUM62,
+  BLOSUM80, BLOSUM100, PAM30, PAM40, PAM70, PAM120, and
+  PAM250 matrices for the 20 amino acids to select.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-# extractBLOSUM(x)
+blosum = extractBLOSUM(x, submat = 'AABLOSUM62', k = 5, lag = 7, scale = TRUE, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

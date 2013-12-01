@@ -18,6 +18,8 @@
 #'        least-squares scores.
 #' @param lag The lag parameter. Must be less than the amino acids number 
 #'            in the protein sequence.
+#' @param scale Logical. Should we auto-scale the property matrix 
+#'        (\code{propmat}) before doing Factor Analysis? Default is \code{TRUE}.
 #' @param silent Logical. Whether we print the SS loadings, 
 #'        proportion of variance and the cumulative proportion of 
 #'        the selected factors or not.
@@ -28,13 +30,13 @@
 #' 
 #' @note Note
 #' 
-#' @keywords extract FASGAI extractFASGAI PCM
+#' @keywords extract Factor Analysis extractFAScales PCM
 #'
-#' @aliases extractFASGAI
+#' @aliases extractFAScales
 #' 
 #' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
-#' @export extractFASGAI
+#' @export extractFAScales
 #' 
 #' @references
 #' Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T. (2005). 
@@ -46,14 +48,16 @@
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' data(AATopo)
 #' tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-#' fasgai = extractFASGAI(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
+#' fa = extractFAScales(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 #' 
 
-extractFASGAI = function (x, propmat, factors, scores = 'regression', lag, silent = TRUE) {
+extractFAScales = function (x, propmat, factors, scores = 'regression', lag, scale = TRUE, silent = TRUE) {
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
   factors = min(factors, ncol(propmat), nrow(propmat))
+  
+  if (scale) propmat = scale(propmat)
   
   prop.fa = factanal(propmat, factors = factors, scores = scores)
   prop.scores = prop.fa$scores

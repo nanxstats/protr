@@ -1,9 +1,10 @@
-\name{extractFASGAI}
-\alias{extractFASGAI}
+\name{extractFAScales}
+\alias{extractFAScales}
 \title{Generalized Scales-Based Descriptors derived by Factor Analysis}
 \usage{
-  extractFASGAI(x, propmat, factors, scores = "regression",
-    lag, silent = TRUE)
+  extractFAScales(x, propmat, factors,
+    scores = "regression", lag, scale = TRUE,
+    silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -26,6 +27,10 @@
 
   \item{lag}{The lag parameter. Must be less than the amino
   acids number in the protein sequence.}
+
+  \item{scale}{Logical. Should we auto-scale the property
+  matrix (\code{propmat}) before doing Factor Analysis?
+  Default is \code{TRUE}.}
 
   \item{silent}{Logical. Whether we print the SS loadings,
   proportion of variance and the cumulative proportion of
@@ -51,7 +56,7 @@
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 data(AATopo)
 tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-fasgai = extractFASGAI(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
+fa = extractFAScales(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
@@ -62,8 +67,9 @@ fasgai = extractFASGAI(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE
   Proceedings of the National Academy of Sciences of the
   United States of America, 102(18), 6395-6400.
 }
-\keyword{FASGAI}
+\keyword{Analysis}
+\keyword{Factor}
 \keyword{PCM}
 \keyword{extract}
-\keyword{extractFASGAI}
+\keyword{extractFAScales}
 

@@ -30,7 +30,7 @@
 #' 
 #' @note Note
 #' 
-#' @keywords extract scales extractScales PCM
+#' @keywords extract scales extractScales PCA Principal Components Analysis PCM
 #'
 #' @aliases extractScales
 #' 

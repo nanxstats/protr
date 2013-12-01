@@ -485,3 +485,175 @@ NULL
 #' data(AAWHIM)
 #' 
 NULL
+
+
+
+#' BLOSUM45 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM45 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM45 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AABLOSUM45
+#' @aliases AABLOSUM45
+#' @usage data(AABLOSUM45)
+#' @keywords AABLOSUM45 BLOSUM datasets
+#' @examples
+#' data(AABLOSUM45)
+#' 
+NULL
+
+#' BLOSUM50 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM50 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM50 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AABLOSUM50
+#' @aliases AABLOSUM50
+#' @usage data(AABLOSUM50)
+#' @keywords AABLOSUM50 BLOSUM datasets
+#' @examples
+#' data(AABLOSUM50)
+#' 
+NULL
+
+#' BLOSUM62 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM62 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM62 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AABLOSUM62
+#' @aliases AABLOSUM62
+#' @usage data(AABLOSUM62)
+#' @keywords AABLOSUM62 BLOSUM datasets
+#' @examples
+#' data(AABLOSUM62)
+#' 
+NULL
+
+#' BLOSUM80 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM80 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM80 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AABLOSUM80
+#' @aliases AABLOSUM80
+#' @usage data(AABLOSUM80)
+#' @keywords AABLOSUM80 BLOSUM datasets
+#' @examples
+#' data(AABLOSUM80)
+#' 
+NULL
+
+#' BLOSUM100 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM100 Matrix for 20 Amino Acids
+#' 
+#' BLOSUM100 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AABLOSUM100
+#' @aliases AABLOSUM100
+#' @usage data(AABLOSUM100)
+#' @keywords AABLOSUM100 BLOSUM datasets
+#' @examples
+#' data(AABLOSUM100)
+#' 
+NULL
+
+#' PAM30 Matrix for 20 Amino Acids
+#' 
+#' PAM30 Matrix for 20 Amino Acids
+#' 
+#' PAM30 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AAPAM30
+#' @aliases AAPAM30
+#' @usage data(AAPAM30)
+#' @keywords AAPAM30 PAM datasets
+#' @examples
+#' data(AAPAM30)
+#' 
+NULL
+
+#' PAM40 Matrix for 20 Amino Acids
+#' 
+#' PAM40 Matrix for 20 Amino Acids
+#' 
+#' PAM40 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AAPAM40
+#' @aliases AAPAM40
+#' @usage data(AAPAM40)
+#' @keywords AAPAM40 PAM datasets
+#' @examples
+#' data(AAPAM40)
+#' 
+NULL
+
+#' PAM70 Matrix for 20 Amino Acids
+#' 
+#' PAM70 Matrix for 20 Amino Acids
+#' 
+#' PAM70 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AAPAM70
+#' @aliases AAPAM70
+#' @usage data(AAPAM70)
+#' @keywords AAPAM70 PAM datasets
+#' @examples
+#' data(AAPAM70)
+#' 
+NULL
+
+#' PAM120 Matrix for 20 Amino Acids
+#' 
+#' PAM120 Matrix for 20 Amino Acids
+#' 
+#' PAM120 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AAPAM120
+#' @aliases AAPAM120
+#' @usage data(AAPAM120)
+#' @keywords AAPAM120 PAM datasets
+#' @examples
+#' data(AAPAM120)
+#' 
+NULL
+
+#' PAM250 Matrix for 20 Amino Acids
+#' 
+#' PAM250 Matrix for 20 Amino Acids
+#' 
+#' PAM250 Matrix for the 20 amino acids. The matrix was extracted from the
+#' \code{Biostrings} package of Bioconductor.
+#' 
+#' @docType data
+#' @name AAPAM250
+#' @aliases AAPAM250
+#' @usage data(AAPAM250)
+#' @keywords AAPAM250 PAM datasets
+#' @examples
+#' data(AAPAM250)
+#' 
+NULL

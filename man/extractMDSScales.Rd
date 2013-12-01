@@ -26,14 +26,13 @@
   matrix (\code{propmat}) before doing MDS? Default is
   \code{TRUE}.}
 
-  \item{silent}{Logical. Whether we print the standard
-  deviation, proportion of variance and the cumulative
-  proportion of the selected principal components or not.
+  \item{silent}{Logical. Whether we print the \code{k}
+  eigenvalues computed during the scaling process or not.
   Default is \code{TRUE}.}
 }
 \value{
   A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales selected.
+  number of scales (dimensionality) selected.
 }
 \description{
   Generalized Scales-Based Descriptors derived by
@@ -50,9 +49,9 @@
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-data(AAindex)
-AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+data(AATopo)
+tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
+mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
@@ -60,14 +59,17 @@ scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 \references{
   Venkatarajan, M. S., & Braun, W. (2001). New quantitative
   descriptors of amino acids based on multidimensional
-  scaling of a large number of physical–chemical
-  properties. Molecular modeling annual, 7(12), 445-453.
+  scaling of a large number of physical-chemical
+  properties. Molecular modeling annual, 7(12), 445--453.
 }
 \seealso{
   See \code{\link{extractScales}} for generalized
-  AA-descriptor based scales descriptors.
+  scales-based descriptors derived by Principal Components
+  Analysis.
 }
+\keyword{Multidimensional}
 \keyword{PCM}
+\keyword{Scaling}
 \keyword{extract}
 \keyword{extractMDSScales}
 \keyword{scales}
