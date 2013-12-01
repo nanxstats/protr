@@ -53,9 +53,7 @@ The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) i
 
   * Generalized Scales-Based Descriptors derived by Multidimensional Scaling
   
-  * Generalized BLOSUM Matrix-Derived Descriptors
-
-  * Total 20+ Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
+  * Generalized BLOSUM and PAM Matrix-Derived Descriptors
 
 ### Parallelized Sequence Alignment Similarity Computation
 
@@ -68,10 +66,11 @@ Sequence alignment for protein sequences:
 
 GO-terms semantic similarity measures:
 
-  * Based on Entrez Gene ID
+  * Based on Entrez Gene IDs
+  * Based on GO terms with fully automatic search for all the related Entrez Gene IDs
   * Similarity measures between protein sequences and between two groups of proteins (original similarity matrices, and three combination strategies: AvgTotal, AvgMax, MaxTotal)
 
-### Miscellaneous Tools
+### Miscellaneous Tools and Datasets
 
   * Retrieve protein sequences from UniProt
   
@@ -85,11 +84,17 @@ GO-terms semantic similarity measures:
 
   * Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
 
+  * 20+ Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
+
+  * BLOSUM and PAM Matrices for the 20 Amino Acids
+
+  * Meta Information of the 20 Amino Acids
+
 ## Web Interface
 
 The web interface for protr, ProtrWeb, is located at:
 
-http://cbdd.csu.edu.cn:8080/protrweb/
+[http://cbdd.csu.edu.cn:8080/protrweb/](http://cbdd.csu.edu.cn:8080/protrweb/)
 
 ProtrWeb does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein features presented in the protr package.
 
