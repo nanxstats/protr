@@ -1,16 +1,31 @@
-#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE
+#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors
 #'
-#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE
+#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors
 #'
-#' This function calculates the scales-based descriptors with DRAGON descriptors.
-#' Users could provide customized amino acid property matrices.
+#' This function calculates the scales-based descriptors with 
+#' molecular descriptors sets calculated by
+#' Dragon, Discovery Studio and MOE.
+#' Users could specify which molecular descriptors to select from one of these 
+#' deseriptor sets by specify the numerical or character index of the 
+#' molecular descriptors in the descriptor set.
 #' 
 #' @param x A character vector, as the input protein sequence.
-#' @param propmat A matrix containing the properties for the amino acids. 
-#'        Each row represent one amino acid type, each column represents one property.
-#'        Note that the one-letter row names must be provided for we need them to seek 
-#'        the properties for each AA type.
-#' @param k Integer. The maximum dimension of the space which the data 
+#' @param propmat The matrix containing the descriptor set for the amino acids, 
+#'        which could be chosen from 
+#'        \code{AAMOE2D}, \code{AAMOE3D}, \code{AACPSA},
+#'        \code{AADescAll}, \code{AA2DACOR}, \code{AA3DMoRSE},
+#'        \code{AAACF}, \code{AABurden}, \code{AAConn}, 
+#'        \code{AAConst}, \code{AAEdgeAdj}, \code{AAEigIdx}, 
+#'        \code{AAFGC}, \code{AAGeom}, \code{AAGETAWAY}, 
+#'        \code{AAInfo}, \code{AAMolProp}, \code{AARandic}, 
+#'        \code{AARDF}, \code{AATopo}, \code{AATopoChg}, 
+#'        \code{AAWalk}, \code{AAWHIM}.
+#' @param index Integer vector or character vector. Specify which molecular descriptors 
+#'        to select from one of these deseriptor sets by specify the 
+#'        numerical or character index of the molecular descriptors in the descriptor set. 
+#'        Default is \code{NULL}, means selecting all the molecular descriptors 
+#'        in this descriptor set.
+#' @param pc Integer. The maximum dimension of the space which the data 
 #'        are to be represented in.
 #'        Must be no greater than the number of AA properties provided.
 #' @param lag The lag parameter. Must be less than the amino acids.
@@ -39,17 +54,16 @@
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' # AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-#' # scales = extractDescScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+#' descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47), pc = 5, lag = 7, silent = FALSE)
 #' 
 
-extractDescScales = function (x, propmat, k, lag, scale = TRUE, silent = TRUE) {
+extractDescScales = function (x, propmat, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
   
-  # 提供一个列表(17 18 个数据) 来自于DRAGON计算的描述符 用户可以选择
-  AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
+  propmat = get(propmat)
+  if (!is.null(index)) propmat = propmat[, index]
   
-  d = dist(AAidxmat) # euclidean distances between the rows
-  fit = cmdscale(d, eig = TRUE, k = 5) # k is the number of dim
-  fit
+  result = extractScales(x = x, propmat = propmat, pc = pc, lag = lag, scale = scale, silent = silent)
+  
+  return(result)
   
 }

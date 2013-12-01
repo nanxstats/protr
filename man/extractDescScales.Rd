@@ -1,21 +1,33 @@
 \name{extractDescScales}
 \alias{extractDescScales}
-\title{Scales-Based Descriptors with 20+ classes of Molecular Descriptors from DRAGON, DS and MOE}
+\title{Scales-Based Descriptors with 20+ classes of Molecular Descriptors}
 \usage{
-  extractDescScales(x, propmat, k, lag, scale = TRUE,
-    silent = TRUE)
+  extractDescScales(x, propmat, index = NULL, pc, lag,
+    scale = TRUE, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 
-  \item{propmat}{A matrix containing the properties for the
-  amino acids.  Each row represent one amino acid type,
-  each column represents one property.  Note that the
-  one-letter row names must be provided for we need them to
-  seek the properties for each AA type.}
+  \item{propmat}{The matrix containing the descriptor set
+  for the amino acids, which could be chosen from
+  \code{AAMOE2D}, \code{AAMOE3D}, \code{AACPSA},
+  \code{AADescAll}, \code{AA2DACOR}, \code{AA3DMoRSE},
+  \code{AAACF}, \code{AABurden}, \code{AAConn},
+  \code{AAConst}, \code{AAEdgeAdj}, \code{AAEigIdx},
+  \code{AAFGC}, \code{AAGeom}, \code{AAGETAWAY},
+  \code{AAInfo}, \code{AAMolProp}, \code{AARandic},
+  \code{AARDF}, \code{AATopo}, \code{AATopoChg},
+  \code{AAWalk}, \code{AAWHIM}.}
 
-  \item{k}{Integer. The maximum dimension of the space
+  \item{index}{Integer vector or character vector. Specify
+  which molecular descriptors to select from one of these
+  deseriptor sets by specify the numerical or character
+  index of the molecular descriptors in the descriptor set.
+  Default is \code{NULL}, means selecting all the molecular
+  descriptors in this descriptor set.}
+
+  \item{pc}{Integer. The maximum dimension of the space
   which the data are to be represented in.  Must be no
   greater than the number of AA properties provided.}
 
@@ -37,20 +49,22 @@
 }
 \description{
   Scales-Based Descriptors with 20+ classes of Molecular
-  Descriptors from DRAGON, DS and MOE
+  Descriptors
 }
 \details{
   This function calculates the scales-based descriptors
-  with DRAGON descriptors. Users could provide customized
-  amino acid property matrices.
+  with molecular descriptors sets calculated by Dragon,
+  Discovery Studio and MOE. Users could specify which
+  molecular descriptors to select from one of these
+  deseriptor sets by specify the numerical or character
+  index of the molecular descriptors in the descriptor set.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-# AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-# scales = extractDescScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

@@ -2,18 +2,19 @@
 \alias{extractPropScales}
 \title{Generalized AA-Properties Based Scales Descriptors}
 \usage{
-  extractPropScales(x, descmat, pc, lag, scale = TRUE,
+  extractPropScales(x, index = NULL, pc, lag, scale = TRUE,
     silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 
-  \item{descmat}{A matrix containing the properties for the
-  amino acids.  Each row represent one amino acid type,
-  each column represents one property.  Note that the
-  one-letter row names must be provided for we need them to
-  seek the properties for each AA type.}
+  \item{index}{Integer vector or character vector. Specify
+  which AAindex properties to select from the AAindex
+  database by specify the numerical or character index of
+  the properties in the AAindex database.  Default is
+  \code{NULL}, means selecting all the AA properties in the
+  AAindex database.}
 
   \item{pc}{Integer. Use the first pc principal components
   as the scales.  Must be no greater than the number of AA
@@ -23,8 +24,7 @@
   acids.}
 
   \item{scale}{Logical. Should we auto-scale the property
-  matrix (\code{descmat}) before PCA? Default is
-  \code{TRUE}.}
+  matrix before PCA? Default is \code{TRUE}.}
 
   \item{silent}{Logical. Whether we print the standard
   deviation, proportion of variance and the cumulative
@@ -40,17 +40,17 @@
 }
 \details{
   This function calculates the generalized amino acid
-  properties based scales descriptors. Users could provide
-  customized amino acid descriptor matrices.
+  properties based scales descriptors. Users could specify
+  which AAindex properties to select from the AAindex
+  database by specify the numerical or character index of
+  the properties in the AAindex database.
 }
 \note{
   Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-# data(AAindex)
-# AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-# scales = extractPropScales(x, descmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+propscales = extractPropScales(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
@@ -59,7 +59,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
   See \code{\link{extractScales}} for generalized
   scales-based descriptors.
 }
-\keyword{PCM}
+\keyword{AAindex}
 \keyword{descriptor}
 \keyword{extract}
 \keyword{extractPropScales}
