@@ -40,8 +40,11 @@
 }
 \examples{
 \dontrun{
-require(Biostrings)
-twoSeqSim(seq1, seq2, type = 'local', submat = 'BLOSUM62') }
+s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+s2 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+seqalign = twoSeqSim(s1, s2)
+summary(seqalign)
+print(seqalign@score) }
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

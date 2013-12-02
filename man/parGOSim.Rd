@@ -35,7 +35,7 @@
   multiple GO terms associated with protein.}
 }
 \value{
-  A nxn matrix.
+  A \code{n} x \code{n} similarity matrix.
 }
 \description{
   Parallellized Protein Sequence Similarity Calculation
@@ -50,13 +50,18 @@
   Note
 }
 \examples{
+\dontrun{
+# by GO Terms
 go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
 go2 = c("GO:0009055", "GO:0020037")
 go3 = c("GO:0020039", "GO:0009056")
-golist = list(go1, go2, go3)
+glist = list(go1, go2, go3)
+gsimmat1 = parGOSim(glist, type = 'go', cores = 2)
+print(gsimmat1)
+# by Entrez gene id
 genelist = list("835", "5261", "241")
-parGOSim(golist, type = 'go', cores = 4, ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
-parGOSim(genelist, type = 'gene', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
+gsimmat2 = parGOSim(genelist, type = 'gene', cores = 2)
+print(gsimmat2) }
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

@@ -53,12 +53,17 @@
   Note
 }
 \examples{
+\dontrun{
+# by GO terms
 go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
 go2 = c("GO:0009055", "GO:0020037")
-twoGOSim(go1, go2, type = 'go', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
+gsim1 = twoGOSim(go1, go2, type = 'go', ont = 'MF', measure = 'Wang')
+print(gsim1)
+# by Entrez gene id
 gene1 = '241'
 gene2 = '251'
-twoGOSim(gene1, gene2, type = 'gene', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
+gsim2 = twoGOSim(gene1, gene2, type = 'gene', ont = 'CC', measure = 'Lin')
+print(gsim2) }
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

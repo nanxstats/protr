@@ -2,7 +2,8 @@
 \alias{parSeqSim}
 \title{Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment}
 \usage{
-  parSeqSim(protlist, type = "local", submat = "BLOSUM62")
+  parSeqSim(protlist, cores = 2, type = "local",
+    submat = "BLOSUM62")
 }
 \arguments{
   \item{protlist}{A length \code{n} list containing
@@ -39,12 +40,14 @@
 }
 \examples{
 \dontrun{
-require(Biostrings)
-require(doMC)  # For Linux/OS X
-registerDoMC(cores = detectCores())  # For Linux/OS X
-# require(doParallel)  # For Windows
-# registerDoParallel(cores = detectCores())  # For Windows
-parSeqSim(protlist, type = 'local', submat = 'BLOSUM62') }
+s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
+s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+s4 = readFASTA(system.file('protseq/P20160.fasta', package = 'protr'))[[1]]
+s5 = readFASTA(system.file('protseq/Q9NZP8.fasta', package = 'protr'))[[1]]
+plist = list(s1, s2, s3, s4, s5)
+psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
+print(psimmat) }
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>

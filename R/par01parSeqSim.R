@@ -1,4 +1,4 @@
-.seqPairSim = function (twoid) {
+.seqPairSim = function (twoid, protlist = protlist, type = type, submat = submat) {
   
   id1 = twoid[1]
   id2 = twoid[2]
@@ -9,11 +9,11 @@
     
   } else {
     
-    s1  = try(AAString(protlist[[id1]]), silent = TRUE)
-    s2  = try(AAString(protlist[[id2]]), silent = TRUE)
-    s12 = try(pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
-    s11 = try(pairwiseAlignment(s1, s1, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
-    s22 = try(pairwiseAlignment(s2, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
+    s1  = try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
+    s2  = try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
+    s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
+    s11 = try(Biostrings::pairwiseAlignment(s1, s1, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
+    s22 = try(Biostrings::pairwiseAlignment(s2, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
     
     if ( is.numeric(s12) == FALSE | is.numeric(s11) == FALSE | is.numeric(s22) == FALSE ) {
       sim = 0L
@@ -64,27 +64,40 @@
 #' 
 #' @examples
 #' \dontrun{
-#' require(Biostrings)
-#' require(doMC)  # For Linux/OS X
-#' registerDoMC(cores = detectCores())  # For Linux/OS X
-#' # require(doParallel)  # For Windows
-#' # registerDoParallel(cores = detectCores())  # For Windows
-#' parSeqSim(protlist, type = 'local', submat = 'BLOSUM62') }
+#' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
+#' s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+#' s4 = readFASTA(system.file('protseq/P20160.fasta', package = 'protr'))[[1]]
+#' s5 = readFASTA(system.file('protseq/Q9NZP8.fasta', package = 'protr'))[[1]]
+#' plist = list(s1, s2, s3, s4, s5)
+#' psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
+#' print(psimmat) }
 #' 
 
-parSeqSim = function (protlist, type = 'local', submat = 'BLOSUM62') {
+parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
   
-  require(Biostrings)
-  require(foreach)
-  if (.Platform$OS.type == 'windows') {
-    require(doParallel)
-    registerDoParallel(cores)
+  Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
+  if ( !Biostrings.exist ) stop('Biostrings is required to run parSeqSim()')
+  
+  foreach.exist = suppressMessages(require(foreach, quietly = TRUE))
+  doParallel.exist = suppressMessages(require(doParallel, quietly = TRUE))
+  doMC.exist = suppressMessages(require(doMC, quietly = TRUE))
+  
+  if ( (foreach.exist) & (doParallel.exist | doMC.exist) ) {
+    if( !getDoParRegistered() ) {
+      if ( .Platform$OS.type == 'windows' & doParallel.exist ) {
+        registerDoParallel(cores)
+      } else if ( .Platform$OS.type == 'unix' & doMC.exist ) {
+        registerDoMC(cores)
+      } else if ( .Platform$OS.type == 'unix' & doParallel.exist ) {
+        registerDoParallel(cores)
+      } else {
+        stop('doParallel or doMC is required to run parSeqSim()')
+      }
+    }
   } else {
-    require(doMC)
-    registerDoMC(cores)
+    stop('foreach and doParallel/doMC is required to run parSeqSim()')
   }
-  
-  submat = get(submat)
   
   # generate lower matrix index
   idx = combn(1:length(protlist), 2)
@@ -95,12 +108,12 @@ parSeqSim = function (protlist, type = 'local', submat = 'BLOSUM62') {
   seqsimlist = vector('list', ncol(idx))
   
   seqsimlist <- foreach (i = 1:length(seqsimlist), .errorhandling = 'pass') %dopar% {
-    xxx <- .seqPairSim(rev(idx[, i]))
+    tmp <- .seqPairSim(rev(idx[, i]), protlist = protlist, type = type, submat = submat)
   }
   
   # convert list to matrix
   seqsimmat = matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist)) seqsimmat[idx[2, i], idx[1, i]] = seqsimlist[i]
+  for (i in 1:length(seqsimlist)) seqsimmat[idx[2, i], idx[1, i]] = seqsimlist[[i]]
   seqsimmat[upper.tri(seqsimmat)] = t(seqsimmat)[upper.tri(t(seqsimmat))]
   diag(seqsimmat) = 1
   
@@ -141,18 +154,22 @@ parSeqSim = function (protlist, type = 'local', submat = 'BLOSUM62') {
 #' 
 #' @examples
 #' \dontrun{
-#' require(Biostrings)
-#' twoSeqSim(seq1, seq2, type = 'local', submat = 'BLOSUM62') }
+#' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' s2 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+#' seqalign = twoSeqSim(s1, s2)
+#' summary(seqalign)
+#' print(seqalign@@score) }
 #' 
 
 twoSeqSim = function (seq1, seq2, type = 'local', submat = 'BLOSUM62') {
   
-  submat = get(submat)
+  Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
+  if ( !Biostrings.exist ) stop('Biostrings is required to run twoSeqSim()')
   
   # sequence alignment for two protein sequences
-  s1  = try(AAString(seq1), silent = TRUE)
-  s2  = try(AAString(seq2), silent = TRUE)
-  s12 = try(pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat), silent = TRUE)
+  s1  = try(Biostrings::AAString(seq1), silent = TRUE)
+  s2  = try(Biostrings::AAString(seq2), silent = TRUE)
+  s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat), silent = TRUE)
   
   return(s12)
   
