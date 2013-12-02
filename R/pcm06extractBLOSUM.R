@@ -35,7 +35,9 @@
 #' @export extractBLOSUM
 #' 
 #' @references
-#' TBD
+#' Georgiev, A. G. (2009). 
+#' Interpretable numerical descriptors of amino acid space. 
+#' Journal of Computational Biology, 16(5), 703--723.
 #' 
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]

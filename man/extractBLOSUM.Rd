@@ -58,7 +58,9 @@ blosum = extractBLOSUM(x, submat = 'AABLOSUM62', k = 5, lag = 7, scale = TRUE, s
   Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  TBD
+  Georgiev, A. G. (2009). Interpretable numerical
+  descriptors of amino acid space. Journal of Computational
+  Biology, 16(5), 703--723.
 }
 \keyword{BLOSUM}
 \keyword{PCM}
