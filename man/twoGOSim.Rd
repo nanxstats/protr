@@ -1,17 +1,20 @@
-\name{parGOSim}
-\alias{parGOSim}
-\title{Parallellized Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity}
+\name{twoGOSim}
+\alias{twoGOSim}
+\title{Protein Similarity Calculation based on Gene Ontology (GO) Similarity}
 \usage{
-  parGOSim(golist, type = c("go", "gene"), cores = 2,
-    ont = "MF", organism = "human", measure = "Resnik",
+  twoGOSim(id1, id2, type = c("go", "gene"), ont = "MF",
+    organism = "human", measure = "Resnik",
     combine = "BMA")
 }
 \arguments{
-  \item{golist}{A character vector, each component contains
-  a character vector of GO terms or one Entrez Gene ID.}
+  \item{id1}{A character vector. length > 1: each element
+  is a GO term; length = 1: the Entrez Gene ID.}
 
-  \item{type}{Input type of \code{golist}, \code{'go'} for
-  GO Terms, \code{'gene'} for gene ID.}
+  \item{id2}{A character vector. length > 1: each element
+  is a GO term; length = 1: the Entrez Gene ID.}
+
+  \item{type}{Input type of id1 and id2, \code{'go'} for GO
+  Terms, \code{'gene'} for gene ID.}
 
   \item{ont}{Default is \code{'MF'}, could be one of
   \code{'MF'}, \code{'BP'}, or \code{'CC'} subontologies.}
@@ -38,13 +41,13 @@
   A nxn matrix.
 }
 \description{
-  Parallellized Protein Sequence Similarity Calculation
-  based on Gene Ontology (GO) Similarity
+  Protein Similarity Calculation based on Gene Ontology
+  (GO) Similarity
 }
 \details{
-  This function implemented the parallellized version for
-  calculating protein sequence similarity based on Gene
-  Ontology (GO) similarity.
+  This function calculates the Gene Ontology (GO)
+  similarity between two groups of GO terms or two Entrez
+  gene IDs.
 }
 \note{
   Note
@@ -52,11 +55,10 @@
 \examples{
 go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
 go2 = c("GO:0009055", "GO:0020037")
-go3 = c("GO:0020039", "GO:0009056")
-golist = list(go1, go2, go3)
-genelist = list("835", "5261", "241")
-parGOSim(golist, type = 'go', cores = 4, ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
-parGOSim(genelist, type = 'gene', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
+twoGOSim(go1, go2, type = 'go', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
+gene1 = '241'
+gene2 = '251'
+twoGOSim(gene1, gene2, type = 'gene', ont = 'MF', organism = 'human', measure = 'Resnik', combine = 'BMA')
 }
 \author{
   Nan Xiao <\url{http://www.road2stat.com}>
@@ -69,7 +71,6 @@ parGOSim(genelist, type = 'gene', ont = 'MF', organism = 'human', measure = 'Res
 \keyword{GO}
 \keyword{Gene}
 \keyword{Ontology}
-\keyword{parGOSim}
-\keyword{parallel}
 \keyword{similarity}
+\keyword{twoGOSim}
 

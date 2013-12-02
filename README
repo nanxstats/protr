@@ -57,18 +57,17 @@ The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) i
 
 ### Parallelized Sequence Alignment Similarity Computation
 
-Sequence alignment for protein sequences:
+Local and Global Sequence alignment for protein sequences:
 
-  * Needleman-Wunsch (global alignment)
-  * Smith-Waterman (local alignment)
+  * Between two protein sequences
+  * Parallelized pairwise similarity calculation with a list of protein sequences
 
 ### Parallelized GO Semantic Similarity Computation
 
 GO-terms semantic similarity measures:
 
-  * Based on Entrez Gene IDs
-  * Based on GO terms with fully automatic search for all the related Entrez Gene IDs
-  * Similarity measures between protein sequences and between two groups of proteins (original similarity matrices, and three combination strategies: AvgTotal, AvgMax, MaxTotal)
+  * Between two groups of GO terms / two Entrez Gene IDs
+  * Parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
 
 ### Miscellaneous Tools and Datasets
 
