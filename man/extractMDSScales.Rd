@@ -2,8 +2,7 @@
 \alias{extractMDSScales}
 \title{Generalized Scales-Based Descriptors derived by Multidimensional Scaling}
 \usage{
-  extractMDSScales(x, propmat, k, lag, scale = TRUE,
-    silent = TRUE)
+extractMDSScales(x, propmat, k, lag, scale = TRUE, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -31,21 +30,21 @@
   Default is \code{TRUE}.}
 }
 \value{
-  A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales (dimensionality) selected.
+A length \code{lag * p^2} named vector, \code{p} is the
+number of scales (dimensionality) selected.
 }
 \description{
-  Generalized Scales-Based Descriptors derived by
-  Multidimensional Scaling
+Generalized Scales-Based Descriptors derived by
+Multidimensional Scaling
 }
 \details{
-  This function calculates the generalized scales-based
-  descriptors derived by Multidimensional Scaling (MDS).
-  Users could provide customized amino acid property
-  matrices.
+This function calculates the generalized scales-based
+descriptors derived by Multidimensional Scaling (MDS).
+Users could provide customized amino acid property
+matrices.
 }
 \note{
-  Note
+Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -54,18 +53,18 @@ tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Venkatarajan, M. S., & Braun, W. (2001). New quantitative
-  descriptors of amino acids based on multidimensional
-  scaling of a large number of physical-chemical
-  properties. Molecular modeling annual, 7(12), 445--453.
+Venkatarajan, M. S., & Braun, W. (2001). New quantitative
+descriptors of amino acids based on multidimensional
+scaling of a large number of physical-chemical properties.
+Molecular modeling annual, 7(12), 445--453.
 }
 \seealso{
-  See \code{\link{extractScales}} for generalized
-  scales-based descriptors derived by Principal Components
-  Analysis.
+See \code{\link{extractScales}} for generalized
+scales-based descriptors derived by Principal Components
+Analysis.
 }
 \keyword{Multidimensional}
 \keyword{PCM}

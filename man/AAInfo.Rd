@@ -2,18 +2,20 @@
 \name{AAInfo}
 \alias{AAInfo}
 \title{Information Indices Descriptors for 20 Amino Acids calculated by Dragon}
+\usage{
+data(AAInfo)
+}
 \description{
-  Information Indices Descriptors for 20 Amino Acids
-  calculated by Dragon
+Information Indices Descriptors for 20 Amino Acids
+calculated by Dragon
 }
 \details{
-  This dataset includes the information indices descriptors
-  of the 20 amino acids calculated by Dragon (version 5.4)
-  used for scales extraction in this package.
+This dataset includes the information indices descriptors
+of the 20 amino acids calculated by Dragon (version 5.4)
+used for scales extraction in this package.
 }
 \examples{
 data(AAInfo)
 }
 \keyword{AAInfo}
-\keyword{datasets}
 

@@ -23,21 +23,20 @@ Version 0.1-0 (2012-11-18)
   * initial version of protcheck()
   * initial version of protseg()
 
-Version 0.2-0 (2013-10-14)
+Version 0.2-0 (2013-12-10)
 ------------------------------------------------------------------------------
 
   NEW FEATURES
   
   * second release
-  * Added PCM(Proteochemometric Modeling) features, parallel computation function for protein sequence alignment, and protein GO semantic similarities
-  * initial version of Z-scales descriptor
-  * initial version of T-scales descriptor
-  * initial version of ST-scales descriptor
-  * initial version of Vectors of Hydrophobic, Steric, and Electronic (VHSE) descriptor
-  * initial version of MS-WHIM descriptor
-  * initial version of Factor Analysis Scales of Generalized AA Information (FASGAI) descriptor
-  * initial version of BLOSUM descriptor
-  * initial version of Protein fingerprint (ProtFP)
-  * initial version of Generalized Multidimensional Scaling (MDS) based descriptor
-  * initial version of (paralleled) sequence alignment for protein sequences
-  * initial version of (paralleled) GO semantic similarity computation for proteins
+  * added PCM (Proteochemometric Modeling) features, parallellized similarity computation derived by protein sequence alignment and GO-terms semantic similarity measures between a list of protein sequences / GO terms
+  * added misc tools and datasets
+  * initial version of Generalized Scales-Based Descriptors derived by Principal Components Analysis
+  * initial version of Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
+  * initial version of Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors
+  * initial version of Generalized Scales-Based Descriptors derived by Factor Analysis
+  * initial version of Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+  * initial version of Generalized BLOSUM and PAM Matrix-Derived Descriptors
+  * initial version of parallelized pairwise similarity calculation with a list of protein sequences
+  * initial version of parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
+  * initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length

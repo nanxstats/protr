@@ -2,39 +2,39 @@
 \alias{extractTC}
 \title{Tripeptide Composition Descriptor}
 \usage{
-  extractTC(x)
+extractTC(x)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 }
 \value{
-  A length 8000 named vector
+A length 8000 named vector
 }
 \description{
-  Tripeptide Composition Descriptor
+Tripeptide Composition Descriptor
 }
 \details{
-  This function calculates the Tripeptide Composition
-  descriptor (Dim: 8000).
+This function calculates the Tripeptide Composition
+descriptor (Dim: 8000).
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractTC(x)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  M. Bhasin, G. P. S. Raghava. Classification of Nuclear
-  Receptors Based on Amino Acid Composition and Dipeptide
-  Composition. \emph{Journal of Biological Chemistry},
-  2004, 279, 23262.
+M. Bhasin, G. P. S. Raghava. Classification of Nuclear
+Receptors Based on Amino Acid Composition and Dipeptide
+Composition. \emph{Journal of Biological Chemistry}, 2004,
+279, 23262.
 }
 \seealso{
-  See \code{\link{extractAAC}} and \code{\link{extractDC}}
-  for Amino Acid Composition and Dipeptide Composition
-  descriptors.
+See \code{\link{extractAAC}} and \code{\link{extractDC}}
+for Amino Acid Composition and Dipeptide Composition
+descriptors.
 }
 \keyword{Composition}
 \keyword{TC}

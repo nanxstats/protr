@@ -2,9 +2,9 @@
 \alias{extractGeary}
 \title{Geary Autocorrelation Descriptor}
 \usage{
-  extractGeary(x,
-    props = c("CIDH920105", "BHAR880101", "CHAM820101", "CHAM820102", "CHOC760101", "BIGC670101", "CHAM810101", "DAYM780201"),
-    nlag = 30L, customprops = NULL)
+extractGeary(x, props = c("CIDH920105", "BHAR880101", "CHAM820101",
+  "CHAM820102", "CHOC760101", "BIGC670101", "CHAM810101", "DAYM780201"),
+  nlag = 30L, customprops = NULL)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -43,14 +43,14 @@
   is \code{NULL}.}
 }
 \value{
-  A length \code{nlag} named vector
+A length \code{nlag} named vector
 }
 \description{
-  Geary Autocorrelation Descriptor
+Geary Autocorrelation Descriptor
 }
 \details{
-  This function calculates the Geary autocorrelation
-  descriptor (Dim: \code{length(props) * nlag}).
+This function calculates the Geary autocorrelation
+descriptor (Dim: \code{length(props) * nlag}).
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -75,30 +75,29 @@ extractGeary(x, customprops = myprops,
                        'MyProp1', 'MyProp2', 'MyProp3'))
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  AAindex: Amino acid index database.
-  \url{http://www.genome.ad.jp/dbget/aaindex.html}
+AAindex: Amino acid index database.
+\url{http://www.genome.ad.jp/dbget/aaindex.html}
 
-  Feng, Z.P. and Zhang, C.T. (2000) Prediction of membrane
-  protein types based on the hydrophobic index of amino
-  acids. \emph{Journal of Protein Chemistry}, 19, 269-275.
+Feng, Z.P. and Zhang, C.T. (2000) Prediction of membrane
+protein types based on the hydrophobic index of amino
+acids. \emph{Journal of Protein Chemistry}, 19, 269-275.
 
-  Horne, D.S. (1988) Prediction of protein helix content
-  from an autocorrelation analysis of sequence
-  hydrophobicities. \emph{Biopolymers}, 27, 451-477.
+Horne, D.S. (1988) Prediction of protein helix content from
+an autocorrelation analysis of sequence hydrophobicities.
+\emph{Biopolymers}, 27, 451-477.
 
-  Sokal, R.R. and Thomson, B.A. (2006) Population structure
-  inferred by local spatial autocorrelation: an Usage from
-  an Amerindian tribal population. \emph{American Journal
-  of Physical Anthropology}, 129, 121-131.
+Sokal, R.R. and Thomson, B.A. (2006) Population structure
+inferred by local spatial autocorrelation: an Usage from an
+Amerindian tribal population. \emph{American Journal of
+Physical Anthropology}, 129, 121-131.
 }
 \seealso{
-  See \code{\link{extractMoreauBroto}} and
-  \code{\link{extractMoran}} for Moreau-Broto
-  autocorrelation descriptors and Moran autocorrelation
-  descriptors.
+See \code{\link{extractMoreauBroto}} and
+\code{\link{extractMoran}} for Moreau-Broto autocorrelation
+descriptors and Moran autocorrelation descriptors.
 }
 \keyword{Geary}
 \keyword{autocorrelation}

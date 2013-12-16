@@ -2,23 +2,23 @@
 \alias{protcheck}
 \title{Check if the protein sequence's amino acid types are in the 20 default types}
 \usage{
-  protcheck(x)
+protcheck(x)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
   sequence.}
 }
 \value{
-  Logical. \code{TRUE} if all of the amino acid types of
-  the sequence are within the 20 default types.
+Logical. \code{TRUE} if all of the amino acid types of the
+sequence are within the 20 default types.
 }
 \description{
-  Check if the protein sequence's amino acid types are in
-  the 20 default types
+Check if the protein sequence's amino acid types are in the
+20 default types
 }
 \details{
-  This function checks if the protein sequence's amino acid
-  types are in the 20.
+This function checks if the protein sequence's amino acid
+types are in the 20.
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -26,7 +26,7 @@ protcheck(x) # TRUE
 protcheck(paste(x, 'Z', sep = '')) # FALSE
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \keyword{acid}
 \keyword{amino}

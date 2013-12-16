@@ -2,8 +2,7 @@
 \alias{extractPropScales}
 \title{Generalized AA-Properties Based Scales Descriptors}
 \usage{
-  extractPropScales(x, index = NULL, pc, lag, scale = TRUE,
-    silent = TRUE)
+extractPropScales(x, index = NULL, pc, lag, scale = TRUE, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -32,32 +31,32 @@
   Default is \code{TRUE}.}
 }
 \value{
-  A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales (principal components) selected.
+A length \code{lag * p^2} named vector, \code{p} is the
+number of scales (principal components) selected.
 }
 \description{
-  Generalized AA-Properties Based Scales Descriptors
+Generalized AA-Properties Based Scales Descriptors
 }
 \details{
-  This function calculates the generalized amino acid
-  properties based scales descriptors. Users could specify
-  which AAindex properties to select from the AAindex
-  database by specify the numerical or character index of
-  the properties in the AAindex database.
+This function calculates the generalized amino acid
+properties based scales descriptors. Users could specify
+which AAindex properties to select from the AAindex
+database by specify the numerical or character index of the
+properties in the AAindex database.
 }
 \note{
-  Note
+Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 propscales = extractPropScales(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{extractScales}} for generalized
-  scales-based descriptors.
+See \code{\link{extractScales}} for generalized
+scales-based descriptors.
 }
 \keyword{AAindex}
 \keyword{descriptor}

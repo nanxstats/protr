@@ -42,7 +42,7 @@ The commonly used qualitative protein sequence features implemented in protr inc
 
 ### Quantitative Descriptors
 
-The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) implemented in protr include:
+The quantitative descriptors commonly used in Proteochemometric (PCM) Modeling implemented in protr include:
 
   * Generalized Scales-Based Descriptors derived by Principal Components Analysis
 
@@ -57,7 +57,7 @@ The quantitative descriptors commonly used in Proteochemometric Modeling (PCM) i
 
 ### Parallelized Sequence Alignment Similarity Computation
 
-Local and Global Sequence alignment for protein sequences:
+Local and global sequence alignment for protein sequences:
 
   * Between two protein sequences
   * Parallelized pairwise similarity calculation with a list of protein sequences
@@ -77,7 +77,7 @@ GO-terms semantic similarity measures:
 
   * Read protein sequences in PDB format
   
-  * Sanity check for the amino acid types appeared in the protein sequences
+  * Sanity check of the amino acid types appeared in the protein sequences
   
   * Protein sequence segmentation
 

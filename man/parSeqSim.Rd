@@ -2,8 +2,7 @@
 \alias{parSeqSim}
 \title{Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment}
 \usage{
-  parSeqSim(protlist, cores = 2, type = "local",
-    submat = "BLOSUM62")
+parSeqSim(protlist, cores = 2, type = "local", submat = "BLOSUM62")
 }
 \arguments{
   \item{protlist}{A length \code{n} list containing
@@ -24,19 +23,19 @@
   \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.}
 }
 \value{
-  A \code{n} x \code{n} similarity matrix.
+A \code{n} x \code{n} similarity matrix.
 }
 \description{
-  Parallellized Protein Sequence Similarity Calculation
-  based on Sequence Alignment
+Parallellized Protein Sequence Similarity Calculation based
+on Sequence Alignment
 }
 \details{
-  This function implemented the parallellized version for
-  calculating protein sequence similarity based on sequence
-  alignment.
+This function implemented the parallellized version for
+calculating protein sequence similarity based on sequence
+alignment.
 }
 \note{
-  Note
+Note
 }
 \examples{
 \dontrun{
@@ -50,12 +49,12 @@ psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
 print(psimmat) }
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{parGOSim}} for paralleled protein
-  similarity calculation based on Gene Ontology (GO)
-  similarity.
+See \code{\link{parGOSim}} for paralleled protein
+similarity calculation based on Gene Ontology (GO)
+similarity.
 }
 \keyword{Needleman-Wunsch}
 \keyword{Smith-Waterman}

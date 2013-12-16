@@ -2,9 +2,8 @@
 \alias{twoGOSim}
 \title{Protein Similarity Calculation based on Gene Ontology (GO) Similarity}
 \usage{
-  twoGOSim(id1, id2, type = c("go", "gene"), ont = "MF",
-    organism = "human", measure = "Resnik",
-    combine = "BMA")
+twoGOSim(id1, id2, type = c("go", "gene"), ont = "MF", organism = "human",
+  measure = "Resnik", combine = "BMA")
 }
 \arguments{
   \item{id1}{A character vector. length > 1: each element
@@ -38,19 +37,18 @@
   multiple GO terms associated with protein.}
 }
 \value{
-  A nxn matrix.
+A nxn matrix.
 }
 \description{
-  Protein Similarity Calculation based on Gene Ontology
-  (GO) Similarity
+Protein Similarity Calculation based on Gene Ontology (GO)
+Similarity
 }
 \details{
-  This function calculates the Gene Ontology (GO)
-  similarity between two groups of GO terms or two Entrez
-  gene IDs.
+This function calculates the Gene Ontology (GO) similarity
+between two groups of GO terms or two Entrez gene IDs.
 }
 \note{
-  Note
+Note
 }
 \examples{
 \dontrun{
@@ -59,6 +57,7 @@ go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
 go2 = c("GO:0009055", "GO:0020037")
 gsim1 = twoGOSim(go1, go2, type = 'go', ont = 'MF', measure = 'Wang')
 print(gsim1)
+
 # by Entrez gene id
 gene1 = '241'
 gene2 = '251'
@@ -66,12 +65,12 @@ gsim2 = twoGOSim(gene1, gene2, type = 'gene', ont = 'CC', measure = 'Lin')
 print(gsim2) }
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{parSeqSim}} for paralleled protein
-  similarity calculation based on Smith-Waterman local
-  alignment.
+See \code{\link{parSeqSim}} for paralleled protein
+similarity calculation based on Smith-Waterman local
+alignment.
 }
 \keyword{GO}
 \keyword{Gene}

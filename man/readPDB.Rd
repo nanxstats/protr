@@ -2,7 +2,7 @@
 \alias{readPDB}
 \title{Read Protein Sequences in PDB Format}
 \usage{
-  readPDB(file = system.file("protseq/4HHB.pdb", package = "Rcpi"))
+readPDB(file = system.file("protseq/4HHB.pdb", package = "Rcpi"))
 }
 \arguments{
   \item{file}{The name of the file which the sequences in
@@ -14,31 +14,31 @@
   package.}
 }
 \value{
-  A character vector, representing the amino acid sequence
-  of the single-letter code.
+A character vector, representing the amino acid sequence of
+the single-letter code.
 }
 \description{
-  Read Protein Sequences in PDB Format
+Read Protein Sequences in PDB Format
 }
 \details{
-  This function reads protein sequences in PDB (Protein
-  Data Bank) format, and return the amino acid sequences
-  represented by single-letter code.
+This function reads protein sequences in PDB (Protein Data
+Bank) format, and return the amino acid sequences
+represented by single-letter code.
 }
 \examples{
 Seq4HHB = readPDB(system.file('protseq/4HHB.pdb', package = 'protr'))
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Protein Data Bank Contents Guide: Atomic Coordinate Entry
-  Format Description, Version 3.30. Accessed 2013-06-26.
-  \url{ftp://ftp.wwpdb.org/pub/pdb/doc/format_descriptions/Format_v33_Letter.pdf}
+Protein Data Bank Contents Guide: Atomic Coordinate Entry
+Format Description, Version 3.30. Accessed 2013-06-26.
+\url{ftp://ftp.wwpdb.org/pub/pdb/doc/format_descriptions/Format_v33_Letter.pdf}
 }
 \seealso{
-  See \code{\link{readFASTA}} for reading protein sequences
-  in FASTA format.
+See \code{\link{readFASTA}} for reading protein sequences
+in FASTA format.
 }
 \keyword{PDB}
 \keyword{Rcpi}

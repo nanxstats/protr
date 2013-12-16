@@ -2,7 +2,7 @@
 \alias{extractQSO}
 \title{Quasi-Sequence-Order (QSO) Descriptor}
 \usage{
-  extractQSO(x, nlag = 30, w = 0.1)
+extractQSO(x, nlag = 30, w = 0.1)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -13,43 +13,43 @@
   \item{w}{The weighting factor, default is 0.1.}
 }
 \value{
-  A length \code{20 + 20 + (2 * nlag)} named vector
+A length \code{20 + 20 + (2 * nlag)} named vector
 }
 \description{
-  Quasi-Sequence-Order (QSO) Descriptor
+Quasi-Sequence-Order (QSO) Descriptor
 }
 \details{
-  This function calculates the Quasi-Sequence-Order (QSO)
-  descriptor (Dim: \code{20 + 20 + (2 * nlag)}, default is
-  100).
+This function calculates the Quasi-Sequence-Order (QSO)
+descriptor (Dim: \code{20 + 20 + (2 * nlag)}, default is
+100).
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractQSO(x)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Kuo-Chen Chou. Prediction of Protein Subcellar Locations
-  by Incorporating Quasi-Sequence-Order Effect.
-  \emph{Biochemical and Biophysical Research
-  Communications}, 2000, 278, 477-483.
+Kuo-Chen Chou. Prediction of Protein Subcellar Locations by
+Incorporating Quasi-Sequence-Order Effect.
+\emph{Biochemical and Biophysical Research Communications},
+2000, 278, 477-483.
 
-  Kuo-Chen Chou and Yu-Dong Cai. Prediction of Protein
-  Sucellular Locations by GO-FunD-PseAA Predictor.
-  \emph{Biochemical and Biophysical Research
-  Communications}, 2004, 320, 1236-1239.
+Kuo-Chen Chou and Yu-Dong Cai. Prediction of Protein
+Sucellular Locations by GO-FunD-PseAA Predictor.
+\emph{Biochemical and Biophysical Research Communications},
+2004, 320, 1236-1239.
 
-  Gisbert Schneider and Paul Wrede. The Rational Design of
-  Amino Acid Sequences by Artifical Neural Networks and
-  Simulated Molecular Evolution: Do Novo Design of an
-  Idealized Leader Cleavge Site. \emph{Biophys Journal},
-  1994, 66, 335-344.
+Gisbert Schneider and Paul Wrede. The Rational Design of
+Amino Acid Sequences by Artifical Neural Networks and
+Simulated Molecular Evolution: Do Novo Design of an
+Idealized Leader Cleavge Site. \emph{Biophys Journal},
+1994, 66, 335-344.
 }
 \seealso{
-  See \code{\link{extractSOCN}} for sequence-order-coupling
-  numbers.
+See \code{\link{extractSOCN}} for sequence-order-coupling
+numbers.
 }
 \keyword{Order}
 \keyword{QSO}

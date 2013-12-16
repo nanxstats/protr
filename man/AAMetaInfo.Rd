@@ -2,24 +2,25 @@
 \name{AAMetaInfo}
 \alias{AAMetaInfo}
 \title{Meta Information for the 20 Amino Acids}
+\usage{
+data(AAMetaInfo)
+}
 \description{
-  Meta Information for the 20 Amino Acids
+Meta Information for the 20 Amino Acids
 }
 \details{
-  This dataset includes the meta information of the 20
-  amino acids used for the 2D and 3D descriptor calculation
-  in this package. Each column represents: \itemize{
-  \item{\code{AAName}} {Amino Acid Name}
-  \item{\code{Short}} {One-Letter Representation}
-  \item{\code{Abbreviation}} {Three-Letter Representation}
-  \item{\code{mol}} {SMILE Representation}
-  \item{\code{PUBCHEM_COMPOUND_CID}} {PubChem CID for the
-  Amino Acid} \item{\code{PUBCHEM_LINK}} {PubChem Link for
-  the Amino Acid} }
+This dataset includes the meta information of the 20 amino
+acids used for the 2D and 3D descriptor calculation in this
+package. Each column represents: \itemize{
+\item{\code{AAName}} {Amino Acid Name} \item{\code{Short}}
+{One-Letter Representation} \item{\code{Abbreviation}}
+{Three-Letter Representation} \item{\code{mol}} {SMILE
+Representation} \item{\code{PUBCHEM_COMPOUND_CID}} {PubChem
+CID for the Amino Acid} \item{\code{PUBCHEM_LINK}} {PubChem
+Link for the Amino Acid} }
 }
 \examples{
 data(AAMetaInfo)
 }
 \keyword{AAMetaInfo}
-\keyword{datasets}
 

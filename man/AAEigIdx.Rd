@@ -2,18 +2,20 @@
 \name{AAEigIdx}
 \alias{AAEigIdx}
 \title{Eigenvalue-Based Indices Descriptors for 20 Amino Acids calculated by Dragon}
+\usage{
+data(AAEigIdx)
+}
 \description{
-  Eigenvalue-Based Indices Descriptors for 20 Amino Acids
-  calculated by Dragon
+Eigenvalue-Based Indices Descriptors for 20 Amino Acids
+calculated by Dragon
 }
 \details{
-  This dataset includes the eigenvalue-based indices
-  descriptors of the 20 amino acids calculated by Dragon
-  (version 5.4) used for scales extraction in this package.
+This dataset includes the eigenvalue-based indices
+descriptors of the 20 amino acids calculated by Dragon
+(version 5.4) used for scales extraction in this package.
 }
 \examples{
 data(AAEigIdx)
 }
 \keyword{AAEigIdx}
-\keyword{datasets}
 

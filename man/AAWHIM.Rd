@@ -2,17 +2,19 @@
 \name{AAWHIM}
 \alias{AAWHIM}
 \title{WHIM Descriptors for 20 Amino Acids calculated by Dragon}
+\usage{
+data(AAWHIM)
+}
 \description{
-  WHIM Descriptors for 20 Amino Acids calculated by Dragon
+WHIM Descriptors for 20 Amino Acids calculated by Dragon
 }
 \details{
-  This dataset includes the WHIM descriptors of the 20
-  amino acids calculated by Dragon (version 5.4) used for
-  scales extraction in this package.
+This dataset includes the WHIM descriptors of the 20 amino
+acids calculated by Dragon (version 5.4) used for scales
+extraction in this package.
 }
 \examples{
 data(AAWHIM)
 }
 \keyword{AAWHIM}
-\keyword{datasets}
 

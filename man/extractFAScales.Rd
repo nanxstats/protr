@@ -2,9 +2,8 @@
 \alias{extractFAScales}
 \title{Generalized Scales-Based Descriptors derived by Factor Analysis}
 \usage{
-  extractFAScales(x, propmat, factors,
-    scores = "regression", lag, scale = TRUE,
-    silent = TRUE)
+extractFAScales(x, propmat, factors, scores = "regression", lag,
+  scale = TRUE, silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -37,20 +36,20 @@
   the selected factors or not.  Default is \code{TRUE}.}
 }
 \value{
-  A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales (factors) selected.
+A length \code{lag * p^2} named vector, \code{p} is the
+number of scales (factors) selected.
 }
 \description{
-  Generalized Scales-Based Descriptors derived by Factor
-  Analysis
+Generalized Scales-Based Descriptors derived by Factor
+Analysis
 }
 \details{
-  This function calculates the generalized scales-based
-  descriptors derived by Factor Analysis (FA). Users could
-  provide customized amino acid property matrices.
+This function calculates the generalized scales-based
+descriptors derived by Factor Analysis (FA). Users could
+provide customized amino acid property matrices.
 }
 \note{
-  Note
+Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -59,13 +58,13 @@ tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 fa = extractFAScales(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T.
-  (2005). Solving the protein sequence metric problem.
-  Proceedings of the National Academy of Sciences of the
-  United States of America, 102(18), 6395-6400.
+Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T.
+(2005). Solving the protein sequence metric problem.
+Proceedings of the National Academy of Sciences of the
+United States of America, 102(18), 6395-6400.
 }
 \keyword{Analysis}
 \keyword{Factor}

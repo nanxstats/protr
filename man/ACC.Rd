@@ -2,7 +2,7 @@
 \alias{acc}
 \title{Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors of the Same Length}
 \usage{
-  acc(mat, lag)
+acc(mat, lag)
 }
 \arguments{
   \item{mat}{A \code{p * n} matrix. Each row represents one
@@ -13,22 +13,22 @@
   acids.}
 }
 \value{
-  A length \code{lag * p^2} named vector, the element names
-  are constructed by: the scales index (crossed scales
-  index) and lag index.
+A length \code{lag * p^2} named vector, the element names
+are constructed by: the scales index (crossed scales index)
+and lag index.
 }
 \description{
-  Auto Cross Covariance (ACC) for Generating Scales-Based
-  Descriptors of the Same Length
+Auto Cross Covariance (ACC) for Generating Scales-Based
+Descriptors of the Same Length
 }
 \details{
-  This function calculates the auto covariance and auto
-  cross covariance for generating scale-based descriptors
-  of the same length.
+This function calculates the auto covariance and auto cross
+covariance for generating scale-based descriptors of the
+same length.
 }
 \note{
-  To know more details about auto cross covariance, see the
-  references.
+To know more details about auto cross covariance, see the
+references.
 }
 \examples{
 p = 8    # p is the scales number
@@ -38,27 +38,27 @@ mat = matrix(rnorm(p * n), nrow = p, ncol = n)
 acc(mat, lag)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg,
-  M., & R\"{a}nnar, S. (1993). DNA and peptide sequences
-  and chemical processes multivariately modelled by
-  principal component analysis and partial least-squares
-  projections to latent structures. \emph{Analytica chimica
-  acta}, 277(2), 239--253.
+Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg, M.,
+& R\"{a}nnar, S. (1993). DNA and peptide sequences and
+chemical processes multivariately modelled by principal
+component analysis and partial least-squares projections to
+latent structures. \emph{Analytica chimica acta}, 277(2),
+239--253.
 
-  Sj\"{o}str\"{o}m, M., R\"{a}nnar, S., & Wieslander, A.
-  (1995). Polypeptide sequence property relationships in
-  \emph{Escherichia coli} based on auto cross covariances.
-  \emph{Chemometrics and intelligent laboratory systems},
-  29(2), 295--305.
+Sj\"{o}str\"{o}m, M., R\"{a}nnar, S., & Wieslander, A.
+(1995). Polypeptide sequence property relationships in
+\emph{Escherichia coli} based on auto cross covariances.
+\emph{Chemometrics and intelligent laboratory systems},
+29(2), 295--305.
 }
 \seealso{
-  See \code{\link{extractScales}} for generalized
-  scales-based descriptors. For more details, see
-  \code{\link{extractDescScales}} and
-  \code{\link{extractPropScales}}.
+See \code{\link{extractScales}} for generalized
+scales-based descriptors. For more details, see
+\code{\link{extractDescScales}} and
+\code{\link{extractPropScales}}.
 }
 \keyword{acc}
 \keyword{auto}

@@ -2,8 +2,8 @@
 \alias{extractDescScales}
 \title{Scales-Based Descriptors with 20+ classes of Molecular Descriptors}
 \usage{
-  extractDescScales(x, propmat, index = NULL, pc, lag,
-    scale = TRUE, silent = TRUE)
+extractDescScales(x, propmat, index = NULL, pc, lag, scale = TRUE,
+  silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -44,34 +44,34 @@
   Default is \code{TRUE}.}
 }
 \value{
-  A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales selected.
+A length \code{lag * p^2} named vector, \code{p} is the
+number of scales selected.
 }
 \description{
-  Scales-Based Descriptors with 20+ classes of Molecular
-  Descriptors
+Scales-Based Descriptors with 20+ classes of Molecular
+Descriptors
 }
 \details{
-  This function calculates the scales-based descriptors
-  with molecular descriptors sets calculated by Dragon,
-  Discovery Studio and MOE. Users could specify which
-  molecular descriptors to select from one of these
-  deseriptor sets by specify the numerical or character
-  index of the molecular descriptors in the descriptor set.
+This function calculates the scales-based descriptors with
+molecular descriptors sets calculated by Dragon, Discovery
+Studio and MOE. Users could specify which molecular
+descriptors to select from one of these deseriptor sets by
+specify the numerical or character index of the molecular
+descriptors in the descriptor set.
 }
 \note{
-  Note
+Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{extractScales}} for generalized
-  AA-descriptor based scales descriptors.
+See \code{\link{extractScales}} for generalized
+AA-descriptor based scales descriptors.
 }
 \keyword{PCM}
 \keyword{extract}

@@ -1,10 +1,9 @@
 \name{parGOSim}
 \alias{parGOSim}
-\title{Parallellized Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity}
+\title{Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity}
 \usage{
-  parGOSim(golist, type = c("go", "gene"), cores = 2,
-    ont = "MF", organism = "human", measure = "Resnik",
-    combine = "BMA")
+parGOSim(golist, type = c("go", "gene"), ont = "MF", organism = "human",
+  measure = "Resnik", combine = "BMA")
 }
 \arguments{
   \item{golist}{A character vector, each component contains
@@ -35,46 +34,45 @@
   multiple GO terms associated with protein.}
 }
 \value{
-  A \code{n} x \code{n} similarity matrix.
+A \code{n} x \code{n} similarity matrix.
 }
 \description{
-  Parallellized Protein Sequence Similarity Calculation
-  based on Gene Ontology (GO) Similarity
+Protein Sequence Similarity Calculation based on Gene
+Ontology (GO) Similarity
 }
 \details{
-  This function implemented the parallellized version for
-  calculating protein sequence similarity based on Gene
-  Ontology (GO) similarity.
+This function calculates protein sequence similarity based
+on Gene Ontology (GO) similarity.
 }
 \note{
-  Note
+Note
 }
 \examples{
 \dontrun{
 # by GO Terms
-go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
-go2 = c("GO:0009055", "GO:0020037")
-go3 = c("GO:0020039", "GO:0009056")
+go1 = c('GO:0005215', 'GO:0005488', 'GO:0005515', 'GO:0005625', 'GO:0005802', 'GO:0005905')  # AP4B1
+go2 = c('GO:0005515', 'GO:0005634', 'GO:0005681', 'GO:0008380', 'GO:0031202')  # BCAS2
+go3 = c('GO:0003735', 'GO:0005622', 'GO:0005840', 'GO:0006412')  # PDE4DIP
 glist = list(go1, go2, go3)
-gsimmat1 = parGOSim(glist, type = 'go', cores = 2)
+gsimmat1 = parGOSim(glist, type = 'go', ont = 'CC')
 print(gsimmat1)
+
 # by Entrez gene id
-genelist = list("835", "5261", "241")
-gsimmat2 = parGOSim(genelist, type = 'gene', cores = 2)
+genelist = list(c('150', '151', '152', '1814', '1815', '1816'))
+gsimmat2 = parGOSim(genelist, type = 'gene')
 print(gsimmat2) }
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{parSeqSim}} for paralleled protein
-  similarity calculation based on Smith-Waterman local
-  alignment.
+See \code{\link{parSeqSim}} for paralleled protein
+similarity calculation based on Smith-Waterman local
+alignment.
 }
 \keyword{GO}
 \keyword{Gene}
 \keyword{Ontology}
 \keyword{parGOSim}
-\keyword{parallel}
 \keyword{similarity}
 

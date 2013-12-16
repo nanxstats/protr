@@ -2,8 +2,7 @@
 \alias{twoSeqSim}
 \title{Protein Sequence Alignment for Two Protein Sequences}
 \usage{
-  twoSeqSim(seq1, seq2, type = "local",
-    submat = "BLOSUM62")
+twoSeqSim(seq1, seq2, type = "local", submat = "BLOSUM62")
 }
 \arguments{
   \item{seq1}{A character string, containing one protein
@@ -25,18 +24,18 @@
   \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.}
 }
 \value{
-  An Biostrings object containing the scores and other
-  alignment information.
+An Biostrings object containing the scores and other
+alignment information.
 }
 \description{
-  Protein Sequence Alignment for Two Protein Sequences
+Protein Sequence Alignment for Two Protein Sequences
 }
 \details{
-  This function implements the sequence alignment between
-  two protein sequences.
+This function implements the sequence alignment between two
+protein sequences.
 }
 \note{
-  Note
+Note
 }
 \examples{
 \dontrun{
@@ -47,12 +46,11 @@ summary(seqalign)
 print(seqalign@score) }
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-  See \code{\link{parSeqSim}} for paralleled pairwise
-  protein similarity calculation based on sequence
-  alignment.
+See \code{\link{parSeqSim}} for paralleled pairwise protein
+similarity calculation based on sequence alignment.
 }
 \keyword{Needleman-Wunsch}
 \keyword{Smith-Waterman}

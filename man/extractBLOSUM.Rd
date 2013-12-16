@@ -2,8 +2,8 @@
 \alias{extractBLOSUM}
 \title{Generalized BLOSUM and PAM Matrix-Derived Descriptors}
 \usage{
-  extractBLOSUM(x, submat = "AABLOSUM62", k, lag,
-    scale = TRUE, silent = TRUE)
+extractBLOSUM(x, submat = "AABLOSUM62", k, lag, scale = TRUE,
+  silent = TRUE)
 }
 \arguments{
   \item{x}{A character vector, as the input protein
@@ -34,33 +34,33 @@
   \code{TRUE}.}
 }
 \value{
-  A length \code{lag * p^2} named vector, \code{p} is the
-  number of scales selected.
+A length \code{lag * p^2} named vector, \code{p} is the
+number of scales selected.
 }
 \description{
-  Generalized BLOSUM and PAM Matrix-Derived Descriptors
+Generalized BLOSUM and PAM Matrix-Derived Descriptors
 }
 \details{
-  This function calculates the generalized BLOSUM
-  matrix-derived descriptors. For users' convenience,
-  \code{protr} provides the BLOSUM45, BLOSUM50, BLOSUM62,
-  BLOSUM80, BLOSUM100, PAM30, PAM40, PAM70, PAM120, and
-  PAM250 matrices for the 20 amino acids to select.
+This function calculates the generalized BLOSUM
+matrix-derived descriptors. For users' convenience,
+\code{protr} provides the BLOSUM45, BLOSUM50, BLOSUM62,
+BLOSUM80, BLOSUM100, PAM30, PAM40, PAM70, PAM120, and
+PAM250 matrices for the 20 amino acids to select.
 }
 \note{
-  Note
+Note
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 blosum = extractBLOSUM(x, submat = 'AABLOSUM62', k = 5, lag = 7, scale = TRUE, silent = FALSE)
 }
 \author{
-  Nan Xiao <\url{http://www.road2stat.com}>
+Nan Xiao <\url{http://www.road2stat.com}>
 }
 \references{
-  Georgiev, A. G. (2009). Interpretable numerical
-  descriptors of amino acid space. Journal of Computational
-  Biology, 16(5), 703--723.
+Georgiev, A. G. (2009). Interpretable numerical descriptors
+of amino acid space. Journal of Computational Biology,
+16(5), 703--723.
 }
 \keyword{BLOSUM}
 \keyword{PCM}

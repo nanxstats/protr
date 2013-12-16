@@ -7,10 +7,10 @@
 %\VignetteKeywords{R, protr, protein sequence, amino acid, feature extraction}
 %\VignettePackage{protr}
 
-\author{Xiao Nan\\Central South University \And 
-        Dongsheng Cao\\Central South University \AND
-        Qingsong Xu\\Central South University}
-\Plainauthor{Xiao Nan, Dongsheng Cao, Qingsong Xu}
+\author{Nan Xiao\\Central South University \And 
+        Qingsong Xu\\Central South University \And
+        Dongsheng Cao\\Central South University}
+\Plainauthor{Nan Xiao, Qingsong Xu, Dongsheng Cao}
 
 \title{\pkg{protr}: Protein Sequence Feature Extraction with \proglang{R}}
 \Plaintitle{protr: Protein Sequence Feature Extraction with R}
@@ -26,7 +26,7 @@
   Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors),
   and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
   Pseudo Amino Acid Composition). Total 14 descriptors in 6 categories.
-  The package is collaboratively developed by Computational Biology and 
+  The package is developed by Computational Biology and 
   Drug Design Group, Central South University.
 }
 
@@ -41,31 +41,31 @@
 \Acceptdate{2012-xx-xx}
 
 \Address{
-  Xiao Nan \\
-  School of Math Science \& Statistics\\
+  Nan Xiao \\
+  School of Mathematics and Statistics\\
   Central South University\\
   Changsha, Hunan, P. R. China\\
   E-mail: \email{road2stat@gmail.com}\\
   URL: \url{http://www.road2stat.com/}\\
-
+  
+  Qingsong Xu\\
+  School of Mathematics and Statistics\\
+  Central South University\\
+  Changsha, Hunan, P. R. China\\
+  E-mail: \email{dasongxu@gmail.com}\\
+  
   Dongsheng Cao\\
-  School of Chemistry \& Chemical Engineering\\
+  School of Pharmaceutical Sciences\\
   Central South University\\
   Changsha, Hunan, P. R. China\\
   E-mail: \email{oriental-cds@163.com}\\
   URL: \url{http://cbdd.csu.edu.cn/}
   
-  Qingsong Xu\\
-  School of Math Science \& Statistics\\
-  Central South University\\
-  Changsha, Hunan, P. R. China\\
-  E-mail: \email{dasongxu@gmail.com}
-  
 }
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = '0.1-0'
+protr.version = '0.2-0'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -113,12 +113,41 @@ Generally, each type of the descriptors(features) could be extracted with a func
   \begin{itemize}
   \item \code{extractPAAC()} - Pseudo-Amino Acid Composition
   \item \code{extractAPAAC()} - Amphiphilic Pseudo-Amino Acid Composition
-  \end{itemize}    
+  \end{itemize}
 \end{itemize}
 
-In the next section, we'll introduce these descriptors and the function usages in this order.
+The descriptors commonly used in Proteochemometric Modeling (PCM) implemented in \pkg{protr} include:
 
-\section{Protein Sequence Descriptors in protr}\label{sec:descriptors}
+\begin{itemize}
+  \item \code{extractScales()} - Generalized Scales-Based Descriptors derived by Principal Components Analysis
+  \begin{itemize}
+  \item \code{extractPropScales()} - Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
+  \item \code{extractDescScales()} - Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
+  \end{itemize}
+  \item \code{extractFAScales()} - Generalized Scales-Based Descriptors derived by Factor Analysis
+  \item \code{extractMDSScales()} - Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+  \item \code{extractBLOSUM()} - Generalized BLOSUM and PAM Matrix-Derived Descriptors
+\end{itemize}
+
+The \pkg{protr} package integrates the functionality of parallellized similarity computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by \pkg{Biostrings}, the corresponding functions listed in the \pkg{protr} package include:
+
+\begin{itemize}
+  \item \code{twoSeqSim()} - Similarity calculation derived by sequence alignment between two protein sequences
+  \item \code{parSeqSim()} - Parallelized pairwise similarity calculation with a list of protein sequences
+\end{itemize}
+
+The \pkg{protr} package also integrates the functionality of parallellized similarity computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms / Entrez Gene IDs, the GO similarity computation is provided by \pkg{GOSemSim}, the corresponding functions listed in the \pkg{protr} package include:
+
+\begin{itemize}
+  \item \code{twoGOSim()} - Similarity calculation derived by GO-terms semantic similarity measures between two GO terms / Entrez Gene IDs
+  \item \code{parGOSim()} - Pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
+\end{itemize}
+
+To use the \code{parSeqSim()} function, we suggest the users to install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} first, according to their platforms. The \pkg{protr} package will automatically decide which backend to use if they are available, specifically, use \pkg{doParallel} under Microsoft Windows, and try to use \pkg{doMC} first under Linux/OS X.
+
+In the next sections, we'll introduce these descriptors and function usages in this order.
+
+\section{Qualitative Descriptors}\label{sec:descriptors}
 
 A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
 
@@ -667,7 +696,156 @@ extractAPAAC(x)
 
 This function has the same arguments as \code{extractPAAC()}.
 
-\clearpage
+\section{Quantitative Descriptors}\label{sec:pcm}
+
+Proteochemometric (PCM) modeling utilizes statistical modeling techniques to model ligand-target interaction space. The below descriptors implemented in \pkg{protr} are commonly used in Proteochemometric modeling.
+
+\begin{itemize}
+\item Generalized Scales-Based Descriptors derived by Principal Components Analysis
+\begin{itemize}
+\item Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
+\item Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
+\end{itemize}
+\item Generalized Scales-Based Descriptors derived by Factor Analysis
+\item Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+\item Generalized BLOSUM and PAM Matrix-Derived Descriptors
+\end{itemize}
+
+Note that each of the generalized scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users could provide totally self-defined property matrices to construct scales-based descriptors.
+
+For example, to compute the ``topological scales'' derived by PCA (using the first 5 principal components), one could use \code{extractDescScales()}:
+
+%
+<<extractDescScales>>=
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+descscales = extractDescScales(x, propmat = 'AATopo', 
+                               index = c(37:41, 43:47), 
+                               pc = 5, lag = 7, silent = FALSE)
+@
+%
+
+the argument \code{propmat} involkes the \code{AATopo} dataset shipped with \pkg{protr} package, and the argument \code{index} selects the 37 to 41 and 43 to 47 columns (molecular descriptors) in the \code{AATopo} dataset to use, the \code{lag} parameter was set for the Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length. At last, we printed the summary of the first 5 principal components (standard deviation, proportion of variance, cumulative proportion of variance).
+
+The result is a length 175 named vector, which is consistent with the descriptors before:
+
+%
+<<extractDescScales2>>=
+length(descscales)
+head(descscales, 15)
+@
+%
+
+For another example, to compute the descriptors derived by BLOSUM62 matrix and use the first 5 scales, one could use:
+
+%
+<<extractBLOSUM>>=
+x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+blosum = extractBLOSUM(x, submat = 'AABLOSUM62', 
+                       k = 5, lag = 7, scale = TRUE, silent = FALSE)
+@
+%
+
+The result is a length 175 named vector:
+
+%
+<<extractBLOSUM2>>=
+length(blosum)
+head(blosum, 15)
+@
+%
+
+\section{Parallelized Similarity Calculation by Sequence Alignment}
+
+Similarity computation derived by local or global protein sequence alignment between a list of protein sequences is great need in the protein related research and applications. However, this sort of pairwise similarity computation often computationally intensive, especially when there exists many protein sequences. Luckily, this process is also embarassingly parallel, the \pkg{protr} package integrates the functionality of parallellized similarity computation derived by local or global protein sequence alignment between a list of protein sequences.
+
+The function \code{twoSeqSim()} calculates the alignment result between two protein sequences, and the function \code{parSeqSim()} calculates the pairwise similarity calculation with a list of protein sequences in parallel:
+
+\begin{CodeInput}
+> s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+> s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
+> s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+> s4 = readFASTA(system.file('protseq/P20160.fasta', package = 'protr'))[[1]]
+> s5 = readFASTA(system.file('protseq/Q9NZP8.fasta', package = 'protr'))[[1]]
+> plist   = list(s1, s2, s3, s4, s5)
+> psimmat = parSeqSim(plist, cores = 4, type = 'local', submat = 'BLOSUM62')
+> print(psimmat)
+\end{CodeInput}
+
+\begin{CodeOutput}
+           [,1]       [,2]       [,3]       [,4]       [,5]
+[1,] 1.00000000 0.11825938 0.10236985 0.04921696 0.03943488
+[2,] 0.11825938 1.00000000 0.18858241 0.12124217 0.06391103
+[3,] 0.10236985 0.18858241 1.00000000 0.05819984 0.06175942
+[4,] 0.04921696 0.12124217 0.05819984 1.00000000 0.05714638
+[5,] 0.03943488 0.06391103 0.06175942 0.05714638 1.00000000
+\end{CodeOutput}
+
+Users should install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} before using \code{parSeqSim()}, according to their operation system. The \pkg{protr} package will automatically decide which backend to use.
+
+\section{Similarity Calculation by GO Semantic Similarity}
+
+The \pkg{protr} package also integrates the functionality of similarity computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms / Entrez Gene IDs.
+
+The function \code{twoGOSim()} calculates the similarity derived by GO-terms semantic similarity measures between two GO terms / Entrez Gene IDs, and the function \code{parGOSim()} calculates the pairwise similarity with a list of GO terms / Entrez Gene IDs:
+
+\begin{CodeInput}
+# by GO Terms
+> go1 = c('GO:0005215', 'GO:0005488', 'GO:0005515', 
++         'GO:0005625', 'GO:0005802', 'GO:0005905')  # AP4B1
+> go2 = c('GO:0005515', 'GO:0005634', 'GO:0005681', 
++         'GO:0008380', 'GO:0031202')                # BCAS2
+> go3 = c('GO:0003735', 'GO:0005622', 'GO:0005840', 
++         'GO:0006412')                              # PDE4DIP
+> glist = list(go1, go2, go3)
+> gsimmat1 = parGOSim(glist, type = 'go', ont = 'CC')
+> print(gsimmat1)
+\end{CodeInput}
+
+\begin{CodeOutput}
+      [,1]  [,2]  [,3]
+[1,] 1.000 0.077 0.055
+[2,] 0.077 1.000 0.220
+[3,] 0.055 0.220 1.000
+\end{CodeOutput}
+
+\begin{CodeInput}
+# by Entrez gene id
+> genelist = list(c('150', '151', '152', '1814', '1815', '1816'))
+> gsimmat2 = parGOSim(genelist, type = 'gene')
+> print(gsimmat2)
+\end{CodeInput}
+
+\begin{CodeOutput}
+       150   151   152  1814  1815  1816
+150  0.689 0.335 0.487 0.133 0.169 0.160
+151  0.335 0.605 0.441 0.171 0.198 0.274
+152  0.487 0.441 0.591 0.151 0.178 0.198
+1814 0.133 0.171 0.151 0.512 0.401 0.411
+1815 0.169 0.198 0.178 0.401 0.619 0.481
+1816 0.160 0.274 0.198 0.411 0.481 0.819
+\end{CodeOutput}
+
+\section{ProtrWeb}
+
+The web service built on protr, namely ProtrWeb, is located at:
+
+\begin{center}
+\url{http://cbdd.csu.edu.cn:8080/protrweb/}
+\end{center}
+
+ProtrWeb (Figure \ref{fig:protrweb}) does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein features presented in the protr package.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/protrweb.png}
+\caption{A Screenshot of ProtrWeb} \label{fig:protrweb}
+\end{figure}
+
+A step-by-step instruction on how to use ProtrWeb could be found at:
+
+\begin{center}
+\url{http://cbdd.csu.edu.cn:8080/protrweb/intro.html}
+\end{center}
 
 \section{Miscellaneous Tools}\label{sec:misc}
 
@@ -718,11 +896,15 @@ IYTKLIFYLDWINDTITENP"
 \end{CodeChunk}
 %
 
-\subsection{Read FASTA format files}
+\subsection{Read FASTA Format files}
 
 The \code{readFASTA()} function provides a convenient way to read protein sequences stored in FASTA format files. See \code{?readFASTA} for details. The returned sequences are stored in a named list, whose components are named with the protein sequences' names.
 
-\subsection{Check Protein Sequences}
+\subsection{Read PDB Format files}
+
+The Protein Data Bank (pdb) file format is a textual file format describing the three dimensional structures of protein. The \code{readPDB()} function provides the functionality to read protein sequences stored in PDB format files. See \code{?readPDB} for details.
+
+\subsection{Sanity Check of the Amino Acid Types}
 
 The \code{protcheck()} function checks if the protein sequence's amino acid types are in the 20 default types, which returns a \code{TRUE} if all the amino acids in the sequence belongs to the 20 default types:
 
@@ -748,7 +930,21 @@ protseg(x, aa = 'M', k = 5)
 @
 %
 
-\clearpage
+\subsection{Auto Cross Covariance (ACC) Computation}
+
+Auto Cross Covariance (ACC) is extensively used in the scales-based descriptors computation, this approach calculates the auto covariance and auto cross covariance for generating scale-based descriptors of the same length. Users could write their own scales-based descriptor functions with the help of \code{acc()} function in the \pkg{protr} package.
+
+\subsection{Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids}
+
+The \pkg{protr} package ships with more than 20 pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the generalized scales-based descriptors, see \code{data(package = 'protr')} for all the datasets included in the \pkg{protr} package.
+
+\subsection{BLOSUM and PAM Matrices for the 20 Amino Acids}
+
+The BLOSUM and PAM matrices for the 20 amino acids could be used to calculate BLOSUM and PAM matrix-derived descriptors with function \code{extractBLOSUM()}, the datasets are named in \code{AABLOSUM45}, \code{AABLOSUM50}, \code{AABLOSUM62}, \code{AABLOSUM80}, \code{AABLOSUM100}, \code{AAPAM30}, \code{AAPAM40}, \code{AAPAM70}, \code{AAPAM120}, and \code{AAPAM250}.
+
+\subsection{Meta Information of the 20 Amino Acids}
+
+As the reference, the \code{AAMetaInfo} dataset includes the meta information of the 20 amino acids used for the 2D and 3D descriptor calculation in the \pkg{protr} package. This dataset include each amino acid's name, one-letter representation, three-letter representation, SMILE representation, PubChem CID and PubChem link. See \code{data(AAMetaInfo)} for details.
 
 \section{Summary}
 
@@ -792,7 +988,9 @@ In this article, we discussed the functionality of the \pkg{protr} package, whic
 
 \section*{Acknowledgments}
 
-We'd like to thank the Computational Biology and Drug Design Group (\url{http://cbdd.csu.edu.cn/index/}) of Central South University for supporting the development of this \proglang{R} package. Further suggestions and comments are welcomed.
+We'd like to thank the Computational Biology and Drug Design Group (\url{http://cbdd.csu.edu.cn/}) of Central South University for supporting the development of this \proglang{R} package. Further suggestions and comments are welcomed.
+
+\clearpage
 
 \nocite{*} % list uncited bibs
 \bibliography{protr}
@@ -800,4 +998,3 @@ We'd like to thank the Computational Biology and Drug Design Group (\url{http://
 \vspace*{-0.35cm}
 
 \end{document}
-

@@ -1,28 +1,32 @@
 Package: protr
 Version: 0.2-0
-Date: 2013-11-26
+Date: 2013-12-10
 Title: Protein Sequence Feature Extraction with R
-Description: The protr package aims for protein sequence feature extraction,
-    which could be easily applied in Bioinformatics and Chemogenomics research.
-    The descriptors listed in this package include Amino Acid Composition
-    (Amino Acid Composition/Dipeptide Composition/Tripeptide Composition)
-    descriptor, Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran
-    Autocorrelation/Geary Autocorrelation) descriptor, CTD
-    (Composition/Transition/Distribution) descriptor, Conjoint Traid
+Description: The protr package aims for protein sequence feature extraction.
+    These features are extensively utilized in Bioinformatics and Chemogenomics
+    research. The qualitative descriptors listed in this package include Amino
+    Acid Composition (Amino Acid Composition/Dipeptide Composition/Tripeptide
+    Composition) descriptor, Autocorrelation (Normalized Moreau-Broto
+    Autocorrelation/Moran Autocorrelation/Geary Autocorrelation) descriptor,
+    CTD (Composition/Transition/Distribution) descriptor, Conjoint Traid
     descriptor, Quasi-sequence Order (Sequence Order Coupling
     Number/Quasi-sequence Order Descriptors) descriptor and Pseudo Amino Acid
     Composition (Pseudo Amino Acid Composition/Amphiphilic Pseudo Amino Acid
-    Composition) descriptor. For Proteochemometric Modeling (PCM) descriptors,
-    it includs the Z-scales descriptor, T-scales descriptor, ST-scales
-    descriptor, Vectors of Hydrophobic, Steric, and Electronic (VHSE)
-    descriptor, MS-WHIM descriptor, Factor Analysis Scales of Generalized AA
-    Information (FASGAI) descriptor, BLOSUM descriptor. It also integrates the
-    functionality of parallellized computation for protein sequence alignment
-    and GO-terms semantic similarity measures between protein sequences, and
-    combination strategy between groups of proteins. The web interface for
-    protr, ProtrWeb, is located at: http://cbdd.csu.edu.cn:8080/protrweb/ . The
-    protr package is developed by Computational Biology and Drug Design Group,
-    Central South University.
+    Composition) descriptor. The quantitative descriptors, for
+    Proteochemometric (PCM) Modeling, includes the Generalized Scales-Based
+    Descriptors derived by Principal Components Analysis, Generalized
+    Scales-Based Descriptors derived by AA-Properties (AAindex), Generalized
+    Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular
+    Descriptors (Topological, WHIM, VHSE, etc.), Generalized Scales-Based
+    Descriptors derived by Factor Analysis, Generalized Scales-Based
+    Descriptors derived by Multidimensional Scaling, and Generalized BLOSUM/PAM
+    Matrix-Derived Descriptors. The protr package also integrates the
+    functionality of parallellized similarity computation derived by protein
+    sequence alignment and GO-terms semantic similarity measures between a list
+    of protein sequences / GO terms / Entrez Gene IDs. ProtrWeb, the web
+    service built on protr, is located at:
+    http://cbdd.csu.edu.cn:8080/protrweb/ . The protr package is developed by
+    Computational Biology and Drug Design Group, Central South University.
 Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
     Dongsheng Cao <oriental-cds@163.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>
@@ -34,34 +38,3 @@ Suggests:
     foreach,
     Biostrings,
     GOSemSim
-Collate:
-    'desc01AAC.R'
-    'desc02DC.R'
-    'desc03TC.R'
-    'desc04MoreauBroto.R'
-    'desc05Moran.R'
-    'desc06Geary.R'
-    'desc07CTDC.R'
-    'desc08CTDT.R'
-    'desc09CTDD.R'
-    'desc10CTriad.R'
-    'desc11SOCN.R'
-    'desc12QSO.R'
-    'desc13PAAC.R'
-    'desc14APAAC.R'
-    'misc01readFASTA.R'
-    'misc02readPDB.R'
-    'misc03protcheck.R'
-    'misc04protseg.R'
-    'misc05getUniProt.R'
-    'misc06acc.R'
-    'par01parSeqSim.R'
-    'par02parGOSim.R'
-    'pcm01extractScales.R'
-    'pcm02extractDescScales.R'
-    'pcm03extractPropScales.R'
-    'pcm04extractFAScales.R'
-    'pcm05extractMDSScales.R'
-    'pcm06extractBLOSUM.R'
-    'protr-datalist.R'
-    'protr-package.R'

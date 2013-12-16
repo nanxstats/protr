@@ -2,13 +2,16 @@
 \name{AABLOSUM50}
 \alias{AABLOSUM50}
 \title{BLOSUM50 Matrix for 20 Amino Acids}
+\usage{
+data(AABLOSUM50)
+}
 \description{
-  BLOSUM50 Matrix for 20 Amino Acids
+BLOSUM50 Matrix for 20 Amino Acids
 }
 \details{
-  BLOSUM50 Matrix for the 20 amino acids. The matrix was
-  extracted from the \code{Biostrings} package of
-  Bioconductor.
+BLOSUM50 Matrix for the 20 amino acids. The matrix was
+extracted from the \code{Biostrings} package of
+Bioconductor.
 }
 \examples{
 data(AABLOSUM50)
