@@ -39,6 +39,9 @@
 #' @param protlist A length \code{n} list containing \code{n} protein sequences, 
 #' each component of the list is a character string, storing one protein sequence.
 #' Unknown sequences should be represented as \code{''}.
+#' @param cores Integer. The number of CPU cores to use for parallel execution, 
+#'        default is \code{2}. Users could use the \code{detectCores()} function
+#'        in the \code{parallel} package to see how many cores they could use.
 #' @param type Type of alignment, default is \code{'local'}, 
 #' could be \code{'global'} or \code{'local'}, 
 #' where \code{'global'} represents Needleman-Wunsch global alignment; 
@@ -49,16 +52,16 @@
 #' 
 #' @return A \code{n} x \code{n} similarity matrix.
 #' 
-#' @note Note
-#' 
 #' @keywords Needleman-Wunsch Smith-Waterman local global sequence alignment parallel similarity parSeqSim
 #'
 #' @aliases parSeqSim
 #' 
 #' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
-#' @seealso See \code{\link{parGOSim}} for paralleled protein similarity
-#' calculation based on Gene Ontology (GO) similarity.
+#' @seealso See \code{twoSeqSim} for protein sequence alignment 
+#' for two protein sequences. See \code{\link{parGOSim}} for 
+#' protein similarity calculation based on 
+#' Gene Ontology (GO) semantic similarity.
 #' 
 #' @export parSeqSim
 #' 
@@ -77,26 +80,26 @@
 parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
   
   Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
-  if ( !Biostrings.exist ) stop('Biostrings is required to run parSeqSim()')
+  if ( !Biostrings.exist ) stop('The Biostrings package is required to run parSeqSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/Biostrings.html to install it.')
   
   foreach.exist = suppressMessages(require(foreach, quietly = TRUE))
   doParallel.exist = suppressMessages(require(doParallel, quietly = TRUE))
   doMC.exist = suppressMessages(require(doMC, quietly = TRUE))
   
-  if ( (foreach.exist) & (doParallel.exist | doMC.exist) ) {
+  if ( ( foreach.exist ) & ( doParallel.exist | doMC.exist ) ) {
     if( !getDoParRegistered() ) {
       if ( .Platform$OS.type == 'windows' & doParallel.exist ) {
-        registerDoParallel(cores)
+        doParallel::registerDoParallel(cores)
       } else if ( .Platform$OS.type == 'unix' & doMC.exist ) {
-        registerDoMC(cores)
+        doMC::registerDoMC(cores)
       } else if ( .Platform$OS.type == 'unix' & doParallel.exist ) {
-        registerDoParallel(cores)
+        doParallel::registerDoParallel(cores)
       } else {
-        stop('doParallel or doMC is required to run parSeqSim()')
+        stop('The doParallel or doMC package is required to run parSeqSim(). Please use install.packages("doParallel") or install.packages("doMC") to install at least one of them.')
       }
     }
   } else {
-    stop('foreach and doParallel/doMC is required to run parSeqSim()')
+    stop('The foreach and doParallel/doMC packages are required to run parSeqSim(). Please use install.packages("foreach") and install.packages("doParallel") / install.packages("doMC") to install them.')
   }
   
   # generate lower matrix index
@@ -139,8 +142,6 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' 
 #' @return An Biostrings object containing the scores and other alignment information.
 #' 
-#' @note Note
-#' 
 #' @keywords Needleman-Wunsch Smith-Waterman local global sequence alignment parallel similarity parSeqSim
 #'
 #' @aliases twoSeqSim
@@ -149,6 +150,8 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' 
 #' @seealso See \code{\link{parSeqSim}} for paralleled pairwise 
 #' protein similarity calculation based on sequence alignment.
+#' See \code{\link{twoGOSim}} for calculating the 
+#' GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
 #' 
 #' @export twoSeqSim
 #' 
@@ -164,7 +167,7 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 twoSeqSim = function (seq1, seq2, type = 'local', submat = 'BLOSUM62') {
   
   Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
-  if ( !Biostrings.exist ) stop('Biostrings is required to run twoSeqSim()')
+  if ( !Biostrings.exist ) stop('The Biostrings package is required to run twoSeqSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/Biostrings.html to install it.')
   
   # sequence alignment for two protein sequences
   s1  = try(Biostrings::AAString(seq1), silent = TRUE)

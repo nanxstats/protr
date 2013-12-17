@@ -34,9 +34,6 @@ Protein Sequence Alignment for Two Protein Sequences
 This function implements the sequence alignment between two
 protein sequences.
 }
-\note{
-Note
-}
 \examples{
 \dontrun{
 s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -50,7 +47,10 @@ Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
 See \code{\link{parSeqSim}} for paralleled pairwise protein
-similarity calculation based on sequence alignment.
+similarity calculation based on sequence alignment. See
+\code{\link{twoGOSim}} for calculating the GO semantic
+similarity between two groups of GO terms or two Entrez
+gene IDs.
 }
 \keyword{Needleman-Wunsch}
 \keyword{Smith-Waterman}

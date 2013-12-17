@@ -1,21 +1,36 @@
-#' Protein Sequence Feature Extraction with R
+#' Protein Sequence Descriptor Calculation and Similarity Computation with R
 #'
-#' The protr package aims for protein sequence feature extraction, 
-#' which could be easily applied in Chemoinformatics, Bioinforamtics 
-#' and Chemogenomics research. The features listed in this package 
-#' include Amino Acid Composition (Amino Acid Composition/Dipeptide 
-#' Composition/Tripeptide Composition), Autocorrelation (Normalized 
-#' Moreau-Broto Autocorrelation/Moran Autocorrelation/Geary 
-#' Autocorrelation), CTD (Composition/Transition/Distribution), 
-#' Conjoint Traid, Quasi-sequence Order (Sequence Order Coupling 
-#' Number/Quasi-sequence Order Descriptors), and Pseudo Amino Acid 
-#' Composition (Pseudo Amino Acid Composition/Amphiphilic Pseudo 
-#' Amino Acid Composition). The package is developed by Computational 
-#' Biology and Drug Design Group, Central South University.
-#'
+#' The protr package focus on offering a unique and comprehensive toolkit 
+#' for protein sequence descriptor calculation and similarity computation. 
+#' The descriptors included in the protr package are extensively utilized 
+#' in Bioinformatics and Chemogenomics research. The qualitative descriptors 
+#' listed in protr include Amino Acid Composition (Amino Acid 
+#' Composition/Dipeptide Composition/Tripeptide Composition) descriptor, 
+#' Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran 
+#' Autocorrelation/Geary Autocorrelation) descriptor, CTD 
+#' (Composition/Transition/Distribution) descriptor, Conjoint Traid descriptor, 
+#' Quasi-sequence Order (Sequence Order Coupling Number/Quasi-sequence Order 
+#' Descriptors) descriptor and Pseudo Amino Acid Composition (Pseudo Amino 
+#' Acid Composition/Amphiphilic Pseudo Amino Acid Composition) descriptor. 
+#' The quantitative descriptors, for Proteochemometric (PCM) Modeling, 
+#' includes the Generalized Scales-Based Descriptors derived by Principal 
+#' Components Analysis, Generalized Scales-Based Descriptors derived by 
+#' AA-Properties (AAindex), Generalized Scales-Based Descriptors derived 
+#' by 20+ classes of 2D and 3D Molecular Descriptors (Topological, 
+#' WHIM, VHSE, etc.), Generalized Scales-Based Descriptors derived by 
+#' Factor Analysis, Generalized Scales-Based Descriptors derived by 
+#' Multidimensional Scaling, and Generalized BLOSUM/PAM Matrix-Derived 
+#' Descriptors. The protr package also integrates the functionality of 
+#' parallellized similarity computation derived by protein sequence alignment 
+#' and Gene Ontology (GO) semantic similarity measures between a list of 
+#' protein sequences / GO terms / Entrez Gene IDs. ProtrWeb, the web service 
+#' built on protr, is located at: http://cbdd.csu.edu.cn:8080/protrweb/ . 
+#' The protr package is developed by Computational Biology and Drug Design 
+#' (CBDD) Group, Central South University.
+#' 
 #' \tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
 #' Version: \tab 0.2-0\cr License: \tab BSD 3-clause License\cr }
-#'
+#' 
 #' @name protr-package
 #' @aliases protr
 #' @docType package
@@ -36,18 +51,7 @@
 #' \url{https://github.com/road2stat/protr/issues}.
 #' 
 #' @references
-#' Nan Xiao, Qingsong Xu and Dongsheng Cao. 
-#' protr: a comprehensive, flexible, open-source R package for 
-#' protein sequence feature extraction. (to appear)
-#' 
-#' @seealso See \code{\link{extractAAC}}, 
-#'              \code{\link{extractDC}}, \code{\link{extractTC}},
-#'              \code{\link{extractMoreauBroto}}, \code{\link{extractMoran}},
-#'              \code{\link{extractGeary}}, \code{\link{extractCTDC}},
-#'              \code{\link{extractCTDT}}, \code{\link{extractCTDD}},
-#'              \code{\link{extractCTriad}}, \code{\link{extractSOCN}},
-#'              \code{\link{extractQSO}}, \code{\link{extractPAAC}},
-#'              \code{\link{extractAPAAC}} for details.
+#' (to appear)
 #' 
 #' @keywords protr package protein sequence amino acid feature extraction
 #'           descriptors chemoinformatics bioinforamtics chemogenomics

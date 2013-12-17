@@ -50,15 +50,15 @@
 #' for combining semantic similarity scores of multiple GO terms associated with protein.
 #' @return A \code{n} x \code{n} similarity matrix.
 #' 
-#' @note Note
-#' 
 #' @keywords GO Gene Ontology similarity parGOSim
 #'
 #' @aliases parGOSim
 #' 
 #' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
-#' @seealso See \code{\link{parSeqSim}} for paralleled protein similarity
+#' @seealso See \code{\link{twoGOSim}} for calculating the 
+#' GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
+#' See \code{\link{parSeqSim}} for paralleled protein similarity
 #' calculation based on Smith-Waterman local alignment.
 #' 
 #' @export parGOSim
@@ -84,7 +84,7 @@ parGOSim = function (golist, type = c('go', 'gene'),
                      measure = 'Resnik', combine = 'BMA') {
   
   GOSemSim.exist = suppressMessages(require(GOSemSim, quietly = TRUE))
-  if ( !GOSemSim.exist ) stop('GOSemSim is required to run parGOSim()')
+  if ( !GOSemSim.exist ) stop('The GOSemSim package is required to run parGOSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html to install it.')
   
   if ( type == 'gene' ) {
     gosimmat = GOSemSim::mgeneSim(unlist(golist), ont = ont, organism = organism, measure = measure, combine = combine, verbose = FALSE)
@@ -135,9 +135,7 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #' @param measure Default is \code{'Resnik'}, could be one of \code{'Resnik'}, \code{'Lin'}, \code{'Rel'}, \code{'Jiang'} or \code{'Wang'}.
 #' @param combine Default is \code{'BMA'}, could be one of \code{'max'}, \code{'average'}, \code{'rcmax'} or \code{'BMA'} 
 #' for combining semantic similarity scores of multiple GO terms associated with protein.
-#' @return A nxn matrix.
-#' 
-#' @note Note
+#' @return A n x n matrix.
 #' 
 #' @keywords GO Gene Ontology similarity twoGOSim
 #'
@@ -145,7 +143,10 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #' 
 #' @author Nan Xiao <\url{http://www.road2stat.com}>
 #' 
-#' @seealso See \code{\link{parSeqSim}} for paralleled protein similarity
+#' @seealso See \code{\link{parGOSim}} for 
+#' protein similarity calculation based on 
+#' Gene Ontology (GO) semantic similarity.
+#' See \code{\link{parSeqSim}} for paralleled protein similarity
 #' calculation based on Smith-Waterman local alignment.
 #' 
 #' @export twoGOSim
@@ -170,7 +171,7 @@ twoGOSim = function (id1, id2, type = c('go', 'gene'),
                      measure = 'Resnik', combine = 'BMA') {
   
   GOSemSim.exist = suppressMessages(require(GOSemSim, quietly = TRUE))
-  if ( !GOSemSim.exist ) stop('GOSemSim is required to run twoGOSim()')
+  if ( !GOSemSim.exist ) stop('The GOSemSim package is required to run twoGOSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html to install it.')
   
   if ( type == 'go' ) {
     sim = GOSemSim::mgoSim(id1, id2, 

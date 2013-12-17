@@ -25,8 +25,6 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales (principal components) selected.
 #' 
-#' @note Note
-#' 
 #' @keywords extract descriptor scales extractPropScales AAindex
 #'
 #' @aliases extractPropScales

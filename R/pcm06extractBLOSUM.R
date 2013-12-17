@@ -23,8 +23,6 @@
 #'        Default is \code{TRUE}.
 #' @return  A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales selected.
-#'         
-#' @note Note
 #' 
 #' @keywords extract BLOSUM extractBLOSUM PCM
 #'

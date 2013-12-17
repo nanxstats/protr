@@ -47,9 +47,6 @@ matrix-derived descriptors. For users' convenience,
 BLOSUM80, BLOSUM100, PAM30, PAM40, PAM70, PAM120, and
 PAM250 matrices for the 20 amino acids to select.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 blosum = extractBLOSUM(x, submat = 'AABLOSUM62', k = 5, lag = 7, scale = TRUE, silent = FALSE)

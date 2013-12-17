@@ -28,8 +28,6 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales (factors) selected.
 #' 
-#' @note Note
-#' 
 #' @keywords extract Factor Analysis extractFAScales PCM
 #'
 #' @aliases extractFAScales

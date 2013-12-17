@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The protr package aims for protein sequence feature extraction, which could be applied in Bioinformatics and Chemogenomics research. The package is developed by Computational Biology and Drug Design Group, Central South University ([http://cbdd.csu.edu.cn/](http://cbdd.csu.edu.cn/) ).
+The protr package focus on offering a unique and comprehensive toolkit for protein sequence descriptor calculation and similarity computation. The descriptors included in the protr package are extensively utilized in Bioinformatics and Chemogenomics research. The protr package is developed by Computational Biology and Drug Design (CBDD) Group, Central South University ([http://cbdd.csu.edu.cn/](http://cbdd.csu.edu.cn/) ).
 
 ## Package Features
 
@@ -62,9 +62,9 @@ Local and global sequence alignment for protein sequences:
   * Between two protein sequences
   * Parallelized pairwise similarity calculation with a list of protein sequences
 
-### Parallelized GO Semantic Similarity Computation
+### Parallelized Gene Ontology (GO) Semantic Similarity Computation
 
-GO-terms semantic similarity measures:
+GO semantic similarity measures:
 
   * Between two groups of GO terms / two Entrez Gene IDs
   * Parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
@@ -89,9 +89,9 @@ GO-terms semantic similarity measures:
 
   * Meta Information of the 20 Amino Acids
 
-## Web Interface
+## Web Service
 
-The web interface for protr, ProtrWeb, is located at:
+ProtrWeb, the web service built on protr, is located at:
 
 [http://cbdd.csu.edu.cn:8080/protrweb/](http://cbdd.csu.edu.cn:8080/protrweb/)
 
@@ -115,4 +115,4 @@ ProtrWeb does not require any knowledge of programming for the users, it is a us
 
 ## Publication
 
-  * Nan Xiao, Qingsong Xu and Dongsheng Cao. "protr: a comprehensive, flexible, open-source R package for protein sequence feature extraction." (to appear)
+  * (to appear)

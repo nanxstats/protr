@@ -3,8 +3,8 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{protr}
-%\VignetteKeywords{R, protr, protein sequence, amino acid, feature extraction}
+%\VignetteIndexEntry{protr: Protein Sequence Descriptor Calculation and Similarity Computation with R}
+%\VignetteKeywords{R, protr, protein sequence, amino acid, descriptor calculation, feature extraction, parallel computation, similarity, sequence alignment, Gene Ontology}
 %\VignettePackage{protr}
 
 \author{Nan Xiao\\Central South University \And 
@@ -12,33 +12,22 @@
         Dongsheng Cao\\Central South University}
 \Plainauthor{Nan Xiao, Qingsong Xu, Dongsheng Cao}
 
-\title{\pkg{protr}: Protein Sequence Feature Extraction with \proglang{R}}
-\Plaintitle{protr: Protein Sequence Feature Extraction with R}
+\title{\pkg{protr}: Protein Sequence Descriptor Calculation and Similarity Computation with \proglang{R}}
+\Plaintitle{protr: Protein Sequence Descriptor Calculation and Similarity Computation with R}
 
 \Abstract{
-  The \pkg{protr} package aims for protein sequence feature extraction, 
-  which could be easily applied in Bioinforamtics and 
-  Chemogenomics research. The descriptors listed in this package include 
-  Amino Acid Composition (Amino Acid Composition/Dipeptide 
-  Composition/Tripeptide Composition), Autocorrelation (Normalized 
-  Moreau-Broto Autocorrelation/Moran Autocorrelation/Geary Autocorrelation), 
-  CTD (Composition/Transition/Distribution), Conjoint Traid, Quasi-Sequence 
-  Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors),
-  and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic
-  Pseudo Amino Acid Composition). Total 14 descriptors in 6 categories.
-  The package is developed by Computational Biology and 
-  Drug Design Group, Central South University.
+  The \pkg{protr} package focus on offering a unique and comprehensive toolkit for protein sequence descriptor calculation and similarity computation. The descriptors included are extensively utilized in Bioinformatics and Chemogenomics research. The qualitative descriptors listed in \pkg{protr} include Amino Acid Composition (Amino Acid Composition/Dipeptide Composition/Tripeptide Composition) descriptor, Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran Autocorrelation/Geary Autocorrelation) descriptor, CTD (Composition/Transition/Distribution) descriptor, Conjoint Traid descriptor, Quasi-sequence Order (Sequence Order Coupling Number/Quasi-sequence Order Descriptors) descriptor and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition/Amphiphilic Pseudo Amino Acid Composition) descriptor. The quantitative descriptors, for Proteochemometric (PCM) Modeling, includes the Generalized Scales-Based Descriptors derived by Principal Components Analysis, Generalized Scales-Based Descriptors derived by AA-Properties (AAindex), Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.), Generalized Scales-Based Descriptors derived by Factor Analysis, Generalized Scales-Based Descriptors derived by Multidimensional Scaling, and Generalized BLOSUM/PAM Matrix-Derived Descriptors. The \pkg{protr} package also integrates the functionality of parallellized similarity computation derived by protein sequence alignment and Gene Ontology (GO) semantic similarity measures between a list of protein sequences / GO terms / Entrez Gene IDs. \pkg{ProtrWeb}, the web service built on \pkg{protr}, is located at: \url{http://cbdd.csu.edu.cn:8080/protrweb/}. The \pkg{protr} package is developed by Computational Biology and Drug Design (CBDD) Group, Central South University.
 }
 
-\Keywords{\proglang{R}, protr, protein sequence, amino acid, feature extraction}
-\Plainkeywords{R, protr, protein sequence, amino acid, feature extraction}
+\Keywords{\proglang{R}, \pkg{protr}, protein sequence, amino acid, descriptor calculation, feature extraction, parallel computation, similarity, sequence alignment, Gene Ontology}
+\Plainkeywords{R, protr, protein sequence, amino acid, descriptor calculation, feature extraction, parallel computation, similarity, sequence alignment, Gene Ontology}
 
 \Volume{xx}
 \Issue{x}
 \Month{Xxxxx}
-\Year{2012}
-\Submitdate{2012-xx-xx}
-\Acceptdate{2012-xx-xx}
+\Year{2013}
+\Submitdate{2013-xx-xx}
+\Acceptdate{2013-xx-xx}
 
 \Address{
   Nan Xiao \\
@@ -75,11 +64,11 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 
 \section{Introduction}\label{sec:intro}
 
-The \pkg{protr} package \citep{CRAN:protr} presented in this article implemented most of the state-of-the-art protein sequence feature extraction methods with \proglang{R}. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{protr}. Many more examples are available within the package.
+The \pkg{protr} package \citep{CRAN:protr} implemented most of the state-of-the-art protein sequence descriptors with \proglang{R}. Several self-explanatory examples have been included to illustrate the benefits of using \pkg{protr}. Many more examples are available within the package.
 
-The \pkg{protr} package is available from the Comprehensive \proglang{R} Archive Network (CRAN) now, visit \url{http://CRAN.R-project.org/package=protr} for more details. This vignette corresponds to \pkg{protr} version \Sexpr{protr.version} and was typeset on \Sexpr{now.date}.
+The \pkg{protr} package is available from the Comprehensive \proglang{R} Archive Network (\url{http://CRAN.R-project.org/package=protr}). This vignette corresponds to \pkg{protr} version \Sexpr{protr.version} and was typeset on \Sexpr{now.date}.
 
-Generally, each type of the descriptors(features) could be extracted with a function named \code{extractX()} in the \pkg{protr} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
+Generally, each type of the descriptors (features) could be extracted with a function named \code{extractX()} in the \pkg{protr} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
 
 \begin{itemize}
   \item Amino Acid Composition
@@ -143,13 +132,13 @@ The \pkg{protr} package also integrates the functionality of parallellized simil
   \item \code{parGOSim()} - Pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
 \end{itemize}
 
-To use the \code{parSeqSim()} function, we suggest the users to install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} first, according to their platforms. The \pkg{protr} package will automatically decide which backend to use if they are available, specifically, use \pkg{doParallel} under Microsoft Windows, and try to use \pkg{doMC} first under Linux/OS X.
+To use the \code{parSeqSim()} function, we suggest the users to install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} first, according to their platforms. The \pkg{protr} package will automatically decide which backend to use if they are available, specifically, use \pkg{doParallel} under Microsoft Windows, and try to use \pkg{doMC} first under GNU Linux/OS X.
 
-In the next sections, we'll introduce these descriptors and function usages in this order.
+In the next sections, we'll introduce the descriptors and function usage in this order.
 
 \section{Qualitative Descriptors}\label{sec:descriptors}
 
-A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed features are roughly divided into 4 groups according to their known applications described in the literature.
+A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed descriptors are roughly divided into 4 groups according to their known applications described in the literature.
 
 A protein sequence could be divided equally into segments and the methods, described as follows for the global sequence, could be applied to each segment.
 
@@ -163,7 +152,7 @@ $$
 
 where $N_r$ is the number of the amino acid type $r$ and $N$ is the length of the sequence.
 
-As was described above, we could use the function \code{extractAAC()} to extract the features from protein sequences:
+As was described above, we could use the function \code{extractAAC()} to extract the descriptors (features) from protein sequences:
 
 %
 <<extractAAC>>=
@@ -177,13 +166,13 @@ Here with the function \code{readFASTA()} we loaded a single protein sequence (P
 
 \subsection{Dipeptide Composition (DC)}\label{subsec:dc}
 
-The Dipeptide Composition (DC) gives 400 features, defined as:
+The Dipeptide Composition (DC) gives 400 descriptors, defined as:
 
 $$
 f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
 $$
 
-where $N_{rs}$ is the number of dipeptide represented by amino acid type $r$ and type $s$. Similar to \code{extractAAC()}, here we use \code{extractDC()} to compute the features:
+where $N_{rs}$ is the number of dipeptide represented by amino acid type $r$ and type $s$. Similar to \code{extractAAC()}, here we use \code{extractDC()} to compute the descriptors:
 
 %
 <<extractDC>>=
@@ -196,7 +185,7 @@ Here we only showed the first 30 elements of the result vector and omitted the r
 
 \subsection{Tripeptide Composition (TC)}\label{subsec:tc}
 
-The Tripeptide Composition (TC) gives 8000 features, defined as:
+The Tripeptide Composition (TC) gives 8000 descriptors, defined as:
 
 $$
 f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
@@ -459,7 +448,7 @@ extractCTDD(x)
 
 \subsection{Conjoint Triad Descriptors}\label{ssec:ctraid}
 
-Conjoint triad descriptors are proposed by \citet{shenjw}. These conjoint triad features abstracts the features of protein pairs based on the classification of amino acids. In this approach, each protein sequence is represented by a vector space consisting of features of amino acids. To reduce the dimensions of vector space, the 20 amino acids were clustered into several classes according to their dipoles and volumes of the side chains. The conjoint triad features are calculated as follows:
+Conjoint triad descriptors are proposed by \citet{shenjw}. These conjoint triad descriptors abstracts the features of protein pairs based on the classification of amino acids. In this approach, each protein sequence is represented by a vector space consisting of descriptors of amino acids. To reduce the dimensions of vector space, the 20 amino acids were clustered into several classes according to their dipoles and volumes of the side chains. The conjoint triad descriptors are calculated as follows:
 
 \textbf{Step 1: Classification of Amino Acids}
 
@@ -541,7 +530,7 @@ extractSOCN(x)
 
 Users could also specify the maximum lag value with the \code{nlag} argument.
 
-\textbf{Note}: In addition to Schneider-Wrede physicochemical distance matrix \citep{wrede} used by Kuo-Chen Chou, another chemical distance matrix by \citet{grantham} is also used here. So the feature dimension will be \code{nlag * 2}. The quasi-sequence-order descriptors described next also utilized the two matrices.
+\textbf{Note}: In addition to Schneider-Wrede physicochemical distance matrix \citep{wrede} used by Kuo-Chen Chou, another chemical distance matrix by \citet{grantham} is also used here. So the descriptors dimension will be \code{nlag * 2}. The quasi-sequence-order descriptors described next also utilized the two matrices.
 
 \textbf{\subsubsection{Quasi-sequence-order Descriptors}}\label{sssec:qso}
 
@@ -827,21 +816,21 @@ The function \code{twoGOSim()} calculates the similarity derived by GO-terms sem
 
 \section{ProtrWeb}
 
-The web service built on protr, namely ProtrWeb, is located at:
+The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 
 \begin{center}
 \url{http://cbdd.csu.edu.cn:8080/protrweb/}
 \end{center}
 
-ProtrWeb (Figure \ref{fig:protrweb}) does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein features presented in the protr package.
+\pkg{ProtrWeb} (Figure \ref{fig:protrweb}) does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein descriptors presented in the \pkg{protr} package.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/protrweb.png}
-\caption{A Screenshot of ProtrWeb} \label{fig:protrweb}
+\caption{A Screenshot of \pkg{ProtrWeb}} \label{fig:protrweb}
 \end{figure}
 
-A step-by-step instruction on how to use ProtrWeb could be found at:
+A step-by-step instruction on how to use \pkg{ProtrWeb} could be found at:
 
 \begin{center}
 \url{http://cbdd.csu.edu.cn:8080/protrweb/intro.html}
@@ -948,31 +937,31 @@ As the reference, the \code{AAMetaInfo} dataset includes the meta information of
 
 \section{Summary}
 
-The descriptors' information has been listed in table \ref{tab:all}.
+The summary of the qualitative descriptors in the \pkg{protr} package is listed in table \ref{tab:all}.
 
 \begin{table}[htbp]
   \centering
-  \caption{List of \pkg{protr} computed features for protein sequences}
-  \footnotesize{
-    \begin{tabular}{ccc}
+  \caption{List of qualitative descriptors in \pkg{protr}}
+  \scriptsize{
+    \begin{tabular}{p{130pt}p{130pt}p{80pt}p{80pt}}
     \addlinespace
     \toprule
-    Feature Group & Feature Name & Feature Dimension \\
+    Descriptor Group & Descriptor Name & Descriptor Dimension & Function Name\\
     \midrule
-    Amino Acid Composition & Amino Acid Composition & 20 \\
-          & Dipeptide Composition & 400 \\
-          & Tripeptide Composition & 8000 \\
-    Autocorrelation & Normalized Moreau-Broto Autocorrelation & 240\footnotemark[1]  \\
-          & Moran Autocorrelation & 240\footnotemark[1] \\
-          & Geary Autocorrelation & 240\footnotemark[1] \\
-    CTD   & Composition & 21 \\
-          & Transition & 21 \\
-          & Distribution & 105 \\
-    Conjoint Triad & Conjoint Triad & 343 \\
-    Quasi-sequence-order Descriptors & Sequence-order-coupling Number & 60\footnotemark[2] \\
-          & Quasi-sequence-order Descriptors & 100\footnotemark[2] \\
-    Pseudo-Amino Acid Composition & Pseudo-Amino Acid Composition & 50\footnotemark[3] \\
-          & Amphiphilic Pseudo-Amino Acid Composition & 80\footnotemark[4] \\
+    Amino Acid Composition & Amino Acid Composition & 20 & \code{extractAAC()} \\
+          & Dipeptide Composition & 400 & \code{extractDC()} \\
+          & Tripeptide Composition & 8000 & \code{extractTC()} \\
+    Autocorrelation & Normalized Moreau-Broto Autocorrelation & 240\footnotemark[1]  & \code{extractMoreauBroto()} \\
+          & Moran Autocorrelation & 240\footnotemark[1] & \code{extractMoran()} \\
+          & Geary Autocorrelation & 240\footnotemark[1] & \code{extractGeary()} \\
+    CTD   & Composition & 21  & \code{extractCTDC()} \\
+          & Transition & 21 & \code{extractCTDT()} \\
+          & Distribution & 105 & \code{extractCTDD()} \\
+    Conjoint Triad & Conjoint Triad & 343 & \code{extractCTriad()} \\
+    Quasi-Sequence-Order & Sequence-Order-Coupling Number & 60\footnotemark[2] & \code{extractSOCN()} \\
+          & Quasi-Sequence-Order Descriptors & 100\footnotemark[2] & \code{extractQSO()} \\
+    Pseudo-Amino Acid Composition & Pseudo-Amino Acid Composition & 50\footnotemark[3] & \code{extractPAAC()} \\
+          & Amphiphilic Pseudo-Amino Acid Composition & 80\footnotemark[4] & \code{extractAPAAC()} \\
     \bottomrule
     \end{tabular}
   }
@@ -980,15 +969,78 @@ The descriptors' information has been listed in table \ref{tab:all}.
 \end{table}
 
 \footnotetext[1]{The number depends on the choice of the number of properties of amino acids and the choice of the maximum values of the \code{lag}. The default is use 8 types of properties and \code{lag} = 30.}
-\footnotetext[2]{The number depends on the maximum value of \code{lag}. By default \code{lag} = 30. And two distance matrices were used, so the feature dimension is $30 \times 2 = 60$ and $(20 + 30) \times 2 = 100$.}
+\footnotetext[2]{The number depends on the maximum value of \code{lag}. By default \code{lag} = 30. And two distance matrices were used, so the descriptor dimension is $30 \times 2 = 60$ and $(20 + 30) \times 2 = 100$.}
 \footnotetext[3]{The number depends on the choice of the number of the set of amino acid properties and the choice of the $\lambda$ value. The default is use 3 types of properties proposed by Kuo-Chen Chou and $\lambda = 30$.}
 \footnotetext[4]{The number depends on the choice of the $\lambda$ vlaue. The default is that $\lambda = 30$.}
 
-In this article, we discussed the functionality of the \pkg{protr} package, which is trying to offer a comprehensive and neat choice for protein sequence feature extraction.
+The summary of the quantitative (scales-based) descriptors in the \pkg{protr} package is listed in table \ref{tab:all2}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{List of quantitative descriptors in \pkg{protr}}
+  \footnotesize{
+    \begin{tabular}{p{130pt}p{200pt}p{90pt}}
+    \addlinespace
+    \toprule
+    Derived by & Descriptor Class & Function Name \\
+    \midrule
+    Principal Components Analysis & Generalized Scales-Based Descriptors derived by Principal Components Analysis & \code{extractScales()} \\
+          & Generalized Scales-Based Descriptors derived by Amino Acid Properties (AAindex) & \code{extractPropScales()} \\
+          & Generalized Scales-Based Descriptors derived by 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.) & \code{extractDescScales()} \\
+    Factor Analysis & Generalized Scales-Based Descriptors derived by Factor Analysis & \code{extractFAScales()} \\
+    Multidimensional Scaling & Generalized Scales-Based Descriptors derived by Multidimensional Scaling & \code{extractMDSScales()} \\
+    Substitution Matrix & Generalized BLOSUM and PAM Matrix-Derived Descriptors & \code{extractBLOSUM()} \\
+    \bottomrule
+    \end{tabular}
+  }
+  \label{tab:all2}
+\end{table}
+
+The summary of the amino acid descriptor sets used by scales-based descriptors provided in the \pkg{protr} package is listed in table \ref{tab:all3}. Note that the non-informative descriptors (like the descriptors have only one value across all the 20 amino acids) in these datasets have already been filtered out.
+
+\begin{table}[htbp]
+  \centering
+  \caption{List of the pre-calculated descriptor sets of the 20 amino acids in \pkg{protr}}
+  \footnotesize{
+    \begin{tabular}{lccc}
+    \addlinespace
+    \toprule
+    Dataset Name & Descriptor Set Name & Dimensionality & Calculated by \\
+    \midrule
+    \code{AA2DACOR} & 2D Autocorrelations Descriptors & 92 & Dragon \\
+    \code{AA3DMoRSE} & 3D-MoRSE Descriptors & 160 & Dragon \\
+    \code{AAACF} & Atom-Centred Fragments Descriptors & 6 & Dragon \\
+    \code{AABurden} & Burden Eigenvalues Descriptors & 62 & Dragon \\
+    \code{AAConn} & Connectivity Indices Descriptors & 33 & Dragon \\
+    \code{AAConst} & Constitutional Descriptors & 23 & Dragon \\
+    \code{AAEdgeAdj} & Edge Adjacency Indices Descriptors & 97 & Dragon \\
+    \code{AAEigIdx} & Eigenvalue-Based Indices Descriptors & 44 & Dragon \\
+    \code{AAFGC} & Functional Group Counts Descriptors & 5 & Dragon \\
+    \code{AAGeom} & Geometrical Descriptors & 41 & Dragon \\
+    \code{AAGETAWAY} & GETAWAY Descriptors & 194 & Dragon \\
+    \code{AAInfo} & Information Indices Descriptors & 47 & Dragon \\
+    \code{AAMolProp} & Molecular Properties Descriptors & 12 & Dragon \\
+    \code{AARandic} & Randic Molecular Profiles Descriptors & 41 & Dragon \\
+    \code{AARDF} & RDF Descriptors & 82 & Dragon \\
+    \code{AATopo} & Topological Descriptors & 78 & Dragon \\
+    \code{AATopoChg} & Topological Charge Indices Descriptors & 15 & Dragon \\
+    \code{AAWalk} & Walk and Path Counts Descriptors & 40 & Dragon \\
+    \code{AAWHIM} & WHIM Descriptors & 99 & Dragon \\
+    \code{AACPSA} & CPSA Descriptors & 41 & Accelrys Discovery Studio \\
+    \code{AADescAll} & All the 2D Descriptors Calculated by Dragon & 1171 & Dragon \\
+    \code{AAMOE2D} & All the 2D Descriptors Calculated by MOE & 148 & MOE \\
+    \code{AAMOE3D} & All the 3D Descriptors Calculated by MOE & 143 & MOE \\
+    \bottomrule
+    \end{tabular}
+  }
+  \label{tab:all3}
+\end{table}
+
+In this article, we discussed the functionality of the \pkg{protr} package, which is trying to offer a comprehensive and unique toolkit for protein sequence descriptor calculation and similarity computation.
 
 \section*{Acknowledgments}
 
-We'd like to thank the Computational Biology and Drug Design Group (\url{http://cbdd.csu.edu.cn/}) of Central South University for supporting the development of this \proglang{R} package. Further suggestions and comments are welcomed.
+We would like to thank the Computational Biology and Drug Design (CBDD) Group (\url{http://cbdd.csu.edu.cn/}) of Central South University for their inspiring workshops and their support for the development of the \pkg{protr} package.
 
 \clearpage
 

@@ -49,9 +49,6 @@ generalized scales-based descriptors derived by 20+ classes
 of 2D and 3D molecular descriptors (Topological, WHIM,
 VHSE, etc.) in the protr package.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 data(AAindex)

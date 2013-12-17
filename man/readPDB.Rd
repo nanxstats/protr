@@ -41,6 +41,5 @@ See \code{\link{readFASTA}} for reading protein sequences
 in FASTA format.
 }
 \keyword{PDB}
-\keyword{Rcpi}
 \keyword{readPDB}
 

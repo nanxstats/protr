@@ -44,9 +44,6 @@ Ontology (GO) Similarity
 This function calculates protein sequence similarity based
 on Gene Ontology (GO) similarity.
 }
-\note{
-Note
-}
 \examples{
 \dontrun{
 # by GO Terms
@@ -66,9 +63,11 @@ print(gsimmat2) }
 Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-See \code{\link{parSeqSim}} for paralleled protein
-similarity calculation based on Smith-Waterman local
-alignment.
+See \code{\link{twoGOSim}} for calculating the GO semantic
+similarity between two groups of GO terms or two Entrez
+gene IDs. See \code{\link{parSeqSim}} for paralleled
+protein similarity calculation based on Smith-Waterman
+local alignment.
 }
 \keyword{GO}
 \keyword{Gene}

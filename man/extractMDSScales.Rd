@@ -43,9 +43,6 @@ descriptors derived by Multidimensional Scaling (MDS).
 Users could provide customized amino acid property
 matrices.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 data(AATopo)

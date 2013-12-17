@@ -10,6 +10,11 @@ parSeqSim(protlist, cores = 2, type = "local", submat = "BLOSUM62")
   a character string, storing one protein sequence. Unknown
   sequences should be represented as \code{''}.}
 
+  \item{cores}{Integer. The number of CPU cores to use for
+  parallel execution, default is \code{2}. Users could use
+  the \code{detectCores()} function in the \code{parallel}
+  package to see how many cores they could use.}
+
   \item{type}{Type of alignment, default is \code{'local'},
   could be \code{'global'} or \code{'local'}, where
   \code{'global'} represents Needleman-Wunsch global
@@ -34,9 +39,6 @@ This function implemented the parallellized version for
 calculating protein sequence similarity based on sequence
 alignment.
 }
-\note{
-Note
-}
 \examples{
 \dontrun{
 s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
@@ -52,8 +54,9 @@ print(psimmat) }
 Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-See \code{\link{parGOSim}} for paralleled protein
-similarity calculation based on Gene Ontology (GO)
+See \code{twoSeqSim} for protein sequence alignment for two
+protein sequences. See \code{\link{parGOSim}} for protein
+similarity calculation based on Gene Ontology (GO) semantic
 similarity.
 }
 \keyword{Needleman-Wunsch}

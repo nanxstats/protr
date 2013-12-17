@@ -24,8 +24,6 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales (dimensionality) selected.
 #' 
-#' @note Note
-#' 
 #' @keywords extract scales Multidimensional Scaling extractMDSScales PCM
 #'
 #' @aliases extractMDSScales

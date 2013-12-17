@@ -44,9 +44,6 @@ which AAindex properties to select from the AAindex
 database by specify the numerical or character index of the
 properties in the AAindex database.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 propscales = extractPropScales(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)

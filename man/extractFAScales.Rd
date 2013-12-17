@@ -48,9 +48,6 @@ This function calculates the generalized scales-based
 descriptors derived by Factor Analysis (FA). Users could
 provide customized amino acid property matrices.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 data(AATopo)

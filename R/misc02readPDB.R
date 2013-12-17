@@ -15,7 +15,7 @@
 #' @return A character vector, representing the amino acid sequence 
 #'         of the single-letter code.
 #' 
-#' @keywords Rcpi PDB readPDB
+#' @keywords PDB readPDB
 #'
 #' @aliases readPDB
 #' 

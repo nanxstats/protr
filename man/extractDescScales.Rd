@@ -59,12 +59,10 @@ descriptors to select from one of these deseriptor sets by
 specify the numerical or character index of the molecular
 descriptors in the descriptor set.
 }
-\note{
-Note
-}
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47), pc = 5, lag = 7, silent = FALSE)
+descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47),
+                               pc = 5, lag = 7, silent = FALSE)
 }
 \author{
 Nan Xiao <\url{http://www.road2stat.com}>

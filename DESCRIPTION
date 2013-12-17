@@ -1,14 +1,16 @@
 Package: protr
 Version: 0.2-0
 Date: 2013-12-10
-Title: Protein Sequence Feature Extraction with R
-Description: The protr package aims for protein sequence feature extraction.
-    These features are extensively utilized in Bioinformatics and Chemogenomics
-    research. The qualitative descriptors listed in this package include Amino
-    Acid Composition (Amino Acid Composition/Dipeptide Composition/Tripeptide
-    Composition) descriptor, Autocorrelation (Normalized Moreau-Broto
-    Autocorrelation/Moran Autocorrelation/Geary Autocorrelation) descriptor,
-    CTD (Composition/Transition/Distribution) descriptor, Conjoint Traid
+Title: Protein Sequence Descriptor Calculation and Similarity Computation with R
+Description: The protr package focus on offering a unique and comprehensive
+    toolkit for protein sequence descriptor calculation and similarity
+    computation. The descriptors included in the protr package are extensively
+    utilized in Bioinformatics and Chemogenomics research. The qualitative
+    descriptors listed in protr include Amino Acid Composition (Amino Acid
+    Composition/Dipeptide Composition/Tripeptide Composition) descriptor,
+    Autocorrelation (Normalized Moreau-Broto Autocorrelation/Moran
+    Autocorrelation/Geary Autocorrelation) descriptor, CTD
+    (Composition/Transition/Distribution) descriptor, Conjoint Traid
     descriptor, Quasi-sequence Order (Sequence Order Coupling
     Number/Quasi-sequence Order Descriptors) descriptor and Pseudo Amino Acid
     Composition (Pseudo Amino Acid Composition/Amphiphilic Pseudo Amino Acid
@@ -22,11 +24,12 @@ Description: The protr package aims for protein sequence feature extraction.
     Descriptors derived by Multidimensional Scaling, and Generalized BLOSUM/PAM
     Matrix-Derived Descriptors. The protr package also integrates the
     functionality of parallellized similarity computation derived by protein
-    sequence alignment and GO-terms semantic similarity measures between a list
-    of protein sequences / GO terms / Entrez Gene IDs. ProtrWeb, the web
-    service built on protr, is located at:
+    sequence alignment and Gene Ontology (GO) semantic similarity measures
+    between a list of protein sequences / GO terms / Entrez Gene IDs. ProtrWeb,
+    the web service built on protr, is located at:
     http://cbdd.csu.edu.cn:8080/protrweb/ . The protr package is developed by
-    Computational Biology and Drug Design Group, Central South University.
+    Computational Biology and Drug Design (CBDD) Group, Central South
+    University.
 Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
     Dongsheng Cao <oriental-cds@163.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>
@@ -35,6 +38,8 @@ URL: https://github.com/road2stat/protr/
 BugReports: https://github.com/road2stat/protr/issues
 LazyData: yes
 Suggests:
-    foreach,
     Biostrings,
-    GOSemSim
+    GOSemSim,
+    foreach,
+    doParallel,
+    doMC

@@ -22,11 +22,11 @@
 #' 
 NULL
 
-#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 [Semiempirical AM1]
+#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
 #' 
-#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 [Semiempirical AM1]
+#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
 #' 
-#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 [Semiempirical AM1]
+#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
 #' 
 #' @docType data
 #' @name OptAA3d
@@ -35,7 +35,8 @@ NULL
 #' @examples
 #' # This operation requires the rcdk package
 #' # require(rcdk)
-#' # optaa3d = load.molecules(system.file('sysdata/OptAA3d.sdf', package = 'protr'), type = 'sdf')
+#' # optaa3d = load.molecules(system.file('sysdata/OptAA3d.sdf', package = 'protr'))
+#' # view.molecule.2d(optaa3d[[1]])  # view the first AA
 NULL
 
 #' Meta Information for the 20 Amino Acids

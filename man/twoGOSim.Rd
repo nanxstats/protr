@@ -37,7 +37,7 @@ twoGOSim(id1, id2, type = c("go", "gene"), ont = "MF", organism = "human",
   multiple GO terms associated with protein.}
 }
 \value{
-A nxn matrix.
+A n x n matrix.
 }
 \description{
 Protein Similarity Calculation based on Gene Ontology (GO)
@@ -46,9 +46,6 @@ Similarity
 \details{
 This function calculates the Gene Ontology (GO) similarity
 between two groups of GO terms or two Entrez gene IDs.
-}
-\note{
-Note
 }
 \examples{
 \dontrun{
@@ -68,9 +65,11 @@ print(gsim2) }
 Nan Xiao <\url{http://www.road2stat.com}>
 }
 \seealso{
-See \code{\link{parSeqSim}} for paralleled protein
-similarity calculation based on Smith-Waterman local
-alignment.
+See \code{\link{parGOSim}} for protein similarity
+calculation based on Gene Ontology (GO) semantic
+similarity. See \code{\link{parSeqSim}} for paralleled
+protein similarity calculation based on Smith-Waterman
+local alignment.
 }
 \keyword{GO}
 \keyword{Gene}

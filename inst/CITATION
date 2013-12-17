@@ -5,7 +5,7 @@ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
      
 citEntry(entry = "Manual",
-title = "protr: Protein Sequence Feature Extraction with R",
+title = "protr: Protein Sequence Descriptor Calculation and Similarity Computation with R",
 author = personList(as.person("Nan Xiao"),
 					as.person("Qingsong Xu")),
                     as.person("Dongsheng Cao"),
@@ -16,5 +16,5 @@ author = personList(as.person("Nan Xiao"),
 textVersion =
 paste("Nan Xiao, Qingsong Xu, Dongsheng Cao (",
        year,
-       "). protr: Protein Sequence Feature Extraction with R. ",
+       "). protr: Protein Sequence Descriptor Calculation and Similarity Computation with R. ",
        vers, ".", sep=""))
