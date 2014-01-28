@@ -41,3 +41,8 @@ Version 0.2-0 (2013-12-10)
   * initial version of pairwise semantic similarity calculation with a list of GO terms / Entrez Gene IDs
   * initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
   * introducing ProtWeb, the web service based on protr: http://cbdd.csu.edu.cn:8080/protrweb/
+
+Version 0.2-1 (2014-01-25)
+------------------------------------------------------------------------------
+
+  * Added LICENSE file according to CRAN policies

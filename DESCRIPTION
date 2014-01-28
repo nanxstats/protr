@@ -1,6 +1,6 @@
 Package: protr
-Version: 0.2-0
-Date: 2013-12-10
+Version: 0.2-1
+Date: 2014-01-25
 Title: Protein Sequence Descriptor Calculation and Similarity Computation with R
 Description: The protr package focus on offering a unique and comprehensive
     toolkit for protein sequence descriptor calculation and similarity
@@ -33,7 +33,7 @@ Description: The protr package focus on offering a unique and comprehensive
 Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
     Dongsheng Cao <oriental-cds@163.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>
-License: BSD 3-clause License
+License: BSD 3-clause License + file LICENSE
 URL: https://github.com/road2stat/protr/
 BugReports: https://github.com/road2stat/protr/issues
 LazyData: yes
