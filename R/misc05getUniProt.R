@@ -12,7 +12,7 @@
 #'
 #' @aliases getUniProt
 #' 
-#' @author Nan Xiao <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://r2s.name}>
 #' 
 #' @seealso See \code{\link{readFASTA}} for reading FASTA format files.
 #' 

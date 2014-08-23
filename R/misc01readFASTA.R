@@ -35,7 +35,7 @@
 #'       e.g. {1, 3, 7} and {4, 6}, might belong to the 
 #'       same class and might belong to different classes.
 #' 
-#' @author Nan Xiao <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://r2s.name}>
 #' 
 #' @seealso See \code{\link{getUniProt}} for retrieving protein sequences 
 #'          from uniprot.org

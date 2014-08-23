@@ -46,3 +46,8 @@ Version 0.2-1 (2014-01-25)
 ------------------------------------------------------------------------------
 
   * Added LICENSE file according to CRAN policies
+
+Version 0.3-0 (2014-06-20)
+------------------------------------------------------------------------------
+
+  * Added an example workflow using protr in the vignette

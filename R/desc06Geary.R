@@ -40,7 +40,7 @@
 #'
 #' @aliases extractGeary
 #' 
-#' @author Nan Xiao <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://r2s.name}>
 #' 
 #' @seealso See \code{\link{extractMoreauBroto}} and \code{\link{extractMoran}} 
 #'          for Moreau-Broto autocorrelation descriptors and 

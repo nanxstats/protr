@@ -56,7 +56,7 @@
 #'
 #' @aliases parSeqSim
 #' 
-#' @author Nan Xiao <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://r2s.name}>
 #' 
 #' @seealso See \code{twoSeqSim} for protein sequence alignment 
 #' for two protein sequences. See \code{\link{parGOSim}} for 
@@ -146,7 +146,7 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #'
 #' @aliases twoSeqSim
 #' 
-#' @author Nan Xiao <\url{http://www.road2stat.com}>
+#' @author Nan Xiao <\url{http://r2s.name}>
 #' 
 #' @seealso See \code{\link{parSeqSim}} for paralleled pairwise 
 #' protein similarity calculation based on sequence alignment.
