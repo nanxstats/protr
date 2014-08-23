@@ -1,32 +1,37 @@
 .goPairSim = function (twoid, golist = golist, ont = ont, organism = organism, measure = measure, combine = combine) {
-  
+
   id1 = twoid[1]
   id2 = twoid[2]
-  
+
   if ( all(golist[[id1]] == '') | all(golist[[id2]] == '') ) {
-    
+
     sim = 0L
-    
+
   } else {
-    
+
     id1good = 1:length(golist[[id1]])
     id2good = 1:length(golist[[id2]])
-    
+
     gid1 = as.character(golist[[id1]][id1good])
     gid2 = as.character(golist[[id2]][id2good])
-    
-    res = try(suppressWarnings(GOSemSim::mgoSim(gid1, gid2, ont = ont, organism = organism, measure = measure, combine = combine)), silent = TRUE)
-    
+
+    res = try(suppressWarnings(GOSemSim::mgoSim(gid1, gid2, 
+                                                ont = ont, 
+                                                organism = organism, 
+                                                measure = measure, 
+                                                combine = combine)), 
+              silent = TRUE)
+
     if ( is.numeric(res) ) {
       sim = res
-      } else {
-        sim = 0L
-      }
-    
+    } else {
+      sim = 0L
+    }
+
   }
-  
+
   return(sim)
-  
+
 }
 
 #' Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
@@ -82,36 +87,33 @@
 parGOSim = function (golist, type = c('go', 'gene'), 
                      ont = 'MF', organism = 'human', 
                      measure = 'Resnik', combine = 'BMA') {
-  
-  GOSemSim.exist = suppressMessages(require(GOSemSim, quietly = TRUE))
-  if ( !GOSemSim.exist ) stop('The GOSemSim package is required to run parGOSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html to install it.')
-  
+
   if ( type == 'gene' ) {
     gosimmat = GOSemSim::mgeneSim(unlist(golist), ont = ont, organism = organism, measure = measure, combine = combine, verbose = FALSE)
   }
-  
+
   if ( type == 'go' ) {
-    
+
     # generate lower matrix index
     idx = combn(1:length(golist), 2)
-    
+
     # input is all pair combination
     gosimlist = vector('list', ncol(idx))
-    
+
     for ( i in 1:ncol(idx) ) {
       gosimlist[[i]] = .goPairSim(rev(idx[, i]), golist = golist, ont = ont, organism = organism, measure = measure, combine = combine)
     }
-    
+
     # convert list to matrix
     gosimmat = matrix(0, length(golist), length(golist))
     for (i in 1:length(gosimlist)) gosimmat[idx[2, i], idx[1, i]] = gosimlist[[i]]
     gosimmat[upper.tri(gosimmat)] = t(gosimmat)[upper.tri(t(gosimmat))]
     diag(gosimmat) = 1
-    
+
   }
-  
+
   return(gosimmat)
-  
+
 }
 
 #' Protein Similarity Calculation based on Gene Ontology (GO) Similarity
@@ -169,22 +171,19 @@ parGOSim = function (golist, type = c('go', 'gene'),
 twoGOSim = function (id1, id2, type = c('go', 'gene'), 
                      ont = 'MF', organism = 'human', 
                      measure = 'Resnik', combine = 'BMA') {
-  
-  GOSemSim.exist = suppressMessages(require(GOSemSim, quietly = TRUE))
-  if ( !GOSemSim.exist ) stop('The GOSemSim package is required to run twoGOSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html to install it.')
-  
+
   if ( type == 'go' ) {
     sim = GOSemSim::mgoSim(id1, id2, 
                            ont = ont, organism = organism, 
                            measure = measure, combine = combine)
   }
-  
+
   if ( type == 'gene' ) {
     sim = GOSemSim::geneSim(id1, id2, 
                             ont = ont, organism = organism, 
                             measure = measure, combine = combine)$geneSim
   }
-  
+
   return(sim)
-  
+
 }

@@ -1,32 +1,32 @@
 .seqPairSim = function (twoid, protlist = protlist, type = type, submat = submat) {
-  
+
   id1 = twoid[1]
   id2 = twoid[2]
-  
+
   if ( protlist[[id1]] == '' | protlist[[id2]] == '' ) {
-    
+
     sim = 0L
-    
+
   } else {
-    
+
     s1  = try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
     s2  = try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
     s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
     s11 = try(Biostrings::pairwiseAlignment(s1, s1, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
     s22 = try(Biostrings::pairwiseAlignment(s2, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE), silent = TRUE)
-    
+
     if ( is.numeric(s12) == FALSE | is.numeric(s11) == FALSE | is.numeric(s22) == FALSE ) {
       sim = 0L
-      } else if ( abs(s11) < .Machine$double.eps | abs(s22) < .Machine$double.eps ) {
-        sim = 0L
-        } else {
-          sim = s12/sqrt(s11 * s22)
-        }
-    
+    } else if ( abs(s11) < .Machine$double.eps | abs(s22) < .Machine$double.eps ) {
+      sim = 0L
+    } else {
+      sim = s12/sqrt(s11 * s22)
+    }
+
   }
-  
+
   return(sim)
-  
+
 }
 
 #' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
@@ -78,50 +78,31 @@
 #' 
 
 parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
-  
-  Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
-  if ( !Biostrings.exist ) stop('The Biostrings package is required to run parSeqSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/Biostrings.html to install it.')
-  
-  foreach.exist = suppressMessages(require(foreach, quietly = TRUE))
-  doParallel.exist = suppressMessages(require(doParallel, quietly = TRUE))
-  doMC.exist = suppressMessages(require(doMC, quietly = TRUE))
-  
-  if ( ( foreach.exist ) & ( doParallel.exist | doMC.exist ) ) {
-    if( !getDoParRegistered() ) {
-      if ( .Platform$OS.type == 'windows' & doParallel.exist ) {
-        doParallel::registerDoParallel(cores)
-      } else if ( .Platform$OS.type == 'unix' & doMC.exist ) {
-        doMC::registerDoMC(cores)
-      } else if ( .Platform$OS.type == 'unix' & doParallel.exist ) {
-        doParallel::registerDoParallel(cores)
-      } else {
-        stop('The doParallel or doMC package is required to run parSeqSim(). Please use install.packages("doParallel") or install.packages("doMC") to install at least one of them.')
-      }
-    }
-  } else {
-    stop('The foreach and doParallel/doMC packages are required to run parSeqSim(). Please use install.packages("foreach") and install.packages("doParallel") / install.packages("doMC") to install them.')
-  }
-  
+
+  doParallel::registerDoParallel(cores)
+
   # generate lower matrix index
   idx = combn(1:length(protlist), 2)
-  
+
   # then use foreach parallelization
   # input is all pair combination
-  
+
   seqsimlist = vector('list', ncol(idx))
   
-  seqsimlist <- foreach (i = 1:length(seqsimlist), .errorhandling = 'pass') %dopar% {
+  `%mydopar%` = foreach::`%dopar%`
+  
+  seqsimlist <- foreach::foreach(i = 1:length(seqsimlist), .errorhandling = 'pass') %mydopar% {
     tmp <- .seqPairSim(rev(idx[, i]), protlist = protlist, type = type, submat = submat)
   }
-  
+
   # convert list to matrix
   seqsimmat = matrix(0, length(protlist), length(protlist))
   for (i in 1:length(seqsimlist)) seqsimmat[idx[2, i], idx[1, i]] = seqsimlist[[i]]
   seqsimmat[upper.tri(seqsimmat)] = t(seqsimmat)[upper.tri(t(seqsimmat))]
   diag(seqsimmat) = 1
-  
+
   return(seqsimmat)
-  
+
 }
 
 #' Protein Sequence Alignment for Two Protein Sequences
@@ -165,15 +146,14 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' 
 
 twoSeqSim = function (seq1, seq2, type = 'local', submat = 'BLOSUM62') {
-  
-  Biostrings.exist = suppressMessages(require(Biostrings, quietly = TRUE))
-  if ( !Biostrings.exist ) stop('The Biostrings package is required to run twoSeqSim(). Please follow the instructions on http://www.bioconductor.org/packages/release/bioc/html/Biostrings.html to install it.')
-  
+
   # sequence alignment for two protein sequences
   s1  = try(Biostrings::AAString(seq1), silent = TRUE)
   s2  = try(Biostrings::AAString(seq2), silent = TRUE)
-  s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, substitutionMatrix = submat), silent = TRUE)
-  
+  s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, 
+                                          substitutionMatrix = submat), 
+            silent = TRUE)
+
   return(s12)
-  
+
 }

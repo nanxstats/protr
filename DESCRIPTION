@@ -1,5 +1,5 @@
 Package: protr
-Version: 0.3-0
+Version: 0.3-1
 Date: 2014-06-20
 Title: Protein Sequence Descriptor Calculation and Similarity Computation with R
 Description: The protr package focus on offering a unique and comprehensive
@@ -41,5 +41,4 @@ Suggests:
     Biostrings,
     GOSemSim,
     foreach,
-    doParallel,
-    doMC
+    doParallel

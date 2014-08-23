@@ -311,7 +311,7 @@ The \pkg{protr} package also integrates the function of parallellized similarity
   \item \code{parGOSim()} - Pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
 \end{itemize}
 
-To use the \code{parSeqSim()} function, we suggest the users to install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} first, according to their platforms. The \pkg{protr} package will automatically decide which backend to use if they are available, specifically, use \pkg{doParallel} under Microsoft Windows, and try to use \pkg{doMC} first under GNU Linux/OS X.
+To use the \code{parSeqSim()} function, we suggest the users to install the packages \pkg{foreach} and \pkg{doParallel} first, in order to make the parallelized pairwise similarity computation available.
 
 In the next sections, we'll introduce the descriptors and function usage in this order.
 
@@ -950,7 +950,7 @@ The function \code{twoSeqSim()} calculates the alignment result between two prot
 
 It should be noted that for a small number of proteins, calculating their pairwise similarity scores derived by sequence alignment in parallel may not significantly reduce the overall computation time, since each of the task only requires a relatively small time to finish, thus, computational overheads may exist and affect the performance. In testing, we used about 1,000 protein sequences on 64 CPU cores, and observed significant performance improvement comparing to the sequential computation.
 
-Users should install the packages \pkg{foreach} and \pkg{doMC}/\pkg{doParallel} before using \code{parSeqSim()}, according to their operation system. The \pkg{protr} package will automatically decide which backend to use.
+Users should install the packages \pkg{foreach} and \pkg{doParallel} before using \code{parSeqSim()}, according to their operation system. The \pkg{protr} package will automatically decide which backend to use.
 
 \section{Similarity Calculation by GO Semantic Similarity Measures}\addcontentsline{toc}{section}{6. Similarity Calculation by GO Semantic Similarity Measures}
 

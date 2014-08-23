@@ -42,7 +42,7 @@ The comprehensive user's guide could be opened with \code{vignette('protr')},
 which explains each descriptor included in this package and corresponding
 usage.
 
-The web interface for this package, \code{ProtrWeb} is located at:
+The web server for this package, \code{ProtrWeb} is located at:
 \url{http://cbdd.csu.edu.cn:8080/protrweb/}.
 
 Bug reports and feature requests should be sent to
