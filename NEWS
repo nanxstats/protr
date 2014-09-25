@@ -51,3 +51,8 @@ Version 0.3-0 (2014-06-20)
 ------------------------------------------------------------------------------
 
   * Added an example workflow using protr in the vignette
+
+Version 0.4-0 (2014-09-20)
+------------------------------------------------------------------------------
+
+  * Added profile-based descriptors derived by PSSM

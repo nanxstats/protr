@@ -3,7 +3,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{protr: Protein Sequence-Derived Structural and Physiochemical Descriptors Calculation with R}
+%\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequence}
 %\VignetteKeywords{R, protr, protein sequence, amino acid, descriptor calculation, feature extraction, parallel computation, structural similarity, functional similarity, sequence alignment, Gene Ontology, GO}
 %\VignettePackage{protr}
 
@@ -21,8 +21,8 @@
         Dong-Sheng Cao\\Central South University}
 \Plainauthor{Nan Xiao, Qing-Song Xu, Dong-Sheng Cao}
 
-\title{\pkg{protr}: Protein Sequence-Derived Structural and Physiochemical Descriptors Calculation with \proglang{R}}
-\Plaintitle{protr: Protein Sequence-Derived Structural and Physiochemical Descriptors Calculation with R}
+\title{\pkg{protr}: \proglang{R} package for generating various numerical representation schemes of protein sequence}
+\Plaintitle{protr: R package for generating various numerical representation schemes of protein sequence}
 
 \Volume{xx}
 \Issue{x}
@@ -68,7 +68,7 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[2\baselineskip]
-    {\LARGE \pkg{protr}\textbf{: Protein Sequence-Derived Structural and Physiochemical Descriptors Calculation with \proglang{R}}}\\[1.2\baselineskip]
+    {\LARGE \pkg{protr}\textbf{: \proglang{R} package for generating various numerical representation schemes of protein sequence}}\\[1.2\baselineskip]
     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[2\baselineskip]
     {\Large Nan Xiao, Qing-Song Xu, Dong-Sheng Cao}\\[\baselineskip]
@@ -100,7 +100,23 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 \textbf{Abstract}
 \end{center}
 
-The \pkg{protr} package focus on offering a unique and comprehensive toolkit for protein sequence descriptor calculation and similarity computation. The descriptors included are extensively utilized in Bioinformatics and Chemogenomics research. The commonly used descriptors listed in \pkg{protr} include Amino Acid Composition (Amino Acid Composition, Dipeptide Composition, Tripeptide Composition) descriptor, Autocorrelation (Normalized Moreau-Broto Autocorrelation, Moran Autocorrelation, Geary Autocorrelation) descriptor, CTD (Composition, Transition, Distribution) descriptor, Conjoint Traid descriptor, Quasi-sequence Order (Sequence Order Coupling Number, Quasi-sequence Order Descriptors) descriptor and Pseudo Amino Acid Composition (Pseudo Amino Acid Composition, Amphiphilic Pseudo Amino Acid Composition) descriptor. The descriptors for Proteochemometric (PCM) Modeling, includes the Generalized Scales-Based Descriptors derived by Principal Components Analysis, Generalized Scales-Based Descriptors derived by AA-Properties (AAindex), Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.), Generalized Scales-Based Descriptors derived by Factor Analysis, Generalized Scales-Based Descriptors derived by Multidimensional Scaling, and Generalized BLOSUM/PAM Matrix-Derived Descriptors. The \pkg{protr} package also integrates the function of parallellized similarity score computation derived by protein sequence alignment and Gene Ontology (GO) semantic similarity measures between a list of protein sequences / GO terms / Entrez Gene IDs. \pkg{ProtrWeb}, the web service built on \pkg{protr}, is located at: \url{http://cbdd.csu.edu.cn:8080/protrweb/}. The \pkg{protr} package is developed by Computational Biology and Drug Design (CBDD) Group, Central South University.
+The \pkg{protr} package focus on offering a unique and comprehensive
+toolkit for generating various numerical representation schemes of protein
+sequence. The descriptors included are extensively
+utilized in Bioinformatics and Chemogenomics research. The commonly used
+descriptors listed in \pkg{protr} include amino acid composition,
+autocorrelation, CTD, conjoint traid, quasi-sequence order, pseudo amino
+acid composition, and profile-based descriptors derived by
+Position-Specific Scoring Matrix (PSSM). The descriptors for
+proteochemometric (PCM) modeling, includes the generalized scales-based
+descriptors derived by principal components analysis, factor analysis,
+multidimensional scaling, amino acid properties (AAindex), 20+ classes of
+2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and
+generalized BLOSUM/PAM matrix-derived descriptors. The \pkg{protr} package also
+integrates the function of parallelized similarity computation derived by
+pairwise protein sequence alignment and Gene Ontology (GO) semantic
+similarity measures. \pkg{ProtrWeb}, the web server built on \pkg{protr}, is located
+at: \url{http://cbdd.csu.edu.cn:8080/protrweb/}.
 
 \textbf{Keywords:} protein sequence, amino acid, descriptor, structural similarity, functional similarity, sequence alignment, Gene Ontology
 
@@ -250,17 +266,17 @@ The \pkg{protr} package \citep{CRAN:protr} implemented most of the state-of-the-
 Generally, each type of the descriptors (features) could be calculated with a function named \code{extractX()} in the \pkg{protr} package, where \code{X} stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:
 
 \begin{itemize}
-  \item Amino Acid Composition
+  \item Amino acid composition
   \begin{itemize}
-  \item \code{extractAAC()} - Amino Acid Composition
-  \item \code{extractDC()} - Dipeptide Composition
-  \item \code{extractTC()} - Tripeptide Composition
+  \item \code{extractAAC()} - Amino acid composition
+  \item \code{extractDC()} - Dipeptide composition
+  \item \code{extractTC()} - Tripeptide composition
   \end{itemize}
   \item Autocorrelation
   \begin{itemize}
-  \item \code{extractMoreauBroto()} - Normalized Moreau-Broto Autocorrelation
-  \item \code{extractMoran()} - Moran Autocorrelation
-  \item \code{extractGeary()} - Geary Autocorrelation
+  \item \code{extractMoreauBroto()} - Normalized Moreau-Broto autocorrelation
+  \item \code{extractMoran()} - Moran autocorrelation
+  \item \code{extractGeary()} - Geary autocorrelation
   \end{itemize}
   \item CTD
   \begin{itemize}
@@ -268,43 +284,49 @@ Generally, each type of the descriptors (features) could be calculated with a fu
   \item \code{extractCTDT()} - Transition
   \item \code{extractCTDD()} - Distribution
   \end{itemize}
-  \item Conjoint Triad
+  \item Conjoint triad descriptors
   \begin{itemize}
-  \item \code{extractCTriad()} - Conjoint Triad
+  \item \code{extractCTriad()} - Conjoint triad descriptors
   \end{itemize}
-  \item Quasi-sequence-order Descriptors
+  \item Quasi-sequence-order descriptors
   \begin{itemize}
-  \item \code{extractSOCN()} - Sequence-order-coupling Number
-  \item \code{extractQSO()} - Quasi-sequence-order Descriptors
+  \item \code{extractSOCN()} - Sequence-order-coupling number
+  \item \code{extractQSO()} - Quasi-sequence-order descriptors
   \end{itemize}
-  \item Pseudo-Amino Acid Composition
+  \item Pseudo-amino acid composition
   \begin{itemize}
-  \item \code{extractPAAC()} - Pseudo-Amino Acid Composition
-  \item \code{extractAPAAC()} - Amphiphilic Pseudo-Amino Acid Composition
+  \item \code{extractPAAC()} - Pseudo-amino acid composition
+  \item \code{extractAPAAC()} - Amphiphilic pseudo-amino acid composition
+  \end{itemize}
+  \item Profile-based descriptors
+  \begin{itemize}
+  \item \code{extractPSSM()}
+  \item \code{extractPSSMAcc()}
+  \item \code{extractPSSMFeature()}
   \end{itemize}
 \end{itemize}
 
 The descriptors commonly used in Proteochemometric Modeling (PCM) implemented in \pkg{protr} include:
 
 \begin{itemize}
-  \item \code{extractScales()} - Generalized Scales-Based Descriptors derived by Principal Components Analysis
+  \item \code{extractScales()} - Generalized scales-based descriptors derived by Principal Components Analysis
   \begin{itemize}
-  \item \code{extractPropScales()} - Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
-  \item \code{extractDescScales()} - Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
+  \item \code{extractPropScales()} - Generalized scales-based descriptors derived by AA-Properties (AAindex)
+  \item \code{extractDescScales()} - Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
   \end{itemize}
-  \item \code{extractFAScales()} - Generalized Scales-Based Descriptors derived by Factor Analysis
-  \item \code{extractMDSScales()} - Generalized Scales-Based Descriptors derived by Multidimensional Scaling
-  \item \code{extractBLOSUM()} - Generalized BLOSUM and PAM Matrix-Derived Descriptors
+  \item \code{extractFAScales()} - Generalized scales-based descriptors derived by Factor Analysis
+  \item \code{extractMDSScales()} - Generalized scales-based descriptors derived by Multidimensional Scaling
+  \item \code{extractBLOSUM()} - Generalized BLOSUM and PAM matrix-derived descriptors
 \end{itemize}
 
-The \pkg{protr} package integrates the function of parallellized similarity score computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by \pkg{Biostrings}, the corresponding functions listed in the \pkg{protr} package include:
+The \pkg{protr} package integrates the function of parallelized similarity score computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by \pkg{Biostrings}, the corresponding functions listed in the \pkg{protr} package include:
 
 \begin{itemize}
   \item \code{twoSeqSim()} - Similarity calculation derived by sequence alignment between two protein sequences
   \item \code{parSeqSim()} - Parallelized pairwise similarity calculation with a list of protein sequences
 \end{itemize}
 
-The \pkg{protr} package also integrates the function of parallellized similarity score computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms / Entrez Gene IDs, the GO similarity computation is provided by \pkg{GOSemSim}, the corresponding functions listed in the \pkg{protr} package include:
+The \pkg{protr} package also integrates the function of parallelized similarity score computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms / Entrez Gene IDs, the GO similarity computation is provided by \pkg{GOSemSim}, the corresponding functions listed in the \pkg{protr} package include:
 
 \begin{itemize}
   \item \code{twoGOSim()} - Similarity calculation derived by GO-terms semantic similarity measures between two GO terms / Entrez Gene IDs
@@ -864,19 +886,23 @@ extractAPAAC(x)
 
 This function has the same arguments as \code{extractPAAC()}.
 
+\subsection{Profile-based Descriptors}\label{subsec:profile}
+
+The profile-based descriptors for protein sequences are available in the \pkg{protr} package. The feature vectors of profile-based methods were based on the PSSM by running PSI-BLAST, and often show good performance. See \cite{ye2011assessment} and \cite{rangwala2005profile} for details. The functions \code{extractPSSM()}, \code{extractPSSMAcc()} and \code{extractPSSMFeature()} are used to generate these descriptors. Users need to install the NCBI-BLAST+ software package first to make the functions fully functional.
+
 \section{Descriptors for Proteochemometric Modeling}\label{sec:pcm}\addcontentsline{toc}{section}{4. Descriptors for Proteochemometric Modeling}
 
 Proteochemometric (PCM) modeling utilizes statistical modeling techniques to model ligand-target interaction space. The below descriptors implemented in \pkg{protr} are extensively used in Proteochemometric modeling.
 
 \begin{itemize}
-\item Generalized Scales-Based Descriptors derived by Principal Components Analysis
+\item Generalized scales-based descriptors derived by Principal Components Analysis
 \begin{itemize}
-\item Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
-\item Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
+\item Generalized scales-based descriptors derived by AA-Properties (AAindex)
+\item Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
 \end{itemize}
-\item Generalized Scales-Based Descriptors derived by Factor Analysis
-\item Generalized Scales-Based Descriptors derived by Multidimensional Scaling
-\item Generalized BLOSUM and PAM Matrix-Derived Descriptors
+\item Generalized scales-based descriptors derived by Factor Analysis
+\item Generalized scales-based descriptors derived by Multidimensional Scaling
+\item Generalized BLOSUM and PAM matrix-derived descriptors
 \end{itemize}
 
 Note that each of the generalized scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users could provide totally self-defined property matrices to construct scales-based descriptors.
@@ -924,7 +950,7 @@ head(blosum, 15)
 
 \section{Similarity Calculation by Sequence Alignment}\addcontentsline{toc}{section}{5. Similarity Calculation by Sequence Alignment}
 
-Similarity computation derived by local or global protein sequence alignment between a list of protein sequences is great need in the protein related research and applications. However, this sort of pairwise similarity computation often computationally intensive, especially when there exists many protein sequences. Luckily, this process is also highly parallelizable, the \pkg{protr} package integrates the function of parallellized similarity computation derived by local or global protein sequence alignment between a list of protein sequences.
+Similarity computation derived by local or global protein sequence alignment between a list of protein sequences is great need in the protein related research and applications. However, this sort of pairwise similarity computation often computationally intensive, especially when there exists many protein sequences. Luckily, this process is also highly parallelizable, the \pkg{protr} package integrates the function of parallelized similarity computation derived by local or global protein sequence alignment between a list of protein sequences.
 
 The function \code{twoSeqSim()} calculates the alignment result between two protein sequences, and the function \code{parSeqSim()} calculates the pairwise similarity calculation with a list of protein sequences in parallel:
 
@@ -1008,7 +1034,7 @@ The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{fig/protrweb.png}
-\caption{A Screenshot of \pkg{ProtrWeb}} \label{fig:protrweb}
+\caption{A screenshot of the web server \pkg{ProtrWeb}} \label{fig:protrweb}
 \end{figure}
 
 A step-by-step instruction on how to use \pkg{ProtrWeb} could be found at:
@@ -1221,7 +1247,9 @@ In this manual, we discussed the functions of the \pkg{protr} package, which is 
 
 \section*{Acknowledgments}
 
-We would like to thank the Computational Biology and Drug Design (CBDD) Group (\url{http://cbdd.csu.edu.cn}) of Central South University for their inspiring workshops and their support for the development of the \pkg{protr} package.
+The authors thank all members of the Computational Biology and Drug Design (CBDD) Group (\url{http://cbdd.csu.edu.cn/}) of Central South University for their support.
+
+This work is financially supported by the National Natural Science Foundation of China (Grants No. 11271374) and the Postdoctoral Science Foundation of Central South University. The studies meet with the approval of the university's review board.
 
 \clearpage
 

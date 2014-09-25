@@ -2,25 +2,23 @@
 
 ## Introduction
 
-The protr package focus on offering a unique and comprehensive toolkit for protein sequence descriptor calculation and similarity computation. The descriptors included in the protr package are extensively utilized in Bioinformatics and Chemogenomics research. The protr package is developed by Computational Biology and Drug Design (CBDD) Group, Central South University ([http://cbdd.csu.edu.cn/](http://cbdd.csu.edu.cn/) ).
+The protr package focus on offering a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
 
-## Package Features
+## Package Description
 
-### Qualitative Descriptors
+### Commonly used descriptors
 
-The commonly used qualitative protein sequence features implemented in protr include:
-
-  * Amino Acid Composition
+  * Amino acid composition
   
-    * Amino Acid Composition
-    * Dipeptide Composition
-    * Tripeptide Composition
+    * Amino acid composition
+    * Dipeptide composition
+    * Tripeptide composition
 
   * Autocorrelation
   
-    * Normalized Moreau-Broto Autocorrelation
-    * Moran Autocorrelation
-    * Geary Autocorrelation
+    * Normalized Moreau-Broto autocorrelation
+    * Moran autocorrelation
+    * Geary autocorrelation
 
   * CTD
   
@@ -30,46 +28,46 @@ The commonly used qualitative protein sequence features implemented in protr inc
 
   * Conjoint Triad
 
-  * Quasi-sequence-order Descriptors
+  * Quasi-sequence-order descriptors
   
-    * Sequence-order-coupling Number
-    * Quasi-sequence-order Descriptors
+    * Sequence-order-coupling number
+    * Quasi-sequence-order descriptors
   
-  * Pseudo Amino Acid Composition
+  * Pseudo amino acid composition
   
-    * Pseudo Amino Acid Composition
-    * Amphiphilic Pseudo Amino Acid Composition
+    * Pseudo amino acid composition
+    * Amphiphilic pseudo amino acid composition
 
-### Quantitative Descriptors
+  * Profile-based descriptors
 
-The quantitative descriptors commonly used in Proteochemometric (PCM) Modeling implemented in protr include:
+    * Profile-based descriptors derived by PSSM (Position-Specific Scoring Matrix)
 
-  * Generalized Scales-Based Descriptors derived by Principal Components Analysis
+### Proteochemometric (PCM) modeling descriptors
 
-    * Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
-    * Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.)
+  * Generalized scales-based descriptors derived by principal components analysis
 
-  * Generalized Scales-Based Descriptors derived by Factor Analysis
+    * Generalized scales-based descriptors derived by amino acid properties (AAindex)
+    * Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
 
-  * Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+  * Generalized scales-based descriptors derived by factor analysis
+
+  * Generalized scales-based descriptors derived by multidimensional scaling
   
-  * Generalized BLOSUM and PAM Matrix-Derived Descriptors
+  * Generalized BLOSUM and PAM matrix-derived descriptors
 
-### Parallelized Sequence Alignment Similarity Computation
+### Similarity Computation
 
-Local and global sequence alignment for protein sequences:
+Local and global pairwise sequence alignment for protein sequences:
 
   * Between two protein sequences
   * Parallelized pairwise similarity calculation with a list of protein sequences
-
-### Parallelized Gene Ontology (GO) Semantic Similarity Computation
 
 GO semantic similarity measures:
 
   * Between two groups of GO terms / two Entrez Gene IDs
   * Parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
 
-### Miscellaneous Tools and Datasets
+### Miscellaneous tools and datasets
 
   * Retrieve protein sequences from UniProt
   
@@ -81,29 +79,29 @@ GO semantic similarity measures:
   
   * Protein sequence segmentation
 
-  * Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
+  * Auto cross covariance (ACC) for generating scales-based descriptors of the same length
 
-  * 20+ Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids to use with the Generalized Scales-Based Descriptors
+  * 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the generalized scales-based descriptors
 
-  * BLOSUM and PAM Matrices for the 20 Amino Acids
+  * BLOSUM and PAM matrices for the 20 amino acids
 
-  * Meta Information of the 20 Amino Acids
+  * Meta information of the 20 amino acids
 
-## Web Service
+## Web Server
 
-ProtrWeb, the web service built on protr, is located at:
+ProtrWeb, the web server built on protr, is located at:
 
 [http://cbdd.csu.edu.cn:8080/protrweb/](http://cbdd.csu.edu.cn:8080/protrweb/)
 
-ProtrWeb does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein features presented in the protr package.
+ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 
 ## Links
 
-  * CRAN Page: http://cran.r-project.org/web/packages/protr/
+  * CRAN page: http://cran.r-project.org/web/packages/protr/
 
-  * Track Devel: https://github.com/road2stat/protr
+  * Track development: https://github.com/road2stat/protr
 
-  * Report Bugs: https://github.com/road2stat/protr/issues
+  * Bug report: https://github.com/road2stat/protr/issues
 
 ## Authors
 

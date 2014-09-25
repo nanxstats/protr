@@ -19,7 +19,7 @@ This function get protein sequences from uniprot.org by protein ID(s).
 }
 \examples{
 ids = c('P00750', 'P00751', 'P00752')
-\dontrun{getUniProt(ids)}
+\donttest{getUniProt(ids)}
 }
 \author{
 Nan Xiao <\url{http://r2s.name}>

@@ -36,7 +36,7 @@ This function calculates
 protein sequence similarity based on Gene Ontology (GO) similarity.
 }
 \examples{
-\dontrun{
+\donttest{
 # by GO Terms
 go1 = c('GO:0005215', 'GO:0005488', 'GO:0005515', 'GO:0005625', 'GO:0005802', 'GO:0005905')  # AP4B1
 go2 = c('GO:0005515', 'GO:0005634', 'GO:0005681', 'GO:0008380', 'GO:0031202')  # BCAS2
