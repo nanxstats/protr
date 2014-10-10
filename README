@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The protr package focus on offering a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
+The protr package is a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
 
 ## Package Description
 
@@ -99,9 +99,9 @@ ProtrWeb does not require any knowledge of R programming for the users, it is a 
 
   * CRAN page: http://cran.r-project.org/web/packages/protr/
 
-  * Track development: https://github.com/road2stat/protr
+  * Track development: https://github.com/road2stat/protr/
 
-  * Bug report: https://github.com/road2stat/protr/issues
+  * Bug report: https://github.com/road2stat/protr/issues/
 
 ## Authors
 

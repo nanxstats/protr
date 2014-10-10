@@ -3,18 +3,16 @@ citHeader("To cite package 'protr' in publications use:")
 if(!exists("meta") || is.null(meta)) meta <- packageDescription("protr")
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
-     
-citEntry(entry = "Manual",
-title = "protr: Protein Sequence Descriptor Calculation and Similarity Computation with R",
-author = personList(as.person("Nan Xiao"),
-					as.person("Qingsong Xu"),
-                    as.person("Dongsheng Cao")),
-                    
-              year = year,
-              note = vers,
 
-textVersion =
-paste("Nan Xiao, Qingsong Xu, Dongsheng Cao (",
-       year,
-       "). protr: Protein Sequence Descriptor Calculation and Similarity Computation with R. ",
-       vers, ".", sep=""))
+citEntry(entry = "Manual",
+         title = "protr: Generating Various Numerical Representation Schemes of Protein Sequence",
+         author = personList(as.person("Nan Xiao"),
+                             as.person("Qing-Song Xu"),
+                             as.person("Dong-Sheng Cao")),                    
+         year = year,
+         note = vers,
+         textVersion =
+           paste("Nan Xiao, Qing-Song Xu, Dong-Sheng Cao (",
+                 year,
+                 "). protr: Generating Various Numerical Representation Schemes of Protein Sequence.",
+                 vers, ".", sep = ""))

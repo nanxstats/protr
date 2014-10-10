@@ -1,25 +1,11 @@
 Package: protr
-Version: 0.4-0
-Date: 2014-09-19
-Title: R package for generating various numerical representation schemes of
-    protein sequence
-Description: The protr package focus on offering a unique and comprehensive
-    toolkit for generating various numerical representation schemes of protein
-    sequence. The descriptors included in the protr package are extensively
-    utilized in bioinformatics and chemogenomics research. The commonly used
-    descriptors listed in protr include amino acid composition,
-    autocorrelation, CTD, conjoint traid, quasi-sequence order, pseudo amino
-    acid composition, and profile-based descriptors derived by
-    Position-Specific Scoring Matrix (PSSM). The descriptors for
-    proteochemometric (PCM) modeling, includes the generalized scales-based
-    descriptors derived by principal components analysis, factor analysis,
-    multidimensional scaling, amino acid properties (AAindex), 20+ classes of
-    2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and
-    generalized BLOSUM/PAM matrix-derived descriptors. The protr package also
-    integrates the function of parallelized similarity computation derived by
-    pairwise protein sequence alignment and Gene Ontology (GO) semantic
-    similarity measures. ProtrWeb, the web server built on protr, is located
-    at: http://cbdd.csu.edu.cn:8080/protrweb/
+Version: 0.4-1
+Date: 2014-10-10
+Title: Generating Various Numerical Representation Schemes of Protein Sequence
+Description: Comprehensive toolkit for generating various numerical
+    representation schemes of protein sequence. The descriptors and similarity
+    scores included are extensively utilized in bioinformatics and
+    chemogenomics research.
 Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
     Dongsheng Cao <oriental-cds@163.com>
 Maintainer: Nan Xiao <road2stat@gmail.com>

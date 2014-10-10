@@ -41,7 +41,8 @@
 #' \donttest{
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' dbpath = tempfile('tempdb', fileext = '.fasta')
-#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', package = 'protr'), to = dbpath))
+#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
+#'                                        package = 'protr'), to = dbpath))
 #' pssmmat = extractPSSM(seq = x, database.path = dbpath)
 #' pssmfeature = extractPSSMFeature(pssmmat)
 #' head(pssmfeature)

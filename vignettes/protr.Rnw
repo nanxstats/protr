@@ -56,7 +56,7 @@
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = '0.3-0'
+protr.version = '0.4-1'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -100,7 +100,7 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
 \textbf{Abstract}
 \end{center}
 
-The \pkg{protr} package focus on offering a unique and comprehensive
+The \pkg{protr} package offers a unique and comprehensive
 toolkit for generating various numerical representation schemes of protein
 sequence. The descriptors included are extensively
 utilized in Bioinformatics and Chemogenomics research. The commonly used

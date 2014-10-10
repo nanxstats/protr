@@ -12,9 +12,11 @@
 #' @param props A character vector, specifying the properties used. 
 #'              2 properties are used by default, as listed below:
 #'              \describe{
-#'              \item{\code{'Hydrophobicity'}}{Hydrophobicity value of the 20 amino acids}
-#'              \item{\code{'Hydrophilicity'}}{Hydrophilicity value of the 20 amino acids}}
-#' 
+#'              \item{\code{'Hydrophobicity'}}{Hydrophobicity value 
+#'              of the 20 amino acids}
+#'              \item{\code{'Hydrophilicity'}}{Hydrophilicity value 
+#'              of the 20 amino acids}}
+#'
 #' @param lambda The lambda parameter for the APAAC descriptors, default is 30.
 #'             
 #' @param w The weighting factor, default is 0.05.
@@ -22,9 +24,13 @@
 #' @param customprops A \code{n x 21} named data frame contains \code{n} 
 #'                    customize property. Each row contains one property. 
 #'                    The column order for different amino acid types is 
-#'                    \code{'AccNo', 'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 
-#'                    'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'}, 
-#'                    and the columns should also be \emph{exactly} named like this.
+#'                    \code{'AccNo'}, \code{'A'}, \code{'R'}, \code{'N'}, 
+#'                    \code{'D'}, \code{'C'}, \code{'E'}, \code{'Q'}, 
+#'                    \code{'G'}, \code{'H'}, \code{'I'}, \code{'L'}, 
+#'                    \code{'K'}, \code{'M'}, \code{'F'}, \code{'P'}, 
+#'                    \code{'S'}, \code{'T'}, \code{'W'}, \code{'Y'}, 
+#'                    \code{'V'}, and the columns should also be 
+#'                    \emph{exactly} named like this.
 #'                    The \code{AccNo} column contains the properties' names.
 #'                    Then users should explicitly specify these properties 
 #'                    with these names in the argument \code{props}. 

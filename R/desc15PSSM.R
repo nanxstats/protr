@@ -114,7 +114,8 @@
 #' \donttest{
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' dbpath = tempfile('tempdb', fileext = '.fasta')
-#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', package = 'protr'), to = dbpath))
+#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
+#'                                        package = 'protr'), to = dbpath))
 #' pssmmat = extractPSSM(seq = x, database.path = dbpath)
 #' dim(pssmmat)  # 20 x 562 (P00750: length 562, 20 Amino Acids)
 #' }
@@ -162,8 +163,8 @@ extractPSSM = function(seq, start.pos = 1L, end.pos = nchar(seq),
     tmp = tempfile('protrPSIBlast')
     queryFasta = paste0(tmp, '.fasta')
     PSSMfile = paste0(tmp, '.pssm')
-    querySeq = AAStringSet(seq)
-    writeXStringSet(querySeq, queryFasta)
+    querySeq = Biostrings::AAStringSet(seq)
+    Biostrings::writeXStringSet(querySeq, queryFasta)
 
     # Additional parameters for PSI-Blast
 
