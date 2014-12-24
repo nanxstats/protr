@@ -13,7 +13,7 @@
 #'
 #' @return A length \code{20 + 20 + (2 * nlag)} named vector
 #' 
-#' @keywords extract QSO extractQSO Quasi Sequence Order Quasi-Sequence-Order
+#' @keywords extract QSO
 #'
 #' @aliases extractQSO
 #' 

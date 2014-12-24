@@ -39,14 +39,11 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales selected.
 #' 
-#' @keywords extract scales extractDescScales PCM
+#' @keywords extract scales PCM
 #'
 #' @aliases extractDescScales
 #' 
 #' @author Nan Xiao <\url{http://r2s.name}>
-#' 
-#' @seealso See \code{\link{extractScales}} for generalized 
-#' AA-descriptor based scales descriptors.
 #' 
 #' @export extractDescScales
 #' 

@@ -31,12 +31,12 @@ Version 0.2-0 (2013-12-10)
   * second release
   * added Proteochemometric (PCM) Modeling descriptors, parallellized similarity computation derived by protein sequence alignment and Gene Ontology (GO) semantic similarity measures between a list of protein sequences / GO terms / Entrez Gene IDs
   * added misc tools and datasets
-  * initial version of Generalized Scales-Based Descriptors derived by Principal Components Analysis
-  * initial version of Generalized Scales-Based Descriptors derived by AA-Properties (AAindex)
-  * initial version of Generalized Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors
-  * initial version of Generalized Scales-Based Descriptors derived by Factor Analysis
-  * initial version of Generalized Scales-Based Descriptors derived by Multidimensional Scaling
-  * initial version of Generalized BLOSUM and PAM Matrix-Derived Descriptors
+  * initial version of Scales-Based Descriptors derived by Principal Components Analysis
+  * initial version of Scales-Based Descriptors derived by AA-Properties (AAindex)
+  * initial version of Scales-Based Descriptors derived by 20+ classes of 2D and 3D Molecular Descriptors
+  * initial version of Scales-Based Descriptors derived by Factor Analysis
+  * initial version of Scales-Based Descriptors derived by Multidimensional Scaling
+  * initial version of BLOSUM and PAM Matrix-Derived Descriptors
   * initial version of parallelized pairwise similarity calculation with a list of protein sequences
   * initial version of pairwise semantic similarity calculation with a list of GO terms / Entrez Gene IDs
   * initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
@@ -61,3 +61,15 @@ Version 0.4-1 (2014-10-10)
 ------------------------------------------------------------------------------
 
   * Documentation improvements
+
+Version 0.5-0 (2014-12-18)
+------------------------------------------------------------------------------
+
+  * Added functions allowing users to specify their own classification of the amino acid
+  * Documentation improvements
+  * Other minor improvements
+
+Version 0.5-1 (2014-12-22)
+------------------------------------------------------------------------------
+
+  * Minor improvements and fixes for documentation

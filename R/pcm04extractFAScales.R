@@ -1,8 +1,8 @@
-#' Generalized Scales-Based Descriptors derived by Factor Analysis
+#' Scales-Based Descriptors derived by Factor Analysis
 #'
-#' Generalized Scales-Based Descriptors derived by Factor Analysis
+#' Scales-Based Descriptors derived by Factor Analysis
 #' 
-#' This function calculates the generalized scales-based descriptors 
+#' This function calculates scales-based descriptors 
 #' derived by Factor Analysis (FA).
 #' Users could provide customized amino acid property matrices.
 #' 
@@ -28,7 +28,7 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales (factors) selected.
 #' 
-#' @keywords extract Factor Analysis extractFAScales PCM
+#' @keywords extract Factor PCM
 #'
 #' @aliases extractFAScales
 #' 

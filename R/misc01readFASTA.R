@@ -27,7 +27,7 @@
 #' returned argument is sufficient. Using A and B is equivalent in the 
 #' following sense.
 #' 
-#' @keywords protr FASTA readFASTA
+#' @keywords read FASTA
 #'
 #' @aliases readFASTA
 #' 

@@ -8,7 +8,7 @@
 #'
 #' @return A list, each component contains one of the protein sequences. 
 #' 
-#' @keywords UniProt getUniProt
+#' @keywords UniProt
 #'
 #' @aliases getUniProt
 #' 
@@ -22,8 +22,11 @@
 #' UniProt. \url{http://www.uniprot.org/}
 #' 
 #' @examples
+#' \donttest{
+#' # Network latency may slow down this example
+#' # Only test this when your connection is fast enough
 #' ids = c('P00750', 'P00751', 'P00752')
-#' \donttest{getUniProt(ids)}
+#' getUniProt(ids)}
 #' 
 
 getUniProt = function (id) {

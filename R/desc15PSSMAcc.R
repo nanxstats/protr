@@ -32,16 +32,18 @@
 #' by principal component analysis and partial least-squares projections 
 #' to latent structures. 
 #' \emph{Analytica chimica acta}, 277(2), 239--253.
-#' 
+#'
 #' @examples
-#' \donttest{
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' dbpath = tempfile('tempdb', fileext = '.fasta')
-#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
-#'                                        package = 'protr'), to = dbpath))
-#' pssmmat = extractPSSM(seq = x, database.path = dbpath)
-#' pssmacc = extractPSSMAcc(pssmmat, lag = 3)
-#' tail(pssmacc)
+#' if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
+#'   cat('Could not find makeblastdb or psiblast. Please install NCBI Blast+ first.')
+#' } else {
+#'   x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#'   dbpath = tempfile('tempdb', fileext = '.fasta')
+#'   invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
+#'                                          package = 'protr'), to = dbpath))
+#'   pssmmat = extractPSSM(seq = x, database.path = dbpath)
+#'   pssmacc = extractPSSMAcc(pssmmat, lag = 3)
+#'   tail(pssmacc)
 #' }
 #'
 

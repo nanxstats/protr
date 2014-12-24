@@ -44,9 +44,13 @@
 #'       other (up to 544) properties with the Accession Number in 
 #'       the \code{\link{AAindex}} data, with or without the default 
 #'       three properties, which means users should explicitly specify
-#'       the properties to use.
+#'       the properties to use. For this descriptor type, users need to
+#'       intelligently evaluate the underlying details of the descriptors
+#'       provided, instead of using this function with their data blindly.
+#'       It would be wise to use some negative and positive control comparisons
+#'       where relevant to help guide interpretation of the results.
 #' 
-#' @keywords extract PAAC extractPAAC Pseudo Amino Acid Composition
+#' @keywords extract PAAC Pseudo Composition
 #'
 #' @aliases extractPAAC
 #' 

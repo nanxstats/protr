@@ -27,7 +27,7 @@
 \Volume{xx}
 \Issue{x}
 \Month{Xxxxx}
-\Year{2013}
+\Year{2014}
 \Submitdate{2014-xx-xx}
 \Acceptdate{2014-xx-xx}
 
@@ -56,7 +56,7 @@
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = '0.4-1'
+protr.version = '0.5-1'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -108,11 +108,11 @@ descriptors listed in \pkg{protr} include amino acid composition,
 autocorrelation, CTD, conjoint traid, quasi-sequence order, pseudo amino
 acid composition, and profile-based descriptors derived by
 Position-Specific Scoring Matrix (PSSM). The descriptors for
-proteochemometric (PCM) modeling, includes the generalized scales-based
+proteochemometric (PCM) modeling, includes the scales-based
 descriptors derived by principal components analysis, factor analysis,
 multidimensional scaling, amino acid properties (AAindex), 20+ classes of
 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and
-generalized BLOSUM/PAM matrix-derived descriptors. The \pkg{protr} package also
+BLOSUM/PAM matrix-derived descriptors. The \pkg{protr} package also
 integrates the function of parallelized similarity computation derived by
 pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures. \pkg{ProtrWeb}, the web server built on \pkg{protr}, is located
@@ -309,14 +309,14 @@ Generally, each type of the descriptors (features) could be calculated with a fu
 The descriptors commonly used in Proteochemometric Modeling (PCM) implemented in \pkg{protr} include:
 
 \begin{itemize}
-  \item \code{extractScales()} - Generalized scales-based descriptors derived by Principal Components Analysis
+  \item \code{extractScales()} and \code{extractScalesGap()} - Scales-based descriptors derived by Principal Components Analysis
   \begin{itemize}
-  \item \code{extractPropScales()} - Generalized scales-based descriptors derived by AA-Properties (AAindex)
-  \item \code{extractDescScales()} - Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
+  \item \code{extractProtFP()} and \code{extractProtFPGap()} - Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. Protein Fingerprint)
+  \item \code{extractDescScales()} - Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
   \end{itemize}
-  \item \code{extractFAScales()} - Generalized scales-based descriptors derived by Factor Analysis
-  \item \code{extractMDSScales()} - Generalized scales-based descriptors derived by Multidimensional Scaling
-  \item \code{extractBLOSUM()} - Generalized BLOSUM and PAM matrix-derived descriptors
+  \item \code{extractFAScales()} - Scales-based descriptors derived by Factor Analysis
+  \item \code{extractMDSScales()} - Scales-based descriptors derived by Multidimensional Scaling
+  \item \code{extractBLOSUM()} - BLOSUM and PAM matrix-derived descriptors
 \end{itemize}
 
 The \pkg{protr} package integrates the function of parallelized similarity score computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by \pkg{Biostrings}, the corresponding functions listed in the \pkg{protr} package include:
@@ -338,6 +338,8 @@ To use the \code{parSeqSim()} function, we suggest the users to install the pack
 In the next sections, we'll introduce the descriptors and function usage in this order.
 
 \section{Commonly Used Descriptors}\label{sec:descriptors}\addcontentsline{toc}{section}{3. Commonly Used Descriptors}
+
+\textbf{Disclaimer.} Users of the \pkg{protr} package need to intelligently evaluate the underlying details of the descriptors provided, instead of using protr with their data blindly, especially for the descriptor types with more flexibility. It would be wise for the users to use some negative and positive control comparisons where relevant to help guide interpretation of the results.
 
 A protein or peptide sequence with $N$ amino acid residues could be generally represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the residue at the $i$-th position in the sequence. The labels $i$ and $j$ are used to index amino acid position in a sequence, and $r$, $s$, $t$ are used to represent the amino acid type. The computed descriptors are roughly divided into 4 groups according to their known applications described in the literature.
 
@@ -895,17 +897,17 @@ The profile-based descriptors for protein sequences are available in the \pkg{pr
 Proteochemometric (PCM) modeling utilizes statistical modeling techniques to model ligand-target interaction space. The below descriptors implemented in \pkg{protr} are extensively used in Proteochemometric modeling.
 
 \begin{itemize}
-\item Generalized scales-based descriptors derived by Principal Components Analysis
+\item Scales-based descriptors derived by Principal Components Analysis
 \begin{itemize}
-\item Generalized scales-based descriptors derived by AA-Properties (AAindex)
-\item Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
+\item Scales-based descriptors derived by Amino Acid Properties from AAindex (Protein Fingerprint)
+\item Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
 \end{itemize}
-\item Generalized scales-based descriptors derived by Factor Analysis
-\item Generalized scales-based descriptors derived by Multidimensional Scaling
-\item Generalized BLOSUM and PAM matrix-derived descriptors
+\item Scales-based descriptors derived by Factor Analysis
+\item Scales-based descriptors derived by Multidimensional Scaling
+\item BLOSUM and PAM matrix-derived descriptors
 \end{itemize}
 
-Note that each of the generalized scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users could provide totally self-defined property matrices to construct scales-based descriptors.
+Note that each of the scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users could provide totally self-defined property matrices to construct scales-based descriptors.
 
 For example, to compute the ``topological scales'' derived by PCA (using the first 5 principal components), one could use \code{extractDescScales()}:
 
@@ -947,6 +949,8 @@ length(blosum)
 head(blosum, 15)
 @
 %
+
+\textbf{Dealing with gaps.} In proteochemometrics, (sequence alignment) gaps can be very useful, since a gap in a certain position contains information. The \pkg{protr} package has built-in support for such gaps. We deal with the gaps by using a dummy descriptor to code for the 21\textsuperscript{st} type of amino acid. The function \code{extractScalesGap()} and \code{extractProtFPGap()} could be used to deal with such gaps. See \code{?extractScalesGap} and \code{?extractProtFPGap} for details.
 
 \section{Similarity Calculation by Sequence Alignment}\addcontentsline{toc}{section}{5. Similarity Calculation by Sequence Alignment}
 
@@ -1132,7 +1136,7 @@ Auto Cross Covariance (ACC) is extensively used in the scales-based descriptors 
 
 \subsection{Pre-computed 2D and 3D Descriptor Sets for the 20 Amino Acids}
 
-The \pkg{protr} package ships with more than 20 pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the generalized scales-based descriptors, see \code{data(package = 'protr')} for all the datasets included in the \pkg{protr} package.
+The \pkg{protr} package ships with more than 20 pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors, see \code{data(package = 'protr')} for all the datasets included in the \pkg{protr} package.
 
 \subsection{BLOSUM and PAM Matrices for the 20 Amino Acids}
 
@@ -1161,10 +1165,10 @@ The summary of the descriptors in the \pkg{protr} package is listed in table \re
     Autocorrelation & Normalized Moreau-Broto Autocorrelation & 240\footnotemark[1]  & \code{extractMoreauBroto()} \\
           & Moran Autocorrelation & 240\footnotemark[1] & \code{extractMoran()} \\
           & Geary Autocorrelation & 240\footnotemark[1] & \code{extractGeary()} \\
-    CTD   & Composition & 21  & \code{extractCTDC()} \\
-          & Transition & 21 & \code{extractCTDT()} \\
-          & Distribution & 105 & \code{extractCTDD()} \\
-    Conjoint Triad & Conjoint Triad & 343 & \code{extractCTriad()} \\
+    CTD   & Composition & 21  & \code{extractCTDC()}, \code{extractCTDCClass()} \\
+          & Transition & 21 & \code{extractCTDT()}, \code{extractCTDTClass()} \\
+          & Distribution & 105 & \code{extractCTDD()}, \code{extractCTDDClass()} \\
+    Conjoint Triad & Conjoint Triad & 343 & \code{extractCTriad()}, \code{extractCTriadClass()} \\
     Quasi-Sequence-Order & Sequence-Order-Coupling Number & 60\footnotemark[2] & \code{extractSOCN()} \\
           & Quasi-Sequence-Order Descriptors & 100\footnotemark[2] & \code{extractQSO()} \\
     Pseudo-Amino Acid Composition & Pseudo-Amino Acid Composition & 50\footnotemark[3] & \code{extractPAAC()} \\
@@ -1191,12 +1195,12 @@ The summary of the scales-based PCM descriptors in the \pkg{protr} package is li
     \toprule
     Derived by & Descriptor Class & Function Name \\
     \midrule
-    Principal Components Analysis & Generalized Scales-Based Descriptors derived by Principal Components Analysis & \code{extractScales()} \\
-          & Generalized Scales-Based Descriptors derived by Amino Acid Properties (AAindex) & \code{extractPropScales()} \\
-          & Generalized Scales-Based Descriptors derived by 2D and 3D Molecular Descriptors (Topological, WHIM, VHSE, etc.) & \code{extractDescScales()} \\
-    Factor Analysis & Generalized Scales-Based Descriptors derived by Factor Analysis & \code{extractFAScales()} \\
-    Multidimensional Scaling & Generalized Scales-Based Descriptors derived by Multidimensional Scaling & \code{extractMDSScales()} \\
-    Substitution Matrix & Generalized BLOSUM and PAM Matrix-Derived Descriptors & \code{extractBLOSUM()} \\
+    Principal Components Analysis & Scales-based descriptors derived by Principal Components Analysis & \code{extractScales()}, \code{extractScalesGap()} \\
+          & Scales-based descriptors derived by amino acid properties from AAindex  (a.k.a. Protein Fingerprint) & \code{extractProtFP()}, \code{extractProtFPGap()}\\
+          & Scales-based descriptors derived by 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.) & \code{extractDescScales()} \\
+    Factor Analysis & Scales-based descriptors derived by Factor Analysis & \code{extractFAScales()} \\
+    Multidimensional Scaling & Scales-based descriptors derived by Multidimensional Scaling & \code{extractMDSScales()} \\
+    Substitution Matrix & BLOSUM and PAM matrix-derived descriptors & \code{extractBLOSUM()} \\
     \bottomrule
     \end{tabular}
   }

@@ -1,8 +1,8 @@
-#' Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+#' Scales-Based Descriptors derived by Multidimensional Scaling
 #'
-#' Generalized Scales-Based Descriptors derived by Multidimensional Scaling
+#' Scales-Based Descriptors derived by Multidimensional Scaling
 #' 
-#' This function calculates the generalized scales-based descriptors 
+#' This function calculates scales-based descriptors 
 #' derived by Multidimensional Scaling (MDS).
 #' Users could provide customized amino acid property matrices.
 #' 
@@ -24,13 +24,13 @@
 #' @return A length \code{lag * p^2} named vector, 
 #'         \code{p} is the number of scales (dimensionality) selected.
 #' 
-#' @keywords extract scales Multidimensional Scaling extractMDSScales PCM
+#' @keywords extract MDS PCM
 #'
 #' @aliases extractMDSScales
 #' 
 #' @author Nan Xiao <\url{http://r2s.name}>
 #' 
-#' @seealso See \code{\link{extractScales}} for generalized scales-based
+#' @seealso See \code{\link{extractScales}} for scales-based
 #' descriptors derived by Principal Components Analysis.
 #' 
 #' @export extractMDSScales

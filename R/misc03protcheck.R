@@ -9,7 +9,7 @@
 #' @return Logical. \code{TRUE} if all of the amino acid types of the sequence
 #'         are within the 20 default types.
 #' 
-#' @keywords protein sequence amino acid type check
+#' @keywords check
 #'
 #' @aliases protcheck
 #' 

@@ -8,7 +8,7 @@
 #'
 #' @return A length 400 named vector
 #' 
-#' @keywords extract DC extractDC Dipeptide Composition
+#' @keywords extract Dipeptide Composition
 #'
 #' @aliases extractDC
 #' 

@@ -1,31 +1,37 @@
 #' Conjoint Triad Descriptor
 #'
 #' Conjoint Triad Descriptor
-#' 
+#'
 #' This function calculates the Conjoint Triad descriptor (Dim: 343).
-#' 
+#'
 #' @param x A character vector, as the input protein sequence. 
 #'
 #' @return A length 343 named vector
-#' 
-#' @keywords extract CTriad extractCTriad Conjoint Triad
+#'
+#' @keywords extract Conjoint Triad
 #'
 #' @aliases extractCTriad
-#' 
+#'
 #' @author Nan Xiao <\url{http://r2s.name}>
-#' 
+#'
 #' @export extractCTriad
-#' 
+#'
+#' @note For this descriptor type, users need to intelligently evaluate
+#' the underlying details of the descriptors provided, instead of using
+#' this function with their data blindly. It would be wise to use some
+#' negative and positive control comparisons where relevant to help guide
+#' interpretation of the results.
+#'
 #' @references
 #' J.W. Shen, J. Zhang, X.M. Luo, W.L. Zhu, 
 #' K.Q. Yu, K.X. Chen, Y.X. Li, H.L. Jiang. 
 #' Predicting Protein-protein Interactions Based Only on Sequences Information. 
-#' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337-4341.
-#' 
+#' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337--4341.
+#'
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractCTriad(x)
-#' 
+#'
 
 extractCTriad = function (x) {
   

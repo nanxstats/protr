@@ -9,7 +9,7 @@
 #'
 #' @return A length 105 named vector
 #' 
-#' @keywords extract CTD CTDD extractCTDD Composition
+#' @keywords extract CTD Composition
 #'
 #' @aliases extractCTDD
 #' 
@@ -19,6 +19,12 @@
 #'          for Composition and Transition of the CTD descriptors.
 #' 
 #' @export extractCTDD
+#' 
+#' @note For this descriptor type, users need to intelligently evaluate
+#' the underlying details of the descriptors provided, instead of using
+#' this function with their data blindly. It would be wise to use some
+#' negative and positive control comparisons where relevant to help guide
+#' interpretation of the results.
 #' 
 #' @references
 #' Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim. 

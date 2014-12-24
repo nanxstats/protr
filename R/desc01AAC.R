@@ -8,7 +8,7 @@
 #'
 #' @return A length 20 named vector
 #' 
-#' @keywords extract AAC extractAAC Amino Acid Composition
+#' @keywords extract Composition
 #'
 #' @aliases extractAAC
 #' 

@@ -40,7 +40,7 @@
 #'
 #' @return A length \code{nlag} named vector
 #' 
-#' @keywords extract extractMoran Moran autocorrelation
+#' @keywords extract Moran autocorrelation
 #'
 #' @aliases extractMoran
 #' 
@@ -51,6 +51,12 @@
 #'          Geary autocorrelation descriptors.
 #' 
 #' @export extractMoran
+#' 
+#' @note For this descriptor type, users need to intelligently evaluate
+#' the underlying details of the descriptors provided, instead of using
+#' this function with their data blindly. It would be wise to use some
+#' negative and positive control comparisons where relevant to help guide
+#' interpretation of the results.
 #' 
 #' @references
 #' AAindex: Amino acid index database.

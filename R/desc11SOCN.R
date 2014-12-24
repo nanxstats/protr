@@ -11,7 +11,7 @@
 #'
 #' @return A length \code{nlag * 2} named vector
 #' 
-#' @keywords extract SOCN extractSOCN Sequence Order Coupling Number
+#' @keywords extract SOCN Order Coupling
 #'
 #' @aliases extractSOCN
 #' 

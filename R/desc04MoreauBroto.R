@@ -1,12 +1,12 @@
 #' Normalized Moreau-Broto Autocorrelation Descriptor
 #'
 #' Normalized Moreau-Broto Autocorrelation Descriptor
-#' 
+#'
 #' This function calculates the normalized Moreau-Broto 
 #' autocorrelation descriptor (Dim: \code{length(props) * nlag}).
-#' 
+#'
 #' @param x A character vector, as the input protein sequence. 
-#' 
+#'
 #' @param props A character vector, specifying the 
 #'              Accession Number of the target properties. 
 #'              8 properties are used by default, as listed below:
@@ -19,9 +19,9 @@
 #'              \item{AccNo. BIGC670101}{Residue volume (Bigelow, 1967)}
 #'              \item{AccNo. CHAM810101}{Steric parameter (Charton, 1981)}
 #'              \item{AccNo. DAYM780201}{Relative mutability (Dayhoff et al., 1978b)}}
-#'              
+#'
 #' @param nlag Maximum value of the lag parameter. Default is \code{30}.
-#' 
+#'
 #' @param customprops A \code{n x 21} named data frame contains \code{n} 
 #'                    customize property. Each row contains one property. 
 #'                    The column order for different amino acid types is 
@@ -39,43 +39,48 @@
 #'                    The default value for \code{customprops} is \code{NULL}.
 #'
 #' @return A length \code{nlag} named vector
-#' 
-#' @keywords extract extractMoreauBroto normalized autocorrelation
-#'           MoreauBroto Moreau-Broto Moreau Broto
+#'
+#' @keywords extract normalized autocorrelation Moreau-Broto
 #'
 #' @aliases extractMoreauBroto
-#' 
+#'
 #' @author Nan Xiao <\url{http://r2s.name}>
-#' 
+#'
 #' @seealso See \code{\link{extractMoran}} and \code{\link{extractGeary}} 
 #'          for Moran autocorrelation descriptors and 
 #'          Geary autocorrelation descriptors.
-#' 
+#'
 #' @export extractMoreauBroto
-#' 
+#'
+#' @note For this descriptor type, users need to intelligently evaluate
+#' the underlying details of the descriptors provided, instead of using
+#' this function with their data blindly. It would be wise to use some
+#' negative and positive control comparisons where relevant to help guide
+#' interpretation of the results.
+#'
 #' @references
 #' AAindex: Amino acid index database.
 #' \url{http://www.genome.ad.jp/dbget/aaindex.html}
-#' 
+#'
 #' Feng, Z.P. and Zhang, C.T. (2000)
 #' Prediction of membrane protein types based on the hydrophobic
 #' index of amino acids.
 #' \emph{Journal of Protein Chemistry}, 19, 269-275.
-#' 
+#'
 #' Horne, D.S. (1988)
 #' Prediction of protein helix content from
 #' an autocorrelation analysis of sequence hydrophobicities.
 #' \emph{Biopolymers}, 27, 451-477.
-#' 
+#'
 #' Sokal, R.R. and Thomson, B.A. (2006)
 #' Population structure inferred by local spatial autocorrelation: 
 #' an Usage from an Amerindian tribal population. 
 #' \emph{American Journal of Physical Anthropology}, 129, 121-131.
-#' 
+#'
 #' @examples
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' extractMoreauBroto(x)
-#' 
+#'
 #' myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"), 
 #'                      A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101), 
 #'                      N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59), 
@@ -87,13 +92,13 @@
 #'                      P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31), 
 #'                      T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130), 
 #'                      Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43))
-#' 
+#'
 #' # Use 4 properties in the AAindex database, and 3 cutomized properties
 #' extractMoreauBroto(x, customprops = myprops,
 #'                    props = c('CIDH920105', 'BHAR880101',
 #'                              'CHAM820101', 'CHAM820102',
 #'                              'MyProp1', 'MyProp2', 'MyProp3'))
-#' 
+#'
 
 extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
                                             'CHAM820101', 'CHAM820102',

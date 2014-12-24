@@ -16,16 +16,15 @@
 #' 
 #' @note To know more details about auto cross covariance, see the references.
 #' 
-#' @keywords acc auto cross covariance
+#' @keywords acc covariance
 #'
 #' @aliases acc
 #' 
 #' @author Nan Xiao <\url{http://r2s.name}>
 #' 
-#' @seealso See \code{\link{extractScales}} for 
-#' generalized scales-based descriptors.
+#' @seealso See \code{\link{extractScales}} for scales-based descriptors.
 #' For more details, see \code{\link{extractDescScales}}
-#' and \code{\link{extractPropScales}}.
+#' and \code{\link{extractProtFP}}.
 #' 
 #' @export acc
 #' 

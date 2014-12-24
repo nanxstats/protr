@@ -1,8 +1,6 @@
 # protr
 
-## Introduction
-
-The protr package is a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
+Comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
 
 ## Package Description
 
@@ -44,16 +42,16 @@ The protr package is a unique and comprehensive toolkit for generating various n
 
 ### Proteochemometric (PCM) modeling descriptors
 
-  * Generalized scales-based descriptors derived by principal components analysis
+  * Scales-based descriptors derived by principal components analysis
 
-    * Generalized scales-based descriptors derived by amino acid properties (AAindex)
-    * Generalized scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
+    * Scales-based descriptors derived by amino acid properties (AAindex)
+    * Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
 
-  * Generalized scales-based descriptors derived by factor analysis
+  * Scales-based descriptors derived by factor analysis
 
-  * Generalized scales-based descriptors derived by multidimensional scaling
+  * Scales-based descriptors derived by multidimensional scaling
   
-  * Generalized BLOSUM and PAM matrix-derived descriptors
+  * BLOSUM and PAM matrix-derived descriptors
 
 ### Similarity Computation
 
@@ -81,7 +79,7 @@ GO semantic similarity measures:
 
   * Auto cross covariance (ACC) for generating scales-based descriptors of the same length
 
-  * 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the generalized scales-based descriptors
+  * 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors
 
   * BLOSUM and PAM matrices for the 20 amino acids
 

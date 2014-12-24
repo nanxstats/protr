@@ -38,14 +38,16 @@
 #' \emph{Bioinformatics} 21.23 (2005): 4239--4247.
 #'
 #' @examples
-#' \donttest{
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-#' dbpath = tempfile('tempdb', fileext = '.fasta')
-#' invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
-#'                                        package = 'protr'), to = dbpath))
-#' pssmmat = extractPSSM(seq = x, database.path = dbpath)
-#' pssmfeature = extractPSSMFeature(pssmmat)
-#' head(pssmfeature)
+#' if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
+#'   cat('Could not find makeblastdb or psiblast. Please install NCBI Blast+ first.')
+#' } else {
+#'   x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#'   dbpath = tempfile('tempdb', fileext = '.fasta')
+#'   invisible(file.copy(from = system.file('protseq/Plasminogen.fasta', 
+#'                                          package = 'protr'), to = dbpath))
+#'   pssmmat = extractPSSM(seq = x, database.path = dbpath)
+#'   pssmfeature = extractPSSMFeature(pssmmat)
+#'   head(pssmfeature)
 #' }
 #'
 

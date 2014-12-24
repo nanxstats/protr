@@ -8,7 +8,7 @@
 #'
 #' @return A length 8000 named vector
 #' 
-#' @keywords extract TC extractTC Tripeptide Composition
+#' @keywords extract Tripeptide Composition
 #'
 #' @aliases extractTC
 #' 

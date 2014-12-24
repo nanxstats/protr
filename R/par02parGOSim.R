@@ -55,7 +55,7 @@
 #' for combining semantic similarity scores of multiple GO terms associated with protein.
 #' @return A \code{n} x \code{n} similarity matrix.
 #' 
-#' @keywords GO Gene Ontology similarity parGOSim
+#' @keywords GO Ontology similarity
 #'
 #' @aliases parGOSim
 #' 
@@ -70,6 +70,12 @@
 #' 
 #' @examples
 #' \donttest{
+#' # Be careful when testing this since it involves GO similarity computation
+#' # and might produce unpredictable results in some environments
+#' 
+#' require(GOSemSim)
+#' require(org.Hs.eg.db)
+#' 
 #' # by GO Terms
 #' go1 = c('GO:0005215', 'GO:0005488', 'GO:0005515', 'GO:0005625', 'GO:0005802', 'GO:0005905')  # AP4B1
 #' go2 = c('GO:0005515', 'GO:0005634', 'GO:0005681', 'GO:0008380', 'GO:0031202')  # BCAS2
@@ -81,7 +87,7 @@
 #' # by Entrez gene id
 #' genelist = list(c('150', '151', '152', '1814', '1815', '1816'))
 #' gsimmat2 = parGOSim(genelist, type = 'gene')
-#' print(gsimmat2) }
+#' print(gsimmat2)}
 #' 
 
 parGOSim = function (golist, type = c('go', 'gene'), 
@@ -139,7 +145,7 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #' for combining semantic similarity scores of multiple GO terms associated with protein.
 #' @return A n x n matrix.
 #' 
-#' @keywords GO Gene Ontology similarity twoGOSim
+#' @keywords GO Ontology similarity
 #'
 #' @aliases twoGOSim
 #' 
@@ -154,7 +160,13 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #' @export twoGOSim
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' # Be careful when testing this since it involves GO similarity computation
+#' # and might produce unpredictable results in some environments
+#' 
+#' require(GOSemSim)
+#' require(org.Hs.eg.db)
+#' 
 #' # by GO terms
 #' go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
 #' go2 = c("GO:0009055", "GO:0020037")
@@ -164,8 +176,8 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #' # by Entrez gene id
 #' gene1 = '241'
 #' gene2 = '251'
-#' gsim2 = twoGOSim(gene1, gene2, type = 'gene', ont = 'CC', measure = 'Lin') 
-#' print(gsim2) }
+#' gsim2 = twoGOSim(gene1, gene2, type = 'gene', ont = 'BP', measure = 'Lin') 
+#' print(gsim2)}
 #' 
 
 twoGOSim = function (id1, id2, type = c('go', 'gene'), 

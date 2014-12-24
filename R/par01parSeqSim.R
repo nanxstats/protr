@@ -52,7 +52,7 @@
 #' 
 #' @return A \code{n} x \code{n} similarity matrix.
 #' 
-#' @keywords Needleman-Wunsch Smith-Waterman local global sequence alignment parallel similarity parSeqSim
+#' @keywords alignment parallel similarity
 #'
 #' @aliases parSeqSim
 #' 
@@ -67,6 +67,13 @@
 #' 
 #' @examples
 #' \donttest{
+#' # Be careful when testing this since it involves parallelisation
+#' # and might produce unpredictable results in some environments
+#' 
+#' require(Biostrings)
+#' require(foreach)
+#' require(doParallel)
+#' 
 #' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
 #' s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
@@ -74,7 +81,7 @@
 #' s5 = readFASTA(system.file('protseq/Q9NZP8.fasta', package = 'protr'))[[1]]
 #' plist = list(s1, s2, s3, s4, s5)
 #' psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
-#' print(psimmat) }
+#' print(psimmat)}
 #' 
 
 parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
@@ -123,7 +130,7 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' 
 #' @return An Biostrings object containing the scores and other alignment information.
 #' 
-#' @keywords Needleman-Wunsch Smith-Waterman local global sequence alignment parallel similarity parSeqSim
+#' @keywords alignment parallel similarity
 #'
 #' @aliases twoSeqSim
 #' 
@@ -137,12 +144,17 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' @export twoSeqSim
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
+#' # Be careful when testing this since it involves sequence alignment
+#' # and might produce unpredictable results in some environments
+#' 
+#' require(Biostrings)
+#' 
 #' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' s2 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
 #' seqalign = twoSeqSim(s1, s2)
 #' summary(seqalign)
-#' print(seqalign@@score) }
+#' print(seqalign@@score)}
 #' 
 
 twoSeqSim = function (seq1, seq2, type = 'local', submat = 'BLOSUM62') {

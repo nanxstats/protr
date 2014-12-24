@@ -1,23 +1,23 @@
 #' Generating Various Numerical Representation Schemes of Protein Sequence
 #'
-#' The protr package is a unique and comprehensive toolkit for
+#' The protr package is a comprehensive toolkit for
 #' generating various numerical representation schemes of protein sequence.
 #' The descriptors are extensively utilized in bioinformatics and
 #' chemogenomics research. The commonly used descriptors include amino acid
 #' composition, autocorrelation, CTD, conjoint traid, quasi-sequence order,
 #' pseudo amino acid composition, and profile-based descriptors derived by
 #' Position-Specific Scoring Matrix (PSSM). The descriptors for
-#' proteochemometric (PCM) modeling include the generalized scales-based
+#' proteochemometric (PCM) modeling include the scales-based
 #' descriptors derived by principal components analysis, factor analysis,
 #' multidimensional scaling, amino acid properties (AAindex), 20+ classes of
 #' 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and
-#' generalized BLOSUM/PAM matrix-derived descriptors. The protr package also
+#' BLOSUM/PAM matrix-derived descriptors. The protr package also
 #' integrates the function of parallelized similarity computation derived by
 #' pairwise protein sequence alignment and Gene Ontology (GO) semantic
 #' similarity measures.
 #'
 #' \tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
-#' Version: \tab 0.4-1\cr License: \tab BSD 3-clause License\cr }
+#' Version: \tab 0.5-1\cr License: \tab BSD 3-clause License\cr }
 #'
 #' @name protr-package
 #' @aliases protr
@@ -39,9 +39,6 @@
 #'
 #' @references
 #' (to appear)
-#'
-#' @keywords protr package protein sequence amino acid feature extraction
-#'           descriptors chemoinformatics bioinforamtics chemogenomics
 #'
 #' @example inst/examples/protr-package-ex.R
 NULL
