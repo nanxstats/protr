@@ -89,7 +89,7 @@ GO semantic similarity measures:
 
 ProtrWeb, the web server built on protr, is located at:
 
-[http://cbdd.csu.edu.cn:8080/protrweb/](http://cbdd.csu.edu.cn:8080/protrweb/)
+[http://cbdd.csu.edu.cn:8080/protrweb/)
 
 ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 
