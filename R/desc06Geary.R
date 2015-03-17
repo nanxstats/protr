@@ -107,6 +107,10 @@ extractGeary = function (x, props = c('CIDH920105', 'BHAR880101',
                          nlag = 30L, customprops = NULL) {
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+
+  if (nchar(x) <= nlag){
+    warning("extractGeary: The length of the sequence is <= nlag; NA's will result.")
+  }
   
   # 1. Compute Pr values for each type of property
   
@@ -150,7 +154,9 @@ extractGeary = function (x, props = c('CIDH920105', 'BHAR880101',
   
   for (i in 1:n) {
     for (j in 1:nlag) {
-      Geary[[i]][j] = ((N - 1)/(2 * (N - j))) * ((sum((P[[i]][1:(N - j)] - P[[i]][(1:(N - j)) + j])^2))/(sum((P[[i]] - Pbar[i])^2)))
+      Geary[[i]][j] = ifelse(N-j > 0,
+                             ((N - 1)/(2 * (N - j))) * ((sum((P[[i]][1:(N - j)] - P[[i]][(1:(N - j)) + j])^2))/(sum((P[[i]] - Pbar[i])^2))),
+                             NA)
     }
   }
   
