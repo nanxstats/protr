@@ -113,6 +113,8 @@ extractPAAC = function (x, props = c('Hydrophobicity', 'Hydrophilicity', 'SideCh
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
+  if (nchar(x) <= lambda) stop("Length of the protein sequence must be greater than 'lambda'")
+
   AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'protr'), header = TRUE)
     
   tmp = data.frame(AccNo = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"), 
