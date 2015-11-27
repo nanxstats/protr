@@ -107,6 +107,11 @@ extractMoran = function (x, props = c('CIDH920105', 'BHAR880101',
                          nlag = 30L, customprops = NULL) {
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+
+  if (nchar(x) <= nlag){
+    warning("extractMoran: The length of the sequence is <= nlag; NA's will result.")
+  }
+
   
   # 1. Compute Pr values for each type of property
   
@@ -150,7 +155,9 @@ extractMoran = function (x, props = c('CIDH920105', 'BHAR880101',
   
   for (i in 1:n) {
     for (j in 1:nlag) {
-      Moran[[i]][j] = (N/(N - j)) * ((sum((P[[i]][1:(N - j)] - Pbar[i]) * (P[[i]][(1:(N - j)) + j] - Pbar[i])))/(sum((P[[i]] - Pbar[i])^2)))
+      Moran[[i]][j] = ifelse(N-j > 0,
+                             (N/(N - j)) * ((sum((P[[i]][1:(N - j)] - Pbar[i]) * (P[[i]][(1:(N - j)) + j] - Pbar[i])))/(sum((P[[i]] - Pbar[i])^2))),
+                             NA)
     }
   }
   
