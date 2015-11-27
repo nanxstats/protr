@@ -108,6 +108,10 @@ extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
   
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
+  if (nchar(x) <= nlag){
+    warning("extractMoreauBroto: The length of the sequence is <= nlag; NA's will result.")
+  }
+
   # 1. Compute Pr values for each type of property
   
   AAidx = read.csv(system.file('sysdata/AAidx.csv', package = 'protr'), header = TRUE)
@@ -148,7 +152,9 @@ extractMoreauBroto = function (x, props = c('CIDH920105', 'BHAR880101',
   
   for (i in 1:n) {
     for (j in 1:nlag) {
-      MB[[i]][j] = sum(P[[i]][1:(N - j)] * P[[i]][(1:(N - j)) + j])/(N - j)
+      MB[[i]][j] = ifelse(N-j > 0,
+                          sum(P[[i]][1:(N - j)] * P[[i]][(1:(N - j)) + j])/(N - j),
+                          NA)
     }
   }
   
