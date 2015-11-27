@@ -1,11 +1,11 @@
 .protcheckgap = function (x) {
-  
-  AADict = c('A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 
+
+  AADict = c('A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
              'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V',
              '-')
-  
+
   return(all(strsplit(x, split = '')[[1]] %in% AADict))
-  
+
 }
 
 #' Scales-Based Descriptors derived by Principal Components Analysis
@@ -38,14 +38,14 @@
 #'        the selected principal components or not.
 #'        Default is \code{TRUE}.
 #'
-#' @return A length \code{lag * p^2} named vector, 
+#' @return A length \code{lag * p^2} named vector,
 #'         \code{p} is the number of scales (principal components) selected.
 #'
 #' @keywords extract scales PCA PCM gap
 #'
 #' @aliases extractScalesGap
 #'
-#' @author Nan Xiao <\url{http://r2s.name}>
+#' @author Nan Xiao <\url{http://nanx.me}>
 #'
 #' @seealso See \code{\link{extractProtFPGap}} for amino acid property based
 #' scales descriptors (protein fingerprint) with gap support.
@@ -58,36 +58,35 @@
 #' data(AAindex)
 #' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 #' scales = extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
-#'
 
 extractScalesGap = function (x, propmat, pc, lag,
                              scale = TRUE, silent = TRUE) {
-  
+
   if (.protcheckgap(x) == FALSE) stop('x has unrecognized amino acid types. Note: use "-" to represent gaps.')
-  
+
   gapmat = t(matrix(rep(0L, ncol(propmat))))
   row.names(gapmat) = '-'
   propmat = rbind(propmat, gapmat)
-  
+
   pc = min(pc, ncol(propmat), nrow(propmat))
-  
+
   prop.pr = prcomp(propmat, scale = scale)
   prop.pred = predict(prop.pr)
-  
+
   accmat = matrix(0, pc, nchar(x))
   x.split = strsplit(x, '')[[1]]
-  
+
   for (i in 1:nchar(x)) {
     accmat[, i] = prop.pred[x.split[i], 1:pc]
   }
-  
+
   result = acc(accmat, lag)
-  
+
   if (!silent) {
     cat('Summary of the first', pc,'principal components:\n')
     print(summary(prop.pr)$importance[, 1:pc])
   }
-  
+
   return(result)
-  
+
 }

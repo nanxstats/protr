@@ -17,7 +17,7 @@
 #' similarity measures.
 #'
 #' \tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
-#' Version: \tab 0.5-1\cr License: \tab BSD 3-clause License\cr }
+#' Version: \tab 1.0-0\cr License: \tab BSD 3-clause License\cr }
 #'
 #' @name protr-package
 #' @aliases protr
@@ -27,18 +27,24 @@
 #'         Dong-Sheng Cao <\email{oriental-cds@@163.com}>
 #'
 #' @note
-#' The comprehensive user guide could be opened with \code{vignette('protr')},
-#' which explains each descriptor included in this package and corresponding
-#' usage.
+#' The user guide can be opened with \code{vignette('protr')},
+#' which explains every descriptor included in this package and
+#' their corresponding usage.
 #'
 #' The web server for this package, \code{ProtrWeb} is located at:
-#' \url{http://cbdd.csu.edu.cn:8080/protrweb/}.
+#' \url{http://protrweb.scbdd.com}.
 #'
 #' Bug reports and feature requests should be sent to
 #' \url{https://github.com/road2stat/protr/issues}.
 #'
 #' @references
-#' (to appear)
+#' Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015).
+#' protr/ProtrWeb: R package and web server for generating various
+#' numerical representation schemes of protein sequences.
+#' \emph{Bioinformatics} 31, 1857--1859.
+#'
+#' @importFrom stats cmdscale dist factanal na.omit prcomp predict sd
+#' @importFrom utils combn read.csv
 #'
 #' @example inst/examples/protr-package-ex.R
 NULL

@@ -33,47 +33,47 @@
 #'
 #' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
 #'
-#' This function implemented the parallellized version for calculating 
+#' This function implemented the parallellized version for calculating
 #' protein sequence similarity based on sequence alignment.
-#' 
-#' @param protlist A length \code{n} list containing \code{n} protein sequences, 
+#'
+#' @param protlist A length \code{n} list containing \code{n} protein sequences,
 #' each component of the list is a character string, storing one protein sequence.
 #' Unknown sequences should be represented as \code{''}.
-#' @param cores Integer. The number of CPU cores to use for parallel execution, 
+#' @param cores Integer. The number of CPU cores to use for parallel execution,
 #'        default is \code{2}. Users could use the \code{detectCores()} function
 #'        in the \code{parallel} package to see how many cores they could use.
-#' @param type Type of alignment, default is \code{'local'}, 
-#' could be \code{'global'} or \code{'local'}, 
-#' where \code{'global'} represents Needleman-Wunsch global alignment; 
+#' @param type Type of alignment, default is \code{'local'},
+#' could be \code{'global'} or \code{'local'},
+#' where \code{'global'} represents Needleman-Wunsch global alignment;
 #' \code{'local'} represents Smith-Waterman local alignment.
-#' @param submat Substitution matrix, default is \code{'BLOSUM62'}, could be one of 
-#' \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'}, 
+#' @param submat Substitution matrix, default is \code{'BLOSUM62'}, could be one of
+#' \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'},
 #' \code{'PAM30'}, \code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.
-#' 
+#'
 #' @return A \code{n} x \code{n} similarity matrix.
-#' 
+#'
 #' @keywords alignment parallel similarity
 #'
 #' @aliases parSeqSim
-#' 
-#' @author Nan Xiao <\url{http://r2s.name}>
-#' 
-#' @seealso See \code{twoSeqSim} for protein sequence alignment 
-#' for two protein sequences. See \code{\link{parGOSim}} for 
-#' protein similarity calculation based on 
+#'
+#' @author Nan Xiao <\url{http://nanx.me}>
+#'
+#' @seealso See \code{twoSeqSim} for protein sequence alignment
+#' for two protein sequences. See \code{\link{parGOSim}} for
+#' protein similarity calculation based on
 #' Gene Ontology (GO) semantic similarity.
-#' 
+#'
 #' @export parSeqSim
-#' 
+#'
 #' @examples
 #' \donttest{
 #' # Be careful when testing this since it involves parallelisation
 #' # and might produce unpredictable results in some environments
-#' 
+#'
 #' require(Biostrings)
 #' require(foreach)
 #' require(doParallel)
-#' 
+#'
 #' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
 #' s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
@@ -82,7 +82,6 @@
 #' plist = list(s1, s2, s3, s4, s5)
 #' psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
 #' print(psimmat)}
-#' 
 
 parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
 
@@ -95,9 +94,9 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
   # input is all pair combination
 
   seqsimlist = vector('list', ncol(idx))
-  
+
   `%mydopar%` = foreach::`%dopar%`
-  
+
   seqsimlist <- foreach::foreach(i = 1:length(seqsimlist), .errorhandling = 'pass') %mydopar% {
     tmp <- .seqPairSim(rev(idx[, i]), protlist = protlist, type = type, submat = submat)
   }
@@ -117,53 +116,52 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #' Protein Sequence Alignment for Two Protein Sequences
 #'
 #' This function implements the sequence alignment between two protein sequences.
-#' 
+#'
 #' @param seq1 A character string, containing one protein sequence.
 #' @param seq2 A character string, containing another protein sequence.
-#' @param type Type of alignment, default is \code{'local'}, 
-#' could be \code{'global'} or \code{'local'}, 
-#' where \code{'global'} represents Needleman-Wunsch global alignment; 
+#' @param type Type of alignment, default is \code{'local'},
+#' could be \code{'global'} or \code{'local'},
+#' where \code{'global'} represents Needleman-Wunsch global alignment;
 #' \code{'local'} represents Smith-Waterman local alignment.
-#' @param submat Substitution matrix, default is \code{'BLOSUM62'}, could be one of 
-#' \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'}, 
+#' @param submat Substitution matrix, default is \code{'BLOSUM62'}, could be one of
+#' \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'},
 #' \code{'PAM30'}, \code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.
-#' 
+#'
 #' @return An Biostrings object containing the scores and other alignment information.
-#' 
+#'
 #' @keywords alignment parallel similarity
 #'
 #' @aliases twoSeqSim
-#' 
-#' @author Nan Xiao <\url{http://r2s.name}>
-#' 
-#' @seealso See \code{\link{parSeqSim}} for paralleled pairwise 
+#'
+#' @author Nan Xiao <\url{http://nanx.me}>
+#'
+#' @seealso See \code{\link{parSeqSim}} for paralleled pairwise
 #' protein similarity calculation based on sequence alignment.
-#' See \code{\link{twoGOSim}} for calculating the 
+#' See \code{\link{twoGOSim}} for calculating the
 #' GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
-#' 
+#'
 #' @export twoSeqSim
-#' 
+#'
 #' @examples
 #' \donttest{
 #' # Be careful when testing this since it involves sequence alignment
 #' # and might produce unpredictable results in some environments
-#' 
+#'
 #' require(Biostrings)
-#' 
+#'
 #' s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' s2 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
 #' seqalign = twoSeqSim(s1, s2)
 #' summary(seqalign)
 #' print(seqalign@@score)}
-#' 
 
 twoSeqSim = function (seq1, seq2, type = 'local', submat = 'BLOSUM62') {
 
   # sequence alignment for two protein sequences
   s1  = try(Biostrings::AAString(seq1), silent = TRUE)
   s2  = try(Biostrings::AAString(seq2), silent = TRUE)
-  s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type, 
-                                          substitutionMatrix = submat), 
+  s12 = try(Biostrings::pairwiseAlignment(s1, s2, type = type,
+                                          substitutionMatrix = submat),
             silent = TRUE)
 
   return(s12)
