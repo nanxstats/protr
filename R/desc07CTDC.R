@@ -72,25 +72,24 @@ extractCTDC = function (x) {
   
   xSplitted = strsplit(x, split = '')[[1]]
   n  = nchar(x)
-  
-  G = vector('list', 7)
-  for (i in 1:7) G[[i]] = rep(NA, n)
-  
+
   # Get groups for each property & each amino acid
-  
-  for (i in 1:7) {
-    try(G[[i]][which(xSplitted %in% group1[[i]])] <- 'G1')
-    try(G[[i]][which(xSplitted %in% group2[[i]])] <- 'G2')
-    try(G[[i]][which(xSplitted %in% group3[[i]])] <- 'G3')
-  }
-  
-  G = lapply(G, as.factor)
-  
-  CTDC = unlist(lapply(G, summary))/n
-  names(CTDC) = paste('prop', rep(1:7, each = 3), 
-                      '.', names(CTDC), sep = '')
-  
-  return(CTDC)
-  
+
+  g1 <- lapply(group1, function(g) length(which(xSplitted %in% g)))
+  names(g1) <- paste(names(g1), 'Group1', sep='.')
+  g2 <- lapply(group2, function(g) length(which(xSplitted %in% g)))
+  names(g2) <- paste(names(g2), 'Group2', sep='.')
+  g3 <- lapply(group3, function(g) length(which(xSplitted %in% g)))
+  names(g3) <- paste(names(g3), 'Group3', sep='.')
+  CTDC <- unlist(c(g1, g2, g3)) / n
+  # This reorders the groups from
+  # p1.g1, p2.g1, p3.g1 ...
+  # to
+  # p1.g1, p1.g2, p1.g3 ...
+  # This reordering is not really important;
+  # it is to make the results look pretty
+  ids <-unlist(lapply(1:7, function(x) x+c(0,7,14)))
+  return(CTDC[ids])
+
 }
 
