@@ -47,7 +47,7 @@ extractSOCN = function (x, nlag = 30) {
   if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
   
   N = nchar(x)
-  if (N < nlag) stop("Length of the protein sequence must be no less than 'nlag'")
+  if (N <= nlag) stop("Length of the protein sequence must be greater than 'nlag'")
   
   DistMat1 = read.csv(system.file('sysdata/Schneider-Wrede.csv', package = 'protr'), header = TRUE)
   DistMat2 = read.csv(system.file('sysdata/Grantham.csv', package = 'protr'), header = TRUE)
