@@ -67,9 +67,6 @@
 #' Using Pseudo-Amino Acid Composition.
 #' \emph{PROTEINS: Structure, Function, and Genetics}, 2001, 43: 246-255.
 #'
-#' Type 2 pseudo amino acid composition.
-#' \url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm}
-#'
 #' Kuo-Chen Chou. Using Amphiphilic Pseudo Amino Acid Composition
 #' to Predict Enzyme Subfamily Classes. \emph{Bioinformatics}, 2005, 21, 10-19.
 #'

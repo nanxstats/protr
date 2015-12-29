@@ -94,9 +94,6 @@ Kuo-Chen Chou. Prediction of Protein Cellular Attributes
 Using Pseudo-Amino Acid Composition.
 \emph{PROTEINS: Structure, Function, and Genetics}, 2001, 43: 246-255.
 
-Type 1 pseudo amino acid composition.
-\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}
-
 Kuo-Chen Chou. Using Amphiphilic Pseudo Amino Acid Composition
 to Predict Enzyme Subfamily Classes. \emph{Bioinformatics}, 2005, 21, 10-19.
 

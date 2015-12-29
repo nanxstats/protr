@@ -40,7 +40,7 @@ Version 0.2-0 (2013-12-10)
   * initial version of parallelized pairwise similarity calculation with a list of protein sequences
   * initial version of pairwise semantic similarity calculation with a list of GO terms / Entrez Gene IDs
   * initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
-  * introducing ProtWeb, the web service based on protr: http://cbdd.csu.edu.cn:8080/protrweb/
+  * introducing ProtWeb, the web service based on protr: http://protr.org
 
 Version 0.2-1 (2014-01-25)
 ------------------------------------------------------------------------------
@@ -84,3 +84,10 @@ Version 1.1-0 (2015-12-28)
 ------------------------------------------------------------------------------
 
   * Bug fix in `extractCTDD()`
+
+Version 1.1-1 (2015-12-29)
+------------------------------------------------------------------------------
+
+  * Fix URLs that cannot be accessed by `curl -I -L`:
+    1. Use http://protr.org
+    2. Remove all inaccessible URLs

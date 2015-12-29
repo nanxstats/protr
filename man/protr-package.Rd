@@ -32,7 +32,7 @@ which explains every descriptor included in this package and
 their corresponding usage.
 
 The web server for this package, \code{ProtrWeb} is located at:
-\url{http://protrweb.scbdd.com}.
+\url{http://protr.org}.
 
 Bug reports and feature requests should be sent to
 \url{https://github.com/road2stat/protr/issues}.

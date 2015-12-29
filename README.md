@@ -71,7 +71,7 @@ GO semantic similarity measures:
 
 ProtrWeb, the web server built on protr, is located at:
 
-[http://protrweb.scbdd.com](http://protrweb.scbdd.com)
+[http://protr.org](http://protr.org)
 
 ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 

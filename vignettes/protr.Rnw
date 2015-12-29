@@ -49,8 +49,7 @@
   School of Pharmaceutical Sciences\\
   Central South University\\
   Changsha, Hunan, P. R. China\\
-  E-mail: \email{oriental-cds@163.com}\\
-  URL: \url{http://cbdd.csu.edu.cn}
+  E-mail: \email{oriental-cds@163.com}
 
 }
 
@@ -116,7 +115,7 @@ BLOSUM/PAM matrix-derived descriptors. The \pkg{protr} package also
 integrates the function of parallelized similarity computation derived by
 pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures. \pkg{ProtrWeb}, the web server built on \pkg{protr}, is located
-at: \url{http://protrweb.scbdd.com}.
+at: \url{http://protr.org}.
 
 \textbf{Keywords:} protein sequence, amino acid, descriptor, structural similarity, functional similarity, sequence alignment, Gene Ontology
 
@@ -767,7 +766,7 @@ where users could also specify the maximum lag with argument \code{nlag} and the
 
 \subsection{Pseudo-Amino Acid Composition (PAAC)}\label{subsec:paac}
 
-This groups of descriptors are proposed in \citet{choupaac}. PAAC descriptors (\url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type1.htm}) are also called the \emph{type 1 pseudo-amino acid composition}. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
+This groups of descriptors are proposed in \citet{choupaac}. PAAC descriptors are also called the \emph{type 1 pseudo-amino acid composition}. Let $H_1^o (i)$ , $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity values, the original hydrophilicity values and the original side chain masses of the 20 natural amino acids, respectively. They are converted to following qualities by a standard conversion:
 
 $$
 H_1 (i) = \frac{H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i)}{\sqrt{\frac{\sum_{i=1}^{20} [H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i) ]^2}{20}}}
@@ -841,7 +840,7 @@ The \code{extractPAAC()} fucntion also provides the \code{props} and \code{custo
 
 \subsection{Amphiphilic Pseudo-Amino Acid Composition (APAAC)}\label{subsec:apaac}
 
-Amphiphilic Pseudo-Amino Acid Composition (APAAC, \url{http://www.csbio.sjtu.edu.cn/bioinf/PseAAC/type2.htm}) was proposed in \citet{choupaac}. APAAC is also recognized as the \emph{type 2 pseudo-amino acid composition}. The definitions of these qualities are similar to the PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before, the hydrophobicity and hydrophilicity correlation functions are defined respectively as:
+Amphiphilic Pseudo-Amino Acid Composition (APAAC) was proposed in \citet{choupaac}. APAAC is also recognized as the \emph{type 2 pseudo-amino acid composition}. The definitions of these qualities are similar to the PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before, the hydrophobicity and hydrophilicity correlation functions are defined respectively as:
 
 \begin{align*}
 H_{i, j}^1  & = H_1 (i) H_1 (j)\\
@@ -1030,7 +1029,7 @@ The function \code{twoGOSim()} calculates the similarity derived by GO-terms sem
 The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 
 \begin{center}
-\url{http://protrweb.scbdd.com}
+\url{http://protr.org}
 \end{center}
 
 \pkg{ProtrWeb} (Figure \ref{fig:protrweb}) does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein descriptors presented in the \pkg{protr} package.
@@ -1044,7 +1043,7 @@ The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 A step-by-step instruction on how to use \pkg{ProtrWeb} could be found at:
 
 \begin{center}
-\url{http://protrweb.scbdd.com/intro.html}
+\url{http://protr.org/intro.html}
 \end{center}
 
 \section{Miscellaneous Tools}\label{sec:misc}\addcontentsline{toc}{section}{8. Miscellaneous Tools}
@@ -1250,8 +1249,6 @@ The summary of the amino acid descriptor sets used by scales-based descriptors p
 In this manual, we discussed the functions of the \pkg{protr} package, which is trying to offer a comprehensive and unique toolkit for protein sequence descriptor calculation and similarity computation.
 
 \section*{Acknowledgments}
-
-The authors thank all members of the Computational Biology and Drug Design (CBDD) Group (\url{http://cbdd.csu.edu.cn/}) of Central South University for their support.
 
 This work is financially supported by the National Natural Science Foundation of China (Grants No. 11271374) and the Postdoctoral Science Foundation of Central South University. The studies meet with the approval of the university's review board.
 
