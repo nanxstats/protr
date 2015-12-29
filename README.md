@@ -1,6 +1,6 @@
 # protr
 
-Comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics research.
+Comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics.
 
 ## Package Description
 
@@ -79,13 +79,13 @@ ProtrWeb does not require any knowledge of R programming for the users, it is a 
 
 Formatted citation:
 
-Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31, 1857-1859.
+Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31, 1857-1859.
 
 BibTeX entry:
 
 ```
 @article{Xiao2015,
-author = {Xiao, N. and Cao, D.-S. and Zhu, M.-F. and Xu, Q.-S.},
+author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
 doi = {10.1093/bioinformatics/btv042},
 issn = {1367-4803},
 journal = {Bioinformatics},
@@ -100,6 +100,6 @@ year = {2015}
 
 ## Links
 
-  * CRAN: http://cran.r-project.org/web/packages/protr/
-  * GitHub: https://github.com/road2stat/protr/
-  * Bug report: https://github.com/road2stat/protr/issues/
+  * CRAN: https://cran.r-project.org/package=protr
+  * GitHub: https://github.com/road2stat/protr
+  * Bug report: https://github.com/road2stat/protr/issues

@@ -24,7 +24,7 @@ similarity measures.
 }
 \details{
 \tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
-Version: \tab 1.0-0\cr License: \tab BSD 3-clause License\cr }
+Version: \tab 1.1-0\cr License: \tab BSD 3-clause License\cr }
 }
 \note{
 The user guide can be opened with \code{vignette('protr')},

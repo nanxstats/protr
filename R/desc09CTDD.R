@@ -90,11 +90,23 @@ extractCTDD = function (x) {
 
   for (i in 1:7) {
     inds = which(G[[i]] == 'G1')
-    D[[i]][1, ] = (inds[c(1, floor(length(inds) * c(0.25, 0.5, 0.75)), length(inds))])*100/n
+    quartiles = floor(length(inds) * c(0.25, 0.5, 0.75))
+    D[[i]][1, ] = ifelse(length(inds) > 0,
+                         (inds[c(1, ifelse(quartiles > 0, quartiles, 1),
+                                 length(inds))]) * 100/n,
+                         0)
     inds = which(G[[i]] == 'G2')
-    D[[i]][2, ] = (inds[c(1, floor(length(inds) * c(0.25, 0.5, 0.75)), length(inds))])*100/n
+    quartiles <- floor(length(inds) * c(0.25, 0.5, 0.75))
+    D[[i]][2, ] = ifelse(length(inds) > 0,
+                         (inds[c(1, ifelse(quartiles > 0, quartiles, 1),
+                                 length(inds))]) * 100/n,
+                         0)
     inds = which(G[[i]] == 'G3')
-    D[[i]][3, ] = (inds[c(1, floor(length(inds) * c(0.25, 0.5, 0.75)), length(inds))])*100/n
+    quartiles <- floor(length(inds) * c(0.25, 0.5, 0.75))
+    D[[i]][3, ] = ifelse(length(inds) > 0,
+                         (inds[c(1, ifelse(quartiles > 0, quartiles, 1),
+                                 length(inds))]) * 100/n,
+                         0)
   }
 
   D = do.call(rbind, D)

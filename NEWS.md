@@ -74,8 +74,13 @@ Version 0.5-1 (2014-12-22)
 
   * Minor improvements and fixes for documentation
 
-Version 1.0-0 (2015-11-26)
+Version 1.0-1 (2015-11-26)
 ------------------------------------------------------------------------------
 
   * General improvements for dealing with boundary cases in several functions (thanks for @koefoed's patches)
   * Add citation information
+
+Version 1.1-0 (2015-12-28)
+------------------------------------------------------------------------------
+
+  * Bug fix in `extractCTDD()`

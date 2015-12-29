@@ -5,9 +5,9 @@ entry="Article",
 title = "protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences",
 journal= "Bioinformatics",
 year = "2015",
-author = "Xiao, N. and Cao, D.-S. and Zhu, M.-F. and Xu, Q.-S.",
+author = "Nan Xiao and Dong-Sheng Cao and Min-Feng Zhu and Qing-Song Xu",
 volume = "31",
-pages = "1857-1859",
+pages = "1857--1859",
 doi = "10.1093/bioinformatics/btv042",
-textVersion = "Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. Bioinformatics 31, 1857-1859."
+textVersion = "Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. Bioinformatics 31, 1857-1859."
 )

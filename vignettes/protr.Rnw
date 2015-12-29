@@ -37,7 +37,7 @@
   Central South University\\
   Changsha, Hunan, P. R. China\\
   E-mail: \email{road2stat@gmail.com}\\
-  URL: \url{http://r2s.name}\\
+  URL: \url{http://nanx.me}\\
 
   Qing-Song Xu\\
   School of Mathematics and Statistics\\
@@ -56,7 +56,7 @@
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = '1.0-0'
+protr.version = '1.1-0'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -116,7 +116,7 @@ BLOSUM/PAM matrix-derived descriptors. The \pkg{protr} package also
 integrates the function of parallelized similarity computation derived by
 pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures. \pkg{ProtrWeb}, the web server built on \pkg{protr}, is located
-at: \url{http://cbdd.csu.edu.cn:8080/protrweb/}.
+at: \url{http://protrweb.scbdd.com}.
 
 \textbf{Keywords:} protein sequence, amino acid, descriptor, structural similarity, functional similarity, sequence alignment, Gene Ontology
 
@@ -1030,7 +1030,7 @@ The function \code{twoGOSim()} calculates the similarity derived by GO-terms sem
 The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 
 \begin{center}
-\url{http://cbdd.csu.edu.cn:8080/protrweb/}
+\url{http://protrweb.scbdd.com}
 \end{center}
 
 \pkg{ProtrWeb} (Figure \ref{fig:protrweb}) does not require any knowledge of programming for the users, it is a user-friendly and one-click-to-go online platform for computing the protein descriptors presented in the \pkg{protr} package.
@@ -1044,7 +1044,7 @@ The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 A step-by-step instruction on how to use \pkg{ProtrWeb} could be found at:
 
 \begin{center}
-\url{http://cbdd.csu.edu.cn:8080/protrweb/intro.html}
+\url{http://protrweb.scbdd.com/intro.html}
 \end{center}
 
 \section{Miscellaneous Tools}\label{sec:misc}\addcontentsline{toc}{section}{8. Miscellaneous Tools}
