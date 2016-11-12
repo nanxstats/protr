@@ -1,5 +1,9 @@
 language: r
 sudo: required
+r: bioc-devel
 before_install:
   - tlmgr install tablefootnote xifthen ifmtarg
-bioc_packages: Biostrings org.Hs.eg.db GOSemSim
+bioc_packages:
+  - Biostrings
+  - org.Hs.eg.db
+  - GOSemSim
