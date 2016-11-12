@@ -1,8 +1,12 @@
 # protr
 
+[![Build Status](https://travis-ci.org/road2stat/protr.svg?branch=master)](https://travis-ci.org/road2stat/protr)
+[![CRAN Version](http://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
+[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/protr)](http://cranlogs.r-pkg.org/badges/protr)
+
 Comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics.
 
-## Package Description
+## Descriptors List
 
 ### Commonly used descriptors
 
@@ -26,7 +30,7 @@ Comprehensive toolkit for generating various numerical representation schemes of
   * Quasi-sequence-order descriptors
     * Sequence-order-coupling number
     * Quasi-sequence-order descriptors
-  
+
   * Pseudo amino acid composition
     * Pseudo amino acid composition
     * Amphiphilic pseudo amino acid composition
@@ -75,26 +79,26 @@ ProtrWeb, the web server built on protr, is located at:
 
 ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 
-## How to cite
+## Paper Citation
 
 Formatted citation:
 
-Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31, 1857-1859.
+Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31 (11), 1857-1859.
 
 BibTeX entry:
 
 ```
 @article{Xiao2015,
 author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
-doi = {10.1093/bioinformatics/btv042},
-issn = {1367-4803},
+title = {{protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences}},
 journal = {Bioinformatics},
+year = {2015},
+volume = {31},
 number = {11},
 pages = {1857--1859},
-title = {{protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences}},
-url = {http://bioinformatics.oxfordjournals.org/cgi/doi/10.1093/bioinformatics/btv042},
-volume = {31},
-year = {2015}
+doi = {10.1093/bioinformatics/btv042},
+issn = {1367-4803},
+url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
 }
 ```
 

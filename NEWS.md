@@ -1,33 +1,31 @@
-Version 0.1-0 (2012-11-18)
-------------------------------------------------------------------------------
+# protr 0.1-0 (2012-11-18)
 
-  NEW FEATURES
-  
-  * initial release
-  * initial version of Amino Acid Composition descriptor
-  * initial version of Dipeptide Composition descriptor
-  * initial version of Tripeptide Composition descriptor
-  * initial version of Normalized Moreau-Broto Autocorrelation descriptor
-  * initial version of Moran Autocorrelation descriptor
-  * initial version of Geary Autocorrelation descriptor
-  * initial version of CTD - Composition descriptor
-  * initial version of CTD - Transition descriptor
-  * initial version of CTD - Distribution descriptor
-  * initial version of Conjoint Triad descriptor
-  * initial version of Sequence Order Coupling Number descriptor
-  * initial version of Quasi-Sequence-Order descriptor
-  * initial version of Pseudo Amino Acid Composition descriptor
-  * initial version of Amphiphilic Pseudo Amino Acid Composition descriptor
-  * initial version of readFASTA()
-  * initial version of getUniProt()
-  * initial version of protcheck()
-  * initial version of protseg()
+## NEW FEATURES
 
-Version 0.2-0 (2013-12-10)
-------------------------------------------------------------------------------
+  * First release
+  * First version of Amino Acid Composition descriptor
+  * First version of Dipeptide Composition descriptor
+  * First version of Tripeptide Composition descriptor
+  * First version of Normalized Moreau-Broto Autocorrelation descriptor
+  * First version of Moran Autocorrelation descriptor
+  * First version of Geary Autocorrelation descriptor
+  * First version of CTD - Composition descriptor
+  * First version of CTD - Transition descriptor
+  * First version of CTD - Distribution descriptor
+  * First version of Conjoint Triad descriptor
+  * First version of Sequence Order Coupling Number descriptor
+  * First version of Quasi-Sequence-Order descriptor
+  * First version of Pseudo Amino Acid Composition descriptor
+  * First version of Amphiphilic Pseudo Amino Acid Composition descriptor
+  * First version of `readFASTA()`
+  * First version of `getUniProt()`
+  * First version of `protcheck()`
+  * First version of `protseg()`
 
-  NEW FEATURES
-  
+# protr 0.2-0 (2013-12-10)
+
+## NEW FEATURES
+
   * second release
   * added Proteochemometric (PCM) Modeling descriptors, parallellized similarity computation derived by protein sequence alignment and Gene Ontology (GO) semantic similarity measures between a list of protein sequences / GO terms / Entrez Gene IDs
   * added misc tools and datasets
@@ -42,52 +40,71 @@ Version 0.2-0 (2013-12-10)
   * initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length
   * introducing ProtWeb, the web service based on protr: http://protr.org
 
-Version 0.2-1 (2014-01-25)
-------------------------------------------------------------------------------
+# protr 0.2-1 (2014-01-25)
+
+## IMPROVEMENTS
 
   * Added LICENSE file according to CRAN policies
 
-Version 0.3-0 (2014-06-20)
-------------------------------------------------------------------------------
+# protr 0.3-0 (2014-06-20)
 
-  * Added an example workflow using protr in the vignette
+## IMPROVEMENTS
 
-Version 0.4-0 (2014-09-20)
-------------------------------------------------------------------------------
+  * Added example workflow using protr in the vignette
+
+# protr 0.4-0 (2014-09-20)
+
+## NEW FEATURES
 
   * Added profile-based descriptors derived by PSSM
 
-Version 0.4-1 (2014-10-10)
-------------------------------------------------------------------------------
+# protr 0.4-1 (2014-10-10)
 
-  * Documentation improvements
+## IMPROVEMENTS
 
-Version 0.5-0 (2014-12-18)
-------------------------------------------------------------------------------
+  * General documentation improvements
+
+# protr 0.5-0 (2014-12-18)
+
+## IMPROVEMENTS
 
   * Added functions allowing users to specify their own classification of the amino acid
   * Documentation improvements
   * Other minor improvements
 
-Version 0.5-1 (2014-12-22)
-------------------------------------------------------------------------------
+# protr 0.5-1 (2014-12-22)
+
+## IMPROVEMENTS
 
   * Minor improvements and fixes for documentation
 
-Version 1.0-1 (2015-11-26)
-------------------------------------------------------------------------------
+# protr 1.0-1 (2015-11-26)
+
+## BUG FIXES
 
   * General improvements for dealing with boundary cases in several functions (thanks for @koefoed's patches)
-  * Add citation information
+  
+## IMPROVEMENTS
+  
+  * Added citation information
 
-Version 1.1-0 (2015-12-28)
-------------------------------------------------------------------------------
+# protr 1.1-0 (2015-12-28)
+
+## BUG FIXES
 
   * Bug fix in `extractCTDD()`
 
-Version 1.1-1 (2015-12-29)
-------------------------------------------------------------------------------
+# protr 1.1-1 (2015-12-29)
+
+## BUG FIXES
 
   * Fix URLs that cannot be accessed by `curl -I -L`:
     1. Use http://protr.org
     2. Remove all inaccessible URLs
+
+# protr 1.2-0 (2016-11-12)
+
+## IMPROVEMENTS
+
+  * Maintenance update
+  * General code style improvements

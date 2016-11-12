@@ -39,13 +39,15 @@
 #' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 #' fp = extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 
-extractProtFP = function (x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+extractProtFP = function (x, index = NULL, pc, lag,
+                          scale = TRUE, silent = TRUE) {
 
   AAindex = get('AAindex')
 
   if (!is.null(index)) propmat = t(na.omit(as.matrix(AAindex[index, 7:26])))
 
-  result = extractScales(x = x, propmat = propmat, pc = pc, lag = lag, scale = scale, silent = silent)
+  result = extractScales(x = x, propmat = propmat, pc = pc,
+                         lag = lag, scale = scale, silent = silent)
 
   return(result)
 

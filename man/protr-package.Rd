@@ -27,9 +27,7 @@ similarity measures.
 Version: \tab 1.1-0\cr License: \tab BSD 3-clause License\cr }
 }
 \note{
-The user guide can be opened with \code{vignette('protr')},
-which explains every descriptor included in this package and
-their corresponding usage.
+The package vignette can be opened with \code{vignette('protr')}.
 
 The web server for this package, \code{ProtrWeb} is located at:
 \url{http://protr.org}.
@@ -37,18 +35,10 @@ The web server for this package, \code{ProtrWeb} is located at:
 Bug reports and feature requests should be sent to
 \url{https://github.com/road2stat/protr/issues}.
 }
-\examples{
-NULL
-}
-\author{
-Nan Xiao <\email{road2stat@gmail.com}>
-        Qing-Song Xu <\email{dasongxu@gmail.com}>
-        Dong-Sheng Cao <\email{oriental-cds@163.com}>
-}
 \references{
 Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015).
 protr/ProtrWeb: R package and web server for generating various
 numerical representation schemes of protein sequences.
-\emph{Bioinformatics} 31, 1857--1859.
+\emph{Bioinformatics} 31 (11), 1857--1859.
 }
 

@@ -1,6 +1,5 @@
 Package: protr
-Version: 1.1-1
-Date: 2015-12-29
+Version: 1.2-0
 Title: Generating Various Numerical Representation Schemes of Protein Sequence
 Description: Comprehensive toolkit for generating various numerical
     representation schemes of protein sequence. The descriptors and similarity
@@ -8,11 +7,11 @@ Description: Comprehensive toolkit for generating various numerical
     For full functionality, the software 'ncbi-blast+' is needed, see
     <http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download>
     for more information.
-Author: Nan Xiao <road2stat@gmail.com>, Qingsong Xu <dasongxu@gmail.com>,
-    Dongsheng Cao <oriental-cds@163.com>
-Maintainer: Nan Xiao <road2stat@gmail.com>
+Author: Nan Xiao <me@nanx.me>, Qingsong Xu <qsxu@csu.edu.cn>,
+    Dongsheng Cao
+Maintainer: Nan Xiao <me@nanx.me>
 License: BSD 3-clause License + file LICENSE
-URL: https://github.com/road2stat/protr
+URL: https://github.com/road2stat/protr, http://protr.org/
 BugReports: https://github.com/road2stat/protr/issues
 SystemRequirements: ncbi-blast+ (see <http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 LazyData: yes

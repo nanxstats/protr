@@ -46,13 +46,14 @@
 
 extractProtFPGap = function (x, index = NULL, pc, lag,
                              scale = TRUE, silent = TRUE) {
-  
+
   AAindex = get('AAindex')
-  
+
   if (!is.null(index)) propmat = t(na.omit(as.matrix(AAindex[index, 7:26])))
-  
-  result = extractScalesGap(x = x, propmat = propmat, pc = pc, lag = lag, scale = scale, silent = silent)
-  
+
+  result = extractScalesGap(x = x, propmat = propmat, pc = pc,
+                            lag = lag, scale = scale, silent = silent)
+
   return(result)
-  
+
 }
