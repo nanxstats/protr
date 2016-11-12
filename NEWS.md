@@ -106,5 +106,5 @@
 
 ## IMPROVEMENTS
 
-  * Maintenance update
-  * General code style improvements
+  * Added continuous integration
+  * Code style improvements
