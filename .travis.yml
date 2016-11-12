@@ -1,2 +1,4 @@
 language: r
 sudo: required
+before_install:
+  - tlmgr install tablefootnote xifthen ifmtarg

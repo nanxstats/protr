@@ -35,27 +35,25 @@
   Nan Xiao \\
   School of Mathematics and Statistics\\
   Central South University\\
-  Changsha, Hunan, P. R. China\\
-  E-mail: \email{road2stat@gmail.com}\\
+  Changsha, Hunan, China\\
+  E-mail: \email{me@nanx.me}\\
   URL: \url{http://nanx.me}\\
 
   Qing-Song Xu\\
   School of Mathematics and Statistics\\
   Central South University\\
-  Changsha, Hunan, P. R. China\\
-  E-mail: \email{dasongxu@gmail.com}\\
+  Changsha, Hunan, China
 
   Dong-Sheng Cao\\
   School of Pharmaceutical Sciences\\
   Central South University\\
-  Changsha, Hunan, P. R. China\\
-  E-mail: \email{oriental-cds@163.com}
+  Changsha, Hunan, China
 
 }
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = '1.1-0'
+protr.version = '1.2-0'
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
@@ -1250,7 +1248,7 @@ In this manual, we discussed the functions of the \pkg{protr} package, which is 
 
 \section*{Acknowledgments}
 
-This work is financially supported by the National Natural Science Foundation of China (Grants No. 11271374) and the Postdoctoral Science Foundation of Central South University. The studies meet with the approval of the university's review board.
+This work is financially supported by the National Natural Science Foundation of China (Grant No. 11271374) and the Postdoctoral Science Foundation of Central South University. The studies meet with the approval of the university's review board.
 
 \clearpage
 
