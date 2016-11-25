@@ -83,9 +83,9 @@
 ## BUG FIXES
 
   * General improvements for dealing with boundary cases in several functions (thanks for @koefoed's patches)
-  
+
 ## IMPROVEMENTS
-  
+
   * Added citation information
 
 # protr 1.1-0 (2015-12-28)
@@ -108,3 +108,9 @@
 
   * Added continuous integration
   * Code style improvements
+
+# protr 1.3-0 (2016-11-25)
+
+## IMPROVEMENTS
+
+* New project website: http://nanx.me/protr/
