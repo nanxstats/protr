@@ -14,7 +14,7 @@ Authors@R: c(
     )
 Maintainer: Nan Xiao <me@nanx.me>
 License: BSD 3-clause License + file LICENSE
-URL: https://github.com/road2stat/protr, http://protr.org/
+URL: http://nanx.me/protr/, http://protr.org/
 BugReports: https://github.com/road2stat/protr/issues
 SystemRequirements: ncbi-blast+ (see <http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 LazyData: yes
