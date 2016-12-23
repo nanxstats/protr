@@ -1,4 +1,4 @@
-# protr
+# protr  <a href="http://nanx.me/protr/"><img src="http://nanx.me/images/project-protr.png" align="right" alt="logo" height="180" width="180" /></a>
 
 [![Build Status](https://travis-ci.org/road2stat/protr.svg?branch=master)](https://travis-ci.org/road2stat/protr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/protr?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/protr)
@@ -95,16 +95,14 @@ GO semantic similarity measures:
   * BLOSUM and PAM matrices for the 20 amino acids
   * Meta information of the 20 amino acids
 
-## Web Server
+## Shiny Web Application
 
-ProtrWeb, the web server built on protr, is located at:
-
-[http://protr.org](http://protr.org)
+ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
 
 ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 
 ## Links
 
+  * Website: http://nanx.me/protr/
   * CRAN: https://cran.r-project.org/package=protr
   * GitHub: https://github.com/road2stat/protr
-  * Bug report: https://github.com/road2stat/protr/issues
