@@ -4,7 +4,7 @@
 \name{protr-package}
 \alias{protr}
 \alias{protr-package}
-\title{Generating Various Numerical Representation Schemes of Protein Sequence}
+\title{Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
 The protr package is a comprehensive toolkit for
 generating various numerical representation schemes of protein sequence.
@@ -23,8 +23,9 @@ pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures.
 }
 \details{
-\tabular{ll}{ Package: \tab protr\cr Type: \tab Package\cr
-Version: \tab 1.1-0\cr License: \tab BSD 3-clause License\cr }
+\tabular{ll}{ Package: \tab protr\cr
+Type: \tab Package\cr
+License: \tab BSD_3_clause\cr }
 }
 \note{
 The package vignette can be opened with \code{vignette('protr')}.

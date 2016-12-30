@@ -1,8 +1,8 @@
 # protr 0.1-0 (2012-11-18)
 
-## NEW FEATURES
+## New Features
 
-  * First release
+  * Initial version
   * First version of Amino Acid Composition descriptor
   * First version of Dipeptide Composition descriptor
   * First version of Tripeptide Composition descriptor
@@ -24,7 +24,7 @@
 
 # protr 0.2-0 (2013-12-10)
 
-## NEW FEATURES
+## New Features
 
   * second release
   * added Proteochemometric (PCM) Modeling descriptors, parallellized similarity computation derived by protein sequence alignment and Gene Ontology (GO) semantic similarity measures between a list of protein sequences / GO terms / Entrez Gene IDs
@@ -42,31 +42,31 @@
 
 # protr 0.2-1 (2014-01-25)
 
-## IMPROVEMENTS
+## Improvements
 
   * Added LICENSE file according to CRAN policies
 
 # protr 0.3-0 (2014-06-20)
 
-## IMPROVEMENTS
+## Improvements
 
   * Added example workflow using protr in the vignette
 
 # protr 0.4-0 (2014-09-20)
 
-## NEW FEATURES
+## New Features
 
   * Added profile-based descriptors derived by PSSM
 
 # protr 0.4-1 (2014-10-10)
 
-## IMPROVEMENTS
+## Improvements
 
   * General documentation improvements
 
 # protr 0.5-0 (2014-12-18)
 
-## IMPROVEMENTS
+## Improvements
 
   * Added functions allowing users to specify their own classification of the amino acid
   * Documentation improvements
@@ -74,29 +74,29 @@
 
 # protr 0.5-1 (2014-12-22)
 
-## IMPROVEMENTS
+## Improvements
 
   * Minor improvements and fixes for documentation
 
 # protr 1.0-1 (2015-11-26)
 
-## BUG FIXES
+## Bug Fixes
 
   * General improvements for dealing with boundary cases in several functions (thanks for @koefoed's patches)
 
-## IMPROVEMENTS
+## Improvements
 
   * Added citation information
 
 # protr 1.1-0 (2015-12-28)
 
-## BUG FIXES
+## Bug Fixes
 
   * Bug fix in `extractCTDD()`
 
 # protr 1.1-1 (2015-12-29)
 
-## BUG FIXES
+## Bug Fixes
 
   * Fix URLs that cannot be accessed by `curl -I -L`:
     1. Use http://protr.org
@@ -104,13 +104,15 @@
 
 # protr 1.2-0 (2016-11-12)
 
-## IMPROVEMENTS
+## Improvements
 
   * Added continuous integration
   * Code style improvements
 
-# protr 1.3-0 (2016-11-25)
+# protr 1.2-1 (2016-12-29)
 
-## IMPROVEMENTS
+## Improvements
 
-* New project website: http://nanx.me/protr/
+* New website: http://nanx.me/protr/
+* Added Windows continuous integration support using AppVeyor.
+* Better R file naming scheme

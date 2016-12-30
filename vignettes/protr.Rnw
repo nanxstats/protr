@@ -3,7 +3,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tablefootnote}
-%\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequence}
+%\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequences}
 %\VignetteKeywords{R, protr, protein sequence, amino acid, descriptor calculation, feature extraction, parallel computation, structural similarity, functional similarity, sequence alignment, Gene Ontology, GO}
 %\VignettePackage{protr}
 
@@ -21,8 +21,8 @@
         Dong-Sheng Cao\\Central South University}
 \Plainauthor{Nan Xiao, Qing-Song Xu, Dong-Sheng Cao}
 
-\title{\pkg{protr}: \proglang{R} package for generating various numerical representation schemes of protein sequence}
-\Plaintitle{protr: R package for generating various numerical representation schemes of protein sequence}
+\title{\pkg{protr}: \proglang{R} package for generating various numerical representation schemes of protein sequences}
+\Plaintitle{protr: R package for generating various numerical representation schemes of protein sequences}
 
 \Volume{xx}
 \Issue{x}
@@ -65,7 +65,7 @@ now.date = strftime(Sys.Date(), "%Y-%m-%d")
     \vspace*{\baselineskip}
     \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
     \rule{\textwidth}{0.4pt}\\[2\baselineskip]
-    {\LARGE \pkg{protr}\textbf{: \proglang{R} package for generating various numerical representation schemes of protein sequence}}\\[1.2\baselineskip]
+    {\LARGE \pkg{protr}\textbf{: \proglang{R} package for generating various numerical representation schemes of protein sequences}}\\[1.2\baselineskip]
     \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule{\textwidth}{1.6pt}\\[2\baselineskip]
     {\Large Nan Xiao, Qing-Song Xu, Dong-Sheng Cao}\\[\baselineskip]
@@ -1038,10 +1038,10 @@ The web service built on \pkg{protr}, namely \pkg{ProtrWeb}, is located at:
 \caption{A screenshot of the web server \pkg{ProtrWeb}} \label{fig:protrweb}
 \end{figure}
 
-A step-by-step instruction on how to use \pkg{ProtrWeb} could be found at:
+Source code repository for this Shiny web application:
 
 \begin{center}
-\url{http://protr.org/intro.html}
+\url{https://github.com/road2stat/protrweb}
 \end{center}
 
 \section{Miscellaneous Tools}\label{sec:misc}\addcontentsline{toc}{section}{8. Miscellaneous Tools}
@@ -1245,10 +1245,6 @@ The summary of the amino acid descriptor sets used by scales-based descriptors p
 \end{table}
 
 In this manual, we discussed the functions of the \pkg{protr} package, which is trying to offer a comprehensive and unique toolkit for protein sequence descriptor calculation and similarity computation.
-
-\section*{Acknowledgments}
-
-This work is financially supported by the National Natural Science Foundation of China (Grant No. 11271374) and the Postdoctoral Science Foundation of Central South University. The studies meet with the approval of the university's review board.
 
 \clearpage
 

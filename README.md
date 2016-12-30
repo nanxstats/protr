@@ -5,7 +5,7 @@
 [![CRAN Version](http://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
 [![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/protr)](http://cranlogs.r-pkg.org/badges/protr)
 
-Comprehensive toolkit for generating various numerical representation schemes of protein sequence. The descriptors included in the protr package are extensively utilized in bioinformatics and chemogenomics.
+Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <[DOI:10.1093/bioinformatics/btv042](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv042)> ([PDF](https://drive.google.com/file/d/0B1YdO4YnMkAxRWJXQkhjeG1rQlE/view)).
 
 ## Paper Citation
 
