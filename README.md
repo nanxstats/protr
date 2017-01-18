@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/road2stat/protr.svg?branch=master)](https://travis-ci.org/road2stat/protr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/protr?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/protr)
-[![CRAN Version](http://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
-[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/protr)](http://cranlogs.r-pkg.org/badges/protr)
+[![CRAN Version](https://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
+[![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/protr)](https://cranlogs.r-pkg.org/badges/protr)
 
 Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <[DOI:10.1093/bioinformatics/btv042](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv042)> ([PDF](https://drive.google.com/file/d/0B1YdO4YnMkAxRWJXQkhjeG1rQlE/view)).
 
