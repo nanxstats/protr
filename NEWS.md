@@ -113,6 +113,6 @@
 
 ## Improvements
 
-* New website: http://nanx.me/protr/
+* New website: https://nanx.me/protr/
 * Added Windows continuous integration support using AppVeyor.
 * Better R file naming scheme
