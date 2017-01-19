@@ -1,5 +1,5 @@
 language: r
-sudo: required
+cache: packages
 r: bioc-devel
 before_install:
   - tlmgr install tablefootnote xifthen ifmtarg
