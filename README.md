@@ -30,6 +30,27 @@ url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
 }
 ```
 
+## Installation
+
+To download and install `protr` from CRAN:
+
+```r
+install.packages("protr")
+```
+
+Or try the development version on GitHub:
+
+```r
+# install.packages("devtools")
+devtools::install_github("road2stat/protr")
+```
+
+## Shiny Web Application
+
+ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
+
+ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
+
 ## Descriptors List
 
 ### Commonly used descriptors
@@ -94,12 +115,6 @@ GO semantic similarity measures:
   * 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors
   * BLOSUM and PAM matrices for the 20 amino acids
   * Meta information of the 20 amino acids
-
-## Shiny Web Application
-
-ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
-
-ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
 
 ## Links
 
