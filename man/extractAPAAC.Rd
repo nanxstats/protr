@@ -13,17 +13,15 @@ extractAPAAC(x, props = c("Hydrophobicity", "Hydrophilicity"), lambda = 30,
 \item{props}{A character vector, specifying the properties used.
 2 properties are used by default, as listed below:
 \describe{
-\item{\code{'Hydrophobicity'}}{Hydrophobicity value
-of the 20 amino acids}
-\item{\code{'Hydrophilicity'}}{Hydrophilicity value
-of the 20 amino acids}}}
+\item{\code{'Hydrophobicity'}}{Hydrophobicity value of the 20 amino acids}
+\item{\code{'Hydrophilicity'}}{Hydrophilicity value of the 20 amino acids}}}
 
 \item{lambda}{The lambda parameter for the APAAC descriptors, default is 30.}
 
 \item{w}{The weighting factor, default is 0.05.}
 
 \item{customprops}{A \code{n x 21} named data frame contains \code{n}
-customize property. Each row contains one property.
+customized property. Each row contains one property.
 The column order for different amino acid types is
 \code{'AccNo'}, \code{'A'}, \code{'R'}, \code{'N'},
 \code{'D'}, \code{'C'}, \code{'E'}, \code{'Q'},
@@ -40,7 +38,7 @@ The default value for \code{customprops} is \code{NULL}.}
 }
 \value{
 A length \code{20 + n * lambda} named vector,
-        \code{n} is the number of properties selected.
+\code{n} is the number of properties selected.
 }
 \description{
 This function calculates the Amphiphilic Pseudo Amino Acid
@@ -48,40 +46,44 @@ Composition (APAAC) descriptor (dim: \code{20 + (n * lambda)},
 \code{n} is the number of properties selected, default is 80).
 }
 \note{
-Note the default \code{20 * 2} \code{prop} values have been already
-      independently given in the function. Users could also specify
-      other (up to 544) properties with the Accession Number in
-      the \code{\link{AAindex}} data, with or without the default
-      three properties, which means users should explicitly specify
-      the properties to use. For this descriptor type, users need to
-      intelligently evaluate the underlying details of the descriptors
-      provided, instead of using this function with their data blindly.
-      It would be wise to use some negative and positive control comparisons
-      where relevant to help guide interpretation of the results.
+Note the default \code{20 * 2} \code{prop} values have already been
+independently given in the function. Users could also specify
+other (up to 544) properties with the Accession Number in
+the \code{\link{AAindex}} data, with or without the default
+three properties, which means users should explicitly specify
+the properties to use. For this descriptor type, users need to
+intelligently evaluate the underlying details of the descriptors
+provided, instead of using this function with their data blindly.
+It would be wise to use some negative and positive control comparisons
+where relevant to help guide interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractAPAAC(x)
 
-myprops = data.frame(AccNo = c("MyProp1", "MyProp2", "MyProp3"),
-                     A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101),
-                     N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59),
-                     C = c(0.29,    -1, 47),  E = c(-0.74,   3, 73),
-                     Q = c(-0.85,  0.2, 72),  G = c(0.48,    0, 1),
-                     H = c(-0.4,  -0.5, 82),  I = c(1.38, -1.8, 57),
-                     L = c(1.06,  -1.8, 57),  K = c(-1.5,    3, 73),
-                     M = c(0.64,  -1.3, 75),  F = c(1.19, -2.5, 91),
-                     P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31),
-                     T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130),
-                     Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43))
+myprops = data.frame(
+  AccNo = c("MyProp1", "MyProp2", "MyProp3"),
+  A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101),
+  N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59),
+  C = c(0.29,    -1, 47),  E = c(-0.74,   3, 73),
+  Q = c(-0.85,  0.2, 72),  G = c(0.48,    0, 1),
+  H = c(-0.4,  -0.5, 82),  I = c(1.38, -1.8, 57),
+  L = c(1.06,  -1.8, 57),  K = c(-1.5,    3, 73),
+  M = c(0.64,  -1.3, 75),  F = c(1.19, -2.5, 91),
+  P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31),
+  T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130),
+  Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43))
 
-# Use 2 default properties, 4 properties in the AAindex database,
-# and 3 cutomized properties
-extractAPAAC(x, customprops = myprops,
-             props = c('Hydrophobicity', 'Hydrophilicity',
-                       'CIDH920105', 'BHAR880101',
-                       'CHAM820101', 'CHAM820102',
-                       'MyProp1', 'MyProp2', 'MyProp3'))
+# use 2 default properties, 4 properties from the
+# AAindex database, and 3 cutomized properties
+extractAPAAC(
+  x, customprops = myprops,
+  props = c(
+    "Hydrophobicity", "Hydrophilicity",
+    "CIDH920105", "BHAR880101",
+    "CHAM820101", "CHAM820102",
+    "MyProp1", "MyProp2", "MyProp3")
+)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
@@ -99,8 +101,8 @@ JACS, 1962, 84: 4240-4246. (C. Tanford). (The hydrophobicity data)
 PNAS, 1981, 78:3824-3828 (T.P.Hopp & K.R.Woods). (The hydrophilicity data)
 }
 \seealso{
-See \code{\link{extractPAAC}} for pseudo
-         amino acid composition descriptor.
+See \code{\link{extractPAAC}} for
+pseudo amino acid composition descriptor.
 }
 \keyword{APAAC}
 \keyword{Amphiphilic}

@@ -29,7 +29,8 @@
 
 extractDC = function (x) {
 
-  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  if (protcheck(x) == FALSE)
+    stop('x has unrecognized amino acid type')
 
   # To achieve maximum performance, here we use dictionary directly
   # DCDict could also be generated with

@@ -2,7 +2,8 @@
 % Please edit documentation in R/desc-10-CTriadClass.R
 \name{extractCTriadClass}
 \alias{extractCTriadClass}
-\title{Conjoint Triad Descriptor (with customized amino acid classification support)}
+\title{Conjoint Triad Descriptor (with customized amino acid
+classification support)}
 \usage{
 extractCTriadClass(x, aaclass)
 }
@@ -28,12 +29,13 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 
-# using customized amino acid classification (normalized van der Waals volume)
-newclass = list(c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
-                c('N', 'V', 'E', 'Q', 'I', 'L'),
-                c('M', 'H', 'K', 'F', 'R', 'Y', 'W'))
+# use customized amino acid classification (normalized van der Waals volume)
+newclass = list(
+  c("G", "A", "S", "T", "P", "D", "C"),
+  c("N", "V", "E", "Q", "I", "L"),
+  c("M", "H", "K", "F", "R", "Y", "W"))
 
 extractCTriadClass(x, aaclass = newclass)
 }

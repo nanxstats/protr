@@ -35,26 +35,29 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 
 # using five customized amino acid property classification
-group1 = list(hydrophobicity  = c('R', 'K', 'E', 'D', 'Q', 'N'),
-              normwaalsvolume = c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
-              polarizability  = c('G', 'A', 'S', 'D', 'T'),
-              secondarystruct = c('E', 'A', 'L', 'M', 'Q', 'K', 'R', 'H'),
-              solventaccess   = c('A', 'L', 'F', 'C', 'G', 'I', 'V', 'W'))
+group1 = list(
+  "hydrophobicity"  = c("R", "K", "E", "D", "Q", "N"),
+  "normwaalsvolume" = c("G", "A", "S", "T", "P", "D", "C"),
+  "polarizability"  = c("G", "A", "S", "D", "T"),
+  "secondarystruct" = c("E", "A", "L", "M", "Q", "K", "R", "H"),
+  "solventaccess"   = c("A", "L", "F", "C", "G", "I", "V", "W"))
 
-group2 = list(hydrophobicity  = c('G', 'A', 'S', 'T', 'P', 'H', 'Y'),
-              normwaalsvolume = c('N', 'V', 'E', 'Q', 'I', 'L'),
-              polarizability  = c('C', 'P', 'N', 'V', 'E', 'Q', 'I', 'L'),
-              secondarystruct = c('V', 'I', 'Y', 'C', 'W', 'F', 'T'),
-              solventaccess   = c('R', 'K', 'Q', 'E', 'N', 'D'))
+group2 = list(
+  "hydrophobicity"  = c("G", "A", "S", "T", "P", "H", "Y"),
+  "normwaalsvolume" = c("N", "V", "E", "Q", "I", "L"),
+  "polarizability"  = c("C", "P", "N", "V", "E", "Q", "I", "L"),
+  "secondarystruct" = c("V", "I", "Y", "C", "W", "F", "T"),
+  "solventaccess"   = c("R", "K", "Q", "E", "N", "D"))
 
-group3 = list(hydrophobicity  = c('C', 'L', 'V', 'I', 'M', 'F', 'W'),
-              normwaalsvolume = c('M', 'H', 'K', 'F', 'R', 'Y', 'W'),
-              polarizability  = c('K', 'M', 'H', 'F', 'R', 'Y', 'W'),
-              secondarystruct = c('G', 'N', 'P', 'S', 'D'),
-              solventaccess   = c('M', 'S', 'P', 'T', 'H', 'Y'))
+group3 = list(
+  "hydrophobicity"  = c("C", "L", "V", "I", "M", "F", "W"),
+  "normwaalsvolume" = c("M", "H", "K", "F", "R", "Y", "W"),
+  "polarizability"  = c("K", "M", "H", "F", "R", "Y", "W"),
+  "secondarystruct" = c("G", "N", "P", "S", "D"),
+  "solventaccess"   = c("M", "S", "P", "T", "H", "Y"))
 
 extractCTDDClass(x, aagroup1 = group1, aagroup2 = group2, aagroup3 = group3)
 }
@@ -72,9 +75,9 @@ Recognition of a Protein Fold in the Context of the SCOP classification.
 \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 }
 \seealso{
-See \code{\link{extractCTDCClass}} and \code{\link{extractCTDTClass}}
-         for Composition and Transition of the CTD descriptors with
-         customized amino acid classification support.
+See \code{\link{extractCTDCClass}} and
+\code{\link{extractCTDTClass}} for Composition and Transition of
+the CTD descriptors with customized amino acid classification support.
 }
 \keyword{CTD}
 \keyword{Composition}

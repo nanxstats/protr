@@ -24,7 +24,7 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractCTDT(x)
 }
 \author{
@@ -42,7 +42,7 @@ Recognition of a Protein Fold in the Context of the SCOP classification.
 }
 \seealso{
 See \code{\link{extractCTDC}} and \code{\link{extractCTDD}}
-         for Composition and Distribution of the CTD descriptors.
+for Composition and Distribution of the CTD descriptors.
 }
 \keyword{CTD}
 \keyword{Transition}

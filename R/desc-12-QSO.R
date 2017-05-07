@@ -38,18 +38,23 @@
 #' \emph{Biophys Journal}, 1994, 66, 335-344.
 #'
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' extractQSO(x)
 
-extractQSO = function (x, nlag = 30, w = 0.1) {
+extractQSO = function(x, nlag = 30, w = 0.1) {
 
-  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  if (protcheck(x) == FALSE)
+    stop('x has unrecognized amino acid type')
 
   N = nchar(x)
-  if (N <= nlag) stop('Length of the protein sequence must be greater than "nlag"')
 
-  DistMat1 = read.csv(system.file('sysdata/Schneider-Wrede.csv', package = 'protr'), header = TRUE)
-  DistMat2 = read.csv(system.file('sysdata/Grantham.csv', package = 'protr'), header = TRUE)
+  if (N <= nlag)
+    stop('Length of the protein sequence must be greater than "nlag"')
+
+  DistMat1 = read.csv(system.file(
+    'sysdata/Schneider-Wrede.csv', package = 'protr'), header = TRUE)
+  DistMat2 = read.csv(system.file(
+    'sysdata/Grantham.csv', package = 'protr'), header = TRUE)
   row.names(DistMat1) = as.character(DistMat1[, 1])
   DistMat1 = DistMat1[, -1]
   row.names(DistMat2) = as.character(DistMat2[, 1])
@@ -83,8 +88,9 @@ extractQSO = function (x, nlag = 30, w = 0.1) {
 
   # Compute fr
 
-  AADict = c('A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
-             'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
+  AADict = c(
+    'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
+    'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
 
   fr = summary(factor(xSplitted, levels = AADict), maxsum = 21)
 
@@ -104,6 +110,6 @@ extractQSO = function (x, nlag = 30, w = 0.1) {
 
   QSO = c(Xr1, Xr2, Xd1, Xd2)
 
-  return(QSO)
+  QSO
 
 }

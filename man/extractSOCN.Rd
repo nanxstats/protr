@@ -19,7 +19,7 @@ This function calculates the Sequence-Order-Coupling Numbers
 (dim: \code{nlag * 2}, default is 60).
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractSOCN(x)
 }
 \author{

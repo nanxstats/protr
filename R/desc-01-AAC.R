@@ -29,7 +29,8 @@
 
 extractAAC = function (x) {
 
-  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  if (protcheck(x) == FALSE)
+    stop('x has unrecognized amino acid type')
 
   # 20 Amino Acid Abbrevation Dictionary from
   # https://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties

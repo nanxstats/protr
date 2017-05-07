@@ -1,4 +1,5 @@
-#' Conjoint Triad Descriptor (with customized amino acid classification support)
+#' Conjoint Triad Descriptor (with customized amino acid
+#' classification support)
 #'
 #' This function calculates the Conjoint Triad descriptor, with customized
 #' amino acid classification support.
@@ -31,18 +32,20 @@
 #' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337--4341.
 #'
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #'
-#' # using customized amino acid classification (normalized van der Waals volume)
-#' newclass = list(c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
-#'                 c('N', 'V', 'E', 'Q', 'I', 'L'),
-#'                 c('M', 'H', 'K', 'F', 'R', 'Y', 'W'))
+#' # use customized amino acid classification (normalized van der Waals volume)
+#' newclass = list(
+#'   c("G", "A", "S", "T", "P", "D", "C"),
+#'   c("N", "V", "E", "Q", "I", "L"),
+#'   c("M", "H", "K", "F", "R", "Y", "W"))
 #'
 #' extractCTriadClass(x, aaclass = newclass)
 
-extractCTriadClass = function (x, aaclass) {
+extractCTriadClass = function(x, aaclass) {
 
-  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  if (protcheck(x) == FALSE)
+    stop('x has unrecognized amino acid type')
 
   nclass = length(aaclass)
 
@@ -51,10 +54,11 @@ extractCTriadClass = function (x, aaclass) {
   CTDict = vector('list', veclen)
 
   for (i in 1L:veclen) {
-    tmp = as.vector(outer(aaclass[[vspace[i, 1L]]],
-                          aaclass[[vspace[i, 2L]]], paste, sep = ''))
-    CTDict[[i]] = as.vector(outer(tmp,
-                                  aaclass[[vspace[i, 3L]]], paste, sep = ''))
+    tmp = as.vector(outer(
+      aaclass[[vspace[i, 1L]]],
+      aaclass[[vspace[i, 2L]]], paste, sep = ''))
+    CTDict[[i]] = as.vector(outer(
+      tmp, aaclass[[vspace[i, 3L]]], paste, sep = ''))
   }
 
   CTDict = unlist(CTDict)
@@ -69,10 +73,10 @@ extractCTriadClass = function (x, aaclass) {
 
   xSplitted = strsplit(x, split = '')[[1L]]
   n  = nchar(x)
-  CTAll = summary(factor(paste(paste(xSplitted[-c(n, n-1L)],
-                                     xSplitted[-c(1L, n)], sep = ''),
-                               xSplitted[-c(1L, 2L)], sep = ''),
-                         levels = CTDict), maxsum = length(CTDict)+1L)
+  CTAll = summary(factor(paste(paste(
+    xSplitted[-c(n, n-1L)], xSplitted[-c(1L, n)], sep = ''),
+    xSplitted[-c(1L, 2L)], sep = ''),
+    levels = CTDict), maxsum = length(CTDict) + 1L)
 
   MatchedIndex = which(CTAll != 0L)
   MatchedNames = names(CTAll[MatchedIndex])
@@ -88,9 +92,9 @@ extractCTriadClass = function (x, aaclass) {
 
   CT = (CT - min(CT))/max(CT)
 
-  names(CT) = paste0('VS', paste0(paste0(vspace[, 1], vspace[, 2]),
-                                  vspace[, 3]))
+  names(CT) = paste0(
+    'VS', paste0(paste0(vspace[, 1], vspace[, 2]), vspace[, 3]))
 
-  return(CT)
+  CT
 
 }
