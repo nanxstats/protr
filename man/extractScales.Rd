@@ -32,9 +32,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales (principal components) selected.
 }
 \description{
-Scales-Based Descriptors derived by Principal Components Analysis
-}
-\details{
 This function calculates scales-based descriptors
 derived by Principal Components Analysis (PCA).
 Users could provide customized amino acid property matrices.
@@ -50,7 +47,7 @@ AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{\link{extractDescScales}} scales descriptors based on

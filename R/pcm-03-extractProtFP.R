@@ -1,7 +1,5 @@
 #' Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
 #'
-#' Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
-#'
 #' This function calculates amino acid properties based scales descriptors
 #' (protein fingerprint). Users could specify which AAindex properties to
 #' select from the AAindex database by specify the numerical or character
@@ -31,7 +29,7 @@
 #'
 #' @aliases extractProtFP
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractProtFP
 #'

@@ -36,10 +36,8 @@
 
 #' Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
 #'
-#' Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
-#'
-#' This function calculates
-#' protein sequence similarity based on Gene Ontology (GO) similarity.
+#' This function calculates protein sequence similarity based on
+#' Gene Ontology (GO) similarity.
 #'
 #' @param golist A character vector, each component contains
 #' a character vector of GO terms or one Entrez Gene ID.
@@ -59,7 +57,7 @@
 #'
 #' @aliases parGOSim
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{twoGOSim}} for calculating the
 #' GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
@@ -123,8 +121,6 @@ parGOSim = function (golist, type = c('go', 'gene'),
 
 #' Protein Similarity Calculation based on Gene Ontology (GO) Similarity
 #'
-#' Protein Similarity Calculation based on Gene Ontology (GO) Similarity
-#'
 #' This function calculates the Gene Ontology (GO) similarity
 #' between two groups of GO terms or two Entrez gene IDs.
 #'
@@ -148,7 +144,7 @@ parGOSim = function (golist, type = c('go', 'gene'),
 #'
 #' @aliases twoGOSim
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{parGOSim}} for
 #' protein similarity calculation based on

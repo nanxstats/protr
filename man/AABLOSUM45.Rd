@@ -8,9 +8,6 @@
 data(AABLOSUM45)
 }
 \description{
-BLOSUM45 Matrix for 20 Amino Acids
-}
-\details{
 BLOSUM45 Matrix for the 20 amino acids. The matrix was extracted from the
 \code{Biostrings} package of Bioconductor.
 }

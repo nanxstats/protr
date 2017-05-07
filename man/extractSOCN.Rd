@@ -15,18 +15,15 @@ extractSOCN(x, nlag = 30)
 A length \code{nlag * 2} named vector
 }
 \description{
-Sequence-Order-Coupling Numbers
-}
-\details{
 This function calculates the Sequence-Order-Coupling Numbers
-(Dim: \code{nlag * 2}, default is 60).
+(dim: \code{nlag * 2}, default is 60).
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractSOCN(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Kuo-Chen Chou. Prediction of Protein Subcellar Locations by

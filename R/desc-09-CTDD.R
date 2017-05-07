@@ -1,9 +1,7 @@
 #' CTD Descriptors - Distribution
 #'
-#' CTD Descriptors - Distribution
-#'
 #' This function calculates the Distribution descriptor of the
-#' CTD descriptors (Dim: 105).
+#' CTD descriptors (dim: 105).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -13,7 +11,7 @@
 #'
 #' @aliases extractCTDD
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractCTDC}} and \code{\link{extractCTDT}}
 #'          for Composition and Transition of the CTD descriptors.

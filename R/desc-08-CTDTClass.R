@@ -1,6 +1,5 @@
-#' CTD Descriptors - Transition (with Customized Amino Acid Classification Support)
-#'
-#' CTD Descriptors - Transition (with Customized Amino Acid Classification Support)
+#' CTD Descriptors - Transition (with customized amino acid
+#' classification support)
 #'
 #' This function calculates the Transition descriptor of the
 #' CTD descriptors, with customized amino acid classification support.
@@ -20,7 +19,7 @@
 #'
 #' @aliases extractCTDTClass
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractCTDCClass}} and \code{\link{extractCTDDClass}}
 #'          for Composition and Distribution of the CTD descriptors with

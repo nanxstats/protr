@@ -8,9 +8,6 @@
 data(AAPAM250)
 }
 \description{
-PAM250 Matrix for 20 Amino Acids
-}
-\details{
 PAM250 Matrix for the 20 amino acids. The matrix was extracted from the
 \code{Biostrings} package of Bioconductor.
 }

@@ -1,17 +1,17 @@
 #' Profile-based protein representation derived by PSSM
 #' (Position-Specific Scoring Matrix)
 #'
-#' Profile-based protein representation derived by PSSM
-#' (Position-Specific Scoring Matrix)
-#'
 #' This function calculates the profile-based protein representation
 #' derived by PSSM. The feature vector is based on the PSSM computed by
-#' \code{\link{extractPSSM}}. For a given sequence,
-#' The PSSM feature represents the log-likelihood of the substitution of the
-#' 20 types of amino acids at that position in the sequence.
-#' Each PSSM feature value in the vector represents the degree of conservation
-#' of a given amino acid type. The value is normalized to
-#' interval (0, 1) by the transformation 1/(1+e^(-x)).
+#' \code{\link{extractPSSM}}.
+#'
+#' For a given sequence, the PSSM feature represents the log-likelihood
+#' of the substitution of the 20 types of amino acids at that position
+#' in the sequence.
+#'
+#' Each PSSM feature value in the vector represents the degree of
+#' conservation of a given amino acid type. The value is normalized
+#' to interval (0, 1) by the transformation 1/(1+e^(-x)).
 #'
 #' @param pssmmat The PSSM computed by \code{\link{extractPSSM}}.
 #'
@@ -24,7 +24,7 @@
 #'
 #' @aliases extractPSSMFeature
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractPSSMFeature
 #'

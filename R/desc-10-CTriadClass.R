@@ -1,6 +1,4 @@
-#' Conjoint Triad Descriptor (with Customized Amino Acid Classification Support)
-#'
-#' Conjoint Triad Descriptor (with Customized Amino Acid Classification Support)
+#' Conjoint Triad Descriptor (with customized amino acid classification support)
 #'
 #' This function calculates the Conjoint Triad descriptor, with customized
 #' amino acid classification support.
@@ -16,7 +14,7 @@
 #'
 #' @aliases extractCTriadClass
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractCTriadClass
 #'

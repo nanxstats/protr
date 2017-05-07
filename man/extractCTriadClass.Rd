@@ -2,7 +2,7 @@
 % Please edit documentation in R/desc-10-CTriadClass.R
 \name{extractCTriadClass}
 \alias{extractCTriadClass}
-\title{Conjoint Triad Descriptor (with Customized Amino Acid Classification Support)}
+\title{Conjoint Triad Descriptor (with customized amino acid classification support)}
 \usage{
 extractCTriadClass(x, aaclass)
 }
@@ -17,9 +17,6 @@ A length \code{k^3} named vector, where \code{k} is the number
 of customized classes of the amino acids.
 }
 \description{
-Conjoint Triad Descriptor (with Customized Amino Acid Classification Support)
-}
-\details{
 This function calculates the Conjoint Triad descriptor, with customized
 amino acid classification support.
 }
@@ -41,7 +38,7 @@ newclass = list(c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
 extractCTriadClass(x, aaclass = newclass)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 J.W. Shen, J. Zhang, X.M. Luo, W.L. Zhu,

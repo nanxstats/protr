@@ -13,11 +13,8 @@ extractCTDD(x)
 A length 105 named vector
 }
 \description{
-CTD Descriptors - Distribution
-}
-\details{
 This function calculates the Distribution descriptor of the
-CTD descriptors (Dim: 105).
+CTD descriptors (dim: 105).
 }
 \note{
 For this descriptor type, users need to intelligently evaluate
@@ -31,7 +28,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractCTDD(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.

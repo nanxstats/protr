@@ -2,7 +2,8 @@
 % Please edit documentation in R/desc-09-CTDDClass.R
 \name{extractCTDDClass}
 \alias{extractCTDDClass}
-\title{CTD Descriptors - Distribution (with Customized Amino Acid Classification Support)}
+\title{CTD Descriptors - Distribution (with customized amino acid
+classification support)}
 \usage{
 extractCTDDClass(x, aagroup1, aagroup2, aagroup3)
 }
@@ -23,9 +24,6 @@ A length \code{k * 15} named vector, \code{k} is the number of
 amino acid properties used.
 }
 \description{
-CTD Descriptors - Distribution (with Customized Amino Acid Classification Support)
-}
-\details{
 This function calculates the Distribution descriptor of the
 CTD descriptors, with customized amino acid classification support.
 }
@@ -61,7 +59,7 @@ group3 = list(hydrophobicity  = c('C', 'L', 'V', 'I', 'M', 'F', 'W'),
 extractCTDDClass(x, aagroup1 = group1, aagroup2 = group2, aagroup3 = group3)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.

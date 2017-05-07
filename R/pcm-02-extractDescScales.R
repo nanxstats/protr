@@ -1,7 +1,5 @@
 #' Scales-Based Descriptors with 20+ classes of Molecular Descriptors
 #'
-#' Scales-Based Descriptors with 20+ classes of Molecular Descriptors
-#'
 #' This function calculates the scales-based descriptors with
 #' molecular descriptors sets calculated by
 #' Dragon, Discovery Studio and MOE.
@@ -43,7 +41,7 @@
 #'
 #' @aliases extractDescScales
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractDescScales
 #'

@@ -17,18 +17,15 @@ extractQSO(x, nlag = 30, w = 0.1)
 A length \code{20 + 20 + (2 * nlag)} named vector
 }
 \description{
-Quasi-Sequence-Order (QSO) Descriptor
-}
-\details{
 This function calculates the Quasi-Sequence-Order (QSO) descriptor
-(Dim: \code{20 + 20 + (2 * nlag)}, default is 100).
+(dim: \code{20 + 20 + (2 * nlag)}, default is 100).
 }
 \examples{
 x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractQSO(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Kuo-Chen Chou. Prediction of Protein Subcellar Locations by

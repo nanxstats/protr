@@ -1,9 +1,7 @@
 #' Pseudo Amino Acid Composition Descriptor
 #'
-#' Pseudo Amino Acid Composition Descriptor
-#'
-#' This function calculates the Pseudo Amino Acid Composition (PAAC) descriptor
-#' (Dim: \code{20 + lambda}, default is 50).
+#' This function calculates the Pseudo Amino Acid Composition (PAAC)
+#' descriptor (dim: \code{20 + lambda}, default is 50).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -54,7 +52,7 @@
 #'
 #' @aliases extractPAAC
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractAPAAC}} for amphiphilic pseudo
 #'          amino acid composition descriptor.

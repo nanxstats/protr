@@ -11,9 +11,6 @@
 #' Scales-Based Descriptors derived by Principal Components Analysis
 #' (with Gap Support)
 #'
-#' Scales-Based Descriptors derived by Principal Components Analysis
-#' (with Gap Support)
-#'
 #' This function calculates scales-based descriptors
 #' derived by Principal Components Analysis (PCA), with gap support.
 #' Users could provide customized amino acid property matrices.
@@ -45,7 +42,7 @@
 #'
 #' @aliases extractScalesGap
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractProtFPGap}} for amino acid property based
 #' scales descriptors (protein fingerprint) with gap support.

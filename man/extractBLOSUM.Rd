@@ -34,9 +34,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales selected.
 }
 \description{
-BLOSUM and PAM Matrix-Derived Descriptors
-}
-\details{
 This function calculates BLOSUM matrix-derived descriptors.
 For users' convenience, \code{protr} provides the
 BLOSUM45, BLOSUM50, BLOSUM62, BLOSUM80, BLOSUM100,
@@ -48,7 +45,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 blosum = extractBLOSUM(x, submat = 'AABLOSUM62', k = 5, lag = 7, scale = TRUE, silent = FALSE)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Georgiev, A. G. (2009).

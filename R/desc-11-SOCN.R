@@ -1,9 +1,7 @@
 #' Sequence-Order-Coupling Numbers
 #'
-#' Sequence-Order-Coupling Numbers
-#'
 #' This function calculates the Sequence-Order-Coupling Numbers
-#' (Dim: \code{nlag * 2}, default is 60).
+#' (dim: \code{nlag * 2}, default is 60).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -15,7 +13,7 @@
 #'
 #' @aliases extractSOCN
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractQSO}} for quasi-sequence-order descriptors.
 #'

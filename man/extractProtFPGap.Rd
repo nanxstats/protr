@@ -36,10 +36,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales (principal components) selected.
 }
 \description{
-Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
-with Gap Support
-}
-\details{
 This function calculates amino acid properties based scales descriptors
 (protein fingerprint) with gap support. Users could specify which AAindex
 properties to select from the AAindex database by specify the numerical or

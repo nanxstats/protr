@@ -1,9 +1,8 @@
 #' Compute PSSM (Position-Specific Scoring Matrix) for given protein sequence
 #'
-#' Compute PSSM (Position-Specific Scoring Matrix) for given protein sequence
-#'
 #' This function calculates the PSSM (Position-Specific Scoring Matrix) derived
 #' by PSI-Blast for given protein sequence or peptides.
+#'
 #' For given protein sequences or peptides, PSSM represents the
 #' log-likelihood of the substitution of the 20 types of amino acids at that
 #' position in the sequence. Note that the output value is not normalized.
@@ -93,7 +92,7 @@
 #'
 #' @aliases extractPSSM
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractPSSM
 #'

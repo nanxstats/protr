@@ -9,15 +9,12 @@ for 20 Amino Acids}
 data(AAindex)
 }
 \description{
-AAindex Data of 544 Physicochemical and Biological Properties
-for 20 Amino Acids
+The data was extracted from the AAindex1 database ver 9.1
+(\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of
+November, 2012 (Data Last Modified 2006-08-14).
 }
 \details{
-The data was extracted from the AAindex1 database ver 9.1
-(\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of Nov. 2012
-(Data Last Modified 2006-08-14).
-
-With this data, users could investigate each property's accession number
+With this dataset, users can investigate each property's accession number
 and other details. Visit \url{http://www.genome.jp/dbget/aaindex.html}
 for more information.
 }

@@ -34,9 +34,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales (principal components) selected.
 }
 \description{
-Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
-}
-\details{
 This function calculates amino acid properties based scales descriptors
 (protein fingerprint). Users could specify which AAindex properties to
 select from the AAindex database by specify the numerical or character
@@ -47,7 +44,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 fp = extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{AAindex}
 \keyword{extract}

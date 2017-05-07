@@ -13,11 +13,8 @@ extractCTDT(x)
 A length 21 named vector
 }
 \description{
-CTD Descriptors - Transition
-}
-\details{
 This function calculates the Transition descriptor of the
-CTD descriptors (Dim: 21).
+CTD descriptors (dim: 21).
 }
 \note{
 For this descriptor type, users need to intelligently evaluate
@@ -31,7 +28,7 @@ x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
 extractCTDT(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.

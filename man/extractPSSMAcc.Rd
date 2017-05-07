@@ -19,10 +19,6 @@ the element names are derived by the amino acid name abbreviation
 (crossed amino acid name abbreviation) and lag index.
 }
 \description{
-Profile-based protein representation derived by PSSM
-(Position-Specific Scoring Matrix) and auto cross covariance
-}
-\details{
 This function calculates the feature vector based on the PSSM
 by running PSI-Blast and auto cross covariance tranformation.
 }
@@ -40,7 +36,7 @@ if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
 }
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg,

@@ -10,20 +10,17 @@ extractTC(x)
 \item{x}{A character vector, as the input protein sequence.}
 }
 \value{
-A length 8000 named vector
+A length 8,000 named vector
 }
 \description{
-Tripeptide Composition Descriptor
-}
-\details{
-This function calculates the Tripeptide Composition descriptor (Dim: 8000).
+This function calculates the Tripeptide Composition descriptor (dim: 8,000).
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractTC(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 M. Bhasin, G. P. S. Raghava.
@@ -33,7 +30,7 @@ Amino Acid Composition and Dipeptide Composition.
 }
 \seealso{
 See \code{\link{extractAAC}} and \code{\link{extractDC}}
-         for Amino Acid Composition and Dipeptide Composition descriptors.
+for Amino Acid Composition and Dipeptide Composition descriptors.
 }
 \keyword{Composition}
 \keyword{Tripeptide}

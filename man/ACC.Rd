@@ -2,7 +2,8 @@
 % Please edit documentation in R/misc-06-acc.R
 \name{acc}
 \alias{acc}
-\title{Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors of the Same Length}
+\title{Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors
+of the Same Length}
 \usage{
 acc(mat, lag)
 }
@@ -18,9 +19,6 @@ A length \code{lag * p^2} named vector, the element names are
         constructed by: the scales index (crossed scales index) and lag index.
 }
 \description{
-Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors of the Same Length
-}
-\details{
 This function calculates the auto covariance and auto cross covariance
 for generating scale-based descriptors of the same length.
 }
@@ -35,7 +33,7 @@ mat = matrix(rnorm(p * n), nrow = p, ncol = n)
 acc(mat, lag)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg, M., & R\"{a}nnar, S. (1993).

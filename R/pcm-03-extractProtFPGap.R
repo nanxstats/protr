@@ -1,9 +1,6 @@
 #' Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
 #' with Gap Support
 #'
-#' Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
-#' with Gap Support
-#'
 #' This function calculates amino acid properties based scales descriptors
 #' (protein fingerprint) with gap support. Users could specify which AAindex
 #' properties to select from the AAindex database by specify the numerical or

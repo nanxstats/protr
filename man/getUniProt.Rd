@@ -13,10 +13,7 @@ getUniProt(id)
 A list, each component contains one of the protein sequences.
 }
 \description{
-Get Protein Sequences from UniProt by Protein ID
-}
-\details{
-This function get protein sequences from uniprot.org by protein ID(s).
+This function retrieves protein sequences from uniprot.org by protein ID(s).
 }
 \examples{
 \donttest{
@@ -26,7 +23,7 @@ ids = c('P00750', 'P00751', 'P00752')
 getUniProt(ids)}
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{\link{readFASTA}} for reading FASTA format files.

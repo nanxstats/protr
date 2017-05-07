@@ -19,9 +19,6 @@ A character vector, representing the amino acid sequence
         of the single-letter code.
 }
 \description{
-Read Protein Sequences in PDB Format
-}
-\details{
 This function reads protein sequences in PDB (Protein Data Bank) format,
 and return the amino acid sequences represented by single-letter code.
 }
@@ -29,7 +26,7 @@ and return the amino acid sequences represented by single-letter code.
 Seq4HHB = readPDB(system.file('protseq/4HHB.pdb', package = 'protr'))
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Protein Data Bank Contents Guide: Atomic Coordinate Entry Format Description,

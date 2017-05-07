@@ -1,8 +1,6 @@
 #' Get Protein Sequences from UniProt by Protein ID
 #'
-#' Get Protein Sequences from UniProt by Protein ID
-#'
-#' This function get protein sequences from uniprot.org by protein ID(s).
+#' This function retrieves protein sequences from uniprot.org by protein ID(s).
 #'
 #' @param id A character vector, as the protein ID(s).
 #'
@@ -12,7 +10,7 @@
 #'
 #' @aliases getUniProt
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{readFASTA}} for reading FASTA format files.
 #'
@@ -37,8 +35,9 @@ getUniProt = function (id) {
   # http://www.uniprot.org/uniprot/P00750.fasta
 
   for (i in 1:n) {
-    proteins[[i]] = readFASTA(paste('http://www.uniprot.org/uniprot/',
-                                    id[i], '.fasta', sep = ''))[[1]]
+    proteins[[i]] = readFASTA(paste(
+      'http://www.uniprot.org/uniprot/',
+      id[i], '.fasta', sep = ''))[[1]]
   }
 
   return(proteins)

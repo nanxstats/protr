@@ -8,9 +8,6 @@
 data(AAMetaInfo)
 }
 \description{
-Meta Information for the 20 Amino Acids
-}
-\details{
 This dataset includes the meta information of
 the 20 amino acids used for the 2D and 3D descriptor
 calculation in this package. Each column represents:

@@ -2,7 +2,8 @@
 % Please edit documentation in R/desc-07-CTDCClass.R
 \name{extractCTDCClass}
 \alias{extractCTDCClass}
-\title{CTD Descriptors - Composition (with Customized Amino Acid Classification Support)}
+\title{CTD Descriptors - Composition (with customized amino acid
+classification support)}
 \usage{
 extractCTDCClass(x, aagroup1, aagroup2, aagroup3)
 }
@@ -23,9 +24,6 @@ A length \code{k * 3} named vector, \code{k} is the number of
 amino acid properties used.
 }
 \description{
-CTD Descriptors - Composition (with Customized Amino Acid Classification Support)
-}
-\details{
 This function calculates the Composition descriptor of the
 CTD descriptors, with customized amino acid classification support.
 }
@@ -61,7 +59,7 @@ group3 = list(hydrophobicity  = c('C', 'L', 'V', 'I', 'M', 'F', 'W'),
 extractCTDCClass(x, aagroup1 = group1, aagroup2 = group2, aagroup3 = group3)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.
@@ -74,9 +72,9 @@ Recognition of a Protein Fold in the Context of the SCOP classification.
 \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 }
 \seealso{
-See \code{\link{extractCTDTClass}} and \code{\link{extractCTDDClass}}
-         for Transition and Distribution of the CTD descriptors with
-         customized amino acid classification support.
+See \code{\link{extractCTDTClass}} and
+\code{\link{extractCTDDClass}} for Transition and Distribution
+of the CTD descriptors with customized amino acid classification support.
 }
 \keyword{CTD}
 \keyword{Composition}

@@ -15,18 +15,18 @@ A numeric vector which has \code{20 x N} named elements,
 where \code{N} is the size of the window (number of rows of the PSSM).
 }
 \description{
-Profile-based protein representation derived by PSSM
-(Position-Specific Scoring Matrix)
-}
-\details{
 This function calculates the profile-based protein representation
 derived by PSSM. The feature vector is based on the PSSM computed by
-\code{\link{extractPSSM}}. For a given sequence,
-The PSSM feature represents the log-likelihood of the substitution of the
-20 types of amino acids at that position in the sequence.
-Each PSSM feature value in the vector represents the degree of conservation
-of a given amino acid type. The value is normalized to
-interval (0, 1) by the transformation 1/(1+e^(-x)).
+\code{\link{extractPSSM}}.
+}
+\details{
+For a given sequence, the PSSM feature represents the log-likelihood
+of the substitution of the 20 types of amino acids at that position
+in the sequence.
+
+Each PSSM feature value in the vector represents the degree of
+conservation of a given amino acid type. The value is normalized
+to interval (0, 1) by the transformation 1/(1+e^(-x)).
 }
 \examples{
 if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
@@ -42,7 +42,7 @@ if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
 }
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Ye, Xugang, Guoli Wang, and Stephen F. Altschul.

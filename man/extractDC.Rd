@@ -13,17 +13,14 @@ extractDC(x)
 A length 400 named vector
 }
 \description{
-Dipeptide Composition Descriptor
-}
-\details{
-This function calculates the Dipeptide Composition descriptor (Dim: 400).
+This function calculates the Dipeptide Composition descriptor (dim: 400).
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractDC(x)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 M. Bhasin, G. P. S. Raghava.
@@ -33,7 +30,7 @@ Amino Acid Composition and Dipeptide Composition.
 }
 \seealso{
 See \code{\link{extractAAC}} and \code{\link{extractTC}}
-         for Amino Acid Composition and Tripeptide Composition descriptors.
+for Amino Acid Composition and Tripeptide Composition descriptors.
 }
 \keyword{Composition}
 \keyword{Dipeptide}

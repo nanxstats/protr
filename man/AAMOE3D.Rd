@@ -8,9 +8,6 @@
 data(AAMOE3D)
 }
 \description{
-3D Descriptors for 20 Amino Acids calculated by MOE 2011.10
-}
-\details{
 This dataset includes the 3D descriptors of the 20 amino acids
 calculated by MOE 2011.10 used for scales extraction in this package.
 All amino acid molecules had also been optimized with MOE (semiempirical AM1)

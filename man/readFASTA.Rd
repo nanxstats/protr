@@ -34,9 +34,6 @@ returned argument is sufficient. Using A and B is equivalent in the
 following sense.
 }
 \description{
-Read Protein Sequences in FASTA Format
-}
-\details{
 This function reads protein sequences in FASTA format.
 }
 \note{
@@ -48,7 +45,7 @@ Note that any different sets of instances (chunklets),
 P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Pearson, W.R. and Lipman, D.J. (1988)

@@ -13,10 +13,7 @@ extractCTriad(x)
 A length 343 named vector
 }
 \description{
-Conjoint Triad Descriptor
-}
-\details{
-This function calculates the Conjoint Triad descriptor (Dim: 343).
+This function calculates the Conjoint Triad descriptor (dim: 343).
 }
 \note{
 For this descriptor type, users need to intelligently evaluate

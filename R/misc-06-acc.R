@@ -1,6 +1,5 @@
-#' Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors of the Same Length
-#'
-#' Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors of the Same Length
+#' Auto Cross Covariance (ACC) for Generating Scales-Based Descriptors
+#' of the Same Length
 #'
 #' This function calculates the auto covariance and auto cross covariance
 #' for generating scale-based descriptors of the same length.
@@ -20,7 +19,7 @@
 #'
 #' @aliases acc
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractScales}} for scales-based descriptors.
 #' For more details, see \code{\link{extractDescScales}}

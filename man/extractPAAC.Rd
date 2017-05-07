@@ -44,11 +44,8 @@ The default value for \code{customprops} is \code{NULL}.}
 A length \code{20 + lambda} named vector
 }
 \description{
-Pseudo Amino Acid Composition Descriptor
-}
-\details{
-This function calculates the Pseudo Amino Acid Composition (PAAC) descriptor
-(Dim: \code{20 + lambda}, default is 50).
+This function calculates the Pseudo Amino Acid Composition (PAAC)
+descriptor (dim: \code{20 + lambda}, default is 50).
 }
 \note{
 Note the default \code{20 * 3} \code{prop} values have been already
@@ -87,7 +84,7 @@ extractPAAC(x, customprops = myprops,
                       'MyProp1', 'MyProp2', 'MyProp3'))
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Kuo-Chen Chou. Prediction of Protein Cellular Attributes

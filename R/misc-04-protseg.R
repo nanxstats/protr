@@ -1,7 +1,5 @@
 #' Protein Sequence Segmentation
 #'
-#' Protein Sequence Segmentation
-#'
 #' This function extracts the segmentations from the protein sequence.
 #'
 #' @param x A character vector, as the input protein sequence.
@@ -24,7 +22,7 @@
 #'
 #' @aliases protseg
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export protseg
 #'

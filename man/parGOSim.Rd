@@ -30,11 +30,8 @@ for combining semantic similarity scores of multiple GO terms associated with pr
 A \code{n} x \code{n} similarity matrix.
 }
 \description{
-Protein Sequence Similarity Calculation based on Gene Ontology (GO) Similarity
-}
-\details{
-This function calculates
-protein sequence similarity based on Gene Ontology (GO) similarity.
+This function calculates protein sequence similarity based on
+Gene Ontology (GO) similarity.
 }
 \examples{
 \dontrun{
@@ -58,7 +55,7 @@ gsimmat2 = parGOSim(genelist, type = 'gene')
 print(gsimmat2)}
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{\link{twoGOSim}} for calculating the

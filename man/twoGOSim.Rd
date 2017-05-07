@@ -33,9 +33,6 @@ for combining semantic similarity scores of multiple GO terms associated with pr
 A n x n matrix.
 }
 \description{
-Protein Similarity Calculation based on Gene Ontology (GO) Similarity
-}
-\details{
 This function calculates the Gene Ontology (GO) similarity
 between two groups of GO terms or two Entrez gene IDs.
 }
@@ -60,7 +57,7 @@ gsim2 = twoGOSim(gene1, gene2, type = 'gene', ont = 'BP', measure = 'Lin')
 print(gsim2)}
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{\link{parGOSim}} for

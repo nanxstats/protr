@@ -32,9 +32,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales (dimensionality) selected.
 }
 \description{
-Scales-Based Descriptors derived by Multidimensional Scaling
-}
-\details{
 This function calculates scales-based descriptors
 derived by Multidimensional Scaling (MDS).
 Users could provide customized amino acid property matrices.
@@ -46,7 +43,7 @@ tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Venkatarajan, M. S., & Braun, W. (2001).

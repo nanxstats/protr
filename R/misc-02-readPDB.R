@@ -1,7 +1,5 @@
 #' Read Protein Sequences in PDB Format
 #'
-#' Read Protein Sequences in PDB Format
-#'
 #' This function reads protein sequences in PDB (Protein Data Bank) format,
 #' and return the amino acid sequences represented by single-letter code.
 #'
@@ -19,7 +17,7 @@
 #'
 #' @aliases readPDB
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{readFASTA}} for reading protein sequences
 #'          in FASTA format.

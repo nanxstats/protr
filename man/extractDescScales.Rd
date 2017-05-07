@@ -46,9 +46,6 @@ A length \code{lag * p^2} named vector,
         \code{p} is the number of scales selected.
 }
 \description{
-Scales-Based Descriptors with 20+ classes of Molecular Descriptors
-}
-\details{
 This function calculates the scales-based descriptors with
 molecular descriptors sets calculated by
 Dragon, Discovery Studio and MOE.
@@ -62,7 +59,7 @@ descscales = extractDescScales(x, propmat = 'AATopo', index = c(37:41, 43:47),
                                pc = 5, lag = 7, silent = FALSE)
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{PCM}
 \keyword{extract}

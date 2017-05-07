@@ -24,9 +24,6 @@ where \code{'global'} represents Needleman-Wunsch global alignment;
 An Biostrings object containing the scores and other alignment information.
 }
 \description{
-Protein Sequence Alignment for Two Protein Sequences
-}
-\details{
 This function implements the sequence alignment between two protein sequences.
 }
 \examples{
@@ -43,7 +40,7 @@ summary(seqalign)
 print(seqalign@score)}
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{\link{parSeqSim}} for paralleled pairwise

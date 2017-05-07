@@ -1,7 +1,5 @@
 #' Check if the protein sequence's amino acid types are in the 20 default types
 #'
-#' Check if the protein sequence's amino acid types are in the 20 default types
-#'
 #' This function checks if the protein sequence's amino acid types are in the 20.
 #'
 #' @param x A character vector, as the input protein sequence.
@@ -13,7 +11,7 @@
 #'
 #' @aliases protcheck
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export protcheck
 #'

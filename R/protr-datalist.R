@@ -1,14 +1,11 @@
 #' AAindex Data of 544 Physicochemical and Biological Properties
 #' for 20 Amino Acids
 #'
-#' AAindex Data of 544 Physicochemical and Biological Properties
-#' for 20 Amino Acids
-#'
 #' The data was extracted from the AAindex1 database ver 9.1
-#' (\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of Nov. 2012
-#' (Data Last Modified 2006-08-14).
+#' (\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of
+#' November, 2012 (Data Last Modified 2006-08-14).
 #'
-#' With this data, users could investigate each property's accession number
+#' With this dataset, users can investigate each property's accession number
 #' and other details. Visit \url{http://www.genome.jp/dbget/aaindex.html}
 #' for more information.
 #'
@@ -26,8 +23,6 @@ NULL
 #'
 #' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
 #'
-#' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
-#'
 #' @docType data
 #' @name OptAA3d
 #' @aliases OptAA3d
@@ -35,12 +30,10 @@ NULL
 #' @examples
 #' # This operation requires the rcdk package
 #' # require(rcdk)
-#' # optaa3d = load.molecules(system.file('sysdata/OptAA3d.sdf', package = 'protr'))
+#' # optaa3d = load.molecules(system.file("sysdata/OptAA3d.sdf", package = "protr"))
 #' # view.molecule.2d(optaa3d[[1]])  # view the first AA
 NULL
 
-#' Meta Information for the 20 Amino Acids
-#'
 #' Meta Information for the 20 Amino Acids
 #'
 #' This dataset includes the meta information of
@@ -67,8 +60,6 @@ NULL
 
 #' 2D Descriptors for 20 Amino Acids calculated by MOE 2011.10
 #'
-#' 2D Descriptors for 20 Amino Acids calculated by MOE 2011.10
-#'
 #' This dataset includes the 2D descriptors of
 #' the 20 amino acids calculated by MOE 2011.10
 #' used for scales extraction in this package.
@@ -83,8 +74,6 @@ NULL
 #'
 NULL
 
-#' 3D Descriptors for 20 Amino Acids calculated by MOE 2011.10
-#'
 #' 3D Descriptors for 20 Amino Acids calculated by MOE 2011.10
 #'
 #' This dataset includes the 3D descriptors of the 20 amino acids
@@ -106,14 +95,15 @@ NULL
 
 #' CPSA Descriptors for 20 Amino Acids calculated by Discovery Studio
 #'
-#' CPSA Descriptors for 20 Amino Acids calculated by Discovery Studio
-#'
 #' This dataset includes the CPSA descriptors of the 20 amino acids
-#' calculated by Discovery Studio (version 2.5) used for scales extraction in this package.
-#' All amino acid molecules had also been optimized with MOE 2011.10 (semiempirical AM1)
-#' before calculating these CPSA descriptors.
-#' The SDF file containing the information of the optimized amino acid molecules
-#' is included in this package. See \code{\link{OptAA3d}} for more information.
+#' calculated by Discovery Studio (version 2.5) used for scales extraction
+#' in this package.
+#'
+#' All amino acid molecules had also been optimized with MOE 2011.10
+#' (semiempirical AM1) before calculating these CPSA descriptors.
+#' The SDF file containing the information of the optimized amino acid
+#' molecules is included in this package. See \code{\link{OptAA3d}}
+#' for more information.
 #'
 #' @docType data
 #' @name AACPSA
@@ -125,8 +115,6 @@ NULL
 #'
 NULL
 
-#' All 2D Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' All 2D Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes all the 2D descriptors of
@@ -147,8 +135,6 @@ NULL
 
 #' 2D Autocorrelations Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' 2D Autocorrelations Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the 2D autocorrelations descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -163,8 +149,6 @@ NULL
 #'
 NULL
 
-#' 3D-MoRSE Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' 3D-MoRSE Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the 3D-MoRSE descriptors of
@@ -183,8 +167,6 @@ NULL
 
 #' Atom-Centred Fragments Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Atom-Centred Fragments Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the atom-centred fragments descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -199,8 +181,6 @@ NULL
 #'
 NULL
 
-#' Burden Eigenvalues Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Burden Eigenvalues Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the Burden eigenvalues descriptors of
@@ -219,8 +199,6 @@ NULL
 
 #' Connectivity Indices Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Connectivity Indices Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the connectivity indices descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -235,8 +213,6 @@ NULL
 #'
 NULL
 
-#' Constitutional Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Constitutional Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the constitutional descriptors of
@@ -255,8 +231,6 @@ NULL
 
 #' Edge Adjacency Indices Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Edge Adjacency Indices Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the edge adjacency indices descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -271,8 +245,6 @@ NULL
 #'
 NULL
 
-#' Eigenvalue-Based Indices Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Eigenvalue-Based Indices Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the eigenvalue-based indices descriptors of
@@ -291,8 +263,6 @@ NULL
 
 #' Functional Group Counts Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Functional Group Counts Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the functional group counts descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -307,8 +277,6 @@ NULL
 #'
 NULL
 
-#' Geometrical Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Geometrical Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the geometrical descriptors of
@@ -327,8 +295,6 @@ NULL
 
 #' GETAWAY Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' GETAWAY Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the GETAWAY descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -343,8 +309,6 @@ NULL
 #'
 NULL
 
-#' Information Indices Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Information Indices Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the information indices descriptors of
@@ -363,8 +327,6 @@ NULL
 
 #' Molecular Properties Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Molecular Properties Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the molecular properties descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -379,8 +341,6 @@ NULL
 #'
 NULL
 
-#' Randic Molecular Profiles Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Randic Molecular Profiles Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the Randic molecular profiles descriptors of
@@ -399,8 +359,6 @@ NULL
 
 #' RDF Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' RDF Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the RDF descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -415,8 +373,6 @@ NULL
 #'
 NULL
 
-#' Topological Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' Topological Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the topological descriptors of
@@ -435,8 +391,6 @@ NULL
 
 #' Topological Charge Indices Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Topological Charge Indices Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the topological charge indices descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -453,8 +407,6 @@ NULL
 
 #' Walk and Path Counts Descriptors for 20 Amino Acids calculated by Dragon
 #'
-#' Walk and Path Counts Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' This dataset includes the walk and path counts descriptors of
 #' the 20 amino acids calculated by Dragon (version 5.4)
 #' used for scales extraction in this package.
@@ -469,8 +421,6 @@ NULL
 #'
 NULL
 
-#' WHIM Descriptors for 20 Amino Acids calculated by Dragon
-#'
 #' WHIM Descriptors for 20 Amino Acids calculated by Dragon
 #'
 #' This dataset includes the WHIM descriptors of
@@ -491,8 +441,6 @@ NULL
 
 #' BLOSUM45 Matrix for 20 Amino Acids
 #'
-#' BLOSUM45 Matrix for 20 Amino Acids
-#'
 #' BLOSUM45 Matrix for the 20 amino acids. The matrix was extracted from the
 #' \code{Biostrings} package of Bioconductor.
 #'
@@ -506,8 +454,6 @@ NULL
 #'
 NULL
 
-#' BLOSUM50 Matrix for 20 Amino Acids
-#'
 #' BLOSUM50 Matrix for 20 Amino Acids
 #'
 #' BLOSUM50 Matrix for the 20 amino acids. The matrix was extracted from the
@@ -525,8 +471,6 @@ NULL
 
 #' BLOSUM62 Matrix for 20 Amino Acids
 #'
-#' BLOSUM62 Matrix for 20 Amino Acids
-#'
 #' BLOSUM62 Matrix for the 20 amino acids. The matrix was extracted from the
 #' \code{Biostrings} package of Bioconductor.
 #'
@@ -540,8 +484,6 @@ NULL
 #'
 NULL
 
-#' BLOSUM80 Matrix for 20 Amino Acids
-#'
 #' BLOSUM80 Matrix for 20 Amino Acids
 #'
 #' BLOSUM80 Matrix for the 20 amino acids. The matrix was extracted from the
@@ -559,8 +501,6 @@ NULL
 
 #' BLOSUM100 Matrix for 20 Amino Acids
 #'
-#' BLOSUM100 Matrix for 20 Amino Acids
-#'
 #' BLOSUM100 Matrix for the 20 amino acids. The matrix was extracted from the
 #' \code{Biostrings} package of Bioconductor.
 #'
@@ -574,8 +514,6 @@ NULL
 #'
 NULL
 
-#' PAM30 Matrix for 20 Amino Acids
-#'
 #' PAM30 Matrix for 20 Amino Acids
 #'
 #' PAM30 Matrix for the 20 amino acids. The matrix was extracted from the
@@ -593,8 +531,6 @@ NULL
 
 #' PAM40 Matrix for 20 Amino Acids
 #'
-#' PAM40 Matrix for 20 Amino Acids
-#'
 #' PAM40 Matrix for the 20 amino acids. The matrix was extracted from the
 #' \code{Biostrings} package of Bioconductor.
 #'
@@ -608,8 +544,6 @@ NULL
 #'
 NULL
 
-#' PAM70 Matrix for 20 Amino Acids
-#'
 #' PAM70 Matrix for 20 Amino Acids
 #'
 #' PAM70 Matrix for the 20 amino acids. The matrix was extracted from the
@@ -627,8 +561,6 @@ NULL
 
 #' PAM120 Matrix for 20 Amino Acids
 #'
-#' PAM120 Matrix for 20 Amino Acids
-#'
 #' PAM120 Matrix for the 20 amino acids. The matrix was extracted from the
 #' \code{Biostrings} package of Bioconductor.
 #'
@@ -642,8 +574,6 @@ NULL
 #'
 NULL
 
-#' PAM250 Matrix for 20 Amino Acids
-#'
 #' PAM250 Matrix for 20 Amino Acids
 #'
 #' PAM250 Matrix for the 20 amino acids. The matrix was extracted from the

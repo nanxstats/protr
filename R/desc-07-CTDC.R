@@ -1,9 +1,7 @@
 #' CTD Descriptors - Composition
 #'
-#' CTD Descriptors - Composition
-#'
 #' This function calculates the Composition descriptor of the
-#' CTD descriptors (Dim: 21).
+#' CTD descriptors (dim: 21).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -13,10 +11,10 @@
 #'
 #' @aliases extractCTDC
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractCTDT}} and \code{\link{extractCTDD}}
-#'          for Transition and Distribution of the CTD descriptors.
+#' for Transition and Distribution of the CTD descriptors.
 #'
 #' @export extractCTDC
 #'
@@ -37,37 +35,41 @@
 #' \emph{Proteins: Structure, Function and Genetics}, 1999, 35, 401-407.
 #'
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' extractCTDC(x)
 
-extractCTDC = function (x) {
+extractCTDC = function(x) {
 
-  if (protcheck(x) == FALSE) stop('x has unrecognized amino acid type')
+  if (protcheck(x) == FALSE)
+    stop('x has unrecognized amino acid type')
 
-  group1 = list(hydrophobicity  = c('R', 'K', 'E', 'D', 'Q', 'N'),
-                normwaalsvolume = c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
-                polarity        = c('L', 'I', 'F', 'W', 'C', 'M', 'V', 'Y'),
-                polarizability  = c('G', 'A', 'S', 'D', 'T'),
-                charge          = c('K', 'R'),
-                secondarystruct = c('E', 'A', 'L', 'M', 'Q', 'K', 'R', 'H'),
-                solventaccess   = c('A', 'L', 'F', 'C', 'G', 'I', 'V', 'W'))
+  group1 = list(
+    'hydrophobicity'  = c('R', 'K', 'E', 'D', 'Q', 'N'),
+    'normwaalsvolume' = c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
+    'polarity'        = c('L', 'I', 'F', 'W', 'C', 'M', 'V', 'Y'),
+    'polarizability'  = c('G', 'A', 'S', 'D', 'T'),
+    'charge'          = c('K', 'R'),
+    'secondarystruct' = c('E', 'A', 'L', 'M', 'Q', 'K', 'R', 'H'),
+    'solventaccess'   = c('A', 'L', 'F', 'C', 'G', 'I', 'V', 'W'))
 
-  group2 = list(hydrophobicity  = c('G', 'A', 'S', 'T', 'P', 'H', 'Y'),
-                normwaalsvolume = c('N', 'V', 'E', 'Q', 'I', 'L'),
-                polarity        = c('P', 'A', 'T', 'G', 'S'),
-                polarizability  = c('C', 'P', 'N', 'V', 'E', 'Q', 'I', 'L'),
-                charge          = c('A', 'N', 'C', 'Q', 'G', 'H', 'I', 'L',
-                                    'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'),
-                secondarystruct = c('V', 'I', 'Y', 'C', 'W', 'F', 'T'),
-                solventaccess   = c('R', 'K', 'Q', 'E', 'N', 'D'))
+  group2 = list(
+    'hydrophobicity'  = c('G', 'A', 'S', 'T', 'P', 'H', 'Y'),
+    'normwaalsvolume' = c('N', 'V', 'E', 'Q', 'I', 'L'),
+    'polarity'        = c('P', 'A', 'T', 'G', 'S'),
+    'polarizability'  = c('C', 'P', 'N', 'V', 'E', 'Q', 'I', 'L'),
+    'charge'          = c('A', 'N', 'C', 'Q', 'G', 'H', 'I', 'L',
+                          'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'),
+    'secondarystruct' = c('V', 'I', 'Y', 'C', 'W', 'F', 'T'),
+    'solventaccess'   = c('R', 'K', 'Q', 'E', 'N', 'D'))
 
-  group3 = list(hydrophobicity  = c('C', 'L', 'V', 'I', 'M', 'F', 'W'),
-                normwaalsvolume = c('M', 'H', 'K', 'F', 'R', 'Y', 'W'),
-                polarity        = c('H', 'Q', 'R', 'K', 'N', 'E', 'D'),
-                polarizability  = c('K', 'M', 'H', 'F', 'R', 'Y', 'W'),
-                charge          = c('D', 'E'),
-                secondarystruct = c('G', 'N', 'P', 'S', 'D'),
-                solventaccess   = c('M', 'S', 'P', 'T', 'H', 'Y'))
+  group3 = list(
+    'hydrophobicity'  = c('C', 'L', 'V', 'I', 'M', 'F', 'W'),
+    'normwaalsvolume' = c('M', 'H', 'K', 'F', 'R', 'Y', 'W'),
+    'polarity'        = c('H', 'Q', 'R', 'K', 'N', 'E', 'D'),
+    'polarizability'  = c('K', 'M', 'H', 'F', 'R', 'Y', 'W'),
+    'charge'          = c('D', 'E'),
+    'secondarystruct' = c('G', 'N', 'P', 'S', 'D'),
+    'solventaccess'   = c('M', 'S', 'P', 'T', 'H', 'Y'))
 
   xSplitted = strsplit(x, split = '')[[1]]
   n  = nchar(x)
@@ -89,6 +91,6 @@ extractCTDC = function (x) {
   # just to make the results look pretty
   ids = unlist(lapply(1:7, function(x) x + c(0, 7, 14)))
 
-  return(CTDC[ids])
+  CTDC[ids]
 
 }

@@ -1,7 +1,5 @@
 #' Scales-Based Descriptors derived by Principal Components Analysis
 #'
-#' Scales-Based Descriptors derived by Principal Components Analysis
-#'
 #' This function calculates scales-based descriptors
 #' derived by Principal Components Analysis (PCA).
 #' Users could provide customized amino acid property matrices.
@@ -32,7 +30,7 @@
 #'
 #' @aliases extractScales
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractDescScales}} scales descriptors based on
 #' 20+ classes of molecular descriptors, and \code{\link{extractProtFP}}

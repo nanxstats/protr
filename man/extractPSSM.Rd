@@ -103,11 +103,10 @@ The original PSSM, a numeric matrix which has
 \code{end.pos - start.pos + 1} columns and \code{20} named rows.
 }
 \description{
-Compute PSSM (Position-Specific Scoring Matrix) for given protein sequence
-}
-\details{
 This function calculates the PSSM (Position-Specific Scoring Matrix) derived
 by PSI-Blast for given protein sequence or peptides.
+}
+\details{
 For given protein sequences or peptides, PSSM represents the
 log-likelihood of the substitution of the 20 types of amino acids at that
 position in the sequence. Note that the output value is not normalized.
@@ -143,7 +142,7 @@ if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
 }
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Altschul, Stephen F., et al.

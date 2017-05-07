@@ -1,6 +1,5 @@
-#' CTD Descriptors - Distribution (with Customized Amino Acid Classification Support)
-#'
-#' CTD Descriptors - Distribution (with Customized Amino Acid Classification Support)
+#' CTD Descriptors - Distribution (with customized amino acid
+#' classification support)
 #'
 #' This function calculates the Distribution descriptor of the
 #' CTD descriptors, with customized amino acid classification support.
@@ -20,7 +19,7 @@
 #'
 #' @aliases extractCTDDClass
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractCTDCClass}} and \code{\link{extractCTDTClass}}
 #'          for Composition and Transition of the CTD descriptors with

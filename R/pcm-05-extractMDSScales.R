@@ -1,7 +1,5 @@
 #' Scales-Based Descriptors derived by Multidimensional Scaling
 #'
-#' Scales-Based Descriptors derived by Multidimensional Scaling
-#'
 #' This function calculates scales-based descriptors
 #' derived by Multidimensional Scaling (MDS).
 #' Users could provide customized amino acid property matrices.
@@ -28,7 +26,7 @@
 #'
 #' @aliases extractMDSScales
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractScales}} for scales-based
 #' descriptors derived by Principal Components Analysis.

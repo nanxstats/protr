@@ -31,8 +31,6 @@
 
 #' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
 #'
-#' Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
-#'
 #' This function implemented the parallellized version for calculating
 #' protein sequence similarity based on sequence alignment.
 #'
@@ -56,7 +54,7 @@
 #'
 #' @aliases parSeqSim
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{twoSeqSim} for protein sequence alignment
 #' for two protein sequences. See \code{\link{parGOSim}} for
@@ -113,8 +111,6 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 
 #' Protein Sequence Alignment for Two Protein Sequences
 #'
-#' Protein Sequence Alignment for Two Protein Sequences
-#'
 #' This function implements the sequence alignment between two protein sequences.
 #'
 #' @param seq1 A character string, containing one protein sequence.
@@ -133,7 +129,7 @@ parSeqSim = function (protlist, cores = 2, type = 'local', submat = 'BLOSUM62') 
 #'
 #' @aliases twoSeqSim
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{parSeqSim}} for paralleled pairwise
 #' protein similarity calculation based on sequence alignment.

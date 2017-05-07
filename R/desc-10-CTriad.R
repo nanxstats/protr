@@ -1,8 +1,6 @@
 #' Conjoint Triad Descriptor
 #'
-#' Conjoint Triad Descriptor
-#'
-#' This function calculates the Conjoint Triad descriptor (Dim: 343).
+#' This function calculates the Conjoint Triad descriptor (dim: 343).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'

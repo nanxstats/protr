@@ -1,6 +1,5 @@
-#' CTD Descriptors - Composition (with Customized Amino Acid Classification Support)
-#'
-#' CTD Descriptors - Composition (with Customized Amino Acid Classification Support)
+#' CTD Descriptors - Composition (with customized amino acid
+#' classification support)
 #'
 #' This function calculates the Composition descriptor of the
 #' CTD descriptors, with customized amino acid classification support.
@@ -20,11 +19,11 @@
 #'
 #' @aliases extractCTDCClass
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
-#' @seealso See \code{\link{extractCTDTClass}} and \code{\link{extractCTDDClass}}
-#'          for Transition and Distribution of the CTD descriptors with
-#'          customized amino acid classification support.
+#' @seealso See \code{\link{extractCTDTClass}} and
+#' \code{\link{extractCTDDClass}} for Transition and Distribution
+#' of the CTD descriptors with customized amino acid classification support.
 #'
 #' @export extractCTDCClass
 #'

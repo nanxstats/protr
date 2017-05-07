@@ -6,20 +6,20 @@
 \alias{protr-package}
 \title{Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
-The protr package is a comprehensive toolkit for
-generating various numerical representation schemes of protein sequence.
+The protr package is a comprehensive toolkit for generating various
+numerical representation schemes of protein sequence.
 The descriptors are extensively utilized in bioinformatics and
-chemogenomics research. The commonly used descriptors include amino acid
-composition, autocorrelation, CTD, conjoint traid, quasi-sequence order,
-pseudo amino acid composition, and profile-based descriptors derived by
-Position-Specific Scoring Matrix (PSSM). The descriptors for
-proteochemometric (PCM) modeling include the scales-based
+chemogenomics research. The commonly used descriptors include
+amino acid composition, autocorrelation, CTD, conjoint traid,
+quasi-sequence order, pseudo amino acid composition, and
+profile-based descriptors derived by Position-Specific Scoring Matrix (PSSM).
+The descriptors for proteochemometric (PCM) modeling include the scales-based
 descriptors derived by principal components analysis, factor analysis,
-multidimensional scaling, amino acid properties (AAindex), 20+ classes of
-2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and
-BLOSUM/PAM matrix-derived descriptors. The protr package also
-integrates the function of parallelized similarity computation derived by
-pairwise protein sequence alignment and Gene Ontology (GO) semantic
+multidimensional scaling, amino acid properties (AAindex), 20+ classes
+of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.),
+and BLOSUM/PAM matrix-derived descriptors. The protr package also
+integrates the function of parallelized similarity computation derived
+by pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures.
 }
 \details{

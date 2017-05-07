@@ -1,9 +1,7 @@
 #' Quasi-Sequence-Order (QSO) Descriptor
 #'
-#' Quasi-Sequence-Order (QSO) Descriptor
-#'
 #' This function calculates the Quasi-Sequence-Order (QSO) descriptor
-#' (Dim: \code{20 + 20 + (2 * nlag)}, default is 100).
+#' (dim: \code{20 + 20 + (2 * nlag)}, default is 100).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -17,7 +15,7 @@
 #'
 #' @aliases extractQSO
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractSOCN}} for sequence-order-coupling numbers.
 #'

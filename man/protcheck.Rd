@@ -14,9 +14,6 @@ Logical. \code{TRUE} if all of the amino acid types of the sequence
         are within the 20 default types.
 }
 \description{
-Check if the protein sequence's amino acid types are in the 20 default types
-}
-\details{
 This function checks if the protein sequence's amino acid types are in the 20.
 }
 \examples{
@@ -25,7 +22,7 @@ protcheck(x)  # TRUE
 protcheck(paste(x, 'Z', sep = ''))  # FALSE
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{check}
 

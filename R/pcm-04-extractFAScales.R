@@ -1,7 +1,5 @@
 #' Scales-Based Descriptors derived by Factor Analysis
 #'
-#' Scales-Based Descriptors derived by Factor Analysis
-#'
 #' This function calculates scales-based descriptors
 #' derived by Factor Analysis (FA).
 #' Users could provide customized amino acid property matrices.
@@ -32,7 +30,7 @@
 #'
 #' @aliases extractFAScales
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractFAScales
 #'

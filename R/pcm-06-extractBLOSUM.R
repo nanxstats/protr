@@ -1,7 +1,5 @@
 #' BLOSUM and PAM Matrix-Derived Descriptors
 #'
-#' BLOSUM and PAM Matrix-Derived Descriptors
-#'
 #' This function calculates BLOSUM matrix-derived descriptors.
 #' For users' convenience, \code{protr} provides the
 #' BLOSUM45, BLOSUM50, BLOSUM62, BLOSUM80, BLOSUM100,
@@ -30,7 +28,7 @@
 #'
 #' @aliases extractBLOSUM
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractBLOSUM
 #'

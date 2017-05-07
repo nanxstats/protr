@@ -28,9 +28,6 @@ where \code{'global'} represents Needleman-Wunsch global alignment;
 A \code{n} x \code{n} similarity matrix.
 }
 \description{
-Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment
-}
-\details{
 This function implemented the parallellized version for calculating
 protein sequence similarity based on sequence alignment.
 }
@@ -53,7 +50,7 @@ psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
 print(psimmat)}
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \seealso{
 See \code{twoSeqSim} for protein sequence alignment

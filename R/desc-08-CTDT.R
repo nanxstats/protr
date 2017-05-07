@@ -1,9 +1,7 @@
 #' CTD Descriptors - Transition
 #'
-#' CTD Descriptors - Transition
-#'
 #' This function calculates the Transition descriptor of the
-#' CTD descriptors (Dim: 21).
+#' CTD descriptors (dim: 21).
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
@@ -13,7 +11,7 @@
 #'
 #' @aliases extractCTDT
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractCTDC}} and \code{\link{extractCTDD}}
 #'          for Composition and Distribution of the CTD descriptors.

@@ -1,9 +1,6 @@
 #' Profile-based protein representation derived by PSSM
 #' (Position-Specific Scoring Matrix) and auto cross covariance
 #'
-#' Profile-based protein representation derived by PSSM
-#' (Position-Specific Scoring Matrix) and auto cross covariance
-#'
 #' This function calculates the feature vector based on the PSSM
 #' by running PSI-Blast and auto cross covariance tranformation.
 #'
@@ -21,7 +18,7 @@
 #'
 #' @aliases extractPSSMAcc
 #'
-#' @author Nan Xiao <\url{http://nanx.me}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractPSSMAcc
 #'

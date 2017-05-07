@@ -43,12 +43,8 @@ A length \code{20 + n * lambda} named vector,
         \code{n} is the number of properties selected.
 }
 \description{
-Amphiphilic Pseudo Amino Acid Composition Descriptor
-}
-\details{
 This function calculates the Amphiphilic Pseudo Amino Acid
-Composition (APAAC) descriptor
-(Dim: \code{20 + (n * lambda)},
+Composition (APAAC) descriptor (dim: \code{20 + (n * lambda)},
 \code{n} is the number of properties selected, default is 80).
 }
 \note{
@@ -88,7 +84,7 @@ extractAPAAC(x, customprops = myprops,
                        'MyProp1', 'MyProp2', 'MyProp3'))
 }
 \author{
-Nan Xiao <\url{http://nanx.me}>
+Nan Xiao <\url{https://nanx.me}>
 }
 \references{
 Kuo-Chen Chou. Prediction of Protein Cellular Attributes
