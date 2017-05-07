@@ -32,13 +32,13 @@ url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
 
 ## Installation
 
-To download and install `protr` from CRAN:
+To install `protr` from CRAN:
 
 ```r
 install.packages("protr")
 ```
 
-Or try the development version on GitHub:
+Or try the latest version on GitHub:
 
 ```r
 # install.packages("devtools")
@@ -49,7 +49,7 @@ devtools::install_github("road2stat/protr")
 
 ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
 
-ProtrWeb does not require any knowledge of R programming for the users, it is a user-friendly and one-click-to-go online platform for computing the descriptors presented in the protr package.
+ProtrWeb is a user-friendly web application for computing the protein sequence descriptors (features) presented in the protr package.
 
 ## Descriptors List
 
