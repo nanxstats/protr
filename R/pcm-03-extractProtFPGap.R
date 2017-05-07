@@ -34,7 +34,7 @@
 #'
 #' @aliases extractProtFPGap
 #'
-#' @author Nan Xiao <\url{http://r2s.name}>
+#' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractProtFPGap
 #'
