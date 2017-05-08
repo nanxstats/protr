@@ -16,12 +16,14 @@ could be \code{'global'} or \code{'local'},
 where \code{'global'} represents Needleman-Wunsch global alignment;
 \code{'local'} represents Smith-Waterman local alignment.}
 
-\item{submat}{Substitution matrix, default is \code{'BLOSUM62'}, could be one of
-\code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'},
-\code{'PAM30'}, \code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.}
+\item{submat}{Substitution matrix, default is \code{'BLOSUM62'},
+can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
+\code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'}, \code{'PAM40'},
+\code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.}
 }
 \value{
-An Biostrings object containing the scores and other alignment information.
+An Biostrings object containing the scores and other
+alignment information.
 }
 \description{
 This function implements the sequence alignment between two protein sequences.
@@ -30,11 +32,9 @@ This function implements the sequence alignment between two protein sequences.
 \donttest{
 # Be careful when testing this since it involves sequence alignment
 # and might produce unpredictable results in some environments
-
-require(Biostrings)
-
-s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-s2 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
+library("Biostrings")
+s1 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+s2 = readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
 seqalign = twoSeqSim(s1, s2)
 summary(seqalign)
 print(seqalign@score)}
@@ -45,8 +45,8 @@ Nan Xiao <\url{https://nanx.me}>
 \seealso{
 See \code{\link{parSeqSim}} for paralleled pairwise
 protein similarity calculation based on sequence alignment.
-See \code{\link{twoGOSim}} for calculating the
-GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
+See \code{\link{twoGOSim}} for calculating the GO semantic
+similarity between two groups of GO terms or two Entrez gene IDs.
 }
 \keyword{alignment}
 \keyword{parallel}

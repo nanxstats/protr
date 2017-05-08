@@ -2,14 +2,15 @@
 % Please edit documentation in R/par-01-parSeqSim.R
 \name{parSeqSim}
 \alias{parSeqSim}
-\title{Parallellized Protein Sequence Similarity Calculation based on Sequence Alignment}
+\title{Parallellized Protein Sequence Similarity Calculation based on
+Sequence Alignment}
 \usage{
 parSeqSim(protlist, cores = 2, type = "local", submat = "BLOSUM62")
 }
 \arguments{
 \item{protlist}{A length \code{n} list containing \code{n} protein sequences,
-each component of the list is a character string, storing one protein sequence.
-Unknown sequences should be represented as \code{''}.}
+each component of the list is a character string, storing one protein
+sequence. Unknown sequences should be represented as \code{""}.}
 
 \item{cores}{Integer. The number of CPU cores to use for parallel execution,
 default is \code{2}. Users could use the \code{detectCores()} function
@@ -20,9 +21,10 @@ could be \code{'global'} or \code{'local'},
 where \code{'global'} represents Needleman-Wunsch global alignment;
 \code{'local'} represents Smith-Waterman local alignment.}
 
-\item{submat}{Substitution matrix, default is \code{'BLOSUM62'}, could be one of
-\code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'}, \code{'BLOSUM80'}, \code{'BLOSUM100'},
-\code{'PAM30'}, \code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, \code{'PAM250'}.}
+\item{submat}{Substitution matrix, default is \code{'BLOSUM62'},
+can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
+\code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'},
+\code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.}
 }
 \value{
 A \code{n} x \code{n} similarity matrix.
@@ -36,17 +38,17 @@ protein sequence similarity based on sequence alignment.
 # Be careful when testing this since it involves parallelisation
 # and might produce unpredictable results in some environments
 
-require(Biostrings)
-require(foreach)
-require(doParallel)
+library("Biostrings")
+library("foreach")
+library("doParallel")
 
-s1 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-s2 = readFASTA(system.file('protseq/P08218.fasta', package = 'protr'))[[1]]
-s3 = readFASTA(system.file('protseq/P10323.fasta', package = 'protr'))[[1]]
-s4 = readFASTA(system.file('protseq/P20160.fasta', package = 'protr'))[[1]]
-s5 = readFASTA(system.file('protseq/Q9NZP8.fasta', package = 'protr'))[[1]]
+s1 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+s2 = readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
+s3 = readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
+s4 = readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
+s5 = readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
 plist = list(s1, s2, s3, s4, s5)
-psimmat = parSeqSim(plist, cores = 2, type = 'local', submat = 'BLOSUM62')
+psimmat = parSeqSim(plist, cores = 2, type = "local", submat = "BLOSUM62")
 print(psimmat)}
 }
 \author{
