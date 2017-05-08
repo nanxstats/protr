@@ -53,7 +53,7 @@
 
 %
 <<prelim,echo=FALSE,print=FALSE>>=
-protr.version = "1.2-2"
+protr.version = "1.3-0"
 now.date = strftime(Sys.Date(), "%Y-%m-%d")
 @
 %
