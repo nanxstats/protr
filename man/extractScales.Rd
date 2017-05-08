@@ -24,24 +24,23 @@ Must be no greater than the number of AA properties provided.}
 
 \item{silent}{Logical. Whether we print the standard deviation,
 proportion of variance and the cumulative proportion of
-the selected principal components or not.
-Default is \code{TRUE}.}
+the selected principal components or not. Default is \code{TRUE}.}
 }
 \value{
 A length \code{lag * p^2} named vector,
-        \code{p} is the number of scales (principal components) selected.
+\code{p} is the number of scales (principal components) selected.
 }
 \description{
 This function calculates scales-based descriptors
 derived by Principal Components Analysis (PCA).
-Users could provide customized amino acid property matrices.
+Users can provide customized amino acid property matrices.
 This function implements the core computation procedure needed for
 the scales-based descriptors derived by AA-Properties (AAindex)
 and scales-based descriptors derived by 20+ classes of 2D and 3D
 molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 data(AAindex)
 AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)

@@ -11,8 +11,7 @@ extractProtFP(x, index = NULL, pc, lag, scale = TRUE, silent = TRUE)
 
 \item{index}{Integer vector or character vector. Specify which AAindex
 properties to select from the AAindex database by specify the
-numerical or character index of the properties in the
-AAindex database.
+numerical or character index of the properties in the AAindex database.
 Default is \code{NULL}, means selecting all the AA properties
 in the AAindex database.}
 
@@ -26,22 +25,22 @@ before PCA? Default is \code{TRUE}.}
 
 \item{silent}{Logical. Whether we print the standard deviation,
 proportion of variance and the cumulative proportion of
-the selected principal components or not.
-Default is \code{TRUE}.}
+the selected principal components or not. Default is \code{TRUE}.}
 }
 \value{
 A length \code{lag * p^2} named vector,
-        \code{p} is the number of scales (principal components) selected.
+\code{p} is the number of scales (principal components) selected.
 }
 \description{
 This function calculates amino acid properties based scales descriptors
-(protein fingerprint). Users could specify which AAindex properties to
+(protein fingerprint). Users can specify which AAindex properties to
 select from the AAindex database by specify the numerical or character
 index of the properties in the AAindex database.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-fp = extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+fp = extractProtFP(
+  x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>

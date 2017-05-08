@@ -30,23 +30,23 @@ in the protein sequence.}
 
 \item{silent}{Logical. Whether we print the SS loadings,
 proportion of variance and the cumulative proportion of
-the selected factors or not.
-Default is \code{TRUE}.}
+the selected factors or not. Default is \code{TRUE}.}
 }
 \value{
 A length \code{lag * p^2} named vector,
-        \code{p} is the number of scales (factors) selected.
+\code{p} is the number of scales (factors) selected.
 }
 \description{
 This function calculates scales-based descriptors
 derived by Factor Analysis (FA).
-Users could provide customized amino acid property matrices.
+Users can provide customized amino acid property matrices.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 data(AATopo)
 tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-fa = extractFAScales(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
+fa = extractFAScales(
+  x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>

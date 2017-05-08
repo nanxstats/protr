@@ -24,19 +24,18 @@ Must be no greater than the number of AA properties provided.}
 \item{scale}{Logical. Should we auto-scale the property matrix
 (\code{propmat}) before PCA? Default is \code{TRUE}.}
 
-\item{silent}{Logical. Whether we print the standard deviation,
+\item{silent}{Logical. Whether to print the standard deviation,
 proportion of variance and the cumulative proportion of
-the selected principal components or not.
-Default is \code{TRUE}.}
+the selected principal components or not. Default is \code{TRUE}.}
 }
 \value{
 A length \code{lag * p^2} named vector,
-        \code{p} is the number of scales (principal components) selected.
+\code{p} is the number of scales (principal components) selected.
 }
 \description{
 This function calculates scales-based descriptors
 derived by Principal Components Analysis (PCA), with gap support.
-Users could provide customized amino acid property matrices.
+Users can provide customized amino acid property matrices.
 This function implements the core computation procedure needed for
 the scales-based descriptors derived by AA-Properties (AAindex)
 and scales-based descriptors derived by 20+ classes of 2D and 3D
@@ -44,7 +43,7 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.
 }
 \examples{
 # amino acid sequence with gaps
-x = readFASTA(system.file('protseq/align.fasta', package = 'protr'))$`IXI_235`
+x = readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
 data(AAindex)
 AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 scales = extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)

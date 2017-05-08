@@ -15,29 +15,28 @@ Note that the one-letter row names must be provided for we need them to seek
 the properties for each AA type.}
 
 \item{k}{Integer. The maximum dimension of the space which the data
-are to be represented in.
-Must be no greater than the number of AA properties provided.}
+are to be represented in. Must be no greater than the number of AA
+properties provided.}
 
 \item{lag}{The lag parameter. Must be less than the amino acids.}
 
 \item{scale}{Logical. Should we auto-scale the property matrix
 (\code{propmat}) before doing MDS? Default is \code{TRUE}.}
 
-\item{silent}{Logical. Whether we print the \code{k} eigenvalues
-computed during the scaling process or not.
-Default is \code{TRUE}.}
+\item{silent}{Logical. Whether to print the \code{k} eigenvalues
+computed during the scaling process or not. Default is \code{TRUE}.}
 }
 \value{
 A length \code{lag * p^2} named vector,
-        \code{p} is the number of scales (dimensionality) selected.
+\code{p} is the number of scales (dimensionality) selected.
 }
 \description{
 This function calculates scales-based descriptors
 derived by Multidimensional Scaling (MDS).
-Users could provide customized amino acid property matrices.
+Users can provide customized amino acid property matrices.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 data(AATopo)
 tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
