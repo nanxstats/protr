@@ -54,13 +54,14 @@ Default is \code{10}.}
 \item{gapextend}{Integer. Cost to extend a gap.}
 
 \item{matrix}{Character string. The scoring matrix name
-(default is \code{'BLOSUM62'}).}
+(default is \code{"BLOSUM62"}).}
 
 \item{threshold}{Minimum word score such that the word is added to
 the BLAST lookup table. A real value >= 0.}
 
-\item{seg}{Character string. Filter query sequence with SEG (\code{'yes'},
-\code{'window locut hicut'}, or \code{'no'} to disable) Default is \code{'no'}.}
+\item{seg}{Character string. Filter query sequence with SEG (\code{"yes"},
+\code{"window locut hicut"}, or \code{"no"} to disable).
+Default is \code{"no"}.}
 
 \item{soft.masking}{Logical. Apply filtering locations as soft masks?
 Default is \code{FALSE}.}
@@ -130,15 +131,22 @@ For OS X users, download \code{ncbi-blast- ... .dmg} then install.
 For Windows users, download \code{ncbi-blast- ... .exe} then install.
 }
 \examples{
-if (Sys.which('makeblastdb') == '' | Sys.which('psiblast') == '') {
-  cat('Could not find makeblastdb or psiblast. Please install NCBI Blast+ first.')
+if (Sys.which("makeblastdb") == "" | Sys.which("psiblast") == "") {
+
+  cat("Cannot find makeblastdb or psiblast. Please install NCBI Blast+ first")
+
 } else {
-  x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-  dbpath = tempfile('tempdb', fileext = '.fasta')
-  invisible(file.copy(from = system.file('protseq/Plasminogen.fasta',
-                                         package = 'protr'), to = dbpath))
+
+  x = readFASTA(system.file(
+    "protseq/P00750.fasta", package = "protr"))[[1]]
+  dbpath = tempfile("tempdb", fileext = ".fasta")
+  invisible(file.copy(from = system.file(
+    "protseq/Plasminogen.fasta", package = "protr"), to = dbpath))
+
   pssmmat = extractPSSM(seq = x, database.path = dbpath)
+
   dim(pssmmat)  # 20 x 562 (P00750: length 562, 20 Amino Acids)
+
 }
 }
 \author{
