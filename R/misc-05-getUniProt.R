@@ -17,7 +17,7 @@
 #' @export getUniProt
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Network latency may slow down this example
 #' # Only test this when your connection is fast enough
 #' ids = c("P00750", "P00751", "P00752")

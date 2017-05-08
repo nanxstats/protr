@@ -77,7 +77,7 @@
 #' @export parSeqSim
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Be careful when testing this since it involves parallelisation
 #' # and might produce unpredictable results in some environments
 #'
@@ -158,7 +158,7 @@ parSeqSim = function(
 #' @export twoSeqSim
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Be careful when testing this since it involves sequence alignment
 #' # and might produce unpredictable results in some environments
 #' library("Biostrings")

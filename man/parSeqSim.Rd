@@ -34,7 +34,7 @@ This function implemented the parallellized version for calculating
 protein sequence similarity based on sequence alignment.
 }
 \examples{
-\donttest{
+\dontrun{
 # Be careful when testing this since it involves parallelisation
 # and might produce unpredictable results in some environments
 

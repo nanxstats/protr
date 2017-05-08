@@ -29,7 +29,7 @@ alignment information.
 This function implements the sequence alignment between two protein sequences.
 }
 \examples{
-\donttest{
+\dontrun{
 # Be careful when testing this since it involves sequence alignment
 # and might produce unpredictable results in some environments
 library("Biostrings")
