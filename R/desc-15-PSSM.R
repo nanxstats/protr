@@ -75,12 +75,9 @@
 #' their paths provided.
 #'
 #' The two command-line programs are included in the NCBI-BLAST+
-#' software package. To install NCBI Blast+, just open the NCBI FTP site
-#' using web browser or FTP software:
-#' \url{ftp://anonymous@@ftp.ncbi.nlm.nih.gov:21/blast/executables/blast+/LATEST/}
-#' then download the executable version of BLAST+ according to your
-#' operation system, and compile or install the downloaded
-#' source code or executable program.
+#' software package. To install NCBI Blast+ for your operating system, see
+#' \url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download}
+#' for detailed instructions.
 #'
 #' Ubuntu/Debian users can directly use the command
 #' \code{sudo apt-get install ncbi-blast+} to install NCBI Blast+.
