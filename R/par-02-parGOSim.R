@@ -46,18 +46,18 @@
 #' a character vector of GO terms or one Entrez Gene ID.
 #' @param type Input type of \code{golist}, \code{'go'} for GO Terms,
 #' \code{'gene'} for gene ID.
-#' @param ont Default is \code{'MF'}, could be one of \code{'MF'},
+#' @param ont Default is \code{'MF'}, can be one of \code{'MF'},
 #' \code{'BP'}, or \code{'CC'} subontologies.
-#' @param organism Default is \code{'human'}, could be one of
+#' @param organism Default is \code{'human'}, can be one of
 #' \code{'anopheles'}, \code{'arabidopsis'}, \code{'bovine'}, \code{'canine'},
 #' \code{'chicken'}, \code{'chimp'}, \code{'coelicolor'}, \code{'ecolik12'},
 #' \code{'ecsakai'}, \code{'fly'}, \code{'human'}, \code{'malaria'},
 #' \code{'mouse'}, \code{'pig'}, \code{'rat'}, \code{'rhesus'},
 #' \code{'worm'}, \code{'xenopus'}, \code{'yeast'} or \code{'zebrafish'}.
-#' @param measure Default is \code{'Resnik'}, could be one of
+#' @param measure Default is \code{'Resnik'}, can be one of
 #' \code{'Resnik'}, \code{'Lin'}, \code{'Rel'}, \code{'Jiang'}
 #' or \code{'Wang'}.
-#' @param combine Default is \code{'BMA'}, could be one of \code{'max'},
+#' @param combine Default is \code{'BMA'}, can be one of \code{'max'},
 #' \code{'average'}, \code{'rcmax'} or \code{'BMA'}
 #' for combining semantic similarity scores of multiple GO terms
 #' associated with protein.
@@ -149,17 +149,17 @@ parGOSim = function(
 #' length = 1: the Entrez Gene ID.
 #' @param type Input type of id1 and id2, \code{'go'} for GO Terms,
 #' \code{'gene'} for gene ID.
-#' @param ont Default is \code{'MF'}, could be one of \code{'MF'},
+#' @param ont Default is \code{'MF'}, can be one of \code{'MF'},
 #' \code{'BP'}, or \code{'CC'} subontologies.
-#' @param organism Default is \code{'human'}, could be one of
+#' @param organism Default is \code{'human'}, can be one of
 #' \code{'anopheles'}, \code{'arabidopsis'}, \code{'bovine'}, \code{'canine'},
 #' \code{'chicken'}, \code{'chimp'}, \code{'coelicolor'}, \code{'ecolik12'},
 #' \code{'ecsakai'}, \code{'fly'}, \code{'human'}, \code{'malaria'},
 #' \code{'mouse'}, \code{'pig'}, \code{'rat'}, \code{'rhesus'},
 #' \code{'worm'}, \code{'xenopus'}, \code{'yeast'} or \code{'zebrafish'}.
-#' @param measure Default is \code{'Resnik'}, could be one of
+#' @param measure Default is \code{'Resnik'}, can be one of
 #' \code{'Resnik'}, \code{'Lin'}, \code{'Rel'}, \code{'Jiang'} or \code{'Wang'}.
-#' @param combine Default is \code{'BMA'}, could be one of
+#' @param combine Default is \code{'BMA'}, can be one of
 #' \code{'max'}, \code{'average'}, \code{'rcmax'} or \code{'BMA'}
 #' for combining semantic similarity scores of multiple GO terms
 #' associated with protein.

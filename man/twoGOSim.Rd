@@ -17,20 +17,20 @@ length = 1: the Entrez Gene ID.}
 \item{type}{Input type of id1 and id2, \code{'go'} for GO Terms,
 \code{'gene'} for gene ID.}
 
-\item{ont}{Default is \code{'MF'}, could be one of \code{'MF'},
+\item{ont}{Default is \code{'MF'}, can be one of \code{'MF'},
 \code{'BP'}, or \code{'CC'} subontologies.}
 
-\item{organism}{Default is \code{'human'}, could be one of
+\item{organism}{Default is \code{'human'}, can be one of
 \code{'anopheles'}, \code{'arabidopsis'}, \code{'bovine'}, \code{'canine'},
 \code{'chicken'}, \code{'chimp'}, \code{'coelicolor'}, \code{'ecolik12'},
 \code{'ecsakai'}, \code{'fly'}, \code{'human'}, \code{'malaria'},
 \code{'mouse'}, \code{'pig'}, \code{'rat'}, \code{'rhesus'},
 \code{'worm'}, \code{'xenopus'}, \code{'yeast'} or \code{'zebrafish'}.}
 
-\item{measure}{Default is \code{'Resnik'}, could be one of
+\item{measure}{Default is \code{'Resnik'}, can be one of
 \code{'Resnik'}, \code{'Lin'}, \code{'Rel'}, \code{'Jiang'} or \code{'Wang'}.}
 
-\item{combine}{Default is \code{'BMA'}, could be one of
+\item{combine}{Default is \code{'BMA'}, can be one of
 \code{'max'}, \code{'average'}, \code{'rcmax'} or \code{'BMA'}
 for combining semantic similarity scores of multiple GO terms
 associated with protein.}

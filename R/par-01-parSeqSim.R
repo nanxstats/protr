@@ -50,7 +50,7 @@
 #' each component of the list is a character string, storing one protein
 #' sequence. Unknown sequences should be represented as \code{""}.
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
-#' default is \code{2}. Users could use the \code{detectCores()} function
+#' default is \code{2}. Users can use the \code{detectCores()} function
 #' in the \code{parallel} package to see how many cores they could use.
 #' @param type Type of alignment, default is \code{'local'},
 #' could be \code{'global'} or \code{'local'},
