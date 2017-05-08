@@ -45,7 +45,7 @@ descriptor (dim: \code{20 + lambda}, default is 50).
 }
 \note{
 Note the default \code{20 * 3} \code{prop} values have already been
-independently given in the function. Users could also specify
+independently given in the function. Users can also specify
 other (up to 544) properties with the Accession Number in
 the \code{\link{AAindex}} data, with or without the default
 three properties, which means users should explicitly specify
