@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc-04-protseg.R
 \name{protseg}
 \alias{protseg}
-\title{Protein Sequence Segmentation}
+\title{Protein Sequence Segmentation/Partition}
 \usage{
 protseg(x, aa = c("A", "R", "N", "D", "C", "E", "Q", "G", "H", "I", "L", "K",
   "M", "F", "P", "S", "T", "W", "Y", "V"), k = 7)
@@ -17,20 +17,20 @@ protseg(x, aa = c("A", "R", "N", "D", "C", "E", "Q", "G", "H", "I", "L", "K",
 \code{'M'}, \code{'F'}, \code{'P'}, \code{'S'},
 \code{'T'}, \code{'W'}, \code{'Y'}, \code{'V'}.}
 
-\item{k}{A positive integer, specifys the window size (half of the window),
-default is 7.}
+\item{k}{A positive integer, specifys the window size
+(half of the window), default is 7.}
 }
 \value{
 A named list, each component contains one of the
-        segmentations (a character string), names of the list components
-        are the positions of the specified amino acid in the sequence.
+segmentations (a character string), names of the list components
+are the positions of the specified amino acid in the sequence.
 }
 \description{
 This function extracts the segmentations from the protein sequence.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
-protseg(x, aa = 'R', k = 5)
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+protseg(x, aa = "R", k = 5)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>

@@ -16,14 +16,14 @@ acc(mat, lag)
 }
 \value{
 A length \code{lag * p^2} named vector, the element names are
-        constructed by: the scales index (crossed scales index) and lag index.
+constructed by: the scales index (crossed scales index) and lag index.
 }
 \description{
 This function calculates the auto covariance and auto cross covariance
 for generating scale-based descriptors of the same length.
 }
 \note{
-To know more details about auto cross covariance, see the references.
+Please see the references for details about auto cross covariance.
 }
 \examples{
 p = 8    # p is the scales number

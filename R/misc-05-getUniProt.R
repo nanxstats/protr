@@ -1,10 +1,10 @@
-#' Get Protein Sequences from UniProt by Protein ID
+#' Retrieve Protein Sequences from UniProt by Protein ID
 #'
 #' This function retrieves protein sequences from uniprot.org by protein ID(s).
 #'
 #' @param id A character vector, as the protein ID(s).
 #'
-#' @return A list, each component contains one of the protein sequences.
+#' @return A list, each component contains one protein sequence.
 #'
 #' @keywords UniProt
 #'
@@ -20,10 +20,10 @@
 #' \donttest{
 #' # Network latency may slow down this example
 #' # Only test this when your connection is fast enough
-#' ids = c('P00750', 'P00751', 'P00752')
+#' ids = c("P00750", "P00751", "P00752")
 #' getUniProt(ids)}
 
-getUniProt = function (id) {
+getUniProt = function(id) {
 
   id = as.character(id)
 
@@ -40,6 +40,6 @@ getUniProt = function (id) {
       id[i], '.fasta', sep = ''))[[1]]
   }
 
-  return(proteins)
+  proteins
 
 }

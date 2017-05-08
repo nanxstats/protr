@@ -1,11 +1,12 @@
-#' Check if the protein sequence's amino acid types are in the 20 default types
+#' Protein sequence amino acid type sanity check
 #'
-#' This function checks if the protein sequence's amino acid types are in the 20.
+#' This function checks if the protein sequence's amino acid types
+#' are in the 20 default types.
 #'
 #' @param x A character vector, as the input protein sequence.
 #'
-#' @return Logical. \code{TRUE} if all of the amino acid types of the sequence
-#'         are within the 20 default types.
+#' @return Logical. \code{TRUE} if all of the amino acid types
+#' of the sequence are within the 20 default types.
 #'
 #' @keywords check
 #'
@@ -16,15 +17,16 @@
 #' @export protcheck
 #'
 #' @examples
-#' x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' protcheck(x)  # TRUE
-#' protcheck(paste(x, 'Z', sep = ''))  # FALSE
+#' protcheck(paste(x, "Z", sep = ""))  # FALSE
 
-protcheck = function (x) {
+protcheck = function(x) {
 
-  AADict = c('A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
-             'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
+  AADict = c(
+    'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
+    'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
 
-  return(all(strsplit(x, split = '')[[1]] %in% AADict))
+  all(strsplit(x, split = '')[[1]] %in% AADict)
 
 }

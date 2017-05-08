@@ -8,23 +8,23 @@ readFASTA(file = system.file("protseq/P00750.fasta", package = "protr"),
   legacy.mode = TRUE, seqonly = FALSE)
 }
 \arguments{
-\item{file}{The name of the file which the sequences in fasta format are
-to be read from. If it does not contain an absolute or
+\item{file}{Path to the file containing the protein sequences
+in FASTA format. If it does not contain an absolute or
 relative path, the file name is relative to the current
 working directory, \code{\link{getwd}}.
 The default here is to read the \code{P00750.fasta} file which
 is present in the \code{protseq} directory of the protr package.}
 
-\item{legacy.mode}{If set to \code{TRUE}, lines starting with a semicolon ';'
-are ignored. Default value is \code{TRUE}.}
+\item{legacy.mode}{If set to \code{TRUE}, lines starting with a
+semicolon (\code{;}) are ignored. Default value is \code{TRUE}.}
 
-\item{seqonly}{If set to \code{TRUE}, only sequences as returned without
-attempt to modify them or to get their names and
+\item{seqonly}{If set to \code{TRUE}, only sequences as returned
+without attempt to modify them or to get their names and
 annotations (execution time is divided approximately
 by a factor 3). Default value is \code{FALSE}.}
 }
 \value{
-The result character vector
+Character vector of the protein sequences.
 
 The three returned argument are just different forms of the same output.
 If one is interested in a Mahalanobis metric over the original data space,
@@ -36,13 +36,8 @@ following sense.
 \description{
 This function reads protein sequences in FASTA format.
 }
-\note{
-Note that any different sets of instances (chunklets),
-      e.g. {1, 3, 7} and {4, 6}, might belong to the
-      same class and might belong to different classes.
-}
 \examples{
-P00750 = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))
+P00750 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
@@ -51,12 +46,11 @@ Nan Xiao <\url{https://nanx.me}>
 Pearson, W.R. and Lipman, D.J. (1988)
 Improved tools for biological sequence comparison.
 \emph{Proceedings of the National Academy of Sciences
-of the United States of America}, \bold{85}: 2444-2448
+of the United States of America}, \bold{85}: 2444--2448.
 }
 \seealso{
-See \code{\link{getUniProt}} for retrieving protein sequences
-         from uniprot.org
+See \code{\link{getUniProt}} for retrieving
+protein sequences from uniprot.org.
 }
 \keyword{FASTA}
-\keyword{read}
 

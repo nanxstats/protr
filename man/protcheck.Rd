@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc-03-protcheck.R
 \name{protcheck}
 \alias{protcheck}
-\title{Check if the protein sequence's amino acid types are in the 20 default types}
+\title{Protein sequence amino acid type sanity check}
 \usage{
 protcheck(x)
 }
@@ -10,16 +10,17 @@ protcheck(x)
 \item{x}{A character vector, as the input protein sequence.}
 }
 \value{
-Logical. \code{TRUE} if all of the amino acid types of the sequence
-        are within the 20 default types.
+Logical. \code{TRUE} if all of the amino acid types
+of the sequence are within the 20 default types.
 }
 \description{
-This function checks if the protein sequence's amino acid types are in the 20.
+This function checks if the protein sequence's amino acid types
+are in the 20 default types.
 }
 \examples{
-x = readFASTA(system.file('protseq/P00750.fasta', package = 'protr'))[[1]]
+x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 protcheck(x)  # TRUE
-protcheck(paste(x, 'Z', sep = ''))  # FALSE
+protcheck(paste(x, "Z", sep = ""))  # FALSE
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>

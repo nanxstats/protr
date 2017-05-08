@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc-05-getUniProt.R
 \name{getUniProt}
 \alias{getUniProt}
-\title{Get Protein Sequences from UniProt by Protein ID}
+\title{Retrieve Protein Sequences from UniProt by Protein ID}
 \usage{
 getUniProt(id)
 }
@@ -10,7 +10,7 @@ getUniProt(id)
 \item{id}{A character vector, as the protein ID(s).}
 }
 \value{
-A list, each component contains one of the protein sequences.
+A list, each component contains one protein sequence.
 }
 \description{
 This function retrieves protein sequences from uniprot.org by protein ID(s).
@@ -19,7 +19,7 @@ This function retrieves protein sequences from uniprot.org by protein ID(s).
 \donttest{
 # Network latency may slow down this example
 # Only test this when your connection is fast enough
-ids = c('P00750', 'P00751', 'P00752')
+ids = c("P00750", "P00751", "P00752")
 getUniProt(ids)}
 }
 \author{
