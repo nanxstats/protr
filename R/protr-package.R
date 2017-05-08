@@ -16,7 +16,7 @@
 #' by pairwise protein sequence alignment and Gene Ontology (GO) semantic
 #' similarity measures.
 #'
-#' \tabular{ll}{ Package: \tab protr\cr
+#' \tabular{ll}{Package: \tab protr\cr
 #' Type: \tab Package\cr
 #' License: \tab BSD_3_clause\cr }
 #'
@@ -25,9 +25,9 @@
 #' @docType package
 #'
 #' @note
-#' The package vignette can be opened with \code{vignette('protr')}.
+#' The package vignette can be opened with \code{vignette("protr")}.
 #'
-#' The web server for this package, \code{ProtrWeb} is located at:
+#' The web server for this package, \code{ProtrWeb} can be accessed from:
 #' \url{http://protr.org}.
 #'
 #' Bug reports and feature requests should be sent to
