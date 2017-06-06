@@ -21,7 +21,7 @@ vignette: >
 The protr package offers a unique and comprehensive toolkit
 for generating various numerical representation schemes of protein
 sequence. The descriptors included are extensively utilized in
-Bioinformatics and Chemogenomics research. The commonly used
+bioinformatics and chemogenomics research. The commonly used
 descriptors listed in protr include amino acid composition,
 autocorrelation, CTD, conjoint traid, quasi-sequence order,
 pseudo amino acid composition, and profile-based descriptors
