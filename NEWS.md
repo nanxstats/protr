@@ -1,3 +1,9 @@
+# protr 1.4-0 (2017-06-06)
+
+## Improvements
+
+- Migrated from Sweave-based PDF vignette to knitr-based HTML vignette
+
 # protr 1.3-0 (2017-05-07)
 
 ## Improvements
