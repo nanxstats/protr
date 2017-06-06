@@ -9,16 +9,22 @@ Description: Comprehensive toolkit for generating various numerical
     for more information.
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre")),
-    person("Qingsong", "Xu", email = "qsxu@csu.edu.cn", role = c("aut")),
-    person("Dongsheng", "Cao", role = "aut")
+    person("Qing-Song", "Xu", email = "qsxu@csu.edu.cn", role = c("aut")),
+    person("Dong-Sheng", "Cao", role = "aut")
     )
 Maintainer: Nan Xiao <me@nanx.me>
 License: BSD_3_clause + file LICENSE
 URL: https://nanx.me/protr/, https://github.com/road2stat/protr, http://protr.org
+Encoding: UTF-8
 BugReports: https://github.com/road2stat/protr/issues
 SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
-LazyData: yes
+LazyData: true
+VignetteBuilder: knitr
+Depends:
+    R (>= 3.0.2)
 Suggests:
+    knitr,
+    rmarkdown,
     Biostrings,
     GOSemSim,
     foreach,
