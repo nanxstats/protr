@@ -220,7 +220,7 @@ The area under the ROC curve (AUC) is:
 ## Area under the curve: 0.8697
 ```
 
-<img src="figures/roc.png" width="60%" class="img-responsive" alt="ROC curve for the test set of protein subcellular localization data">
+<img src="figures/roc.png" width="60%" class="img-responsive" align="center" alt="ROC curve for the test set of protein subcellular localization data">
 <p align="center">Figure 1: ROC curve for the test set of protein subcellular localization data</p>
 
 # Package Overview
@@ -423,7 +423,7 @@ $$
 \bar{P} = \frac{\sum_{r=1}^{20} P_r}{20} \quad \textrm{and} \quad \sigma = \sqrt{\frac{1}{2} \sum_{r=1}^{20} (P_r - \bar{P})^2}
 $$
 
-<img src="figures/AAindex.png" width="80%" class="img-responsive" alt="An illustrated example in the AAIndex database">
+<img src="figures/AAindex.png" width="80%" class="img-responsive" align="center" alt="An illustrated example in the AAIndex database">
 <p align="center">Figure 2: An illustrated example in the AAIndex database</p>
 
 ### Normalized Moreau-Broto autocorrelation descriptors
@@ -568,7 +568,7 @@ head(geary, n = 36L)
 
 These descriptors are developed and described by @dubchak1 and @dubchak2.
 
-<img src="figures/CTD.png" width="100%" class="img-responsive" alt="CTD descriptors">
+<img src="figures/CTD.png" width="100%" class="img-responsive" align="center" alt="CTD descriptors">
 <p align="left">Figure 3: The sequence of a hypothetic protein indicating the construction
 of composition, transition and distribution descriptors of a protein.
 Sequence index indicates the position of an amino acid in the sequence.
@@ -587,7 +587,7 @@ references. The corresponding division is in Table 1.
 
 <p align="center">Table 1: Amino acid attributes and the division of
 the amino acids into three groups for each attribute</p>
-<img src="tables/table1.png" width="80%" class="img-responsive">
+<img src="tables/table1.png" width="80%" class="img-responsive" align="center">
 
 For example, for a given sequence `MTEITAAMVKELRESTGAGA`, it will be
 encoded as `32132223311311222222` according to its hydrophobicity division.
@@ -687,7 +687,7 @@ because of their similar characteristics.
 
 <p align="center">Table 2: Classification of amino acids based on
 dipoles and volumes of the side chains.</p>
-<img src="tables/table2.png" width="60%" class="img-responsive">
+<img src="tables/table2.png" width="60%" class="img-responsive" align="center">
 <p align="left"><sup>1</sup> Dipole Scale (Debye): $-$, Dipole < 1.0;
 $+$, 1.0 < Dipole < 2.0; $++$, 2.0 < Dipole < 3.0; $+++$, Dipole > 3.0;
 $+'+'+'$, Dipole > 3.0 with opposite orientation.</p>
@@ -716,7 +716,7 @@ $7 \times 7 \times 7$; thus $i = 1, 2, \ldots, 343$. The detailed
 description for ($\mathbf{V}$, $\mathbf{F}$) is illustrated
 in Figure 4.
 
-<img src="figures/ctriad.png" width="100%" class="img-responsive">
+<img src="figures/ctriad.png" width="100%" class="img-responsive" align="center">
 <p align="left">Figure 4: Schematic diagram for constructing the
 vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence.
 $\mathbf{V}$ is the vector space of the sequence features;
@@ -800,7 +800,7 @@ $$
 X_d = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} \quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
 $$
 
-<img src="figures/QSO.png" width="75%" class="img-responsive">
+<img src="figures/QSO.png" width="75%" class="img-responsive" align="center">
 <p align="left">Figure 5: A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues. This figure is from @chouqsoe.</p>
 
 A minimal example for `extractQSO()`:
@@ -827,7 +827,7 @@ $$
 
 $H_2^o (i)$ and $M^o (i)$ are normalized as $H_2 (i)$ and $M (i)$ in the same way.
 
-<img src="figures/PAAC.png" width="75%" class="img-responsive">
+<img src="figures/PAAC.png" width="75%" class="img-responsive" align="center">
 <p align="left">Figure 6: A schematic drawing to show (a) the first-tier, (b) the second-tier, and (3) the third-tiersequence order correlation mode along a protein sequence. Panel (a) reflects the correlation mode between all the most contiguous residues, panel (b) that between all the second-most contiguous residues, and panel (c) that between all the third-most contiguous residues. This figure is from @choupaac.</p>
 
 Then, a correlation function can be defines as
@@ -928,7 +928,7 @@ From these qualities, sequence order factors can be defines as:
 \tau_{2 \lambda}     & = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^2
 \end{align*}
 
-<img src="figures/APAAC.png" width="100%" class="img-responsive">
+<img src="figures/APAAC.png" width="100%" class="img-responsive" align="center">
 <p align="left">Figure 7: A schematic diagram to show (**a1**/**a2**) the first-rank, (**b1**/**b2**) the second-rank and (**c1**/**c2**) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.  This figure is from @chouapaac.</p>
 
 Then a set of descriptors called _Amphiphilic Pseudo-Amino Acid Composition_ (_APAAC_) are defined as:
@@ -1267,7 +1267,7 @@ ProtrWeb (Figure 8) does not require any knowledge of programming
 for the user. It is a user-friendly web application for computing
 the protein sequence descriptors presented in the protr package.
 
-<img src="figures/protrweb.png" width="90%" class="img-responsive" alt="ProtrWeb">
+<img src="figures/protrweb.png" width="90%" class="img-responsive" align="center" alt="ProtrWeb">
 <p align="center">Figure 8: A screenshot of the web application ProtrWeb</p>
 
 Source code repository for this Shiny web application:
@@ -1279,7 +1279,7 @@ The summary of the descriptors in the protr package are listed in
 Table 3.
 
 <p align="center">Table 3: List of commonly used descriptors in protr</p>
-<img src="tables/table3.png" width="100%" class="img-responsive">
+<img src="tables/table3.png" width="100%" class="img-responsive" align="center">
 <p align="left"><sup>1</sup> The number depends on the choice of the
 number of properties of amino acids and the choice of the maximum
 values of the `lag`. The default is use 8 types of properties and
@@ -1299,7 +1299,7 @@ The scales-based PCM descriptors in the protr package are
 listed in Table 4.
 
 <p align="center">Table 4: List of PCM descriptors in protr</p>
-<img src="tables/table4.png" width="100%" class="img-responsive">
+<img src="tables/table4.png" width="100%" class="img-responsive" align="center">
 
 The amino acid descriptor sets used by scales-based descriptors
 provided by the protr package are listed in Table 5.
@@ -1308,6 +1308,6 @@ have only one value across all the 20 amino acids) in these
 datasets have already been filtered out.
 
 <p align="center">Table 5: List of the pre-calculated descriptor sets of the 20 amino acids in protr</p>
-<img src="tables/table5.png" width="100%" class="img-responsive">
+<img src="tables/table5.png" width="100%" class="img-responsive" align="center">
 
 # References
