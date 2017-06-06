@@ -26,7 +26,7 @@
 
 - Added continuous integration
 - Code style improvements
-  
+
 # protr 1.1-1 (2015-12-29)
 
 ## Bug Fixes
@@ -51,13 +51,13 @@
 ## Improvements
 
 - Added citation information
-  
+
 # protr 0.5-1 (2014-12-22)
 
 ## Improvements
 
 - Minor improvements and fixes for documentation
-  
+
 # protr 0.5-0 (2014-12-18)
 
 ## Improvements
@@ -65,31 +65,31 @@
 - Added functions allowing users to specify their own classification of the amino acid
 - Documentation improvements
 - Other minor improvements
-  
+
 # protr 0.4-1 (2014-10-10)
 
 ## Improvements
 
 - General documentation improvements
-  
+
 # protr 0.4-0 (2014-09-20)
 
 ## New Features
 
 - Added profile-based descriptors derived by PSSM
-  
+
 # protr 0.3-0 (2014-06-20)
 
 ## Improvements
 
 - Added example workflow using protr in the vignette
-  
+
 # protr 0.2-1 (2014-01-25)
 
 ## Improvements
 
 - Added LICENSE file according to CRAN policies
-  
+
 # protr 0.2-0 (2013-12-10)
 
 ## New Features
@@ -112,22 +112,22 @@
 
 ## New Features
 
-- Initial version
-- First version of Amino Acid Composition descriptor
-- First version of Dipeptide Composition descriptor
-- First version of Tripeptide Composition descriptor
-- First version of Normalized Moreau-Broto Autocorrelation descriptor
-- First version of Moran Autocorrelation descriptor
-- First version of Geary Autocorrelation descriptor
-- First version of CTD - Composition descriptor
-- First version of CTD - Transition descriptor
-- First version of CTD - Distribution descriptor
-- First version of Conjoint Triad descriptor
-- First version of Sequence Order Coupling Number descriptor
-- First version of Quasi-Sequence-Order descriptor
-- First version of Pseudo Amino Acid Composition descriptor
-- First version of Amphiphilic Pseudo Amino Acid Composition descriptor
-- First version of `readFASTA()`
-- First version of `getUniProt()`
-- First version of `protcheck()`
-- First version of `protseg()`
+- initial version
+- first version of Amino Acid Composition descriptor
+- first version of Dipeptide Composition descriptor
+- first version of Tripeptide Composition descriptor
+- first version of Normalized Moreau-Broto Autocorrelation descriptor
+- first version of Moran Autocorrelation descriptor
+- first version of Geary Autocorrelation descriptor
+- first version of CTD - Composition descriptor
+- first version of CTD - Transition descriptor
+- first version of CTD - Distribution descriptor
+- first version of Conjoint Triad descriptor
+- first version of Sequence Order Coupling Number descriptor
+- first version of Quasi-Sequence-Order descriptor
+- first version of Pseudo Amino Acid Composition descriptor
+- first version of Amphiphilic Pseudo Amino Acid Composition descriptor
+- first version of `readFASTA()`
+- first version of `getUniProt()`
+- first version of `protcheck()`
+- first version of `protseg()`
