@@ -45,6 +45,8 @@ Or try the latest version on GitHub:
 devtools::install_github("road2stat/protr")
 ```
 
+[Browse the package vignette](https://nanx.me/protr/articles/protr.html) for a quick-start.
+
 ## Shiny Web Application
 
 ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
