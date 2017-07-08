@@ -585,9 +585,25 @@ class it belonged. The attributes used here include hydrophobicity,
 normalized van der Waals volume polarity, and polarizability, as in the
 references. The corresponding division is in Table 1.
 
-<p align="center">Table 1: Amino acid attributes and the division of
-the amino acids into three groups for each attribute</p>
-<img src="tables/table1.png" width="80%" class="img-responsive" align="center">
+                                    **Group 1**              **Group 2**                                      **Group 3**
+  --------------------------------- ------------------------ ------------------------------------------------ ---------------------
+  Hydrophobicity                    Polar                    Neutral                                          Hydrophobicity
+                                    R, K, E, D, Q, N         G, A, S, T, P, H, Y                              C, L, V, I, M, F, W
+  Normalized van der Waals Volume   0-2.78                   2.95-4.0                                         4.03-8.08
+                                    G, A, S, T, P, D, C      N, V, E, Q, I, L                                 M, H, K, F, R, Y, W
+  Polarity                          4.9-6.2                  8.0-9.2                                          10.4-13.0
+                                    L, I, F, W, C, M, V, Y   P, A, T, G, S                                    H, Q, R, K, N, E, D
+  Polarizability                    0-1.08                   0.128-0.186                                      0.219-0.409
+                                    G, A, S, D, T            C, P, N, V, E, Q, I, L                           K, M, H, F, R, Y, W
+  Charge                            Positive                 Neutral                                          Negative
+                                    K, R                     A, N, C, Q, G, H, I, L, M, F, P, S, T, W, Y, V   D, E
+  Secondary Structure               Helix                    Strand                                           Coil
+                                    E, A, L, M, Q, K, R, H   V, I, Y, C, W, F, T                              G, N, P, S, D
+  Solvent Accessibility             Buried                   Exposed                                          Intermediate
+                                    A, L, F, C, G, I, V, W   R, K, Q, E, N, D                                 M, S, P, T, H, Y
+
+  : Table 1: Amino acid attributes, and the division of the amino acids into
+  three groups for each attribute
 
 For example, for a given sequence `MTEITAAMVKELRESTGAGA`, it will be
 encoded as `32132223311311222222` according to its hydrophobicity division.
@@ -685,9 +701,19 @@ the 20 amino acids can be clustered into seven classes (See Table 2).
 Amino acids within the same class likely involve synonymous mutations
 because of their similar characteristics.
 
-<p align="center">Table 2: Classification of amino acids based on
-dipoles and volumes of the side chains.</p>
-<img src="tables/table2.png" width="60%" class="img-responsive" align="center">
+   No.   Dipole Scale$^1$   Volume Scale$^2$         Class
+  ----- ------------------ ------------------ --------------------
+    1          $-$                $-$            Ala, Gly, Val
+    2          $-$                $+$          Ile, Leu, Phe, Pro
+    3          $+$                $+$          Tyr, Met, Thr, Ser
+    4          $++$               $+$          His, Asn, Gln, Tpr
+    5         $+++$               $+$               Arg, Lys
+    6        $+'+'+'$             $+$               Asp, Glu
+    7         $+^3$               $+$                 Cys
+
+  : Table 2: Classification of amino acids based on dipoles and volumes of the
+  side chains
+
 <p align="left"><sup>1</sup> Dipole Scale (Debye): $-$, Dipole < 1.0;
 $+$, 1.0 < Dipole < 2.0; $++$, 2.0 < Dipole < 3.0; $+++$, Dipole > 3.0;
 $+'+'+'$, Dipole > 3.0 with opposite orientation.</p>
@@ -1267,7 +1293,7 @@ ProtrWeb (Figure 8) does not require any knowledge of programming
 for the user. It is a user-friendly web application for computing
 the protein sequence descriptors presented in the protr package.
 
-<img src="figures/protrweb.png" width="90%" class="img-responsive" align="center" alt="ProtrWeb">
+<img src="figures/protrweb.png" width="100%" class="img-responsive" align="center" alt="ProtrWeb">
 <p align="center">Figure 8: A screenshot of the web application ProtrWeb</p>
 
 Source code repository for this Shiny web application:
@@ -1278,8 +1304,25 @@ https://github.com/road2stat/protrweb.
 The summary of the descriptors in the protr package are listed in
 Table 3.
 
-<p align="center">Table 3: List of commonly used descriptors in protr</p>
-<img src="tables/table3.png" width="100%" class="img-responsive" align="center">
+  Descriptor Group                Descriptor Name                             Descriptor Dimension   Function Name
+  ------------------------------- ------------------------------------------- ---------------------- ---------------------------------------
+  Amino Acid Composition          Amino Acid Composition                      20                     extractAAC()
+                                  Dipeptide Composition                       400                    extractDC()
+                                  Tripeptide Composition                      8000                   extractTC()
+  Autocorrelation                 Normalized Moreau-Broto Autocorrelation     240$^1$                extractMoreauBroto()
+                                  Moran Autocorrelation                       240$^1$                extractMoran()
+                                  Geary Autocorrelation                       240$^1$                extractGeary()
+  CTD                             Composition                                 21                     extractCTDC(), extractCTDCClass()
+                                  Transition                                  21                     extractCTDT(), extractCTDTClass()
+                                  Distribution                                105                    extractCTDD(), extractCTDDClass()
+  Conjoint Triad                  Conjoint Triad                              343                    extractCTriad(), extractCTriadClass()
+  Quasi-Sequence-Order            Sequence-Order-Coupling Number              60$^2$                 extractSOCN()
+                                  Quasi-Sequence-Order Descriptors            100$^2$                extractQSO()
+  Pseudo-Amino Acid Composition   Pseudo-Amino Acid Composition               50$^3$                 extractPAAC()
+                                  Amphiphilic Pseudo-Amino Acid Composition   80$^4$                 extractAPAAC()
+
+  : Table 3: List of commonly used descriptors in protr
+
 <p align="left"><sup>1</sup> The number depends on the choice of the
 number of properties of amino acids and the choice of the maximum
 values of the `lag`. The default is use 8 types of properties and
@@ -1298,8 +1341,16 @@ the $\lambda$ vlaue. The default is $\lambda = 30$.</p>
 The scales-based PCM descriptors in the protr package are
 listed in Table 4.
 
-<p align="center">Table 4: List of PCM descriptors in protr</p>
-<img src="tables/table4.png" width="100%" class="img-responsive" align="center">
+  Derived by                      Descriptor Class                                                                                      Function Name                         
+  ------------------------------- ----------------------------------------------------------------------------------------------------- ------------------------------------- --
+  Principal Components Analysis   Scales-based descriptors derived by Principal Components Analysis                                     extractScales(), extractScalesGap()   
+                                  Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. Protein Fingerprint)   extractProtFP(), extractProtFPGap()   
+                                  Scales-based descriptors derived by 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)   extractDescScales()                   
+  Factor Analysis                 Scales-based descriptors derived by Factor Analysis                                                   extractFAScales()                     
+  Multidimensional Scaling        Scales-based descriptors derived by Multidimensional Scaling                                          extractMDSScales()                    
+  Substitution Matrix             BLOSUM and PAM matrix-derived descriptors                                                             extractBLOSUM()                       
+
+  : Table 4: List of PCM descriptors in protr
 
 The amino acid descriptor sets used by scales-based descriptors
 provided by the protr package are listed in Table 5.
@@ -1307,7 +1358,33 @@ Note that the non-informative descriptors (like the descriptors
 have only one value across all the 20 amino acids) in these
 datasets have already been filtered out.
 
-<p align="center">Table 5: List of the pre-calculated descriptor sets of the 20 amino acids in protr</p>
-<img src="tables/table5.png" width="100%" class="img-responsive" align="center">
+  Dataset Name   Descriptor Set Name                           Dimensionality   Calculated by
+  -------------- --------------------------------------------- ---------------- ---------------------------
+  AA2DACOR       2D Autocorrelations Descriptors               92               Dragon
+  AA3DMoRSE      3D-MoRSE Descriptors                          160              Dragon
+  AAACF          Atom-Centred Fragments Descriptors            6                Dragon
+  AABurden       Burden Eigenvalues Descriptors                62               Dragon
+  AAConn         Connectivity Indices Descriptors              33               Dragon
+  AAConst        Constitutional Descriptors                    23               Dragon
+  AAEdgeAdj      Edge Adjacency Indices Descriptors            97               Dragon
+  AAEigIdx       Eigenvalue-Based Indices Descriptors          44               Dragon
+  AAFGC          Functional Group Counts Descriptors           5                Dragon
+  AAGeom         Geometrical Descriptors                       41               Dragon
+  AAGETAWAY      GETAWAY Descriptors                           194              Dragon
+  AAInfo         Information Indices Descriptors               47               Dragon
+  AAMolProp      Molecular Properties Descriptors              12               Dragon
+  AARandic       Randic Molecular Profiles Descriptors         41               Dragon
+  AARDF          RDF Descriptors                               82               Dragon
+  AATopo         Topological Descriptors                       78               Dragon
+  AATopoChg      Topological Charge Indices Descriptors        15               Dragon
+  AAWalk         Walk and Path Counts Descriptors              40               Dragon
+  AAWHIM         WHIM Descriptors                              99               Dragon
+  AACPSA         CPSA Descriptors                              41               Accelrys Discovery Studio
+  AADescAll      All the 2D Descriptors Calculated by Dragon   1171             Dragon
+  AAMOE2D        All the 2D Descriptors Calculated by MOE      148              MOE
+  AAMOE3D        All the 3D Descriptors Calculated by MOE      143              MOE
+
+  : Table 5: List of the pre-calculated descriptor sets of the 20 amino acids in
+  protr
 
 # References
