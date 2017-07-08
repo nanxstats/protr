@@ -1,3 +1,10 @@
+# protr 1.4-1 (2017-07-08)
+
+## Improvements
+
+- Converted table images to markdown tables in the vignette
+- Updated the screenshot of protrweb in the vignette
+
 # protr 1.4-0 (2017-06-06)
 
 ## Improvements
