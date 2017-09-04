@@ -78,7 +78,7 @@ ProtrWeb is a user-friendly web application for computing the protein sequence d
     * Sequence-order-coupling number
     * Quasi-sequence-order descriptors
 
-  * Pseudo amino acid composition
+  * Pseudo amino acid composition (PseAAC)
     * Pseudo amino acid composition
     * Amphiphilic pseudo amino acid composition
 
