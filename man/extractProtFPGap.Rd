@@ -52,4 +52,3 @@ Nan Xiao <\url{https://nanx.me}>
 \keyword{extract}
 \keyword{gap}
 \keyword{scales}
-

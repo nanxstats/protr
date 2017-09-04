@@ -62,16 +62,15 @@ gene2 = "251"
 gsim2 = twoGOSim(gene1, gene2, type = "gene", ont = "BP", measure = "Lin")
 print(gsim2)}
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{\link{parGOSim}} for protein similarity calculation
 based on Gene Ontology (GO) semantic similarity.
 See \code{\link{parSeqSim}} for paralleled protein similarity
 calculation based on Smith-Waterman local alignment.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{GO}
 \keyword{Ontology}
 \keyword{similarity}
-

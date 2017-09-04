@@ -16,4 +16,3 @@ data(AABLOSUM100)
 
 }
 \keyword{datasets}
-

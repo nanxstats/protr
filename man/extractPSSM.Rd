@@ -146,9 +146,6 @@ if (Sys.which("makeblastdb") == "" | Sys.which("psiblast") == "") {
 
 }
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Altschul, Stephen F., et al.
 "Gapped BLAST and PSI-BLAST: a new generation of protein database search programs."
@@ -165,8 +162,10 @@ Rangwala, Huzefa, and George Karypis.
 \seealso{
 \link{extractPSSMFeature} \link{extractPSSMAcc}
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Alignment}
 \keyword{Blast}
 \keyword{PSSM}
 \keyword{extract}
-

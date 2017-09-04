@@ -17,4 +17,3 @@ data(AAGETAWAY)
 
 }
 \keyword{datasets}
-

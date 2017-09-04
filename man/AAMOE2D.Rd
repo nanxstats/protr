@@ -17,4 +17,3 @@ data(AAMOE2D)
 
 }
 \keyword{datasets}
-

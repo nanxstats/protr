@@ -39,16 +39,15 @@ seqalign = twoSeqSim(s1, s2)
 summary(seqalign)
 print(seqalign@score)}
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{\link{parSeqSim}} for paralleled pairwise
 protein similarity calculation based on sequence alignment.
 See \code{\link{twoGOSim}} for calculating the GO semantic
 similarity between two groups of GO terms or two Entrez gene IDs.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{alignment}
 \keyword{parallel}
 \keyword{similarity}
-

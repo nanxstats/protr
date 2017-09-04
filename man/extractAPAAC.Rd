@@ -85,9 +85,6 @@ extractAPAAC(
     "MyProp1", "MyProp2", "MyProp3")
 )
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Kuo-Chen Chou. Prediction of Protein Cellular Attributes
 Using Pseudo-Amino Acid Composition.
@@ -104,8 +101,10 @@ PNAS, 1981, 78:3824-3828 (T.P.Hopp & K.R.Woods). (The hydrophilicity data)
 See \code{\link{extractPAAC}} for
 pseudo amino acid composition descriptor.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{APAAC}
 \keyword{Amphiphilic}
 \keyword{Composition}
 \keyword{extract}
-

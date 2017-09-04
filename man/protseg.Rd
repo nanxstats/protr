@@ -36,4 +36,3 @@ protseg(x, aa = "R", k = 5)
 Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{segmentation}
-

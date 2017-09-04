@@ -27,9 +27,6 @@ interpretation of the results.
 x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractCTDD(x)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.
 Prediction of protein folding class using global description of
@@ -44,7 +41,9 @@ Recognition of a Protein Fold in the Context of the SCOP classification.
 See \code{\link{extractCTDC}} and \code{\link{extractCTDT}}
 for Composition and Transition of the CTD descriptors.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{CTD}
 \keyword{Composition}
 \keyword{extract}
-

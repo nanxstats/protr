@@ -83,9 +83,6 @@ extractPAAC(
     "MyProp1", "MyProp2", "MyProp3")
 )
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Kuo-Chen Chou. Prediction of Protein Cellular Attributes
 Using Pseudo-Amino Acid Composition.
@@ -109,8 +106,10 @@ Data for Biochemical Research 3rd ed., Clarendon Press Oxford (1986).
 See \code{\link{extractAPAAC}} for amphiphilic pseudo
 amino acid composition descriptor.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Composition}
 \keyword{PAAC}
 \keyword{Pseudo}
 \keyword{extract}
-

@@ -41,9 +41,6 @@ data(AATopo)
 tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Venkatarajan, M. S., & Braun, W. (2001).
 New quantitative descriptors of amino acids based on multidimensional scaling
@@ -54,7 +51,9 @@ Molecular modeling annual, 7(12), 445--453.
 See \code{\link{extractScales}} for scales-based
 descriptors derived by Principal Components Analysis.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{MDS}
 \keyword{PCM}
 \keyword{extract}
-

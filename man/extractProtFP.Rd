@@ -48,4 +48,3 @@ Nan Xiao <\url{https://nanx.me}>
 \keyword{AAindex}
 \keyword{extract}
 \keyword{scales}
-

@@ -17,4 +17,3 @@ data(AAInfo)
 
 }
 \keyword{datasets}
-

@@ -16,4 +16,3 @@ data(AAPAM40)
 
 }
 \keyword{datasets}
-

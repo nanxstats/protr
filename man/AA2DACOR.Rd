@@ -17,4 +17,3 @@ data(AA2DACOR)
 
 }
 \keyword{datasets}
-

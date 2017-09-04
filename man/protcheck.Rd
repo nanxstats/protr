@@ -26,4 +26,3 @@ protcheck(paste(x, "Z", sep = ""))  # FALSE
 Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{check}
-

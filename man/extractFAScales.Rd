@@ -48,16 +48,15 @@ tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
 fa = extractFAScales(
   x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Atchley, W. R., Zhao, J., Fernandes, A. D., & Druke, T. (2005).
 Solving the protein sequence metric problem.
 Proceedings of the National Academy of Sciences of the United States of America,
 102(18), 6395-6400.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Factor}
 \keyword{PCM}
 \keyword{extract}
-

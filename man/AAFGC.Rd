@@ -17,4 +17,3 @@ data(AAFGC)
 
 }
 \keyword{datasets}
-

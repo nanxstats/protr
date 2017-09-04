@@ -61,9 +61,6 @@ group3 = list(
 
 extractCTDDClass(x, aagroup1 = group1, aagroup2 = group2, aagroup3 = group3)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Inna Dubchak, Ilya Muchink, Stephen R. Holbrook and Sung-Hou Kim.
 Prediction of protein folding class using global description of
@@ -79,7 +76,9 @@ See \code{\link{extractCTDCClass}} and
 \code{\link{extractCTDTClass}} for Composition and Transition of
 the CTD descriptors with customized amino acid classification support.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{CTD}
 \keyword{Composition}
 \keyword{extract}
-

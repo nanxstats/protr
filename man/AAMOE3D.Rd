@@ -20,4 +20,3 @@ data(AAMOE3D)
 
 }
 \keyword{datasets}
-

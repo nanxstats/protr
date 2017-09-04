@@ -39,9 +39,6 @@ This function reads protein sequences in FASTA format.
 \examples{
 P00750 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Pearson, W.R. and Lipman, D.J. (1988)
 Improved tools for biological sequence comparison.
@@ -52,5 +49,7 @@ of the United States of America}, \bold{85}: 2444--2448.
 See \code{\link{getUniProt}} for retrieving
 protein sequences from uniprot.org.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{FASTA}
-

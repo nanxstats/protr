@@ -14,4 +14,3 @@ OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
 # view.molecule.2d(optaa3d[[1]])  # view the first AA
 }
 \keyword{datasets}
-

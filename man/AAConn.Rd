@@ -17,4 +17,3 @@ data(AAConn)
 
 }
 \keyword{datasets}
-

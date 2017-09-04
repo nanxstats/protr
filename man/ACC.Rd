@@ -32,9 +32,6 @@ lag = 7  # the lag paramter
 mat = matrix(rnorm(p * n), nrow = p, ncol = n)
 acc(mat, lag)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg, M., & R\"{a}nnar, S. (1993).
 DNA and peptide sequences and chemical processes multivariately modelled
@@ -52,6 +49,8 @@ See \code{\link{extractScales}} for scales-based descriptors.
 For more details, see \code{\link{extractDescScales}}
 and \code{\link{extractProtFP}}.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{acc}
 \keyword{covariance}
-

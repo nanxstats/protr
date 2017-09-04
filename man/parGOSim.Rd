@@ -65,16 +65,15 @@ genelist = list(c("150", "151", "152", "1814", "1815", "1816"))
 gsimmat2 = parGOSim(genelist, type = "gene")
 print(gsimmat2)}
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{\link{twoGOSim}} for calculating the
 GO semantic similarity between two groups of GO terms or two Entrez gene IDs.
 See \code{\link{parSeqSim}} for paralleled protein similarity
 calculation based on Smith-Waterman local alignment.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{GO}
 \keyword{Ontology}
 \keyword{similarity}
-

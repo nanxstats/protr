@@ -81,9 +81,6 @@ extractMoran(
     "MyProp1", "MyProp2", "MyProp3")
 )
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 AAindex: Amino acid index database.
 \url{http://www.genome.ad.jp/dbget/aaindex.html}
@@ -108,7 +105,9 @@ See \code{\link{extractMoreauBroto}} and \code{\link{extractGeary}}
 for Moreau-Broto autocorrelation descriptors and
 Geary autocorrelation descriptors.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Moran}
 \keyword{autocorrelation}
 \keyword{extract}
-

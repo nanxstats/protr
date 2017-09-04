@@ -19,9 +19,6 @@ This function calculates the Tripeptide Composition descriptor (dim: 8,000).
 x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractTC(x)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 M. Bhasin, G. P. S. Raghava.
 Classification of Nuclear Receptors Based on
@@ -32,7 +29,9 @@ Amino Acid Composition and Dipeptide Composition.
 See \code{\link{extractAAC}} and \code{\link{extractDC}}
 for Amino Acid Composition and Dipeptide Composition descriptors.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Composition}
 \keyword{Tripeptide}
 \keyword{extract}
-

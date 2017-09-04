@@ -24,9 +24,6 @@ This function calculates the Quasi-Sequence-Order (QSO) descriptor
 x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractQSO(x)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Kuo-Chen Chou. Prediction of Protein Subcellar Locations by
 Incorporating Quasi-Sequence-Order Effect.
@@ -46,6 +43,8 @@ Molecular Evolution: Do Novo Design of an Idealized Leader Cleavge Site.
 \seealso{
 See \code{\link{extractSOCN}} for sequence-order-coupling numbers.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{QSO}
 \keyword{extract}
-

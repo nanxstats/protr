@@ -44,16 +44,15 @@ x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 blosum = extractBLOSUM(
   x, submat = "AABLOSUM62", k = 5, lag = 7, scale = TRUE, silent = FALSE)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Georgiev, A. G. (2009).
 Interpretable numerical descriptors of amino acid space.
 Journal of Computational Biology, 16(5), 703--723.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{BLOSUM}
 \keyword{PAM}
 \keyword{PCM}
 \keyword{extract}
-

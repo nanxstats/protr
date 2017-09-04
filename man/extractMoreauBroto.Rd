@@ -81,9 +81,6 @@ extractMoreauBroto(
     "MyProp1", "MyProp2", "MyProp3")
 )
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 AAindex: Amino acid index database.
 \url{http://www.genome.ad.jp/dbget/aaindex.html}
@@ -107,8 +104,10 @@ an Usage from an Amerindian tribal population.
 See \code{\link{extractMoran}} and \code{\link{extractGeary}}
 for Moran autocorrelation descriptors and Geary autocorrelation descriptors.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Moreau-Broto}
 \keyword{autocorrelation}
 \keyword{extract}
 \keyword{normalized}
-

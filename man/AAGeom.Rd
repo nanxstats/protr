@@ -17,4 +17,3 @@ data(AAGeom)
 
 }
 \keyword{datasets}
-

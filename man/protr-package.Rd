@@ -2,8 +2,8 @@
 % Please edit documentation in R/protr-package.R
 \docType{package}
 \name{protr-package}
-\alias{protr}
 \alias{protr-package}
+\alias{protr}
 \title{Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
 The protr package is a comprehensive toolkit for generating various
@@ -42,4 +42,3 @@ protr/ProtrWeb: R package and web server for generating various
 numerical representation schemes of protein sequences.
 \emph{Bioinformatics} 31 (11), 1857--1859.
 }
-

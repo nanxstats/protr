@@ -45,16 +45,15 @@ data(AAindex)
 AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
 scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{\link{extractDescScales}} scales descriptors based on
 20+ classes of molecular descriptors, and \code{\link{extractProtFP}}
 for amino acid property based scales descriptors (protein fingerprint).
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{PCA}
 \keyword{PCM}
 \keyword{extract}
 \keyword{scales}
-

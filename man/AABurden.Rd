@@ -17,4 +17,3 @@ data(AABurden)
 
 }
 \keyword{datasets}
-

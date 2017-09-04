@@ -19,9 +19,6 @@ This function calculates the Amino Acid Composition descriptor (dim: 20).
 x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractAAC(x)
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 M. Bhasin, G. P. S. Raghava.
 Classification of Nuclear Receptors Based on
@@ -32,6 +29,8 @@ Amino Acid Composition and Dipeptide Composition.
 See \code{\link{extractDC}} and \code{\link{extractTC}}
 for Dipeptide Composition and Tripeptide Composition descriptors.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Composition}
 \keyword{extract}
-

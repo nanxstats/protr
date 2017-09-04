@@ -17,4 +17,3 @@ data(AAACF)
 
 }
 \keyword{datasets}
-

@@ -22,11 +22,10 @@ This function retrieves protein sequences from uniprot.org by protein ID(s).
 ids = c("P00750", "P00751", "P00752")
 getUniProt(ids)}
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{\link{readFASTA}} for reading FASTA format files.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{UniProt}
-

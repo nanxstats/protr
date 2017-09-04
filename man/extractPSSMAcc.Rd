@@ -41,9 +41,6 @@ if (Sys.which("makeblastdb") == "" | Sys.which("psiblast") == "") {
 
 }
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \references{
 Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg,
 M., & R\"{a}nnar, S. (1993).
@@ -55,8 +52,10 @@ to latent structures.
 \seealso{
 \link{extractPSSM} \link{extractPSSMFeature}
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{Alignment}
 \keyword{Blast}
 \keyword{PSSM}
 \keyword{extract}
-

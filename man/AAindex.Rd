@@ -24,4 +24,3 @@ data(AAindex)
 }
 \keyword{AAindex}
 \keyword{datasets}
-

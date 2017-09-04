@@ -51,16 +51,15 @@ plist = list(s1, s2, s3, s4, s5)
 psimmat = parSeqSim(plist, cores = 2, type = "local", submat = "BLOSUM62")
 print(psimmat)}
 }
-\author{
-Nan Xiao <\url{https://nanx.me}>
-}
 \seealso{
 See \code{twoSeqSim} for protein sequence alignment
 for two protein sequences. See \code{\link{parGOSim}} for
 protein similarity calculation based on
 Gene Ontology (GO) semantic similarity.
 }
+\author{
+Nan Xiao <\url{https://nanx.me}>
+}
 \keyword{alignment}
 \keyword{parallel}
 \keyword{similarity}
-
