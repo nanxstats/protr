@@ -1,7 +1,7 @@
-#' Amphiphilic Pseudo Amino Acid Composition Descriptor
+#' Amphiphilic Pseudo Amino Acid Composition (APseAAC) Descriptor
 #'
 #' This function calculates the Amphiphilic Pseudo Amino Acid
-#' Composition (APAAC) descriptor (dim: \code{20 + (n * lambda)},
+#' Composition (APseAAC, or APAAC) descriptor (dim: \code{20 + (n * lambda)},
 #' \code{n} is the number of properties selected, default is 80).
 #'
 #' @param x A character vector, as the input protein sequence.
@@ -46,14 +46,14 @@
 #' It would be wise to use some negative and positive control comparisons
 #' where relevant to help guide interpretation of the results.
 #'
-#' @keywords extract APAAC Amphiphilic Composition
+#' @keywords extract APseAAC APAAC Amphiphilic Composition
 #'
 #' @aliases extractAPAAC
 #'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
-#' @seealso See \code{\link{extractPAAC}} for
-#' pseudo amino acid composition descriptor.
+#' @seealso See \code{\link{extractPAAC}} for the
+#' pseudo amino acid composition (PseAAC) descriptor.
 #'
 #' @export extractAPAAC
 #'

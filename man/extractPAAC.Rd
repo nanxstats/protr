@@ -2,7 +2,7 @@
 % Please edit documentation in R/desc-13-PAAC.R
 \name{extractPAAC}
 \alias{extractPAAC}
-\title{Pseudo Amino Acid Composition Descriptor}
+\title{Pseudo Amino Acid Composition (PseAAC) Descriptor}
 \usage{
 extractPAAC(x, props = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"),
   lambda = 30, w = 0.05, customprops = NULL)
@@ -17,7 +17,7 @@ extractPAAC(x, props = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"),
 \item{\code{'Hydrophilicity'}}{Hydrophilicity value of the 20 amino acids}
 \item{\code{'SideChainMass'}}{Side-chain mass of the 20 amino acids}}}
 
-\item{lambda}{The lambda parameter for the PAAC descriptors, default is 30.}
+\item{lambda}{The lambda parameter for the PseAAC descriptors, default is 30.}
 
 \item{w}{The weighting factor, default is 0.05.}
 
@@ -40,7 +40,7 @@ The default value for \code{customprops} is \code{NULL}.}
 A length \code{20 + lambda} named vector
 }
 \description{
-This function calculates the Pseudo Amino Acid Composition (PAAC)
+This function calculates the Pseudo Amino Acid Composition (PseAAC)
 descriptor (dim: \code{20 + lambda}, default is 50).
 }
 \note{
@@ -111,5 +111,6 @@ Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{Composition}
 \keyword{PAAC}
+\keyword{PseAAC}
 \keyword{Pseudo}
 \keyword{extract}

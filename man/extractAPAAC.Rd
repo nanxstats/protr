@@ -2,7 +2,7 @@
 % Please edit documentation in R/desc-14-APAAC.R
 \name{extractAPAAC}
 \alias{extractAPAAC}
-\title{Amphiphilic Pseudo Amino Acid Composition Descriptor}
+\title{Amphiphilic Pseudo Amino Acid Composition (APseAAC) Descriptor}
 \usage{
 extractAPAAC(x, props = c("Hydrophobicity", "Hydrophilicity"), lambda = 30,
   w = 0.05, customprops = NULL)
@@ -42,7 +42,7 @@ A length \code{20 + n * lambda} named vector,
 }
 \description{
 This function calculates the Amphiphilic Pseudo Amino Acid
-Composition (APAAC) descriptor (dim: \code{20 + (n * lambda)},
+Composition (APseAAC, or APAAC) descriptor (dim: \code{20 + (n * lambda)},
 \code{n} is the number of properties selected, default is 80).
 }
 \note{
@@ -98,13 +98,14 @@ JACS, 1962, 84: 4240-4246. (C. Tanford). (The hydrophobicity data)
 PNAS, 1981, 78:3824-3828 (T.P.Hopp & K.R.Woods). (The hydrophilicity data)
 }
 \seealso{
-See \code{\link{extractPAAC}} for
-pseudo amino acid composition descriptor.
+See \code{\link{extractPAAC}} for the
+pseudo amino acid composition (PseAAC) descriptor.
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
 \keyword{APAAC}
+\keyword{APseAAC}
 \keyword{Amphiphilic}
 \keyword{Composition}
 \keyword{extract}

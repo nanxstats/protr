@@ -1,6 +1,6 @@
-#' Pseudo Amino Acid Composition Descriptor
+#' Pseudo Amino Acid Composition (PseAAC) Descriptor
 #'
-#' This function calculates the Pseudo Amino Acid Composition (PAAC)
+#' This function calculates the Pseudo Amino Acid Composition (PseAAC)
 #' descriptor (dim: \code{20 + lambda}, default is 50).
 #'
 #' @param x A character vector, as the input protein sequence.
@@ -12,7 +12,7 @@
 #' \item{\code{'Hydrophilicity'}}{Hydrophilicity value of the 20 amino acids}
 #' \item{\code{'SideChainMass'}}{Side-chain mass of the 20 amino acids}}
 #'
-#' @param lambda The lambda parameter for the PAAC descriptors, default is 30.
+#' @param lambda The lambda parameter for the PseAAC descriptors, default is 30.
 #'
 #' @param w The weighting factor, default is 0.05.
 #'
@@ -44,7 +44,7 @@
 #' It would be wise to use some negative and positive control comparisons
 #' where relevant to help guide interpretation of the results.
 #'
-#' @keywords extract PAAC Pseudo Composition
+#' @keywords extract PseAAC PAAC Pseudo Composition
 #'
 #' @aliases extractPAAC
 #'
