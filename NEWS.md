@@ -1,3 +1,10 @@
+# protr 1.4-2 (2017-09-28)
+
+## Improvements
+
+- The function list is now organized into sections on the package website (https://nanx.me/protr/reference/).
+- Use system font stack instead of Google Fonts in vignettes to avoid pandoc SSL issue.
+
 # protr 1.4-1 (2017-07-08)
 
 ## Improvements
