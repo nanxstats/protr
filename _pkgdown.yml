@@ -1,3 +1,110 @@
 template:
   params:
     bootswatch: cerulean
+
+reference:
+  - title: "Protein/Peptide Sequence Descriptors"
+    desc: >
+      Functions for calculating protein/peptide sequence descirptors.
+    contents:
+    - extractAAC
+    - extractDC
+    - extractTC
+    - extractMoreauBroto
+    - extractMoran
+    - extractGeary
+    - extractCTDC
+    - extractCTDCClass
+    - extractCTDDClass
+    - extractCTDTClass
+    - extractCTDT
+    - extractCTDD
+    - extractCTriad
+    - extractCTriadClass
+    - extractSOCN
+    - extractQSO
+    - extractPAAC
+    - extractAPAAC
+  - title: "Profile-Based Protein/Peptide Sequence Descriptors"
+    desc: >
+      Functions for calculating the profile-based (PSSM) descirptors.
+    contents:
+    - extractPSSM
+    - extractPSSMAcc
+    - extractPSSMFeature
+    - acc
+  - title: "Proteochemometric Modeling (PCM) Descriptors"
+    desc: >
+      Functions for calculating proteochemometric modeling (PCM) descriptors.
+    contents:
+    - extractScales
+    - extractScalesGap
+    - extractProtFP
+    - extractProtFPGap
+    - extractDescScales
+    - extractFAScales
+    - extractMDSScales
+    - extractBLOSUM
+  - title: "Similarity Measures between Proteins"
+    desc: >
+      Functions for calculating protein sequence alignment based
+      similarity measures and GO-based semantic similarity measures.
+    contents:
+    - twoSeqSim
+    - parSeqSim
+    - twoGOSim
+    - parGOSim
+  - title: "Helper Functions for Pre-Processing Protein Sequences"
+    desc: >
+      Functions for pre-processing protein sequences.
+    contents:
+    - getUniProt
+    - readFASTA
+    - readPDB
+    - protcheck
+    - protseg
+    - protr-package
+  - title: "Precomputed Molecular Descriptors for the 20 Amino Acids"
+    desc: >
+      Precomputed molecular descriptors for the 20 amino acids.
+    contents:
+    - AAindex
+    - AAMetaInfo
+    - OptAA3d
+    - AA2DACOR
+    - AA3DMoRSE
+    - AAACF
+    - AABurden
+    - AAConn
+    - AAConst
+    - AACPSA
+    - AADescAll
+    - AAEdgeAdj
+    - AAEigIdx
+    - AAFGC
+    - AAGeom
+    - AAGETAWAY
+    - AAInfo
+    - AAMOE2D
+    - AAMOE3D
+    - AAMolProp
+    - AARandic
+    - AARDF
+    - AATopo
+    - AATopoChg
+    - AAWalk
+    - AAWHIM
+  - title: "BLOSUM and PAM matrices for the 20 Amino Acids"
+    desc: >
+      BLOSUM and PAM matrices for the 20 amino acids.
+    contents:
+    - AABLOSUM45
+    - AABLOSUM50
+    - AABLOSUM62
+    - AABLOSUM80
+    - AABLOSUM100
+    - AAPAM30
+    - AAPAM40
+    - AAPAM70
+    - AAPAM120
+    - AAPAM250
