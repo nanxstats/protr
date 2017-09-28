@@ -15,7 +15,6 @@ Authors@R: c(
 Maintainer: Nan Xiao <me@nanx.me>
 License: BSD_3_clause + file LICENSE
 URL: https://nanx.me/protr/, https://github.com/road2stat/protr, http://protr.org
-Encoding: UTF-8
 BugReports: https://github.com/road2stat/protr/issues
 SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 LazyData: true
@@ -30,4 +29,5 @@ Suggests:
     foreach,
     doParallel,
     org.Hs.eg.db
-RoxygenNote: 6.0.1
+Encoding: UTF-8
+RoxygenNote: 6.0.1.9000
