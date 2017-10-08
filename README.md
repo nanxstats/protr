@@ -17,16 +17,16 @@ BibTeX entry:
 
 ```
 @article{Xiao2015,
-author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
-title = {{protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences}},
-journal = {Bioinformatics},
-year = {2015},
-volume = {31},
-number = {11},
-pages = {1857--1859},
-doi = {10.1093/bioinformatics/btv042},
-issn = {1367-4803},
-url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
+  author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
+  title = {{protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences}},
+  journal = {Bioinformatics},
+  year = {2015},
+  volume = {31},
+  number = {11},
+  pages = {1857--1859},
+  doi = {10.1093/bioinformatics/btv042},
+  issn = {1367-4803},
+  url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
 }
 ```
 
