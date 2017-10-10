@@ -8,10 +8,10 @@ Description: Comprehensive toolkit for generating various numerical
     <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>
     for more information.
 Authors@R: c(
-    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre")),
+    person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0250-5673")),
     person("Qing-Song", "Xu", email = "qsxu@csu.edu.cn", role = c("aut")),
-    person("Dong-Sheng", "Cao", role = "aut")
-    )
+    person("Dong-Sheng", "Cao", role = "aut"))
 Maintainer: Nan Xiao <me@nanx.me>
 License: BSD_3_clause + file LICENSE
 URL: https://nanx.me/protr/, https://github.com/road2stat/protr, http://protr.org
