@@ -134,11 +134,11 @@ length(mitonchon)
 
 Two protein sequences were removed from each class.
 For the remaining sequences, we calculate the Type II PseAAC descriptor,
-i.e., the amphiphilic pseudo amino acid composition (APAAC) descriptor
+i.e., the amphiphilic pseudo amino acid composition (APseAAC) descriptor
 [@chouapaac] and make class labels for classification modeling.
 
 ```{r, eval = FALSE}
-# calculate APAAC descriptors
+# calculate APseAAC descriptors
 x1 = t(sapply(extracell, extractAPAAC))
 x2 = t(sapply(mitonchon, extractAPAAC))
 x  = rbind(x1, x2)
@@ -260,8 +260,8 @@ The descriptors and the function names implemented are listed below:
 
 - Pseudo-amino acid composition
 
-    - `extractPAAC()` - Pseudo-amino acid composition
-    - `extractAPAAC()` - Amphiphilic pseudo-amino acid composition
+    - `extractPAAC()` - Pseudo-amino acid composition (PseAAC)
+    - `extractAPAAC()` - Amphiphilic pseudo-amino acid composition (APseAAC)
 
 - Profile-based descriptors
 
@@ -836,9 +836,9 @@ extractQSO(x)
 where users can also specify the maximum lag with the argument `nlag`
 and the weighting factor with the argument `w`.
 
-## Pseudo-Amino Acid Composition (PAAC)
+## Pseudo-Amino Acid Composition (PseAAC)
 
-This groups of descriptors are proposed by @choupaac. PAAC descriptors
+This groups of descriptors are proposed by @choupaac. PseAAC descriptors
 are also called the _type 1 pseudo-amino acid composition_. Let $H_1^o (i)$,
 $H_2^o (i)$, $M^o (i)$ ($i=1, 2, 3, \ldots, 20$) be the original hydrophobicity
 values, the original hydrophilicity values and the original side chain masses
@@ -909,7 +909,7 @@ $$
 where $w$ is the weighting factor for the sequence-order effect and is
 set to $w = 0.05$ in protr as suggested by Kuo-Chen Chou.
 
-With `extractPAAC()`, we can compute the PAAC descriptors:
+With `extractPAAC()`, we can compute the PseAAC descriptors:
 
 ```{r, extractPAAC}
 extractPAAC(x)
@@ -926,10 +926,10 @@ occurrence frequency" was not given. In this work, we define it as the
 occurrence frequency of amino acid in the sequence normalized to 100%
 and hence our calculated values are not the same as values by them.
 
-## Amphiphilic Pseudo-Amino Acid Composition (APAAC)
+## Amphiphilic Pseudo-Amino Acid Composition (APseAAC)
 
-Amphiphilic Pseudo-Amino Acid Composition (APAAC) was proposed in
-@choupaac. APAAC is also recognized as the _type 2 pseudo-amino
+Amphiphilic Pseudo-Amino Acid Composition (APseAAC) was proposed in
+@choupaac. APseAAC is also recognized as the _type 2 pseudo-amino
 acid composition_. The definitions of these qualities are similar to the
 PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before,
 the hydrophobicity and hydrophilicity correlation functions are
@@ -955,7 +955,7 @@ From these qualities, sequence order factors can be defines as:
 <img src="figures/APAAC.png" width="100%" class="img-responsive" align="center">
 <p align="left">Figure 7: A schematic diagram to show (**a1**/**a2**) the first-rank, (**b1**/**b2**) the second-rank and (**c1**/**c2**) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues.  This figure is from @chouapaac.</p>
 
-Then a set of descriptors called _Amphiphilic Pseudo-Amino Acid Composition_ (_APAAC_) are defined as:
+Then a set of descriptors called _Amphiphilic Pseudo-Amino Acid Composition_ (_APseAAC_) are defined as:
 
 $$
 P_c = \frac{f_c}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \quad (1 < c < 20)
