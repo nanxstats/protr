@@ -389,7 +389,7 @@ f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
 $$
 
 where $N_{rst}$ is the number of tripeptides represented by amino acid type
-$r$, $s$ and $t$. With function `extractTC()`, we can easily obtain
+$r$, $s$, and $t$. With function `extractTC()`, we can easily obtain
 the length-8000 descriptor, to save some space, here we also omitted
 the long outputs:
 
@@ -433,9 +433,8 @@ $$
 AC(d) = \sum_{i=1}^{N-d} P_i P_{i + d} \quad d = 1, 2, \ldots, \textrm{nlag}
 $$
 
-where $d$ is called the lag of the autocorrelation and $P_i$ and $P_{i+d}$
-are the properties of the amino acids at position $i$ and $i+d$, respectively.
-$\textrm{nlag}$ is the maximum value of the lag.
+where $d$ is called the lag of the autocorrelation; $P_i$ and $P_{i+d}$
+are the properties of the amino acids at position $i$ and $i+d$, respectively; $\textrm{nlag}$ is the maximum value of the lag.
 
 The normalized Moreau-Broto autocorrelation descriptors are defined as:
 
@@ -507,8 +506,8 @@ $$
 I(d) = \frac{\frac{1}{N-d} \sum_{i=1}^{N-d} (P_i - \bar{P}') (P_{i+d} - \bar{P}')}{\frac{1}{N} \sum_{i=1}^{N} (P_i - \bar{P}')^2} \quad d = 1, 2, \ldots, 30
 $$
 
-where $d$ and $P_i$ and $P_{i+d}$ are defined in the same way as in
-the first place, and $\bar{P}'$ is the considered property $P$ along
+where $d$, $P_i$, and $P_{i+d}$ are defined in the same way as in
+the first place; $\bar{P}'$ is the considered property $P$ along
 the sequence, i.e.,
 
 $$
@@ -542,7 +541,7 @@ $$
 C(d) = \frac{\frac{1}{2(N-d)} \sum_{i=1}^{N-d} (P_i - P_{i+d})^2}{\frac{1}{N-1} \sum_{i=1}^{N} (P_i - \bar{P}')^2} \quad d = 1, 2, \ldots, 30
 $$
 
-where $d$, $P$, $P_i$ and $P_{i+d}$, $\textrm{nlag}$ have the same
+where $d$, $P$, $P_i$, $P_{i+d}$, and $\textrm{nlag}$ have the same
 meaning as above.
 
 For each amino acid index, there will be $3 \times \textrm{nlag}$
@@ -564,11 +563,11 @@ head(geary, n = 36L)
 
 ## Composition/Transition/Distribution
 
-These descriptors are developed and described by @dubchak1 and @dubchak2.
+The CTD descriptors are developed by @dubchak1 and @dubchak2.
 
 <img src="figures/CTD.png" width="100%" class="img-responsive" align="center" alt="CTD descriptors">
 <p align="left">Figure 3: The sequence of a hypothetic protein indicating the construction
-of composition, transition and distribution descriptors of a protein.
+of composition, transition, and distribution descriptors of a protein.
 Sequence index indicates the position of an amino acid in the sequence.
 The index for each type of amino acids in the sequence (`1`, `2` or `3`)
 indicates the position of the first, second, third, ... of that type of
@@ -613,40 +612,40 @@ and _Distribution_ (_D_) were calculated for a given attribute as follows.
 
 ### Composition
 
-It is the global percent for each encoded class in the sequence.
-In the above example using hydrophobicity division, the numbers for
-encoded classes `1`, `2`, `3` are 5, 10, and 5, respectively,
-so that the compositions for them are $5/20=25\%$, $10/20=10\%$,
+Composition is defined as the global percentage for each encoded class
+in the protein sequence. In the above example using hydrophobicity division,
+the numbers for encoded classes `1`, `2`, `3` are 5, 10, and 5, respectively,
+so that the compositions for them will be $5/20=25\%$, $10/20=10\%$,
 and $5/20=25\%$, respectively, where 20 is the length of the protein
-sequence. Composition can be defined as
+sequence. Composition can be expressed as
 
 $$
 C_r = \frac{n_r}{n} \quad r = 1, 2, 3
 $$
 
 where $n_r$ is the number of amino acid type $r$ in the encoded
-sequence and $N$ is the length of the sequence.
+sequence; $N$ is the length of the sequence.
 An example for `extractCTDC()`:
 
 ```{r, extractCTDC}
 extractCTDC(x)
 ```
 
-The result shows the elements whose names are `PropertyNumber.GroupNumber`
+The result shows the elements who are named as `PropertyNumber.GroupNumber`
 in the returned vector.
 
 ### Transition
 
 A transition from class 1 to 2 is the percent frequency with which 1 is
 followed by 2 or 2 is followed by 1 in the encoded sequence.
-Transition descriptor can be calculated as
+The transition descriptor can be computed as
 
 $$
 T_{rs} = \frac{n_{rs} + n_{sr}}{N - 1} \quad rs = \text{12}, \text{13}, \text{23}
 $$
 
-where $n_{rs}$, $n_{sr}$ is the numbers of dipeptide encoded as `rs` and
-`sr` respectively in the sequence and $N$ is the length of the sequence.
+where $n_{rs}$, $n_{sr}$ are the numbers of dipeptide encoded as `rs` and
+`sr` respectively in the sequence; $N$ is the length of the sequence.
 An example for `extractCTDT()`:
 
 ```{r, extractCTDT}
@@ -660,7 +659,7 @@ in the sequence.
 
 There are five "distribution" descriptors for each attribute and they are
 the position percents in the whole sequence for the first residue, 25%
-residues, 50% residues, 75% residues and 100% residues, respectively,
+residues, 50% residues, 75% residues, and 100% residues, respectively,
 for a specified encoded class. For example, there are 10 residues encoded
 as `2` in the above example, the positions for the first residue `2`,
 the 2nd residue `2` (25% * 10 = 2), the 5th `2` residue (50% * 10 = 5),
@@ -670,7 +669,7 @@ so the distribution descriptors for `2` are: 10.0 (2/20 * 100),
 25.0 (5/20 * 100), 75.0 (15/20 * 100), 85.0 (17/20 * 100),
 100.0 (20/20 * 100), respectively.
 
-Finally, an example for `extractCTDD()`:
+To compute the distribution descriptor, use `extractCTDD()`:
 
 ```{r, extractCTDD}
 extractCTDD(x)
@@ -965,7 +964,7 @@ $$
 P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \quad (21 < u < 20 + 2 \lambda)
 $$
 
-where $w$ is the weighting factor and is taken as $w = 0.5$ in protr as in the work of Chou KC.
+where $w$ is the weighting factor. Its default value is set to $w = 0.5$ in protr.
 
 A minimal example for `extracAPAAC()` is:
 
