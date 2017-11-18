@@ -18,7 +18,7 @@ vignette: >
 
 The protr package offers a unique and comprehensive toolkit
 for generating various numerical representation schemes of protein
-sequence. The descriptors included are extensively utilized in
+sequences. The descriptors included are extensively utilized in
 bioinformatics and chemogenomics research. The commonly used
 descriptors listed in protr include amino acid composition,
 autocorrelation, CTD, conjoint traid, quasi-sequence order,
@@ -324,11 +324,11 @@ represented as $\{\,R_1, R_2, \ldots, R_n\,\}$, where $R_i$ represents the
 residue at the $i$-th position in the sequence. The labels $i$ and $j$ are
 used to index amino acid position in a sequence, and $r$, $s$, $t$ are used
 to represent the amino acid type. The computed descriptors are roughly
-divided into 4 groups according to their known applications described
-in the literature.
+categorized into 4 groups according to their major applications.
 
-A protein sequence can be divided equally into segments and the methods,
-described as follows for the global sequence, could be applied to each segment.
+A protein sequence can be partitioned equally into segments.
+The descriptors designed for the complete sequence, can be often
+applied to each individual segment.
 
 ## Amino Acid Composition Descriptor
 
@@ -435,7 +435,7 @@ AC(d) = \sum_{i=1}^{N-d} P_i P_{i + d} \quad d = 1, 2, \ldots, \textrm{nlag}
 $$
 
 where $d$ is called the lag of the autocorrelation; $P_i$ and $P_{i+d}$
-are the properties of the amino acids at position $i$ and $i+d$, respectively;
+are the properties of the amino acids at position $i$ and $i+d$;
 $\textrm{nlag}$ is the maximum value of the lag.
 
 The normalized Moreau-Broto autocorrelation descriptors are defined as:
@@ -607,7 +607,7 @@ The corresponding classification for each attribute is listed in Table 1.
 For example, for a given sequence `MTEITAAMVKELRESTGAGA`, it will be
 encoded as `32132223311311222222` according to its hydrophobicity.
 
-**Step 2: Compute Composition, Transition and Distribution Descriptors**
+**Step 2: Compute Composition, Transition, and Distribution Descriptors**
 
 Three types of descriptors, _Composition_ (_C_), _Transition_ (_T_),
 and _Distribution_ (_D_) can be calculated for a given attribute as follows.
@@ -615,11 +615,11 @@ and _Distribution_ (_D_) can be calculated for a given attribute as follows.
 ### Composition
 
 Composition is defined as the global percentage for each encoded class
-in the protein sequence. In the above example using hydrophobicity division,
-the numbers for encoded classes `1`, `2`, `3` are 5, 10, and 5, respectively,
+in the protein sequence. In the above example using the hydrophobicity
+classification, the numbers for encoded classes `1`, `2`, `3` are 5, 10, and 5,
 so that the compositions for them will be $5/20=25\%$, $10/20=10\%$,
-and $5/20=25\%$, respectively, where 20 is the length of the protein
-sequence. Composition can be expressed as
+and $5/20=25\%$, where 20 is the length of the protein sequence.
+The composition descriptor can be expressed as
 
 $$
 C_r = \frac{n_r}{n} \quad r = 1, 2, 3
@@ -639,7 +639,7 @@ in the returned vector.
 ### Transition
 
 A transition from class 1 to 2 is the percent frequency with which 1 is
-followed by 2 or 2 is followed by 1 in the encoded sequence.
+followed by 2 or 2 is followed by 1 in the encoded sequences.
 The transition descriptor can be computed as
 
 $$
@@ -647,7 +647,7 @@ T_{rs} = \frac{n_{rs} + n_{sr}}{N - 1} \quad rs = \text{12}, \text{13}, \text{23
 $$
 
 where $n_{rs}$, $n_{sr}$ are the numbers of dipeptide encoded as `rs` and
-`sr` respectively in the sequence; $N$ is the length of the sequence.
+`sr` in the sequence; $N$ is the length of the sequence.
 An example for `extractCTDT()`:
 
 ```{r, extractCTDT}
@@ -661,15 +661,15 @@ in the sequence.
 
 There are five "distribution" descriptors for each attribute and they are
 the position percents in the whole sequence for the first residue, 25%
-residues, 50% residues, 75% residues, and 100% residues, respectively,
-for a specified encoded class. For example, there are 10 residues encoded
+residues, 50% residues, 75% residues, and 100% residues for a certain
+encoded class. For example, there are 10 residues encoded
 as `2` in the above example, the positions for the first residue `2`,
 the 2nd residue `2` (25% * 10 = 2), the 5th `2` residue (50% * 10 = 5),
 the 7th `2` (75% * 10 = 7) and the 10th residue `2` (100% * 10)
-in the encoded sequence are 2, 5, 15, 17, 20, respectively,
-so the distribution descriptors for `2` are: 10.0 (2/20 * 100),
+in the encoded sequence are 2, 5, 15, 17, 20, so that
+the distribution descriptors for `2` are: 10.0 (2/20 * 100),
 25.0 (5/20 * 100), 75.0 (15/20 * 100), 85.0 (17/20 * 100),
-100.0 (20/20 * 100), respectively.
+100.0 (20/20 * 100).
 
 To compute the distribution descriptor, use `extractCTDD()`:
 
@@ -693,8 +693,8 @@ descriptors are calculated as follows:
 Electrostatic and hydrophobic interactions dominate protein-protein
 interactions. These two kinds of interactions may be reflected by
 the dipoles and volumes of the side chains of amino acids, respectively.
-Accordingly, these two parameters were calculated, respectively,
-by using the density-functional theory method B3LYP/6-31G and molecular
+Accordingly, these two parameters were calculated by using the
+density-functional theory method B3LYP/6-31G and molecular
 modeling approach. Based on the dipoles and volumes of the side chains,
 the 20 amino acids can be clustered into seven classes (See Table 2).
 Amino acids within the same class likely involve synonymous mutations
@@ -743,7 +743,7 @@ in Figure 4.
 
 <img src="figures/ctriad.png" width="100%" class="img-responsive" align="center">
 <p align="left">Figure 4: Schematic diagram for constructing the
-vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequence.
+vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequences.
 $\mathbf{V}$ is the vector space of the sequence features;
 each feature ($v_i$) represents a triad composed of three
 consecutive amino acids; $\mathbf{F}$ is the frequency vector
@@ -935,7 +935,7 @@ Amphiphilic Pseudo-Amino Acid Composition (APseAAC) was proposed in
 acid composition_. The definitions of these qualities are similar to the
 PAAC descriptors. From $H_1 (i)$ and $H_2 (j)$ defined before,
 the hydrophobicity and hydrophilicity correlation functions are
-defined respectively as:
+defined as:
 
 \begin{align*}
 H_{i, j}^1  & = H_1 (i) H_1 (j)\\
