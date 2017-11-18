@@ -45,7 +45,7 @@ extractCTDD = function(x) {
 
   group1 = list(
     'hydrophobicity'  = c('R', 'K', 'E', 'D', 'Q', 'N'),
-    'normwaalsvolume' = c('G', 'A', 'S', 'T', 'P', 'D', 'C'),
+    'normwaalsvolume' = c('G', 'A', 'S', 'C', 'T', 'P', 'D'),
     'polarity'        = c('L', 'I', 'F', 'W', 'C', 'M', 'V', 'Y'),
     'polarizability'  = c('G', 'A', 'S', 'D', 'T'),
     'charge'          = c('K', 'R'),
@@ -72,7 +72,7 @@ extractCTDD = function(x) {
     'solventaccess'   = c('M', 'S', 'P', 'T', 'H', 'Y'))
 
   xSplitted = strsplit(x, split = '')[[1]]
-  n  = nchar(x)
+  n = nchar(x)
 
   G = vector('list', 7)
   for (i in 1:7) G[[i]] = rep(NA, n)
@@ -91,31 +91,15 @@ extractCTDD = function(x) {
   for (i in 1:7) D[[i]] = matrix(ncol = 5, nrow = 3)
 
   for (i in 1:7) {
+    for (j in 1:3) {
+      inds = which(G[[i]] == paste0('G', j))
+      quartiles = floor(length(inds) * c(0.25, 0.5, 0.75))
 
-    inds = which(G[[i]] == 'G1')
-    quartiles = floor(length(inds) * c(0.25, 0.5, 0.75))
+      quartiles[which(quartiles <= 0)] = 1
 
-    D[[i]][1, ] = ifelse(
-      length(inds) > 0,
-      (inds[c(1, ifelse(quartiles > 0, quartiles, 1), length(inds))]) * 100/n,
-      0)
-
-    inds = which(G[[i]] == 'G2')
-    quartiles = floor(length(inds) * c(0.25, 0.5, 0.75))
-
-    D[[i]][2, ] = ifelse(
-      length(inds) > 0,
-      (inds[c(1, ifelse(quartiles > 0, quartiles, 1), length(inds))]) * 100/n,
-      0)
-
-    inds = which(G[[i]] == 'G3')
-    quartiles = floor(length(inds) * c(0.25, 0.5, 0.75))
-
-    D[[i]][3, ] = ifelse(
-      length(inds) > 0,
-      (inds[c(1, ifelse(quartiles > 0, quartiles, 1), length(inds))]) * 100/n,
-      0)
-
+      D[[i]][j, ] = if (length(inds) > 0)
+        (inds[c(1, quartiles, length(inds))]) * 100/n else 0
+    }
   }
 
   D = do.call(rbind, D)
