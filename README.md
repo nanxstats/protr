@@ -57,73 +57,73 @@ ProtrWeb is a user-friendly web application for computing the protein sequence d
 
 ### Commonly used descriptors
 
-  * Amino acid composition
-    * Amino acid composition
-    * Dipeptide composition
-    * Tripeptide composition
+- Amino acid composition descriptors
+  - Amino acid composition
+  - Dipeptide composition
+  - Tripeptide composition
 
-  * Autocorrelation
-    * Normalized Moreau-Broto autocorrelation
-    * Moran autocorrelation
-    * Geary autocorrelation
+- Autocorrelation descriptors
+  - Normalized Moreau-Broto autocorrelation
+  - Moran autocorrelation
+  - Geary autocorrelation
 
-  * CTD
-    * Composition
-    * Transition
-    * Distribution
+- CTD descriptors
+  - Composition
+  - Transition
+  - Distribution
 
-  * Conjoint Triad
+- Conjoint Triad descriptors
 
-  * Quasi-sequence-order descriptors
-    * Sequence-order-coupling number
-    * Quasi-sequence-order descriptors
+- Quasi-sequence-order descriptors
+  - Sequence-order-coupling number
+  - Quasi-sequence-order descriptors
 
-  * Pseudo amino acid composition (PseAAC)
-    * Pseudo amino acid composition
-    * Amphiphilic pseudo amino acid composition
+- Pseudo amino acid composition (PseAAC)
+  - Pseudo amino acid composition
+  - Amphiphilic pseudo amino acid composition
 
-  * Profile-based descriptors
-    * Profile-based descriptors derived by PSSM (Position-Specific Scoring Matrix)
+- Profile-based descriptors
+  - Profile-based descriptors derived by PSSM (Position-Specific Scoring Matrix)
 
 ### Proteochemometric (PCM) modeling descriptors
 
-  * Scales-based descriptors derived by principal components analysis
-    * Scales-based descriptors derived by amino acid properties (AAindex)
-    * Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
-  * Scales-based descriptors derived by factor analysis
-  * Scales-based descriptors derived by multidimensional scaling
-  * BLOSUM and PAM matrix-derived descriptors
+- Scales-based descriptors derived by principal components analysis
+  - Scales-based descriptors derived by amino acid properties (AAindex)
+  - Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
+  - Scales-based descriptors derived by factor analysis
+  - Scales-based descriptors derived by multidimensional scaling
+  - BLOSUM and PAM matrix-derived descriptors
 
 ### Similarity Computation
 
 Local and global pairwise sequence alignment for protein sequences:
 
-  * Between two protein sequences
-  * Parallelized pairwise similarity calculation with a list of protein sequences
+- Between two protein sequences
+- Parallelized pairwise similarity calculation with a list of protein sequences
 
 GO semantic similarity measures:
 
-  * Between two groups of GO terms / two Entrez Gene IDs
-  * Parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
+- Between two groups of GO terms / two Entrez Gene IDs
+- Parallelized pairwise similarity calculation with a list of GO terms / Entrez Gene IDs
 
 ### Miscellaneous tools and datasets
 
-  * Retrieve protein sequences from UniProt
-  * Read protein sequences in FASTA format
-  * Read protein sequences in PDB format
-  * Sanity check of the amino acid types appeared in the protein sequences
-  * Protein sequence segmentation
-  * Auto cross covariance (ACC) for generating scales-based descriptors of the same length
-  * 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors
-  * BLOSUM and PAM matrices for the 20 amino acids
-  * Meta information of the 20 amino acids
+- Retrieve protein sequences from UniProt
+- Read protein sequences in FASTA format
+- Read protein sequences in PDB format
+- Sanity check of the amino acid types appeared in the protein sequences
+- Protein sequence segmentation
+- Auto cross covariance (ACC) for generating scales-based descriptors of the same length
+- 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors
+- BLOSUM and PAM matrices for the 20 amino acids
+- Meta information of the 20 amino acids
 
 ## Links
 
-  * Website: https://nanx.me/protr/
-  * CRAN: https://cran.r-project.org/package=protr
-  * GitHub: https://github.com/road2stat/protr
+- Website: https://nanx.me/protr/
+- CRAN: https://cran.r-project.org/package=protr
+- GitHub: https://github.com/road2stat/protr
 
 ## Contribute
 
-To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+To contribute to this project, please take a look at the [Contributing Guidelines](https://github.com/road2stat/protr/blob/master/CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](https://github.com/road2stat/protr/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
