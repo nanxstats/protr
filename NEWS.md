@@ -2,7 +2,7 @@
 
 ## Bug Fixes
 
-- Resolved a critical bug due to improper `ifelse` conditioning [3f6e106](https://github.com/road2stat/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4). We thank Jielu Yan from the University of Macau for kindly reporting this issue.
+- Resolved a critical bug due to improper `ifelse` conditioning ([3f6e106](https://github.com/road2stat/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4)). We thank Jielu Yan from the University of Macau for kindly reporting this issue.
 
 ## Improvements
 
