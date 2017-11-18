@@ -72,7 +72,7 @@ extractCTDC = function(x) {
     'solventaccess'   = c('M', 'S', 'P', 'T', 'H', 'Y'))
 
   xSplitted = strsplit(x, split = '')[[1]]
-  n  = nchar(x)
+  n = nchar(x)
 
   # Get groups for each property & each amino acid
 

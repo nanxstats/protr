@@ -81,7 +81,7 @@ extractCTDDClass = function(x, aagroup1, aagroup2, aagroup3) {
     stop('The three groups must have the same property numbers')
 
   xSplitted = strsplit(x, split = '')[[1]]
-  n  = nchar(x)
+  n = nchar(x)
 
   propnum = length(aagroup1)
 

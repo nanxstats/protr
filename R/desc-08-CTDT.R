@@ -72,7 +72,7 @@ extractCTDT = function(x) {
     'solventaccess'   = c('M', 'S', 'P', 'T', 'H', 'Y'))
 
   xSplitted = strsplit(x, split = '')[[1]]
-  n  = nchar(x)
+  n = nchar(x)
 
   G = vector('list', 7)
   for (i in 1:7) G[[i]] = rep(NA, n)
