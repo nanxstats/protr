@@ -71,7 +71,7 @@
 #'
 #' Sokal, R.R. and Thomson, B.A. (2006)
 #' Population structure inferred by local spatial autocorrelation:
-#' an Usage from an Amerindian tribal population.
+#' an usage from an Amerindian tribal population.
 #' \emph{American Journal of Physical Anthropology}, 129, 121-131.
 #'
 #' @examples
