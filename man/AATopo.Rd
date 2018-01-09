@@ -4,9 +4,6 @@
 \name{AATopo}
 \alias{AATopo}
 \title{Topological Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AATopo)
-}
 \description{
 This dataset includes the topological descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

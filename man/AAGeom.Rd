@@ -4,9 +4,6 @@
 \name{AAGeom}
 \alias{AAGeom}
 \title{Geometrical Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAGeom)
-}
 \description{
 This dataset includes the geometrical descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

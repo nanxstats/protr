@@ -4,9 +4,6 @@
 \name{AAMetaInfo}
 \alias{AAMetaInfo}
 \title{Meta Information for the 20 Amino Acids}
-\usage{
-data(AAMetaInfo)
-}
 \description{
 This dataset includes the meta information of
 the 20 amino acids used for the 2D and 3D descriptor

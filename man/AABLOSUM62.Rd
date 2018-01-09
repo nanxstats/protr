@@ -4,9 +4,6 @@
 \name{AABLOSUM62}
 \alias{AABLOSUM62}
 \title{BLOSUM62 Matrix for 20 Amino Acids}
-\usage{
-data(AABLOSUM62)
-}
 \description{
 BLOSUM62 Matrix for the 20 amino acids. The matrix was extracted from the
 \code{Biostrings} package of Bioconductor.

@@ -4,9 +4,6 @@
 \name{AAMOE2D}
 \alias{AAMOE2D}
 \title{2D Descriptors for 20 Amino Acids calculated by MOE 2011.10}
-\usage{
-data(AAMOE2D)
-}
 \description{
 This dataset includes the 2D descriptors of
 the 20 amino acids calculated by MOE 2011.10

@@ -5,9 +5,6 @@
 \alias{AAindex}
 \title{AAindex Data of 544 Physicochemical and Biological Properties
 for 20 Amino Acids}
-\usage{
-data(AAindex)
-}
 \description{
 The data was extracted from the AAindex1 database ver 9.1
 (\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of

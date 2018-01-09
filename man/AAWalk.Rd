@@ -4,9 +4,6 @@
 \name{AAWalk}
 \alias{AAWalk}
 \title{Walk and Path Counts Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAWalk)
-}
 \description{
 This dataset includes the walk and path counts descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

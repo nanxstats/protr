@@ -4,9 +4,6 @@
 \name{AAInfo}
 \alias{AAInfo}
 \title{Information Indices Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAInfo)
-}
 \description{
 This dataset includes the information indices descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

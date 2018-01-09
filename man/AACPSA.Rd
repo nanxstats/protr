@@ -4,9 +4,6 @@
 \name{AACPSA}
 \alias{AACPSA}
 \title{CPSA Descriptors for 20 Amino Acids calculated by Discovery Studio}
-\usage{
-data(AACPSA)
-}
 \description{
 This dataset includes the CPSA descriptors of the 20 amino acids
 calculated by Discovery Studio (version 2.5) used for scales extraction

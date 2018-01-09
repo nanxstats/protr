@@ -4,9 +4,6 @@
 \name{AAWHIM}
 \alias{AAWHIM}
 \title{WHIM Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAWHIM)
-}
 \description{
 This dataset includes the WHIM descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

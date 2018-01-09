@@ -4,9 +4,6 @@
 \name{AAConn}
 \alias{AAConn}
 \title{Connectivity Indices Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAConn)
-}
 \description{
 This dataset includes the connectivity indices descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

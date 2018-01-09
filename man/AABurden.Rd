@@ -4,9 +4,6 @@
 \name{AABurden}
 \alias{AABurden}
 \title{Burden Eigenvalues Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AABurden)
-}
 \description{
 This dataset includes the Burden eigenvalues descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

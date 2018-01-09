@@ -4,9 +4,6 @@
 \name{AA2DACOR}
 \alias{AA2DACOR}
 \title{2D Autocorrelations Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AA2DACOR)
-}
 \description{
 This dataset includes the 2D autocorrelations descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

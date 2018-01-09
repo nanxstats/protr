@@ -4,9 +4,6 @@
 \name{AAMolProp}
 \alias{AAMolProp}
 \title{Molecular Properties Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAMolProp)
-}
 \description{
 This dataset includes the molecular properties descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

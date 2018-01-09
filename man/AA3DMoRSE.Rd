@@ -4,9 +4,6 @@
 \name{AA3DMoRSE}
 \alias{AA3DMoRSE}
 \title{3D-MoRSE Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AA3DMoRSE)
-}
 \description{
 This dataset includes the 3D-MoRSE descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

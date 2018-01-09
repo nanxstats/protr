@@ -4,9 +4,6 @@
 \name{AAEdgeAdj}
 \alias{AAEdgeAdj}
 \title{Edge Adjacency Indices Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAEdgeAdj)
-}
 \description{
 This dataset includes the edge adjacency indices descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

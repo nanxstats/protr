@@ -4,9 +4,6 @@
 \name{AATopoChg}
 \alias{AATopoChg}
 \title{Topological Charge Indices Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AATopoChg)
-}
 \description{
 This dataset includes the topological charge indices descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)

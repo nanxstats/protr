@@ -4,9 +4,6 @@
 \name{AAGETAWAY}
 \alias{AAGETAWAY}
 \title{GETAWAY Descriptors for 20 Amino Acids calculated by Dragon}
-\usage{
-data(AAGETAWAY)
-}
 \description{
 This dataset includes the GETAWAY descriptors of
 the 20 amino acids calculated by Dragon (version 5.4)
