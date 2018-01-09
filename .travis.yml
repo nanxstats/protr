@@ -1,8 +1,6 @@
 language: r
 cache: packages
-r: bioc-devel
-before_install:
-  - tlmgr install tablefootnote xifthen ifmtarg
+r: bioc-release
 bioc_packages:
   - Biostrings
   - org.Hs.eg.db
