@@ -42,7 +42,7 @@ See the examples below for a demonstration.
 The default value for \code{customprops} is \code{NULL}.}
 }
 \value{
-A length \code{nlag} named vector
+A length \code{length(props) * nlag} named vector.
 }
 \description{
 This function calculates the normalized Moreau-Broto
