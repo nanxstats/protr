@@ -79,9 +79,9 @@
       <h1>protr: R package for generating various numerical representation schemes of protein sequences</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2018-04-21</h4>
+            <h4 class="date">2018-05-13</h4>
       
-      <small>Source: <a href="https://github.com/road2stat/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/road2stat/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
       <div class="hidden name"><code>protr.Rmd</code></div>
 
     </div>
@@ -181,7 +181,7 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 <a class="sourceLine" id="cb16-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co"># plot ROC curve</span></a>
 <a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">library</span>(<span class="st">"pROC"</span>)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="kw"><a href="http://www.rdocumentation.org/packages/pROC/topics/plot.roc">plot.roc</a></span>(y.te, rf.pred, <span class="dt">grid =</span> <span class="ot">TRUE</span>, <span class="dt">print.auc =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="kw">plot.roc</span>(y.te, rf.pred, <span class="dt">grid =</span> <span class="ot">TRUE</span>, <span class="dt">print.auc =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>The area under the ROC curve (AUC) is:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">## Call:</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">## plot.roc.default(x = y.te, predictor = rf.pred, col = "#0080ff",</a>
@@ -1031,13 +1031,13 @@ Figure 6: A schematic drawing to show (a) the first-tier, (b) the second-tier, a
 \]</span></p>
 <p>where <span class="math inline">\(H_k(R_i)\)</span> is the <span class="math inline">\(k\)</span>-th property in the amino acid property set for amino acid <span class="math inline">\(R_i\)</span>.</p>
 <p>A set of descriptors named sequence order-correlated factors are defined as:</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \theta_1  &amp; = \frac{1}{N-1} \sum_{i=1}^{N-1} \Theta (R_i, R_{i+1})\\
 \theta_2  &amp; = \frac{1}{N-2} \sum_{i=1}^{N-2} \Theta (R_i, R_{i+2})\\
 \theta_3  &amp; = \frac{1}{N-3} \sum_{i=1}^{N-3} \Theta (R_i, R_{i+3})\\
           &amp; \ldots \\
 \theta_\lambda  &amp; = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} \Theta (R_i, R_{i+\lambda})
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p><span class="math inline">\(\lambda\)</span> (<span class="math inline">\(\lambda &lt; L\)</span>) is a parameter to be specified. Let <span class="math inline">\(f_i\)</span> be the normalized occurrence frequency of the 20 amino acids in the protein sequence, a set of <span class="math inline">\(20 + \lambda\)</span> descriptors called the pseudo-amino acid composition for a protein sequence can be defines as:</p>
 <p><span class="math display">\[
 X_c = \frac{f_c}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (1 &lt; c &lt; 20)
@@ -1075,12 +1075,12 @@ X_c = \frac{w \theta_{c-20}}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta
 <h2 class="hasAnchor">
 <a href="#amphiphilic-pseudo-amino-acid-composition-apseaac" class="anchor"></a>Amphiphilic Pseudo-Amino Acid Composition (APseAAC)</h2>
 <p>Amphiphilic Pseudo-Amino Acid Composition (APseAAC) was proposed in <span class="citation">Chou (2001)</span>. APseAAC is also recognized as the <em>type 2 pseudo-amino acid composition</em>. The definitions of these qualities are similar to the PAAC descriptors. From <span class="math inline">\(H_1 (i)\)</span> and <span class="math inline">\(H_2 (j)\)</span> defined before, the hydrophobicity and hydrophilicity correlation functions are defined as:</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 H_{i, j}^1  &amp; = H_1 (i) H_1 (j)\\
 H_{i, j}^2  &amp; = H_2 (i) H_2 (j)
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>From these qualities, sequence order factors can be defines as:</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \tau_1  &amp; = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^1\\
 \tau_2  &amp; = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^2\\
 \tau_3  &amp; = \frac{1}{N-2} \sum_{i=1}^{N-2} H_{i, i+2}^1\\
@@ -1088,7 +1088,7 @@ H_{i, j}^2  &amp; = H_2 (i) H_2 (j)
         &amp; \ldots \\
 \tau_{2 \lambda - 1} &amp; = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^1\\
 \tau_{2 \lambda}     &amp; = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^2
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <img src="figures/APAAC.png" width="100%" class="img-responsive" align="center"><p align="left">
 Figure 7: A schematic diagram to show (<strong>a1</strong>/<strong>a2</strong>) the first-rank, (<strong>b1</strong>/<strong>b2</strong>) the second-rank and (<strong>c1</strong>/<strong>c2</strong>) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where <span class="math inline">\(H_{i, j}^1\)</span> and <span class="math inline">\(H_{i, j}^2\)</span> are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) that between all the second-most contiguous residues and panel (c1/c2) that between all the third-most contiguous residues. This figure is from <span class="citation">Chou (2005)</span>.
 </p>

@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Amphiphilic Pseudo Amino Acid Composition (APseAAC) Descriptor — extractAPAAC" />
 
 <meta property="og:description" content="This function calculates the Amphiphilic Pseudo Amino Acid
@@ -51,8 +54,6 @@ n is the number of properties selected, default is 80)." />
 
   gtag('config', 'UA-66394392-1');
 </script>
-
-
 
   </head>
 
@@ -112,15 +113,17 @@ n is the number of properties selected, default is 80)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Amphiphilic Pseudo Amino Acid Composition (APseAAC) Descriptor</h1>
-    <small>Source: <a href='https://github.com/road2stat/protr/blob/master/R/desc-14-APAAC.R'><code>R/desc-14-APAAC.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/road2stat/protr/blob/master/R/desc-14-APAAC.R'><code>R/desc-14-APAAC.R</code></a></small>
     <div class="hidden name"><code>extractAPAAC.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function calculates the Amphiphilic Pseudo Amino Acid
 Composition (APseAAC, or APAAC) descriptor (dim: <code>20 + (n * lambda)</code>,
 <code>n</code> is the number of properties selected, default is 80).</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>extractAPAAC</span>(<span class='no'>x</span>, <span class='kw'>props</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Hydrophobicity"</span>, <span class='st'>"Hydrophilicity"</span>), <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>w</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>customprops</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
