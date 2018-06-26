@@ -16,9 +16,10 @@
 #' by pairwise protein sequence alignment and Gene Ontology (GO) semantic
 #' similarity measures.
 #'
-#' \tabular{ll}{Package: \tab protr\cr
+#' \tabular{ll}{
+#' Package: \tab protr\cr
 #' Type: \tab Package\cr
-#' License: \tab BSD_3_clause\cr }
+#' License: \tab BSD_3_clause}
 #'
 #' @name protr-package
 #' @aliases protr
