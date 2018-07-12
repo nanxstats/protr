@@ -165,17 +165,14 @@ irregular characters removed/replaced.</p>
 <span class='no'>aaseq</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
   <span class='st'>"MHGDTPTLHEYMLDLQPETTDLYCYEQLSDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"</span>,
   <span class='st'>"MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"</span>
-)
+)</div><span class='co'># NOT RUN {</span>
+<span class='co'>#' # gaps create issues for alignment</span>
+<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 
-<span class='co'># gaps create issues for alignment</span>
-<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;      [,1] [,2]
-#&gt; [1,]    1    0
-#&gt; [2,]    0    1</div><div class='input'>
 <span class='co'># remove the gaps</span>
 <span class='no'>nogapseq</span> <span class='kw'>&lt;-</span> <span class='fu'>removeGaps</span>(<span class='no'>aaseq</span>)
-<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>nogapseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;           [,1]      [,2]
-#&gt; [1,] 1.0000000 0.9898766
-#&gt; [2,] 0.9898766 1.0000000</div></pre>
+<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>nogapseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
