@@ -34,12 +34,13 @@ aaseq <- list(
   "MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"
 )
 
-# gaps create issues for alignment
+\dontrun{
+#' # gaps create issues for alignment
 parSeqSim(aaseq, cores = 1)
 
 # remove the gaps
 nogapseq <- removeGaps(aaseq)
-parSeqSim(nogapseq, cores = 1)
+parSeqSim(nogapseq, cores = 1)}
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
