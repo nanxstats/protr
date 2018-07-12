@@ -1,4 +1,4 @@
-# protr 1.5-1 (unreleased)
+# protr 1.5-1 (2018-07-12)
 
 ## New Features
 
