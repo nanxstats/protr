@@ -28,11 +28,11 @@
 #'
 #' \dontrun{
 #' #' # gaps create issues for alignment
-#' parSeqSim(aaseq, cores = 1)
+#' parSeqSim(aaseq)
 #'
 #' # remove the gaps
 #' nogapseq <- removeGaps(aaseq)
-#' parSeqSim(nogapseq, cores = 1)}
+#' parSeqSim(nogapseq)}
 
 removeGaps <- function(x, pattern = "-", replacement = "", ...)
   gsub(pattern, replacement, x, ...)

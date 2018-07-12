@@ -167,11 +167,11 @@ irregular characters removed/replaced.</p>
   <span class='st'>"MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"</span>
 )</div><span class='co'># NOT RUN {</span>
 <span class='co'>#' # gaps create issues for alignment</span>
-<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>)
 
 <span class='co'># remove the gaps</span>
 <span class='no'>nogapseq</span> <span class='kw'>&lt;-</span> <span class='fu'>removeGaps</span>(<span class='no'>aaseq</span>)
-<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>nogapseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>nogapseq</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

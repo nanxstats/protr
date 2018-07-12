@@ -36,11 +36,11 @@ aaseq <- list(
 
 \dontrun{
 #' # gaps create issues for alignment
-parSeqSim(aaseq, cores = 1)
+parSeqSim(aaseq)
 
 # remove the gaps
 nogapseq <- removeGaps(aaseq)
-parSeqSim(nogapseq, cores = 1)}
+parSeqSim(nogapseq)}
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
