@@ -2,7 +2,7 @@
 
 ## New Features
 
-- Added a new function `removeGaps()` for removing/replacing gaps (`-`) or any irregular characters from protein sequences, to make them suitable for feature extraction or sequence alignment based similarity computation.
+- Added a new function `removeGaps()` for removing/replacing gaps (`-`) or any irregular characters from protein sequences, to make them suitable for feature extraction or sequence alignment based similarity computation. We thank Dr. Maisa Pinheiro for the feedback.
 
 # protr 1.5-0 (2017-11-17)
 
