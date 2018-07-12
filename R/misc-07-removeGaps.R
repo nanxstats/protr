@@ -20,16 +20,16 @@
 #' @export removeGaps
 #'
 #' @examples
-#' # sequences that contain gaps ("-")
+#' # amino acid sequences that contain gaps ("-")
 #' aaseq <- list(
 #'   "MHGDTPTLHEYMLDLQPETTDLYCYEQLSDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS",
 #'   "MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"
 #' )
 #'
-#' # gaps create issues for alignment computation
-#' parSeqSim(aaseq)
+#' # gaps create issues for alignment
+#' parSeqSim(aaseq, cores = 1)
 #'
-#' # remove the gaps and redo the alignment
+#' # remove the gaps
 #' nogapseq <- removeGaps(aaseq)
 #' parSeqSim(nogapseq, cores = 1)
 
