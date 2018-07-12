@@ -129,7 +129,7 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## [1] 325</a></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">length</span>(mitonchon)</a></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">## [1] 306</a></code></pre></div>
-<p>To ensure that the protein sequences only have the twenty standard amino acid types which is required for the descriptor computation, we use the <code><a href="../reference/protcheck.html">protcheck()</a></code> function to do the amino acid type sanity check and remove the <em>non-standard</em> sequences:</p>
+<p>To ensure that the protein sequences only have the 20 standard amino acid types which is usually required for the descriptor computation, we use the <code><a href="../reference/protcheck.html">protcheck()</a></code> function to do the amino acid type sanity check and remove the <em>non-standard</em> sequences:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">extracell =<span class="st"> </span>extracell[(<span class="kw">sapply</span>(extracell, protcheck))]</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">mitonchon =<span class="st"> </span>mitonchon[(<span class="kw">sapply</span>(mitonchon, protcheck))]</a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">length</span>(extracell)</a></code></pre></div>
@@ -1331,9 +1331,9 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a href="#read-pdb-format-files" class="anchor"></a>Read PDB Format files</h2>
 <p>The Protein Data Bank (PDB) file format is a text file format describing the three dimensional structures of protein. The function <code><a href="../reference/readPDB.html">readPDB()</a></code> provides the function to read protein sequences stored in PDB format files. See <code><a href="../reference/readPDB.html">?readPDB</a></code> for details.</p>
 </div>
-<div id="sanity-check-of-the-amino-acid-types" class="section level2">
+<div id="sanity-check-for-amino-acid-types" class="section level2">
 <h2 class="hasAnchor">
-<a href="#sanity-check-of-the-amino-acid-types" class="anchor"></a>Sanity Check of the Amino Acid Types</h2>
+<a href="#sanity-check-for-amino-acid-types" class="anchor"></a>Sanity Check for Amino Acid Types</h2>
 <p>The <code><a href="../reference/protcheck.html">protcheck()</a></code> function checks if the protein sequence’s amino acid types are in the 20 default types, which returns a <code>TRUE</code> if all the amino acids in the sequence belongs to the 20 default types:</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">x =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw">system.file</span>(<span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb68-2" data-line-number="2"><span class="co"># a real sequence</span></a>
@@ -1342,6 +1342,11 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co"># an artificial sequence</span></a>
 <a class="sourceLine" id="cb70-2" data-line-number="2"><span class="kw"><a href="../reference/protcheck.html">protcheck</a></span>(<span class="kw">paste</span>(x, <span class="st">"Z"</span>, <span class="dt">sep =</span> <span class="st">""</span>))</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="remove-gaps-from-sequences" class="section level2">
+<h2 class="hasAnchor">
+<a href="#remove-gaps-from-sequences" class="anchor"></a>Remove Gaps from Sequences</h2>
+<p>The <code><a href="../reference/removeGaps.html">removeGaps()</a></code> function allows us to remove/replace gaps (<code>-</code>) or any “irregular” characters from amino acid sequences, to prepare them for feature extraction or sequence alignment based similarity computation.</p>
 </div>
 <div id="protein-sequence-partition" class="section level2">
 <h2 class="hasAnchor">
@@ -1792,7 +1797,8 @@ Figure 8: A screenshot of the web application ProtrWeb
 <li><a href="#retrieve-protein-sequences-from-uniprot">Retrieve Protein Sequences from UniProt</a></li>
       <li><a href="#read-fasta-format-files">Read FASTA Format files</a></li>
       <li><a href="#read-pdb-format-files">Read PDB Format files</a></li>
-      <li><a href="#sanity-check-of-the-amino-acid-types">Sanity Check of the Amino Acid Types</a></li>
+      <li><a href="#sanity-check-for-amino-acid-types">Sanity Check for Amino Acid Types</a></li>
+      <li><a href="#remove-gaps-from-sequences">Remove Gaps from Sequences</a></li>
       <li><a href="#protein-sequence-partition">Protein Sequence Partition</a></li>
       <li><a href="#auto-cross-covariance-acc-computation">Auto Cross Covariance (ACC) Computation</a></li>
       <li><a href="#pre-computed-2d-and-3d-descriptor-sets-for-the-20-amino-acids">Pre-Computed 2D and 3D Descriptor Sets for the 20 Amino Acids</a></li>

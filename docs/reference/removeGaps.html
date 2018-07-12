@@ -161,17 +161,17 @@ irregular characters removed/replaced.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># sequences that contain gaps ("-")</span>
+    <pre class="examples"><div class='input'><span class='co'># amino acid sequences that contain gaps ("-")</span>
 <span class='no'>aaseq</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
   <span class='st'>"MHGDTPTLHEYMLDLQPETTDLYCYEQLSDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"</span>,
   <span class='st'>"MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"</span>
 )
 
-<span class='co'># gaps create issues for alignment computation</span>
-<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>)</div><div class='output co'>#&gt;      [,1] [,2]
+<span class='co'># gaps create issues for alignment</span>
+<span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>aaseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]    1    0
 #&gt; [2,]    0    1</div><div class='input'>
-<span class='co'># remove the gaps and redo the alignment</span>
+<span class='co'># remove the gaps</span>
 <span class='no'>nogapseq</span> <span class='kw'>&lt;-</span> <span class='fu'>removeGaps</span>(<span class='no'>aaseq</span>)
 <span class='fu'><a href='parSeqSim.html'>parSeqSim</a></span>(<span class='no'>nogapseq</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;           [,1]      [,2]
 #&gt; [1,] 1.0000000 0.9898766
