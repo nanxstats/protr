@@ -106,8 +106,8 @@ length(mitonchon)
 ## [1] 306
 ```
 
-To ensure that the protein sequences only have the twenty standard amino acid
-types which is required for the descriptor computation, we use the
+To ensure that the protein sequences only have the 20 standard amino acid
+types which is usually required for the descriptor computation, we use the
 `protcheck()` function to do the amino acid type sanity check and
 remove the _non-standard_ sequences:
 
@@ -1222,7 +1222,7 @@ The function `readPDB()` provides the function to read
 protein sequences stored in PDB format files.
 See `?readPDB` for details.
 
-## Sanity Check of the Amino Acid Types
+## Sanity Check for Amino Acid Types
 
 The `protcheck()` function checks if the protein sequence's amino acid
 types are in the 20 default types, which returns a `TRUE` if all the
@@ -1235,6 +1235,12 @@ protcheck(x)
 # an artificial sequence
 protcheck(paste(x, "Z", sep = ""))
 ```
+
+## Remove Gaps from Sequences
+
+The `removeGaps()` function allows us to remove/replace gaps (`-`) or any
+"irregular" characters from amino acid sequences, to prepare them for
+feature extraction or sequence alignment based similarity computation.
 
 ## Protein Sequence Partition
 
