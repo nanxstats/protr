@@ -1,3 +1,9 @@
+# protr 1.5-1 (unreleased)
+
+## New Features
+
+- Added a new function `removeGaps()` for removing/replacing gaps (`-`) or any irregular characters from protein sequences, to make them suitable for feature extraction or sequence alignment based similarity computation.
+
 # protr 1.5-0 (2017-11-17)
 
 ## Bug Fixes
