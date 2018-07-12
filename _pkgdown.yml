@@ -64,6 +64,7 @@ reference:
     - readPDB
     - protcheck
     - protseg
+    - removeGaps
     - protr-package
   - title: "Precomputed Molecular Descriptors for the 20 Amino Acids"
     desc: >
