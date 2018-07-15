@@ -1,3 +1,9 @@
+# protr 1.5-2 (unreleased)
+
+## Improvements
+
+- Added two new parameters `gap.opening` and `gap.extension` to `parSeqSim()`, allowing more flexible tuning of the sequence alignment for more types of amino acid sequence data. We thank Dr. Maisa Pinheiro for the feedback.
+
 # protr 1.5-1 (2018-07-12)
 
 ## New Features
