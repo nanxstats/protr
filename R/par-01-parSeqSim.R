@@ -1,45 +1,3 @@
-.seqPairSim = function(
-  twoid, protlist = protlist, type = type, submat = submat) {
-
-  id1 = twoid[1]
-  id2 = twoid[2]
-
-  if ( protlist[[id1]] == '' |
-       protlist[[id2]] == '' ) {
-
-    sim = 0L
-
-  } else {
-
-    s1  = try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
-    s2  = try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
-    s12 = try(Biostrings::pairwiseAlignment(
-      s1, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE),
-      silent = TRUE)
-    s11 = try(Biostrings::pairwiseAlignment(
-      s1, s1, type = type, substitutionMatrix = submat, scoreOnly = TRUE),
-      silent = TRUE)
-    s22 = try(Biostrings::pairwiseAlignment(
-      s2, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE),
-      silent = TRUE)
-
-    if ( is.numeric(s12) == FALSE |
-         is.numeric(s11) == FALSE |
-         is.numeric(s22) == FALSE ) {
-      sim = 0L
-    } else if ( abs(s11) < .Machine$double.eps |
-                abs(s22) < .Machine$double.eps ) {
-      sim = 0L
-    } else {
-      sim = s12/sqrt(s11 * s22)
-    }
-
-  }
-
-  sim
-
-}
-
 #' Parallellized Protein Sequence Similarity Calculation based on
 #' Sequence Alignment
 #'
@@ -60,6 +18,10 @@
 #' can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
 #' \code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'},
 #' \code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.
+#' @param gap.opening The cost required to open a gap of any length
+#' in the alignment. Defaults to 10.
+#' @param gap.extension The cost to extend the length of an existing
+#' gap by 1. Defaults to 4.
 #'
 #' @return A \code{n} x \code{n} similarity matrix.
 #'
@@ -95,7 +57,8 @@
 #' print(psimmat)}
 
 parSeqSim = function(
-  protlist, cores = 2, type = 'local', submat = 'BLOSUM62') {
+  protlist, cores = 2, type = 'local', submat = 'BLOSUM62',
+  gap.opening = 10, gap.extension = 4) {
 
   doParallel::registerDoParallel(cores)
 
@@ -112,7 +75,7 @@ parSeqSim = function(
   seqsimlist <- foreach::foreach(
     i = 1:length(seqsimlist), .errorhandling = 'pass') %mydopar% {
       tmp <- .seqPairSim(
-        rev(idx[, i]), protlist = protlist, type = type, submat = submat)
+        rev(idx[, i]), protlist, type, submat, gap.opening, gap.extension)
     }
 
   # convert list to matrix
@@ -140,9 +103,13 @@ parSeqSim = function(
 #' can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
 #' \code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'}, \code{'PAM40'},
 #' \code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.
+#' @param gap.opening The cost required to open a gap of any length
+#' in the alignment. Defaults to 10.
+#' @param gap.extension The cost to extend the length of an existing
+#' gap by 1. Defaults to 4.
 #'
-#' @return An Biostrings object containing the scores and other
-#' alignment information.
+#' @return An \code{Biostrings} object containing the alignment scores
+#' and other alignment information.
 #'
 #' @keywords alignment parallel similarity
 #'
@@ -169,15 +136,61 @@ parSeqSim = function(
 #' print(seqalign@@score)}
 
 twoSeqSim = function(
-  seq1, seq2, type = 'local', submat = 'BLOSUM62') {
+  seq1, seq2, type = 'local', submat = 'BLOSUM62', gap.opening = 10, gap.extension = 4) {
 
   # sequence alignment for two protein sequences
   s1  = try(Biostrings::AAString(seq1), silent = TRUE)
   s2  = try(Biostrings::AAString(seq2), silent = TRUE)
   s12 = try(Biostrings::pairwiseAlignment(
-    s1, s2, type = type, substitutionMatrix = submat),
+    s1, s2, type = type, substitutionMatrix = submat,
+    gapOpening = gap.opening, gapExtension = gap.extension),
     silent = TRUE)
 
   s12
+
+}
+
+.seqPairSim = function(
+  twoid, protlist, type, submat, gap.opening, gap.extension) {
+
+  id1 = twoid[1]
+  id2 = twoid[2]
+
+  if ( protlist[[id1]] == '' |
+       protlist[[id2]] == '' ) {
+
+    sim = 0L
+
+  } else {
+
+    s1  = try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
+    s2  = try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
+    s12 = try(Biostrings::pairwiseAlignment(
+      s1, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE,
+      gapOpening = gap.opening, gapExtension = gap.extension),
+      silent = TRUE)
+    s11 = try(Biostrings::pairwiseAlignment(
+      s1, s1, type = type, substitutionMatrix = submat, scoreOnly = TRUE,
+      gapOpening = gap.opening, gapExtension = gap.extension),
+      silent = TRUE)
+    s22 = try(Biostrings::pairwiseAlignment(
+      s2, s2, type = type, substitutionMatrix = submat, scoreOnly = TRUE,
+      gapOpening = gap.opening, gapExtension = gap.extension),
+      silent = TRUE)
+
+    if ( is.numeric(s12) == FALSE |
+         is.numeric(s11) == FALSE |
+         is.numeric(s22) == FALSE ) {
+      sim = 0L
+    } else if ( abs(s11) < .Machine$double.eps |
+                abs(s22) < .Machine$double.eps ) {
+      sim = 0L
+    } else {
+      sim = s12/sqrt(s11 * s22)
+    }
+
+  }
+
+  sim
 
 }

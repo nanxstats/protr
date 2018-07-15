@@ -4,7 +4,8 @@
 \alias{twoSeqSim}
 \title{Protein Sequence Alignment for Two Protein Sequences}
 \usage{
-twoSeqSim(seq1, seq2, type = "local", submat = "BLOSUM62")
+twoSeqSim(seq1, seq2, type = "local", submat = "BLOSUM62",
+  gap.opening = 10, gap.extension = 4)
 }
 \arguments{
 \item{seq1}{A character string, containing one protein sequence.}
@@ -20,10 +21,16 @@ where \code{'global'} represents Needleman-Wunsch global alignment;
 can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
 \code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'}, \code{'PAM40'},
 \code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.}
+
+\item{gap.opening}{The cost required to open a gap of any length
+in the alignment. Defaults to 10.}
+
+\item{gap.extension}{The cost to extend the length of an existing
+gap by 1. Defaults to 4.}
 }
 \value{
-An Biostrings object containing the scores and other
-alignment information.
+An \code{Biostrings} object containing the alignment scores
+and other alignment information.
 }
 \description{
 This function implements the sequence alignment between two protein sequences.
