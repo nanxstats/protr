@@ -124,7 +124,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>twoSeqSim</span>(<span class='no'>seq1</span>, <span class='no'>seq2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>)</pre>
+    <pre class="usage"><span class='fu'>twoSeqSim</span>(<span class='no'>seq1</span>, <span class='no'>seq2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>,
+  <span class='kw'>gap.opening</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>gap.extension</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,12 +152,22 @@ can be one of <code>'BLOSUM45'</code>, <code>'BLOSUM50'</code>, <code>'BLOSUM62'
 <code>'BLOSUM80'</code>, <code>'BLOSUM100'</code>, <code>'PAM30'</code>, <code>'PAM40'</code>,
 <code>'PAM70'</code>, <code>'PAM120'</code>, or <code>'PAM250'</code>.</p></td>
     </tr>
+    <tr>
+      <th>gap.opening</th>
+      <td><p>The cost required to open a gap of any length
+in the alignment. Defaults to 10.</p></td>
+    </tr>
+    <tr>
+      <th>gap.extension</th>
+      <td><p>The cost to extend the length of an existing
+gap by 1. Defaults to 4.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An Biostrings object containing the scores and other
-alignment information.</p>
+    <p>An <code>Biostrings</code> object containing the alignment scores
+and other alignment information.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
