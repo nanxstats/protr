@@ -4,8 +4,8 @@
 \alias{extractAPAAC}
 \title{Amphiphilic Pseudo Amino Acid Composition (APseAAC) Descriptor}
 \usage{
-extractAPAAC(x, props = c("Hydrophobicity", "Hydrophilicity"), lambda = 30,
-  w = 0.05, customprops = NULL)
+extractAPAAC(x, props = c("Hydrophobicity", "Hydrophilicity"),
+  lambda = 30, w = 0.05, customprops = NULL)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.}

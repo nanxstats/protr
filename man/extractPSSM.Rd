@@ -5,14 +5,15 @@
 \title{Compute PSSM (Position-Specific Scoring Matrix) for given protein sequence}
 \usage{
 extractPSSM(seq, start.pos = 1L, end.pos = nchar(seq),
-  psiblast.path = NULL, makeblastdb.path = NULL, database.path = NULL,
-  iter = 5, silent = TRUE, evalue = 10L, word.size = NULL,
-  gapopen = NULL, gapextend = NULL, matrix = "BLOSUM62",
-  threshold = NULL, seg = "no", soft.masking = FALSE,
-  culling.limit = NULL, best.hit.overhang = NULL,
-  best.hit.score.edge = NULL, xdrop.ungap = NULL, xdrop.gap = NULL,
-  xdrop.gap.final = NULL, window.size = NULL, gap.trigger = 22L,
-  num.threads = 1L, pseudocount = 0L, inclusion.ethresh = 0.002)
+  psiblast.path = NULL, makeblastdb.path = NULL,
+  database.path = NULL, iter = 5, silent = TRUE, evalue = 10L,
+  word.size = NULL, gapopen = NULL, gapextend = NULL,
+  matrix = "BLOSUM62", threshold = NULL, seg = "no",
+  soft.masking = FALSE, culling.limit = NULL,
+  best.hit.overhang = NULL, best.hit.score.edge = NULL,
+  xdrop.ungap = NULL, xdrop.gap = NULL, xdrop.gap.final = NULL,
+  window.size = NULL, gap.trigger = 22L, num.threads = 1L,
+  pseudocount = 0L, inclusion.ethresh = 0.002)
 }
 \arguments{
 \item{seq}{Character vector, as the input protein sequence.}
