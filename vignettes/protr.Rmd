@@ -5,10 +5,14 @@ date: "`r Sys.Date()`"
 bibliography: protr.bib
 csl: bioinformatics.csl
 output:
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     toc: true
+    toc_float: true
+    toc_depth: 4
     number_sections: true
-    css: protr.css
+    theme: "flatly"
+    highlight: "textmate"
+    css: "protr.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequences}
