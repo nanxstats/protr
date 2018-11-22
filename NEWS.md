@@ -1,8 +1,13 @@
-# protr 1.5-2 (unreleased)
+# protr 1.5-2 (2018-11-21)
+
+## Bug Fixes
+
+- Fixed the API endpoint issue (from HTTP to HTTPS) in `getUniProt()`.
 
 ## Improvements
 
 - Added two new parameters `gap.opening` and `gap.extension` to `parSeqSim()`, allowing more flexible tuning of the sequence alignment for more types of amino acid sequence data. We thank Dr. Maisa Pinheiro for the feedback.
+- Added floating TOC and new CSS style in the vignette to improve navigation and readability.
 
 # protr 1.5-1 (2018-07-12)
 
