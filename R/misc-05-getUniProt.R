@@ -32,11 +32,11 @@ getUniProt = function(id) {
   proteins = vector('list', n)
 
   # API format:
-  # http://www.uniprot.org/uniprot/P00750.fasta
+  # https://www.uniprot.org/uniprot/P00750.fasta
 
   for (i in 1:n) {
     proteins[[i]] = readFASTA(paste(
-      'http://www.uniprot.org/uniprot/',
+      'https://www.uniprot.org/uniprot/',
       id[i], '.fasta', sep = ''))[[1]]
   }
 
