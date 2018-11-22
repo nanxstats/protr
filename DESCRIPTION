@@ -1,5 +1,5 @@
 Package: protr
-Version: 1.5-1
+Version: 1.5-2
 Title: Generating Various Numerical Representation Schemes for Protein Sequences
 Description: Comprehensive toolkit for generating various numerical
     features of protein sequences described in Xiao et al. (2015)
@@ -30,4 +30,4 @@ Suggests:
     doParallel,
     org.Hs.eg.db
 Encoding: UTF-8
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1
