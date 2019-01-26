@@ -1,7 +1,6 @@
 template:
   params:
     bootswatch: cerulean
-    ganalytics: UA-66394392-1
 
 reference:
   - title: "Protein/Peptide Sequence Descriptors"
