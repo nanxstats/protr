@@ -22,12 +22,6 @@ integrates the function of parallelized similarity computation derived
 by pairwise protein sequence alignment and Gene Ontology (GO) semantic
 similarity measures.
 }
-\details{
-\tabular{ll}{
-Package: \tab protr\cr
-Type: \tab Package\cr
-License: \tab BSD_3_clause}
-}
 \note{
 The package vignette can be opened with \code{vignette("protr")}.
 
