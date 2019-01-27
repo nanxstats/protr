@@ -1,7 +1,3 @@
-template:
-  params:
-    bootswatch: cerulean
-
 reference:
   - title: "Protein/Peptide Sequence Descriptors"
     desc: >
