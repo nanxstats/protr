@@ -62,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -108,13 +108,25 @@
       <small>Source: <a href='https://github.com/road2stat/protr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="protr-16-0-2019-02-11" class="section level1">
+    <div id="protr-16-1-2019-02-12" class="section level1">
 <h1 class="page-header">
-<a href="#protr-16-0-2019-02-11" class="anchor"></a>protr 1.6-0 (2019-02-11)<small> Unreleased </small>
+<a href="#protr-16-1-2019-02-12" class="anchor"></a>protr 1.6-1 (2019-02-12)<small> Unreleased </small>
 </h1>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li>Fixed an issue in <code><a href="../reference/parGOSim.html">parGOSim()</a></code> that will create minor numerical inconsistencies in results due to argument matching.</li>
+</ul>
+</div>
+</div>
+    <div id="protr-16-0-2019-02-11" class="section level1">
+<h1 class="page-header">
+<a href="#protr-16-0-2019-02-11" class="anchor"></a>protr 1.6-0 (2019-02-11)<small> 2019-02-11 </small>
+</h1>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Updated <code><a href="../reference/twoGOSim.html">twoGOSim()</a></code> and <code><a href="../reference/parGOSim.html">parGOSim()</a></code> to use the latest <code>GOSemSim</code> API for computing GO based semantic similarity. Issues in the code examples are also fixed. We thank Denisa Duma for the feedback.</li>
 </ul>
@@ -124,9 +136,9 @@
 <h1 class="page-header">
 <a href="#protr-15-2-2018-11-21" class="anchor"></a>protr 1.5-2 (2018-11-21)<small> 2018-11-22 </small>
 </h1>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Fixed the API endpoint issue (from HTTP to HTTPS) in <code><a href="../reference/getUniProt.html">getUniProt()</a></code>.</li>
 </ul>
@@ -156,9 +168,9 @@
 <h1 class="page-header">
 <a href="#protr-15-0-2017-11-17" class="anchor"></a>protr 1.5-0 (2017-11-17)<small> 2017-11-18 </small>
 </h1>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Resolved a critical bug due to improper <code>ifelse</code> conditioning (<a href="https://github.com/road2stat/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4">3f6e106</a>) for the distribution descriptor in CTD. We thank Jielu Yan from the University of Macau for kindly reporting this issue.</li>
 </ul>
@@ -255,9 +267,9 @@
 <h1 class="page-header">
 <a href="#protr-11-1-2015-12-29" class="anchor"></a>protr 1.1-1 (2015-12-29)<small> 2015-12-29 </small>
 </h1>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>
 <p>Fix URLs that cannot be accessed by <code>curl -I -L</code>:</p>
@@ -274,9 +286,9 @@
 <h1 class="page-header">
 <a href="#protr-11-0-2015-12-28" class="anchor"></a>protr 1.1-0 (2015-12-28)<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Bug fix in <code><a href="../reference/extractCTDD.html">extractCTDD()</a></code>
 </li>
@@ -287,9 +299,9 @@
 <h1 class="page-header">
 <a href="#protr-10-1-2015-11-26" class="anchor"></a>protr 1.0-1 (2015-11-26)<small> 2015-11-27 </small>
 </h1>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Improvements for dealing with boundary cases in several functions (thanks for <a href='https://github.com/koefoed'>@koefoed</a>’s patches)</li>
 </ul>
@@ -441,6 +453,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#protr-16-1-2019-02-12">1.6-1</a></li>
         <li><a href="#protr-16-0-2019-02-11">1.6-0</a></li>
         <li><a href="#protr-15-2-2018-11-21">1.5-2</a></li>
         <li><a href="#protr-15-1-2018-07-12">1.5-1</a></li>
