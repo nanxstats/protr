@@ -1,3 +1,9 @@
+# protr 1.6-0 (2019-02-11)
+
+## Bug Fixes
+
+- Updated `twoGOSim()` and `parGOSim()` to use the latest `GOSemSim` API for computing GO based semantic similarity. Issues in the code examples are also fixed. We thank Denisa Duma for the feedback.
+
 # protr 1.5-2 (2018-11-21)
 
 ## Bug Fixes
