@@ -1,3 +1,9 @@
+# protr 1.6-1 (2019-02-12)
+
+## Bug Fixes
+
+- Fixed an issue in `parGOSim()` that will create minor numerical inconsistencies in results due to argument matching.
+
 # protr 1.6-0 (2019-02-11)
 
 ## Bug Fixes
