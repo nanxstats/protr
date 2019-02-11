@@ -10,9 +10,8 @@ output:
     toc_float: true
     toc_depth: 4
     number_sections: true
-    theme: "flatly"
     highlight: "textmate"
-    css: "protr.css"
+    css: "custom.css"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequences}
@@ -49,17 +48,17 @@ BibTeX entry:
 
 ```bibtex
 @article{Xiao2015,
-author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
-title = {{protr/ProtrWeb: R package and web server for generating
-  various numerical representation schemes of protein sequences}},
-journal = {Bioinformatics},
-year = {2015},
-volume = {31},
-number = {11},
-pages = {1857--1859},
-doi = {10.1093/bioinformatics/btv042},
-issn = {1367-4803},
-url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
+  author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
+  title = {{protr/ProtrWeb: R package and web server for generating
+    various numerical representation schemes of protein sequences}},
+  journal = {Bioinformatics},
+  year = {2015},
+  volume = {31},
+  number = {11},
+  pages = {1857--1859},
+  doi = {10.1093/bioinformatics/btv042},
+  issn = {1367-4803},
+  url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
 }
 ```
 
@@ -1129,40 +1128,44 @@ function `parGOSim()` calculates the pairwise similarity with a list
 of GO terms / Entrez Gene IDs:
 
 ```{r, eval = FALSE}
-# by GO Terms
-go1 = c("GO:0005215", "GO:0005488", "GO:0005515",
-        "GO:0005625", "GO:0005802", "GO:0005905")  # AP4B1
-go2 = c("GO:0005515", "GO:0005634", "GO:0005681",
-        "GO:0008380", "GO:0031202")                # BCAS2
-go3 = c("GO:0003735", "GO:0005622", "GO:0005840",
-        "GO:0006412")                              # PDE4DIP
-glist = list(go1, go2, go3)
-gsimmat1 = parGOSim(glist, type = "go", ont = "CC")
-print(gsimmat1)
+# By GO Terms
+go1 = c(
+  "GO:0005215", "GO:0005488", "GO:0005515",
+  "GO:0005625", "GO:0005802", "GO:0005905"
+) # AP4B1
+go2 = c(
+  "GO:0005515", "GO:0005634", "GO:0005681",
+  "GO:0008380", "GO:0031202"
+) # BCAS2
+go3 = c(
+  "GO:0003735", "GO:0005622", "GO:0005840",
+  "GO:0006412"
+) # PDE4DIP
+golist = list(go1, go2, go3)
+parGOSim(golist, type = "go", ont = "CC", measure = "Wang")
 ```
 
 ```{r, eval = FALSE}
-##       [,1]  [,2]  [,3]
-## [1,] 1.000 0.077 0.055
-## [2,] 0.077 1.000 0.220
-## [3,] 0.055 0.220 1.000
+##       [,1]  [,2] [,3]
+## [1,] 1.000 0.344 0.17
+## [2,] 0.344 1.000 0.24
+## [3,] 0.170 0.240 1.00
 ```
 
 ```{r, eval = FALSE}
-# by Entrez gene id
+# By Entrez gene id
 genelist = list(c("150", "151", "152", "1814", "1815", "1816"))
-gsimmat2 = parGOSim(genelist, type = "gene")
-print(gsimmat2)
+parGOSim(genelist, type = "gene", ont = "BP", measure = "Wang")
 ```
 
 ```{r, eval = FALSE}
 ##        150   151   152  1814  1815  1816
-## 150  0.689 0.335 0.487 0.133 0.169 0.160
-## 151  0.335 0.605 0.441 0.171 0.198 0.274
-## 152  0.487 0.441 0.591 0.151 0.178 0.198
-## 1814 0.133 0.171 0.151 0.512 0.401 0.411
-## 1815 0.169 0.198 0.178 0.401 0.619 0.481
-## 1816 0.160 0.274 0.198 0.411 0.481 0.819
+## 150  1.000 0.713 0.725 0.498 0.536 0.458
+## 151  0.713 1.000 0.902 0.429 0.479 0.501
+## 152  0.725 0.902 1.000 0.416 0.470 0.468
+## 1814 0.498 0.429 0.416 1.000 0.642 0.564
+## 1815 0.536 0.479 0.470 0.642 1.000 0.517
+## 1816 0.458 0.501 0.468 0.564 0.517 1.000
 ```
 
 # Miscellaneous Tools
