@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1>protr: R package for generating various numerical representation schemes of protein sequences</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2019-02-10</h4>
+            <h4 class="date">2019-02-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/road2stat/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
       <div class="hidden name"><code>protr.Rmd</code></div>
@@ -94,17 +94,17 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 </blockquote>
 <p>BibTeX entry:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb1-1" title="1"><span class="va">@article</span>{<span class="ot">Xiao2015</span>,</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="dt">author</span> = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="dt">title</span> = {{protr/ProtrWeb: R package and web server for generating</a>
-<a class="sourceLine" id="cb1-4" title="4">  various numerical representation schemes of protein sequences}},</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="dt">journal</span> = {Bioinformatics},</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="dt">year</span> = {2015},</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="dt">volume</span> = {31},</a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="dt">number</span> = {11},</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="dt">pages</span> = {1857--1859},</a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="dt">doi</span> = {10.1093/bioinformatics/btv042},</a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="dt">issn</span> = {1367-4803},</a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="dt">url</span> = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}</a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="dt">author</span> = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},</a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="dt">title</span> = {{protr/ProtrWeb: R package and web server for generating</a>
+<a class="sourceLine" id="cb1-4" title="4">    various numerical representation schemes of protein sequences}},</a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="dt">journal</span> = {Bioinformatics},</a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="dt">year</span> = {2015},</a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="dt">volume</span> = {31},</a>
+<a class="sourceLine" id="cb1-8" title="8">  <span class="dt">number</span> = {11},</a>
+<a class="sourceLine" id="cb1-9" title="9">  <span class="dt">pages</span> = {1857--1859},</a>
+<a class="sourceLine" id="cb1-10" title="10">  <span class="dt">doi</span> = {10.1093/bioinformatics/btv042},</a>
+<a class="sourceLine" id="cb1-11" title="11">  <span class="dt">issn</span> = {1367-4803},</a>
+<a class="sourceLine" id="cb1-12" title="12">  <span class="dt">url</span> = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}</a>
 <a class="sourceLine" id="cb1-13" title="13">}</a></code></pre></div>
 </div>
 <div id="an-example-workflow" class="section level1">
@@ -1252,31 +1252,35 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a href="#similarity-calculation-by-go-semantic-similarity-measures" class="anchor"></a>Similarity Calculation by GO Semantic Similarity Measures</h1>
 <p>The protr package also integrates the function of similarity score computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms or Entrez Gene IDs.</p>
 <p>The function <code><a href="../reference/twoGOSim.html">twoGOSim()</a></code> calculates the similarity derived by GO-terms semantic similarity measures between two GO terms / Entrez Gene IDs, and the function <code><a href="../reference/parGOSim.html">parGOSim()</a></code> calculates the pairwise similarity with a list of GO terms / Entrez Gene IDs:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># by GO Terms</span></a>
-<a class="sourceLine" id="cb62-2" title="2">go1 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GO:0005215"</span>, <span class="st">"GO:0005488"</span>, <span class="st">"GO:0005515"</span>,</a>
-<a class="sourceLine" id="cb62-3" title="3">        <span class="st">"GO:0005625"</span>, <span class="st">"GO:0005802"</span>, <span class="st">"GO:0005905"</span>)  <span class="co"># AP4B1</span></a>
-<a class="sourceLine" id="cb62-4" title="4">go2 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GO:0005515"</span>, <span class="st">"GO:0005634"</span>, <span class="st">"GO:0005681"</span>,</a>
-<a class="sourceLine" id="cb62-5" title="5">        <span class="st">"GO:0008380"</span>, <span class="st">"GO:0031202"</span>)                <span class="co"># BCAS2</span></a>
-<a class="sourceLine" id="cb62-6" title="6">go3 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"GO:0003735"</span>, <span class="st">"GO:0005622"</span>, <span class="st">"GO:0005840"</span>,</a>
-<a class="sourceLine" id="cb62-7" title="7">        <span class="st">"GO:0006412"</span>)                              <span class="co"># PDE4DIP</span></a>
-<a class="sourceLine" id="cb62-8" title="8">glist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(go1, go2, go3)</a>
-<a class="sourceLine" id="cb62-9" title="9">gsimmat1 =<span class="st"> </span><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(glist, <span class="dt">type =</span> <span class="st">"go"</span>, <span class="dt">ont =</span> <span class="st">"CC"</span>)</a>
-<a class="sourceLine" id="cb62-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(gsimmat1)</a></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co">##       [,1]  [,2]  [,3]</span></a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="co">## [1,] 1.000 0.077 0.055</span></a>
-<a class="sourceLine" id="cb63-3" title="3"><span class="co">## [2,] 0.077 1.000 0.220</span></a>
-<a class="sourceLine" id="cb63-4" title="4"><span class="co">## [3,] 0.055 0.220 1.000</span></a></code></pre></div>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># by Entrez gene id</span></a>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># By GO Terms</span></a>
+<a class="sourceLine" id="cb62-2" title="2">go1 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-3" title="3">  <span class="st">"GO:0005215"</span>, <span class="st">"GO:0005488"</span>, <span class="st">"GO:0005515"</span>,</a>
+<a class="sourceLine" id="cb62-4" title="4">  <span class="st">"GO:0005625"</span>, <span class="st">"GO:0005802"</span>, <span class="st">"GO:0005905"</span></a>
+<a class="sourceLine" id="cb62-5" title="5">) <span class="co"># AP4B1</span></a>
+<a class="sourceLine" id="cb62-6" title="6">go2 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-7" title="7">  <span class="st">"GO:0005515"</span>, <span class="st">"GO:0005634"</span>, <span class="st">"GO:0005681"</span>,</a>
+<a class="sourceLine" id="cb62-8" title="8">  <span class="st">"GO:0008380"</span>, <span class="st">"GO:0031202"</span></a>
+<a class="sourceLine" id="cb62-9" title="9">) <span class="co"># BCAS2</span></a>
+<a class="sourceLine" id="cb62-10" title="10">go3 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-11" title="11">  <span class="st">"GO:0003735"</span>, <span class="st">"GO:0005622"</span>, <span class="st">"GO:0005840"</span>,</a>
+<a class="sourceLine" id="cb62-12" title="12">  <span class="st">"GO:0006412"</span></a>
+<a class="sourceLine" id="cb62-13" title="13">) <span class="co"># PDE4DIP</span></a>
+<a class="sourceLine" id="cb62-14" title="14">golist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(go1, go2, go3)</a>
+<a class="sourceLine" id="cb62-15" title="15"><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(golist, <span class="dt">type =</span> <span class="st">"go"</span>, <span class="dt">ont =</span> <span class="st">"CC"</span>, <span class="dt">measure =</span> <span class="st">"Wang"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co">##       [,1]  [,2] [,3]</span></a>
+<a class="sourceLine" id="cb63-2" title="2"><span class="co">## [1,] 1.000 0.344 0.17</span></a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="co">## [2,] 0.344 1.000 0.24</span></a>
+<a class="sourceLine" id="cb63-4" title="4"><span class="co">## [3,] 0.170 0.240 1.00</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># By Entrez gene id</span></a>
 <a class="sourceLine" id="cb64-2" title="2">genelist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"150"</span>, <span class="st">"151"</span>, <span class="st">"152"</span>, <span class="st">"1814"</span>, <span class="st">"1815"</span>, <span class="st">"1816"</span>))</a>
-<a class="sourceLine" id="cb64-3" title="3">gsimmat2 =<span class="st"> </span><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(genelist, <span class="dt">type =</span> <span class="st">"gene"</span>)</a>
-<a class="sourceLine" id="cb64-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(gsimmat2)</a></code></pre></div>
+<a class="sourceLine" id="cb64-3" title="3"><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(genelist, <span class="dt">type =</span> <span class="st">"gene"</span>, <span class="dt">ont =</span> <span class="st">"BP"</span>, <span class="dt">measure =</span> <span class="st">"Wang"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="co">##        150   151   152  1814  1815  1816</span></a>
-<a class="sourceLine" id="cb65-2" title="2"><span class="co">## 150  0.689 0.335 0.487 0.133 0.169 0.160</span></a>
-<a class="sourceLine" id="cb65-3" title="3"><span class="co">## 151  0.335 0.605 0.441 0.171 0.198 0.274</span></a>
-<a class="sourceLine" id="cb65-4" title="4"><span class="co">## 152  0.487 0.441 0.591 0.151 0.178 0.198</span></a>
-<a class="sourceLine" id="cb65-5" title="5"><span class="co">## 1814 0.133 0.171 0.151 0.512 0.401 0.411</span></a>
-<a class="sourceLine" id="cb65-6" title="6"><span class="co">## 1815 0.169 0.198 0.178 0.401 0.619 0.481</span></a>
-<a class="sourceLine" id="cb65-7" title="7"><span class="co">## 1816 0.160 0.274 0.198 0.411 0.481 0.819</span></a></code></pre></div>
+<a class="sourceLine" id="cb65-2" title="2"><span class="co">## 150  1.000 0.713 0.725 0.498 0.536 0.458</span></a>
+<a class="sourceLine" id="cb65-3" title="3"><span class="co">## 151  0.713 1.000 0.902 0.429 0.479 0.501</span></a>
+<a class="sourceLine" id="cb65-4" title="4"><span class="co">## 152  0.725 0.902 1.000 0.416 0.470 0.468</span></a>
+<a class="sourceLine" id="cb65-5" title="5"><span class="co">## 1814 0.498 0.429 0.416 1.000 0.642 0.564</span></a>
+<a class="sourceLine" id="cb65-6" title="6"><span class="co">## 1815 0.536 0.479 0.470 0.642 1.000 0.517</span></a>
+<a class="sourceLine" id="cb65-7" title="7"><span class="co">## 1816 0.458 0.501 0.468 0.564 0.517 1.000</span></a></code></pre></div>
 </div>
 <div id="miscellaneous-tools" class="section level1">
 <h1 class="hasAnchor">

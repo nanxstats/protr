@@ -66,7 +66,7 @@ between two groups of GO terms or two Entrez gene IDs." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -120,7 +120,7 @@ between two groups of GO terms or two Entrez gene IDs.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>twoGOSim</span>(<span class='no'>id1</span>, <span class='no'>id2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"go"</span>, <span class='st'>"gene"</span>), <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"MF"</span>,
+    <pre class="usage"><span class='fu'>twoGOSim</span>(<span class='no'>id1</span>, <span class='no'>id2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"go"</span>, <span class='st'>"gene"</span>), <span class='kw'>ont</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"MF"</span>, <span class='st'>"BP"</span>, <span class='st'>"CC"</span>),
   <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"human"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Resnik"</span>, <span class='kw'>combine</span> <span class='kw'>=</span> <span class='st'>"BMA"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -128,50 +128,54 @@ between two groups of GO terms or two Entrez gene IDs.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id1</th>
-      <td><p>A character vector. length &gt; 1: each element is a GO term;
-length = 1: the Entrez Gene ID.</p></td>
+      <td><p>Character vector. When length &gt; 1: each element is a GO term;
+when length = 1: the Entrez Gene ID.</p></td>
     </tr>
     <tr>
       <th>id2</th>
-      <td><p>A character vector. length &gt; 1: each element is a GO term;
-length = 1: the Entrez Gene ID.</p></td>
+      <td><p>Character vector. When length &gt; 1: each element is a GO term;
+when length = 1: the Entrez Gene ID.</p></td>
     </tr>
     <tr>
       <th>type</th>
       <td><p>Input type of id1 and id2, <code>'go'</code> for GO Terms,
-<code>'gene'</code> for gene ID.</p></td>
+<code>"gene"</code> for gene ID.</p></td>
     </tr>
     <tr>
       <th>ont</th>
-      <td><p>Default is <code>'MF'</code>, can be one of <code>'MF'</code>,
-<code>'BP'</code>, or <code>'CC'</code> subontologies.</p></td>
+      <td><p>Default is <code>"MF"</code>, can be one of <code>"MF"</code>,
+<code>"BP"</code>, or <code>"CC"</code> subontologies.</p></td>
     </tr>
     <tr>
       <th>organism</th>
-      <td><p>Default is <code>'human'</code>, can be one of
-<code>'anopheles'</code>, <code>'arabidopsis'</code>, <code>'bovine'</code>, <code>'canine'</code>,
-<code>'chicken'</code>, <code>'chimp'</code>, <code>'coelicolor'</code>, <code>'ecolik12'</code>,
-<code>'ecsakai'</code>, <code>'fly'</code>, <code>'human'</code>, <code>'malaria'</code>,
-<code>'mouse'</code>, <code>'pig'</code>, <code>'rat'</code>, <code>'rhesus'</code>,
-<code>'worm'</code>, <code>'xenopus'</code>, <code>'yeast'</code> or <code>'zebrafish'</code>.</p></td>
+      <td><p>Organism name. Default is <code>"human"</code>, can be one of
+<code>"anopheles"</code>, <code>"arabidopsis"</code>, <code>"bovine"</code>, <code>"canine"</code>,
+<code>"chicken"</code>, <code>"chimp"</code>, <code>"coelicolor"</code>, <code>"ecolik12"</code>,
+<code>"ecsakai"</code>, <code>"fly"</code>, <code>"human"</code>, <code>"malaria"</code>,
+<code>"mouse"</code>, <code>"pig"</code>, <code>"rat"</code>, <code>"rhesus"</code>,
+<code>"worm"</code>, <code>"xenopus"</code>, <code>"yeast"</code> or <code>"zebrafish"</code>.
+Before specifying the organism, please install the corresponding genome wide
+<a href='https://bioconductor.org/packages/release/BiocViews.html#___OrgDb'>annotation data package</a>
+for the selected organism.</p></td>
     </tr>
     <tr>
       <th>measure</th>
-      <td><p>Default is <code>'Resnik'</code>, can be one of
-<code>'Resnik'</code>, <code>'Lin'</code>, <code>'Rel'</code>, <code>'Jiang'</code> or <code>'Wang'</code>.</p></td>
+      <td><p>Default is <code>"Resnik"</code>, can be one of
+<code>"Resnik"</code>, <code>"Lin"</code>, <code>"Rel"</code>, <code>"Jiang"</code>
+or <code>"Wang"</code>.</p></td>
     </tr>
     <tr>
       <th>combine</th>
-      <td><p>Default is <code>'BMA'</code>, can be one of
-<code>'max'</code>, <code>'average'</code>, <code>'rcmax'</code> or <code>'BMA'</code>
+      <td><p>Default is <code>"BMA"</code>, can be one of <code>"max"</code>,
+<code>"average"</code>, <code>"rcmax"</code> or <code>"BMA"</code>
 for combining semantic similarity scores of multiple GO terms
-associated with protein.</p></td>
+associated with proteins.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A n x n matrix.</p>
+    <p>Similarity value.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -189,17 +193,15 @@ calculation based on Smith-Waterman local alignment.</p></div>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='st'>"GOSemSim"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='st'>"org.Hs.eg.db"</span>)
 
-<span class='co'># by GO terms</span>
-<span class='no'>go1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0004022"</span>, <span class='st'>"GO:0004024"</span>, <span class='st'>"GO:0004023"</span>)
-<span class='no'>go2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0009055"</span>, <span class='st'>"GO:0020037"</span>)
-<span class='no'>gsim1</span> <span class='kw'>=</span> <span class='fu'>twoGOSim</span>(<span class='no'>go1</span>, <span class='no'>go2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"go"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"MF"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Wang"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>gsim1</span>)
+<span class='co'># By GO terms</span>
+<span class='no'>go1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0004022"</span>, <span class='st'>"GO:0004024"</span>, <span class='st'>"GO:0004023"</span>)
+<span class='no'>go2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0009055"</span>, <span class='st'>"GO:0020037"</span>)
+<span class='fu'>twoGOSim</span>(<span class='no'>go1</span>, <span class='no'>go2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"go"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"MF"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Wang"</span>)
 
-<span class='co'># by Entrez gene id</span>
-<span class='no'>gene1</span> <span class='kw'>=</span> <span class='st'>"241"</span>
-<span class='no'>gene2</span> <span class='kw'>=</span> <span class='st'>"251"</span>
-<span class='no'>gsim2</span> <span class='kw'>=</span> <span class='fu'>twoGOSim</span>(<span class='no'>gene1</span>, <span class='no'>gene2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"BP"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Lin"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>gsim2</span>)
+<span class='co'># By Entrez gene id</span>
+<span class='no'>gene1</span> <span class='kw'>&lt;-</span> <span class='st'>"1956"</span> <span class='co'># EGFR</span>
+<span class='no'>gene2</span> <span class='kw'>&lt;-</span> <span class='st'>"2261"</span> <span class='co'># FGFR3</span>
+<span class='fu'>twoGOSim</span>(<span class='no'>gene1</span>, <span class='no'>gene2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"BP"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Lin"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

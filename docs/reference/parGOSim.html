@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Protein Sequence Similarity Calculation based on Gene Ontology
+<title>Protein Similarity Calculation based on Gene Ontology
 (GO) Similarity — parGOSim • protr</title>
 
 <!-- jquery -->
@@ -33,10 +33,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Protein Sequence Similarity Calculation based on Gene Ontology
+<meta property="og:title" content="Protein Similarity Calculation based on Gene Ontology
 (GO) Similarity — parGOSim" />
 
-<meta property="og:description" content="This function calculates protein sequence similarity based on
+<meta property="og:description" content="This function calculates protein similarity based on
 Gene Ontology (GO) similarity." />
 <meta name="twitter:card" content="summary" />
 
@@ -68,7 +68,7 @@ Gene Ontology (GO) similarity." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0</span>
       </span>
     </div>
 
@@ -110,7 +110,7 @@ Gene Ontology (GO) similarity." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Protein Sequence Similarity Calculation based on Gene Ontology
+    <h1>Protein Similarity Calculation based on Gene Ontology
 (GO) Similarity</h1>
     <small class="dont-index">Source: <a href='https://github.com/road2stat/protr/blob/master/R/par-02-parGOSim.R'><code>R/par-02-parGOSim.R</code></a></small>
     <div class="hidden name"><code>parGOSim.Rd</code></div>
@@ -118,12 +118,12 @@ Gene Ontology (GO) similarity." />
 
     <div class="ref-description">
     
-    <p>This function calculates protein sequence similarity based on
+    <p>This function calculates protein similarity based on
 Gene Ontology (GO) similarity.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>parGOSim</span>(<span class='no'>golist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"go"</span>, <span class='st'>"gene"</span>), <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"MF"</span>,
+    <pre class="usage"><span class='fu'>parGOSim</span>(<span class='no'>golist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"go"</span>, <span class='st'>"gene"</span>), <span class='kw'>ont</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"MF"</span>, <span class='st'>"BP"</span>, <span class='st'>"CC"</span>),
   <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"human"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Resnik"</span>, <span class='kw'>combine</span> <span class='kw'>=</span> <span class='st'>"BMA"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -131,40 +131,43 @@ Gene Ontology (GO) similarity.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>golist</th>
-      <td><p>A character vector, each component contains
+      <td><p>A list, each component contains
 a character vector of GO terms or one Entrez Gene ID.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Input type of <code>golist</code>, <code>'go'</code> for GO Terms,
-<code>'gene'</code> for gene ID.</p></td>
+      <td><p>Input type for <code>golist</code>, <code>"go"</code> for GO Terms,
+<code>"gene"</code> for gene ID.</p></td>
     </tr>
     <tr>
       <th>ont</th>
-      <td><p>Default is <code>'MF'</code>, can be one of <code>'MF'</code>,
-<code>'BP'</code>, or <code>'CC'</code> subontologies.</p></td>
+      <td><p>Default is <code>"MF"</code>, can be one of <code>"MF"</code>,
+<code>"BP"</code>, or <code>"CC"</code> subontologies.</p></td>
     </tr>
     <tr>
       <th>organism</th>
-      <td><p>Default is <code>'human'</code>, can be one of
-<code>'anopheles'</code>, <code>'arabidopsis'</code>, <code>'bovine'</code>, <code>'canine'</code>,
-<code>'chicken'</code>, <code>'chimp'</code>, <code>'coelicolor'</code>, <code>'ecolik12'</code>,
-<code>'ecsakai'</code>, <code>'fly'</code>, <code>'human'</code>, <code>'malaria'</code>,
-<code>'mouse'</code>, <code>'pig'</code>, <code>'rat'</code>, <code>'rhesus'</code>,
-<code>'worm'</code>, <code>'xenopus'</code>, <code>'yeast'</code> or <code>'zebrafish'</code>.</p></td>
+      <td><p>Organism name. Default is <code>"human"</code>, can be one of
+<code>"anopheles"</code>, <code>"arabidopsis"</code>, <code>"bovine"</code>, <code>"canine"</code>,
+<code>"chicken"</code>, <code>"chimp"</code>, <code>"coelicolor"</code>, <code>"ecolik12"</code>,
+<code>"ecsakai"</code>, <code>"fly"</code>, <code>"human"</code>, <code>"malaria"</code>,
+<code>"mouse"</code>, <code>"pig"</code>, <code>"rat"</code>, <code>"rhesus"</code>,
+<code>"worm"</code>, <code>"xenopus"</code>, <code>"yeast"</code> or <code>"zebrafish"</code>.
+Before specifying the organism, please install the corresponding genome wide
+<a href='https://bioconductor.org/packages/release/BiocViews.html#___OrgDb'>annotation data package</a>
+for the selected organism.</p></td>
     </tr>
     <tr>
       <th>measure</th>
-      <td><p>Default is <code>'Resnik'</code>, can be one of
-<code>'Resnik'</code>, <code>'Lin'</code>, <code>'Rel'</code>, <code>'Jiang'</code>
-or <code>'Wang'</code>.</p></td>
+      <td><p>Default is <code>"Resnik"</code>, can be one of
+<code>"Resnik"</code>, <code>"Lin"</code>, <code>"Rel"</code>, <code>"Jiang"</code>
+or <code>"Wang"</code>.</p></td>
     </tr>
     <tr>
       <th>combine</th>
-      <td><p>Default is <code>'BMA'</code>, can be one of <code>'max'</code>,
-<code>'average'</code>, <code>'rcmax'</code> or <code>'BMA'</code>
+      <td><p>Default is <code>"BMA"</code>, can be one of <code>"max"</code>,
+<code>"average"</code>, <code>"rcmax"</code> or <code>"BMA"</code>
 for combining semantic similarity scores of multiple GO terms
-associated with protein.</p></td>
+associated with proteins.</p></td>
     </tr>
     </table>
     
@@ -188,21 +191,28 @@ calculation based on Smith-Waterman local alignment.</p></div>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='st'>"GOSemSim"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='st'>"org.Hs.eg.db"</span>)
 
-<span class='co'># by GO Terms</span>
-<span class='no'>go1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0005215"</span>, <span class='st'>"GO:0005488"</span>, <span class='st'>"GO:0005515"</span>,
-        <span class='st'>"GO:0005625"</span>, <span class='st'>"GO:0005802"</span>, <span class='st'>"GO:0005905"</span>)  <span class='co'># AP4B1</span>
-<span class='no'>go2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0005515"</span>, <span class='st'>"GO:0005634"</span>, <span class='st'>"GO:0005681"</span>,
-        <span class='st'>"GO:0008380"</span>, <span class='st'>"GO:0031202"</span>)  <span class='co'># BCAS2</span>
-<span class='no'>go3</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"GO:0003735"</span>, <span class='st'>"GO:0005622"</span>, <span class='st'>"GO:0005840"</span>,
-        <span class='st'>"GO:0006412"</span>)  <span class='co'># PDE4DIP</span>
-<span class='no'>glist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>go1</span>, <span class='no'>go2</span>, <span class='no'>go3</span>)
-<span class='no'>gsimmat1</span> <span class='kw'>=</span> <span class='fu'>parGOSim</span>(<span class='no'>glist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"go"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"CC"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>gsimmat1</span>)
+<span class='co'># By GO Terms</span>
+<span class='co'># AP4B1</span>
+<span class='no'>go1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
+  <span class='st'>"GO:0005215"</span>, <span class='st'>"GO:0005488"</span>, <span class='st'>"GO:0005515"</span>,
+  <span class='st'>"GO:0005625"</span>, <span class='st'>"GO:0005802"</span>, <span class='st'>"GO:0005905"</span>
+)
+<span class='co'># BCAS2</span>
+<span class='no'>go2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
+  <span class='st'>"GO:0005515"</span>, <span class='st'>"GO:0005634"</span>, <span class='st'>"GO:0005681"</span>,
+  <span class='st'>"GO:0008380"</span>, <span class='st'>"GO:0031202"</span>
+)
+<span class='co'># PDE4DIP</span>
+<span class='no'>go3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
+  <span class='st'>"GO:0003735"</span>, <span class='st'>"GO:0005622"</span>, <span class='st'>"GO:0005840"</span>,
+  <span class='st'>"GO:0006412"</span>
+)
+<span class='no'>golist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>go1</span>, <span class='no'>go2</span>, <span class='no'>go3</span>)
+<span class='fu'>parGOSim</span>(<span class='no'>golist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"go"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"CC"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Wang"</span>)
 
-<span class='co'># by Entrez gene id</span>
-<span class='no'>genelist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"150"</span>, <span class='st'>"151"</span>, <span class='st'>"152"</span>, <span class='st'>"1814"</span>, <span class='st'>"1815"</span>, <span class='st'>"1816"</span>))
-<span class='no'>gsimmat2</span> <span class='kw'>=</span> <span class='fu'>parGOSim</span>(<span class='no'>genelist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"gene"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>gsimmat2</span>)
+<span class='co'># By Entrez gene id</span>
+<span class='no'>genelist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"150"</span>, <span class='st'>"151"</span>, <span class='st'>"152"</span>, <span class='st'>"1814"</span>, <span class='st'>"1815"</span>, <span class='st'>"1816"</span>))
+<span class='fu'>parGOSim</span>(<span class='no'>genelist</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>ont</span> <span class='kw'>=</span> <span class='st'>"BP"</span>, <span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"Wang"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
