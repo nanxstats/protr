@@ -220,7 +220,7 @@ parGOSim <- function(
   ont <- match.arg(ont)
   godb <- suppressMessages(GOSemSim::godata(OrgDb = .orgdb[organism], ont = ont, computeIC = TRUE))
   if (type == "gene") {
-    gosimmat <- GOSemSim::mgeneSim(unlist(golist), godb, measure, combine, verbose = FALSE)
+    gosimmat <- GOSemSim::mgeneSim(unlist(golist), godb, measure = measure, combine = combine, verbose = FALSE)
   }
   if (type == "go") {
     # generate lower matrix index
