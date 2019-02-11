@@ -4,39 +4,43 @@
 \alias{twoGOSim}
 \title{Protein Similarity Calculation based on Gene Ontology (GO) Similarity}
 \usage{
-twoGOSim(id1, id2, type = c("go", "gene"), ont = "MF",
+twoGOSim(id1, id2, type = c("go", "gene"), ont = c("MF", "BP", "CC"),
   organism = "human", measure = "Resnik", combine = "BMA")
 }
 \arguments{
-\item{id1}{A character vector. length > 1: each element is a GO term;
-length = 1: the Entrez Gene ID.}
+\item{id1}{Character vector. When length > 1: each element is a GO term;
+when length = 1: the Entrez Gene ID.}
 
-\item{id2}{A character vector. length > 1: each element is a GO term;
-length = 1: the Entrez Gene ID.}
+\item{id2}{Character vector. When length > 1: each element is a GO term;
+when length = 1: the Entrez Gene ID.}
 
 \item{type}{Input type of id1 and id2, \code{'go'} for GO Terms,
-\code{'gene'} for gene ID.}
+\code{"gene"} for gene ID.}
 
-\item{ont}{Default is \code{'MF'}, can be one of \code{'MF'},
-\code{'BP'}, or \code{'CC'} subontologies.}
+\item{ont}{Default is \code{"MF"}, can be one of \code{"MF"},
+\code{"BP"}, or \code{"CC"} subontologies.}
 
-\item{organism}{Default is \code{'human'}, can be one of
-\code{'anopheles'}, \code{'arabidopsis'}, \code{'bovine'}, \code{'canine'},
-\code{'chicken'}, \code{'chimp'}, \code{'coelicolor'}, \code{'ecolik12'},
-\code{'ecsakai'}, \code{'fly'}, \code{'human'}, \code{'malaria'},
-\code{'mouse'}, \code{'pig'}, \code{'rat'}, \code{'rhesus'},
-\code{'worm'}, \code{'xenopus'}, \code{'yeast'} or \code{'zebrafish'}.}
+\item{organism}{Organism name. Default is \code{"human"}, can be one of
+\code{"anopheles"}, \code{"arabidopsis"}, \code{"bovine"}, \code{"canine"},
+\code{"chicken"}, \code{"chimp"}, \code{"coelicolor"}, \code{"ecolik12"},
+\code{"ecsakai"}, \code{"fly"}, \code{"human"}, \code{"malaria"},
+\code{"mouse"}, \code{"pig"}, \code{"rat"}, \code{"rhesus"},
+\code{"worm"}, \code{"xenopus"}, \code{"yeast"} or \code{"zebrafish"}.
+Before specifying the organism, please install the corresponding genome wide
+\href{https://bioconductor.org/packages/release/BiocViews.html#___OrgDb}{annotation data package}
+for the selected organism.}
 
-\item{measure}{Default is \code{'Resnik'}, can be one of
-\code{'Resnik'}, \code{'Lin'}, \code{'Rel'}, \code{'Jiang'} or \code{'Wang'}.}
+\item{measure}{Default is \code{"Resnik"}, can be one of
+\code{"Resnik"}, \code{"Lin"}, \code{"Rel"}, \code{"Jiang"}
+or \code{"Wang"}.}
 
-\item{combine}{Default is \code{'BMA'}, can be one of
-\code{'max'}, \code{'average'}, \code{'rcmax'} or \code{'BMA'}
+\item{combine}{Default is \code{"BMA"}, can be one of \code{"max"},
+\code{"average"}, \code{"rcmax"} or \code{"BMA"}
 for combining semantic similarity scores of multiple GO terms
-associated with protein.}
+associated with proteins.}
 }
 \value{
-A n x n matrix.
+Similarity value.
 }
 \description{
 This function calculates the Gene Ontology (GO) similarity
@@ -44,23 +48,23 @@ between two groups of GO terms or two Entrez gene IDs.
 }
 \examples{
 \dontrun{
+
 # Be careful when testing this since it involves GO similarity computation
 # and might produce unpredictable results in some environments
 
 library("GOSemSim")
 library("org.Hs.eg.db")
 
-# by GO terms
-go1 = c("GO:0004022", "GO:0004024", "GO:0004023")
-go2 = c("GO:0009055", "GO:0020037")
-gsim1 = twoGOSim(go1, go2, type = "go", ont = "MF", measure = "Wang")
-print(gsim1)
+# By GO terms
+go1 <- c("GO:0004022", "GO:0004024", "GO:0004023")
+go2 <- c("GO:0009055", "GO:0020037")
+twoGOSim(go1, go2, type = "go", ont = "MF", measure = "Wang")
 
-# by Entrez gene id
-gene1 = "241"
-gene2 = "251"
-gsim2 = twoGOSim(gene1, gene2, type = "gene", ont = "BP", measure = "Lin")
-print(gsim2)}
+# By Entrez gene id
+gene1 <- "1956" # EGFR
+gene2 <- "2261" # FGFR3
+twoGOSim(gene1, gene2, type = "gene", ont = "BP", measure = "Lin")
+}
 }
 \seealso{
 See \code{\link{parGOSim}} for protein similarity calculation
