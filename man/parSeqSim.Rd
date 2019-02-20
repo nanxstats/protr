@@ -17,15 +17,15 @@ sequence. Unknown sequences should be represented as \code{""}.}
 default is \code{2}. Users can use the \code{detectCores()} function
 in the \code{parallel} package to see how many cores they could use.}
 
-\item{type}{Type of alignment, default is \code{'local'},
-could be \code{'global'} or \code{'local'},
-where \code{'global'} represents Needleman-Wunsch global alignment;
-\code{'local'} represents Smith-Waterman local alignment.}
+\item{type}{Type of alignment, default is \code{"local"},
+can be \code{"global"} or \code{"local"},
+where \code{"global"} represents Needleman-Wunsch global alignment;
+\code{"local"} represents Smith-Waterman local alignment.}
 
-\item{submat}{Substitution matrix, default is \code{'BLOSUM62'},
-can be one of \code{'BLOSUM45'}, \code{'BLOSUM50'}, \code{'BLOSUM62'},
-\code{'BLOSUM80'}, \code{'BLOSUM100'}, \code{'PAM30'},
-\code{'PAM40'}, \code{'PAM70'}, \code{'PAM120'}, or \code{'PAM250'}.}
+\item{submat}{Substitution matrix, default is \code{"BLOSUM62"},
+can be one of \code{"BLOSUM45"}, \code{"BLOSUM50"}, \code{"BLOSUM62"},
+\code{"BLOSUM80"}, \code{"BLOSUM100"}, \code{"PAM30"},
+\code{"PAM40"}, \code{"PAM70"}, \code{"PAM120"}, or \code{"PAM250"}.}
 
 \item{gap.opening}{The cost required to open a gap of any length
 in the alignment. Defaults to 10.}
@@ -42,6 +42,7 @@ protein sequence similarity based on sequence alignment.
 }
 \examples{
 \dontrun{
+
 # Be careful when testing this since it involves parallelisation
 # and might produce unpredictable results in some environments
 
@@ -49,14 +50,14 @@ library("Biostrings")
 library("foreach")
 library("doParallel")
 
-s1 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-s2 = readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
-s3 = readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
-s4 = readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
-s5 = readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
-plist = list(s1, s2, s3, s4, s5)
-psimmat = parSeqSim(plist, cores = 2, type = "local", submat = "BLOSUM62")
-print(psimmat)}
+s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+s2 <- readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
+s3 <- readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
+s4 <- readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
+s5 <- readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
+plist <- list(s1, s2, s3, s4, s5)
+(psimmat <- parSeqSim(plist, cores = 2, type = "local", submat = "BLOSUM62"))
+}
 }
 \seealso{
 See \code{twoSeqSim} for protein sequence alignment
