@@ -10,6 +10,11 @@
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
 #' default is \code{2}. Users can use the \code{detectCores()} function
 #' in the \code{parallel} package to see how many cores they could use.
+#' @param batches Integer. How many batches should we split the pairwise
+#' similarity computations into. This is useful when you have a large
+#' number of protein sequences, enough number of CPU cores, but not
+#' enough RAM to compute and hold all the pairwise similarities
+#' in a single batch. Defaults to 1.
 #' @param type Type of alignment, default is \code{"local"},
 #' can be \code{"global"} or \code{"local"},
 #' where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -22,6 +27,7 @@
 #' in the alignment. Defaults to 10.
 #' @param gap.extension The cost to extend the length of an existing
 #' gap by 1. Defaults to 4.
+#' @param verbose Print the computation progress?
 #'
 #' @return A \code{n} x \code{n} similarity matrix.
 #'
@@ -57,27 +63,34 @@
 #' (psimmat <- parSeqSim(plist, cores = 2, type = "local", submat = "BLOSUM62"))
 #' }
 parSeqSim <- function(
-  protlist, cores = 2, type = "local", submat = "BLOSUM62",
-  gap.opening = 10, gap.extension = 4) {
+  protlist, cores = 2, batches = 1, type = "local", submat = "BLOSUM62",
+  gap.opening = 10, gap.extension = 4, verbose = FALSE) {
   doParallel::registerDoParallel(cores)
 
   # generate lower matrix index
   idx <- combn(1:length(protlist), 2)
 
+  # split index into k batches
+  split2 <- function(x, k) split(x, sort(rank(x) %% k))
+  idxbatch <- split2(1:ncol(idx), batches)
+
   # then use foreach parallelization
-  # input is all pair combination
-
-  seqsimlist <- vector("list", ncol(idx))
-
+  # input is all pair combinations (in each batch)
   `%mydopar%` <- foreach::`%dopar%`
-
-  seqsimlist <- foreach::foreach(
-    i = 1:length(seqsimlist), .errorhandling = "pass"
-  ) %mydopar% {
-    tmp <- .seqPairSim(
-      rev(idx[, i]), protlist, type, submat, gap.opening, gap.extension
-    )
+  seqsimlist_batch <- vector("list", batches)
+  for (k in 1:batches) {
+    if (verbose) cat("Starting batch", k, "of", batches, "\n")
+    seqsimlist_batch[[k]] <- foreach::foreach(
+      i = idxbatch[[k]], .errorhandling = "pass"
+    ) %mydopar% {
+      tmp <- .seqPairSim(
+        rev(idx[, i]), protlist, type, submat, gap.opening, gap.extension
+      )
+    }
   }
+
+  # merge all batches
+  seqsimlist <- as.list(unlist(seqsimlist_batch))
 
   # convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))

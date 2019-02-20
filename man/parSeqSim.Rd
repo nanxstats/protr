@@ -5,8 +5,9 @@
 \title{Parallellized Protein Sequence Similarity Calculation based on
 Sequence Alignment}
 \usage{
-parSeqSim(protlist, cores = 2, type = "local", submat = "BLOSUM62",
-  gap.opening = 10, gap.extension = 4)
+parSeqSim(protlist, cores = 2, batches = 1, type = "local",
+  submat = "BLOSUM62", gap.opening = 10, gap.extension = 4,
+  verbose = FALSE)
 }
 \arguments{
 \item{protlist}{A length \code{n} list containing \code{n} protein sequences,
@@ -16,6 +17,12 @@ sequence. Unknown sequences should be represented as \code{""}.}
 \item{cores}{Integer. The number of CPU cores to use for parallel execution,
 default is \code{2}. Users can use the \code{detectCores()} function
 in the \code{parallel} package to see how many cores they could use.}
+
+\item{batches}{Integer. How many batches should we split the pairwise
+similarity computations into. This is useful when you have a large
+number of protein sequences, enough number of CPU cores, but not
+enough RAM to compute and hold all the pairwise similarities
+in a single batch. Defaults to 1.}
 
 \item{type}{Type of alignment, default is \code{"local"},
 can be \code{"global"} or \code{"local"},
@@ -32,6 +39,8 @@ in the alignment. Defaults to 10.}
 
 \item{gap.extension}{The cost to extend the length of an existing
 gap by 1. Defaults to 4.}
+
+\item{verbose}{Print the computation progress?}
 }
 \value{
 A \code{n} x \code{n} similarity matrix.
