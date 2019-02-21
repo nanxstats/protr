@@ -15,6 +15,10 @@ cache:
 
 # Adapt as necessary starting from here
 
+env:
+  global:
+    - BIOC_USE_DEVEL="FALSE"
+
 build_script:
   - travis-tool.sh install_deps
   - travis-tool.sh install_bioc_deps
