@@ -46,10 +46,11 @@ reference:
       Functions for calculating protein sequence alignment based
       similarity measures and GO-based semantic similarity measures.
     contents:
-    - twoSeqSim
     - parSeqSim
-    - twoGOSim
+    - parSeqSimDisk
+    - twoSeqSim
     - parGOSim
+    - twoGOSim
   - title: "Helper Functions for Pre-Processing Protein Sequences"
     desc: >
       Functions for pre-processing protein sequences.

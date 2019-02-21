@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Parallellized Protein Sequence Similarity Calculation based on
-Sequence Alignment (In-Memory Version) — parSeqSim • protr</title>
+Sequence Alignment (Disk-Based Version) — parSeqSimDisk • protr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,10 +34,13 @@ Sequence Alignment (In-Memory Version) — parSeqSim • protr</title>
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Parallellized Protein Sequence Similarity Calculation based on
-Sequence Alignment (In-Memory Version) — parSeqSim" />
+Sequence Alignment (Disk-Based Version) — parSeqSimDisk" />
 
 <meta property="og:description" content="This function implemented the parallellized version for calculating
-protein sequence similarity based on sequence alignment." />
+protein sequence similarity based on sequence alignment.
+This version caches the partial results in each batch to the
+hard drive and merges the results together in the end, which
+reduces the memory usage." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,21 +114,24 @@ protein sequence similarity based on sequence alignment." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Parallellized Protein Sequence Similarity Calculation based on
-Sequence Alignment (In-Memory Version)</h1>
+Sequence Alignment (Disk-Based Version)</h1>
     <small class="dont-index">Source: <a href='https://github.com/road2stat/protr/blob/master/R/par-01-parSeqSim.R'><code>R/par-01-parSeqSim.R</code></a></small>
-    <div class="hidden name"><code>parSeqSim.Rd</code></div>
+    <div class="hidden name"><code>parSeqSimDisk.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
     <p>This function implemented the parallellized version for calculating
-protein sequence similarity based on sequence alignment.</p>
+protein sequence similarity based on sequence alignment.
+This version caches the partial results in each batch to the
+hard drive and merges the results together in the end, which
+reduces the memory usage.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>parSeqSim</span>(<span class='no'>protlist</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>batches</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>, <span class='kw'>gap.opening</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>gap.extension</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
+    <pre class="usage"><span class='fu'>parSeqSimDisk</span>(<span class='no'>protlist</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>batches</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>,
+  <span class='kw'>gap.opening</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>gap.extension</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,6 +155,11 @@ similarity computations into. This is useful when you have a large
 number of protein sequences, enough number of CPU cores, but not
 enough RAM to compute and hold all the pairwise similarities
 in a single batch. Defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Directory for caching the results in each batch.
+Defaults to the temporary directory.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -186,7 +197,7 @@ gap by 1. Defaults to 4.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>See <code><a href='parSeqSimDisk.html'>parSeqSimDisk</a></code> for the disk-based version.</p></div>
+    <div class='dont-index'><p>See <code><a href='parSeqSim.html'>parSeqSim</a></code> for the in-memory version.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -203,8 +214,9 @@ gap by 1. Defaults to 4.</p></td>
 <span class='no'>s3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/P10323.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
 <span class='no'>s4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/P20160.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
 <span class='no'>s5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/Q9NZP8.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>plist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>s1</span>, <span class='no'>s2</span>, <span class='no'>s3</span>, <span class='no'>s4</span>, <span class='no'>s5</span>)
-(<span class='no'>psimmat</span> <span class='kw'>&lt;-</span> <span class='fu'>parSeqSim</span>(<span class='no'>plist</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1010</span>)
+<span class='no'>plist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>s1</span>, <span class='no'>s2</span>, <span class='no'>s3</span>, <span class='no'>s4</span>, <span class='no'>s5</span>)[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)])
+<span class='no'>psimmat</span> <span class='kw'>&lt;-</span> <span class='fu'>parSeqSimDisk</span>(<span class='no'>plist</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>batches</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
