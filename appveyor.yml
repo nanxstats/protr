@@ -15,7 +15,7 @@ cache:
 
 # Adapt as necessary starting from here
 
-env:
+environment:
   global:
     - BIOC_USE_DEVEL="FALSE"
 
