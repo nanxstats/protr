@@ -75,7 +75,7 @@
       <h1>protr: R package for generating various numerical representation schemes of protein sequences</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2019-02-20</h4>
+            <h4 class="date">2019-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/road2stat/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
       <div class="hidden name"><code>protr.Rmd</code></div>
@@ -283,7 +283,9 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <li>
 <code><a href="../reference/twoSeqSim.html">twoSeqSim()</a></code> - Similarity calculation derived by sequence alignment between two protein sequences</li>
 <li>
-<code><a href="../reference/parSeqSim.html">parSeqSim()</a></code> - Parallelized pairwise similarity calculation with a list of protein sequences</li>
+<code><a href="../reference/parSeqSim.html">parSeqSim()</a></code> - Parallelized pairwise similarity calculation with a list of protein sequences (in-memory version)</li>
+<li>
+<code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code> - Parallelized pairwise similarity calculation with a list of protein sequences (disk-based version)</li>
 </ul>
 <p>The protr package also integrates the function of parallelized similarity score computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms / Entrez Gene IDs, the GO similarity computation is provided by <code>GOSemSim</code>, the corresponding functions listed in the protr package include:</p>
 <ul>
@@ -1244,8 +1246,14 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a class="sourceLine" id="cb61-4" title="4"><span class="co">## [3,] 0.10236985 0.18858241 1.00000000 0.05819984 0.06175942</span></a>
 <a class="sourceLine" id="cb61-5" title="5"><span class="co">## [4,] 0.04921696 0.12124217 0.05819984 1.00000000 0.05714638</span></a>
 <a class="sourceLine" id="cb61-6" title="6"><span class="co">## [5,] 0.03943488 0.06391103 0.06175942 0.05714638 1.00000000</span></a></code></pre></div>
-<p>We should note that for a small number of proteins, calculating their pairwise similarity scores derived by sequence alignment in parallel may not significantly reduce the overall computation time, since each of the task only requires a relatively small time to finish, thus, computational overheads may exist and affect the performance. In testing, we used about 1,000 protein sequences on 64 CPU cores, and observed significant performance improvement comparing to the sequential computation.</p>
-<p>Users should install the packages <code>foreach</code> and <code>doParallel</code> before using <code><a href="../reference/parSeqSim.html">parSeqSim()</a></code>, according to their operation system. The protr package will automatically decide which backend to use.</p>
+<p>Note that for a small number of proteins, calculating their pairwise similarity scores derived by sequence alignment in parallel may not significantly reduce the overall computation time, since each of the task only requires a relatively small time to finish, thus, computational overheads may exist and affect the performance. In our benchmarks, we used about 1,000 protein sequences on 64 CPU cores, and observed significant performance improvement comparing to the sequential computation.</p>
+<div id="scaling-up-for-a-large-number-of-sequences" class="section level2">
+<h2 class="hasAnchor">
+<a href="#scaling-up-for-a-large-number-of-sequences" class="anchor"></a>Scaling up for a large number of sequences</h2>
+<p><strong><code>batches</code></strong>. A useful argument for reducing the memory usage is <code>batches</code>. It splits the similarity computations into smaller batches. A larger batch number reduces the memory need for each parallel process, but also adds the overhead of forking new processes. This is a trade-off between time (CPU) and space (memory). Also, use <code>verbose = TRUE</code> to print the computation progress.</p>
+<p><strong><code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code></strong>. For similarity computations over an even larger number of protein sequences, please try <code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code> and set <code>batches</code> to a large number. Unlike the in-memory version, this disk-based function caches the partial results in each batch to the hard drive and merges all the results together in the end, which further reduces the memory usage.</p>
+<p><strong>Example</strong>. Let’s assume we have 20,000 sequences. By setting <code>cores = 64</code> and <code>batches = 10000</code> in <code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code>, the workload will be around <code>20000^2/2/64/10000 = 312.5</code> alignments per batch per core. This could give you a relatively quick feedback about if the memory size is going to be sufficient, and how long the computation will take in total, after the first few batches.</p>
+</div>
 </div>
 <div id="similarity-calculation-by-go-semantic-similarity-measures" class="section level1">
 <h1 class="hasAnchor">
@@ -1790,7 +1798,11 @@ Figure 8: A screenshot of the web application ProtrWeb
       </ul>
 </li>
       <li><a href="#descriptors-for-proteochemometric-modeling">Descriptors for Proteochemometric Modeling</a></li>
-      <li><a href="#similarity-calculation-by-sequence-alignment">Similarity Calculation by Sequence Alignment</a></li>
+      <li>
+<a href="#similarity-calculation-by-sequence-alignment">Similarity Calculation by Sequence Alignment</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#scaling-up-for-a-large-number-of-sequences">Scaling up for a large number of sequences</a></li>
+      </ul>
+</li>
       <li><a href="#similarity-calculation-by-go-semantic-similarity-measures">Similarity Calculation by GO Semantic Similarity Measures</a></li>
       <li>
 <a href="#miscellaneous-tools">Miscellaneous Tools</a><ul class="nav nav-pills nav-stacked">

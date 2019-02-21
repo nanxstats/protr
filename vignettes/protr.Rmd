@@ -294,7 +294,9 @@ provided by `Biostrings`, the corresponding functions listed in the
 - `twoSeqSim()` - Similarity calculation derived by sequence alignment
   between two protein sequences
 - `parSeqSim()` - Parallelized pairwise similarity calculation with a
-  list of protein sequences
+  list of protein sequences (in-memory version)
+- `parSeqSimDisk()` - Parallelized pairwise similarity calculation with a
+  list of protein sequences (disk-based version)
 
 The protr package also integrates the function of parallelized similarity
 score computation derived by Gene Ontology (GO) semantic similarity measures
@@ -1104,17 +1106,38 @@ print(psimmat)
 ## [5,] 0.03943488 0.06391103 0.06175942 0.05714638 1.00000000
 ```
 
-We should note that for a small number of proteins, calculating their
+Note that for a small number of proteins, calculating their
 pairwise similarity scores derived by sequence alignment in parallel may
 not significantly reduce the overall computation time, since each of the
 task only requires a relatively small time to finish, thus, computational
-overheads may exist and affect the performance. In testing, we used about
-1,000 protein sequences on 64 CPU cores, and observed significant
+overheads may exist and affect the performance. In our benchmarks, we used
+about 1,000 protein sequences on 64 CPU cores, and observed significant
 performance improvement comparing to the sequential computation.
 
-Users should install the packages `foreach` and `doParallel` before
-using `parSeqSim()`, according to their operation system.
-The protr package will automatically decide which backend to use.
+## Scaling up for a large number of sequences
+
+**`batches`**.
+A useful argument for reducing the memory usage is `batches`.
+It splits the similarity computations into smaller batches.
+A larger batch number reduces the memory need for each parallel process,
+but also adds the overhead of forking new processes. This is a trade-off
+between time (CPU) and space (memory). Also, use `verbose = TRUE`
+to print the computation progress.
+
+**`parSeqSimDisk()`**.
+For similarity computations over an even larger number of protein sequences,
+please try `parSeqSimDisk()` and set `batches` to a large number.
+Unlike the in-memory version, this disk-based function caches the
+partial results in each batch to the hard drive and merges all the
+results together in the end, which further reduces the memory usage.
+
+**Example**.
+Let's assume we have 20,000 sequences. By setting `cores = 64` and
+`batches = 10000` in `parSeqSimDisk()`, the workload will be
+around `20000^2/2/64/10000 = 312.5` alignments per batch per core.
+This could give you a relatively quick feedback about if the memory
+size is going to be sufficient, and how long the computation will
+take in total, after the first few batches.
 
 # Similarity Calculation by GO Semantic Similarity Measures
 
