@@ -4,6 +4,10 @@
 
 - Added a new argument `batches` to `parSeqSim()`. It supports breaking down the pairwise similarity computation into smaller batches. This is useful when you have a large number of protein sequences, enough number of CPU cores, but not enough RAM to compute and hold all the pairwise similarities in a single batch. Use the new argument `verbose` to print the computation progress.
 
+## New Features
+
+- Added a new function `parSeqSimDisk()`. Compared to the in-memory version `parSeqSim()`, this new function caches the partial results in each batch to the hard drive and merges the results together in the end. This could further reduce the memory usage for parallel similarity computations involving a large number of protein sequences.
+
 ## Bug Fixes
 
 - Fixed an issue in `parGOSim()` that will create minor numerical inconsistencies in results due to argument matching.
