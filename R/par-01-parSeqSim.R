@@ -165,7 +165,11 @@ parSeqSim <- function(
 #' s5 <- readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
 #' set.seed(1010)
 #' plist <- as.list(c(s1, s2, s3, s4, s5)[sample(1:5, 100, replace = TRUE)])
-#' psimmat <- parSeqSimDisk(plist, cores = 2, batches = 10, verbose = TRUE, type = "local", submat = "BLOSUM62")
+#' psimmat <- parSeqSimDisk(
+#'   plist,
+#'   cores = 2, batches = 10, verbose = TRUE,
+#'   type = "local", submat = "BLOSUM62"
+#' )
 #' }
 parSeqSimDisk <- function(
   protlist,
