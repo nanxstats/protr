@@ -216,7 +216,11 @@ gap by 1. Defaults to 4.</p></td>
 <span class='no'>s5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/Q9NZP8.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1010</span>)
 <span class='no'>plist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>s1</span>, <span class='no'>s2</span>, <span class='no'>s3</span>, <span class='no'>s4</span>, <span class='no'>s5</span>)[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>100</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)])
-<span class='no'>psimmat</span> <span class='kw'>&lt;-</span> <span class='fu'>parSeqSimDisk</span>(<span class='no'>plist</span>, <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>batches</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>)
+<span class='no'>psimmat</span> <span class='kw'>&lt;-</span> <span class='fu'>parSeqSimDisk</span>(
+  <span class='no'>plist</span>,
+  <span class='kw'>cores</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>batches</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>, <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>
+)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
