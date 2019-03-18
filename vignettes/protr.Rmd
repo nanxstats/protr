@@ -1332,7 +1332,7 @@ the protein sequence descriptors presented in the protr package.
 <p align="center">Figure 8: A screenshot of the web application ProtrWeb</p>
 
 Source code repository for this Shiny web application:
-https://github.com/road2stat/protrweb.
+https://github.com/nanxstats/protrweb.
 
 # Summary
 

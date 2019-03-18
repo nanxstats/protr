@@ -14,8 +14,8 @@ Authors@R: c(
     person("Dong-Sheng", "Cao", role = "aut"))
 Maintainer: Nan Xiao <me@nanx.me>
 License: BSD_3_clause + file LICENSE
-URL: https://nanx.me/protr/, https://github.com/road2stat/protr, http://protr.org
-BugReports: https://github.com/road2stat/protr/issues
+URL: https://nanx.me/protr/, https://github.com/nanxstats/protr, http://protr.org
+BugReports: https://github.com/nanxstats/protr/issues
 SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 LazyData: true
 VignetteBuilder: knitr

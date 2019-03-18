@@ -55,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/road2stat/protr">
+  <a href="https://github.com/nanxstats/protr">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -75,9 +75,9 @@
       <h1>protr: R package for generating various numerical representation schemes of protein sequences</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2019-02-24</h4>
+            <h4 class="date">2019-03-17</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/road2stat/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/nanxstats/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
       <div class="hidden name"><code>protr.Rmd</code></div>
 
     </div>
@@ -157,7 +157,7 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 <a class="sourceLine" id="cb13-13" title="13">y.te =<span class="st"> </span>labels[te.idx]</a></code></pre></div>
 <p>We will train a random forest classification model on the training set with 5-fold cross-validation, using the <code>randomForest</code> package.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"randomForest"</span>)</a>
-<a class="sourceLine" id="cb14-2" title="2">rf.fit =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/randomForest/topics/randomForest">randomForest</a></span>(x.tr, y.tr, <span class="dt">cv.fold =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2">rf.fit =<span class="st"> </span><span class="kw">randomForest</span>(x.tr, y.tr, <span class="dt">cv.fold =</span> <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb14-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(rf.fit)</a></code></pre></div>
 <p>The training result is:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">## Call:</span></a>
@@ -272,10 +272,8 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractDescScales.html">extractDescScales()</a></code> - Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)</li>
 </ul>
 </li>
-<li>
-<code><a href="../reference/extractFAScales.html">extractFAScales()</a></code> - Scales-based descriptors derived by Factor Analysis</li>
-<li>
-<code><a href="../reference/extractMDSScales.html">extractMDSScales()</a></code> - Scales-based descriptors derived by Multidimensional Scaling</li>
+<li><p><code><a href="../reference/extractFAScales.html">extractFAScales()</a></code> - Scales-based descriptors derived by Factor Analysis</p></li>
+<li><p><code><a href="../reference/extractMDSScales.html">extractMDSScales()</a></code> - Scales-based descriptors derived by Multidimensional Scaling</p></li>
 <li><p><code><a href="../reference/extractBLOSUM.html">extractBLOSUM()</a></code> - BLOSUM and PAM matrix-derived descriptors</p></li>
 </ul>
 <p>The protr package integrates the function of parallelized similarity score computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by <code>Biostrings</code>, the corresponding functions listed in the <code>protr</code> package include:</p>
@@ -1174,8 +1172,8 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <li>Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)</li>
 </ul>
 </li>
-<li>Scales-based descriptors derived by Factor Analysis</li>
-<li>Scales-based descriptors derived by Multidimensional Scaling</li>
+<li><p>Scales-based descriptors derived by Factor Analysis</p></li>
+<li><p>Scales-based descriptors derived by Multidimensional Scaling</p></li>
 <li><p>BLOSUM and PAM matrix-derived descriptors</p></li>
 </ul>
 <p>Note that each of the scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users can provide totally self-defined property matrices to construct scales-based descriptors.</p>
@@ -1403,7 +1401,7 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <img src="figures/protrweb.png" width="100%" class="img-responsive" align="center" alt="ProtrWeb"><p align="center">
 Figure 8: A screenshot of the web application ProtrWeb
 </p>
-<p>Source code repository for this Shiny web application: <a href="https://github.com/road2stat/protrweb" class="uri">https://github.com/road2stat/protrweb</a>.</p>
+<p>Source code repository for this Shiny web application: <a href="https://github.com/nanxstats/protrweb" class="uri">https://github.com/nanxstats/protrweb</a>.</p>
 </div>
 <div id="summary" class="section level1">
 <h1 class="hasAnchor">

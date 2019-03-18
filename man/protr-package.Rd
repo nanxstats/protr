@@ -29,7 +29,7 @@ The web server for this package, \code{ProtrWeb} can be accessed from:
 \url{http://protr.org}.
 
 Bug reports and feature requests should be sent to
-\url{https://github.com/road2stat/protr/issues}.
+\url{https://github.com/nanxstats/protr/issues}.
 }
 \references{
 Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015).

@@ -1,7 +1,7 @@
 # protr  <a href="https://nanx.me/protr/"><img src="https://i.imgur.com/D0nDOWs.png" align="right" alt="logo" height="180" width="180" /></a>
 
-[![Build Status](https://travis-ci.org/road2stat/protr.svg?branch=master)](https://travis-ci.org/road2stat/protr)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/road2stat/protr?branch=master&svg=true)](https://ci.appveyor.com/project/road2stat/protr)
+[![Build Status](https://travis-ci.org/nanxstats/protr.svg?branch=master)](https://travis-ci.org/nanxstats/protr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/nanxstats/protr?branch=master&svg=true)](https://ci.appveyor.com/project/nanxstats/protr)
 [![CRAN Version](https://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/protr)](https://cranlogs.r-pkg.org/badges/protr)
 
@@ -42,7 +42,7 @@ Or try the latest version on GitHub:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("road2stat/protr")
+devtools::install_github("nanxstats/protr")
 ```
 
 [Browse the package vignette](https://nanx.me/protr/articles/protr.html) for a quick-start.
@@ -122,7 +122,7 @@ GO semantic similarity measures:
 
 - Website: https://nanx.me/protr/
 - CRAN: https://cran.r-project.org/package=protr
-- GitHub: https://github.com/road2stat/protr
+- GitHub: https://github.com/nanxstats/protr
 
 ## Contribute
 
