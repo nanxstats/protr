@@ -22,23 +22,25 @@ vignette: >
 The protr package offers a unique and comprehensive toolkit
 for generating various numerical representation schemes of protein
 sequences. The descriptors included are extensively utilized in
-bioinformatics and chemogenomics research. The commonly used
-descriptors listed in protr include amino acid composition,
+bioinformatics and chemogenomics research.
+
+The commonly used descriptors listed in protr include amino acid composition,
 autocorrelation, CTD, conjoint traid, quasi-sequence order,
 pseudo amino acid composition, and profile-based descriptors
 derived by Position-Specific Scoring Matrix (PSSM).
+
 The descriptors for proteochemometric (PCM) modeling, includes the
 scales-based descriptors derived by principal components analysis,
 factor analysis, multidimensional scaling, amino acid properties
 (AAindex), 20+ classes of 2D and 3D molecular descriptors
 (Topological, WHIM, VHSE, etc.), and BLOSUM/PAM matrix-derived descriptors.
-The protr package also integrates the function of parallelized
-similarity computation derived by pairwise protein sequence alignment
-and Gene Ontology (GO) semantic similarity measures. ProtrWeb,
-the web application built on protr, can be accessed from http://protr.org.
 
-If you find protr is useful in your research, please feel free
-to cite our paper:
+The protr package also implemented parallelized similarity computation
+derived by pairwise protein sequence alignment and Gene Ontology (GO)
+semantic similarity measures. ProtrWeb, the web application built on
+protr, can be accessed from http://protr.org.
+
+If you find protr useful in your research, please feel free to cite our paper:
 
 <blockquote>
 Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31 (11), 1857-1859.
@@ -62,10 +64,10 @@ BibTeX entry:
 }
 ```
 
-# An Example Workflow
+# An Example Predictive Modeling Workflow
 
 Here we use the subcellular localization dataset of human proteins presented
-in @chou2008cell to demonstrate the workflow of using protr.
+in @chou2008cell to demonstrate the basic usage of protr.
 
 The complete dataset includes 3,134 protein sequences (2,750 different
 proteins), classified into 14 human subcellular locations. We selected
@@ -81,10 +83,14 @@ stored in two separated FASTA files with `readFASTA()`:
 library("protr")
 
 # load FASTA files
-extracell = readFASTA(system.file(
-  "protseq/extracell.fasta", package = "protr"))
-mitonchon = readFASTA(system.file(
-  "protseq/mitochondrion.fasta", package = "protr"))
+extracell <- readFASTA(system.file(
+  "protseq/extracell.fasta",
+  package = "protr"
+))
+mitonchon <- readFASTA(system.file(
+  "protseq/mitochondrion.fasta",
+  package = "protr"
+))
 ```
 
 To read protein sequences stored in PDB format files, use `readPDB()` instead.
@@ -115,8 +121,8 @@ types which is usually required for the descriptor computation, we use the
 remove the _non-standard_ sequences:
 
 ```{r, eval = FALSE}
-extracell = extracell[(sapply(extracell, protcheck))]
-mitonchon = mitonchon[(sapply(mitonchon, protcheck))]
+extracell <- extracell[(sapply(extracell, protcheck))]
+mitonchon <- mitonchon[(sapply(mitonchon, protcheck))]
 ```
 
 ```{r, eval = FALSE}
@@ -142,12 +148,12 @@ i.e., the amphiphilic pseudo amino acid composition (APseAAC) descriptor
 
 ```{r, eval = FALSE}
 # calculate APseAAC descriptors
-x1 = t(sapply(extracell, extractAPAAC))
-x2 = t(sapply(mitonchon, extractAPAAC))
-x  = rbind(x1, x2)
+x1 <- t(sapply(extracell, extractAPAAC))
+x2 <- t(sapply(mitonchon, extractAPAAC))
+x <- rbind(x1, x2)
 
 # make class labels
-labels = as.factor(c(rep(0, length(extracell)), rep(1, length(mitonchon))))
+labels <- as.factor(c(rep(0, length(extracell)), rep(1, length(mitonchon))))
 ```
 
 In protr, the functions of commonly used descriptors for protein
@@ -160,16 +166,16 @@ Next, we will split the data into a 75% training set and a 25% test set.
 set.seed(1001)
 
 # split training and test set
-tr.idx = c(
+tr.idx <- c(
   sample(1:nrow(x1), round(nrow(x1) * 0.75)),
   sample(nrow(x1) + 1:nrow(x2), round(nrow(x2) * 0.75))
 )
-te.idx = setdiff(1:nrow(x), tr.idx)
+te.idx <- setdiff(1:nrow(x), tr.idx)
 
-x.tr = x[tr.idx, ]
-x.te = x[te.idx, ]
-y.tr = labels[tr.idx]
-y.te = labels[te.idx]
+x.tr <- x[tr.idx, ]
+x.te <- x[te.idx, ]
+y.tr <- labels[tr.idx]
+y.te <- labels[te.idx]
 ```
 
 We will train a random forest classification model on the training set
@@ -177,8 +183,8 @@ with 5-fold cross-validation, using the `randomForest` package.
 
 ```{r, eval = FALSE}
 library("randomForest")
-rf.fit = randomForest(x.tr, y.tr, cv.fold = 5)
-print(rf.fit)
+rf.fit <- randomForest(x.tr, y.tr, cv.fold = 5)
+rf.fit
 ```
 
 The training result is:
@@ -203,7 +209,7 @@ in Figure 1.
 
 ```{r, eval = FALSE}
 # predict on test set
-rf.pred = predict(rf.fit, newdata = x.te, type = "prob")[, 1]
+rf.pred <- predict(rf.fit, newdata = x.te, type = "prob")[, 1]
 
 # plot ROC curve
 library("pROC")
@@ -231,43 +237,29 @@ state-of-the-art protein sequence descriptors with R.
 Generally, each type of the descriptors (features) can be calculated
 with a function named `extractX()` in the protr package,
 where `X` stands for the abbrevation of the descriptor name.
-The descriptors and the function names implemented are listed below:
-
+The descriptors are:
 
 - Amino acid composition
-
     - `extractAAC()` - Amino acid composition
     - `extractDC()` - Dipeptide composition
     - `extractTC()` - Tripeptide composition
-
 - Autocorrelation
-
     - `extractMoreauBroto()` - Normalized Moreau-Broto autocorrelation
     - `extractMoran()` - Moran autocorrelation
     - `extractGeary()` - Geary autocorrelation
-
 - CTD descriptors
-
     - `extractCTDC()` - Composition
     - `extractCTDT()` - Transition
     - `extractCTDD()` - Distribution
-
 - Conjoint triad descriptors
-
     - `extractCTriad()` - Conjoint triad descriptors
-
 - Quasi-sequence-order descriptors
-
     - `extractSOCN()` - Sequence-order-coupling number
     - `extractQSO()` - Quasi-sequence-order descriptors
-
 - Pseudo-amino acid composition
-
     - `extractPAAC()` - Pseudo-amino acid composition (PseAAC)
     - `extractAPAAC()` - Amphiphilic pseudo-amino acid composition (APseAAC)
-
 - Profile-based descriptors
-
     - `extractPSSM()`
     - `extractPSSMAcc()`
     - `extractPSSMFeature()`
@@ -275,12 +267,9 @@ The descriptors and the function names implemented are listed below:
 The descriptors commonly used in Proteochemometric Modeling (PCM)
 implemented in protr include:
 
-
 - `extractScales()`, `extractScalesGap()` - Scales-based descriptors derived by Principal Components Analysis
-
     - `extractProtFP()`, `extractProtFPGap()` - Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. _Protein Fingerprint_)
     - `extractDescScales()` - Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)
-
 - `extractFAScales()` - Scales-based descriptors derived by Factor Analysis
 - `extractMDSScales()` - Scales-based descriptors derived by Multidimensional Scaling
 - `extractBLOSUM()` - BLOSUM and PAM matrix-derived descriptors
@@ -353,8 +342,10 @@ extract the descriptors (features) from protein sequences:
 ```{r, extractAAC}
 library("protr")
 
-x = readFASTA(system.file(
-  "protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file(
+  "protseq/P00750.fasta",
+  package = "protr"
+))[[1]]
 
 extractAAC(x)
 ```
@@ -378,7 +369,7 @@ type $r$ and type $s$. Similar to `extractAAC()`,
 here we use `extractDC()` to compute the descriptors:
 
 ```{r, extractDC}
-dc = extractDC(x)
+dc <- extractDC(x)
 head(dc, n = 30L)
 ```
 
@@ -400,7 +391,7 @@ the length-8000 descriptor, to save some space, here we also omitted
 the long outputs:
 
 ```{r, extractTC}
-tc = extractTC(x)
+tc <- extractTC(x)
 head(tc, n = 36L)
 ```
 
@@ -453,7 +444,7 @@ The corresponding function for this descriptor is `extractMoreauBroto()`.
 A typical call would be:
 
 ```{r, extractMoreau1}
-moreau = extractMoreauBroto(x)
+moreau <- extractMoreauBroto(x)
 head(moreau, n = 36L)
 ```
 
@@ -476,27 +467,30 @@ their own properties and lag value to calculate with. For example:
 
 ```{r, extractMoreau2}
 # Define 3 custom properties
-myprops = data.frame(
+myprops <- data.frame(
   AccNo = c("MyProp1", "MyProp2", "MyProp3"),
-  A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101),
-  N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59),
-  C = c(0.29,    -1, 47),  E = c(-0.74,   3, 73),
-  Q = c(-0.85,  0.2, 72),  G = c(0.48,    0, 1),
-  H = c(-0.4,  -0.5, 82),  I = c(1.38, -1.8, 57),
-  L = c(1.06,  -1.8, 57),  K = c(-1.5,    3, 73),
-  M = c(0.64,  -1.3, 75),  F = c(1.19, -2.5, 91),
-  P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31),
-  T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130),
-  Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43)
+  A = c(0.62, -0.5, 15), R = c(-2.53, 3, 101),
+  N = c(-0.78, 0.2, 58), D = c(-0.9, 3, 59),
+  C = c(0.29, -1, 47), E = c(-0.74, 3, 73),
+  Q = c(-0.85, 0.2, 72), G = c(0.48, 0, 1),
+  H = c(-0.4, -0.5, 82), I = c(1.38, -1.8, 57),
+  L = c(1.06, -1.8, 57), K = c(-1.5, 3, 73),
+  M = c(0.64, -1.3, 75), F = c(1.19, -2.5, 91),
+  P = c(0.12, 0, 42), S = c(-0.18, 0.3, 31),
+  T = c(-0.05, -0.4, 45), W = c(0.81, -3.4, 130),
+  Y = c(0.26, -2.3, 107), V = c(1.08, -1.5, 43)
 )
 
 # Use 4 properties in the AAindex database, and 3 cutomized properties
-moreau2 = extractMoreauBroto(
-  x, customprops = myprops,
+moreau2 <- extractMoreauBroto(
+  x,
+  customprops = myprops,
   props = c(
     "CIDH920105", "BHAR880101",
     "CHAM820101", "CHAM820102",
-    "MyProp1", "MyProp2", "MyProp3"))
+    "MyProp1", "MyProp2", "MyProp3"
+  )
+)
 
 head(moreau2, n = 36L)
 ```
@@ -529,12 +523,15 @@ descriptors (only print out the first 36 elements):
 ```{r, extractMoran}
 # Use the 3 custom properties defined before
 # and 4 properties in the AAindex database
-moran = extractMoran(
-  x, customprops = myprops,
+moran <- extractMoran(
+  x,
+  customprops = myprops,
   props = c(
     "CIDH920105", "BHAR880101",
     "CHAM820101", "CHAM820102",
-    "MyProp1", "MyProp2", "MyProp3"))
+    "MyProp1", "MyProp2", "MyProp3"
+  )
+)
 
 head(moran, n = 36L)
 ```
@@ -557,12 +554,15 @@ exactly the same as `extractMoreauBroto()` and `extractMoran()`:
 ```{r, extractGeary}
 # Use the 3 custom properties defined before
 # and 4 properties in the AAindex database
-geary = extractGeary(
-  x, customprops = myprops,
+geary <- extractGeary(
+  x,
+  customprops = myprops,
   props = c(
     "CIDH920105", "BHAR880101",
     "CHAM820101", "CHAM820102",
-    "MyProp1", "MyProp2", "MyProp3"))
+    "MyProp1", "MyProp2", "MyProp3"
+  )
+)
 
 head(geary, n = 36L)
 ```
@@ -774,7 +774,7 @@ represent protein.
 To compute conjoint triads of protein sequences, we can simply use:
 
 ```{r, extractCTriad}
-ctriad = extractCTriad(x)
+ctriad <- extractCTriad(x)
 head(ctriad, n = 65L)
 ```
 
@@ -1019,13 +1019,17 @@ For example, to compute the "topological scales" derived by PCA
 one can use `extractDescScales()`:
 
 ```{r, extractDescScales}
-x = readFASTA(system.file(
-  "protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file(
+  "protseq/P00750.fasta",
+  package = "protr"
+))[[1]]
 
-descscales = extractDescScales(
-  x, propmat = "AATopo",
+descscales <- extractDescScales(
+  x,
+  propmat = "AATopo",
   index = c(37:41, 43:47),
-  pc = 5, lag = 7, silent = FALSE)
+  pc = 5, lag = 7, silent = FALSE
+)
 ```
 
 the argument `propmat` involkes the `AATopo` dataset shipped with the
@@ -1048,12 +1052,16 @@ For another example, to compute the descriptors derived by
 the BLOSUM62 matrix and use the first 5 scales, one can use:
 
 ```{r, extractBLOSUM}
-x = readFASTA(system.file(
-  "protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file(
+  "protseq/P00750.fasta",
+  package = "protr"
+))[[1]]
 
-blosum = extractBLOSUM(
-  x, submat = "AABLOSUM62",
-  k = 5, lag = 7, scale = TRUE, silent = FALSE)
+blosum <- extractBLOSUM(
+  x,
+  submat = "AABLOSUM62",
+  k = 5, lag = 7, scale = TRUE, silent = FALSE
+)
 ```
 
 The result is a length 175 named vector:
@@ -1087,14 +1095,14 @@ the pairwise similarity calculation with a list of protein
 sequences in parallel:
 
 ```{r, eval = FALSE}
-s1 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-s2 = readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
-s3 = readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
-s4 = readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
-s5 = readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
-plist = list(s1, s2, s3, s4, s5)
-psimmat = parSeqSim(plist, cores = 4, type = "local", submat = "BLOSUM62")
-print(psimmat)
+s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+s2 <- readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
+s3 <- readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
+s4 <- readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
+s5 <- readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
+plist <- list(s1, s2, s3, s4, s5)
+psimmat <- parSeqSim(plist, cores = 4, type = "local", submat = "BLOSUM62")
+psimmat
 ```
 
 ```{r, eval = FALSE}
@@ -1152,19 +1160,19 @@ of GO terms / Entrez Gene IDs:
 
 ```{r, eval = FALSE}
 # By GO Terms
-go1 = c(
+go1 <- c(
   "GO:0005215", "GO:0005488", "GO:0005515",
   "GO:0005625", "GO:0005802", "GO:0005905"
 ) # AP4B1
-go2 = c(
+go2 <- c(
   "GO:0005515", "GO:0005634", "GO:0005681",
   "GO:0008380", "GO:0031202"
 ) # BCAS2
-go3 = c(
+go3 <- c(
   "GO:0003735", "GO:0005622", "GO:0005840",
   "GO:0006412"
 ) # PDE4DIP
-golist = list(go1, go2, go3)
+golist <- list(go1, go2, go3)
 parGOSim(golist, type = "go", ont = "CC", measure = "Wang")
 ```
 
@@ -1177,7 +1185,7 @@ parGOSim(golist, type = "go", ont = "CC", measure = "Wang")
 
 ```{r, eval = FALSE}
 # By Entrez gene id
-genelist = list(c("150", "151", "152", "1814", "1815", "1816"))
+genelist <- list(c("150", "151", "152", "1814", "1815", "1816"))
 parGOSim(genelist, type = "gene", ont = "BP", measure = "Wang")
 ```
 
@@ -1202,9 +1210,9 @@ by protein ID(s). The input `ID` is a character vector specifying
 the protein ID(s). The returned sequences are stored in a list:
 
 ```{r, eval = FALSE}
-ids = c("P00750", "P00751", "P00752")
-prots = getUniProt(ids)
-print(prots)
+ids <- c("P00750", "P00751", "P00752")
+prots <- getUniProt(ids)
+prots
 ```
 
 ```{r, eval = FALSE}
@@ -1217,7 +1225,7 @@ print(prots)
 ## GEEEQKFEVEKYIVHKEFDDDTYDNDIALLQLKSDSSRCAQESSVVRTVCLPPADLQLPDWTECELSGYGKHEALSP
 ## FYSERLKEAHVRLYPSSRCTSQHLLNRTVTDNMLCAGDTRSGGPQANLHDACQGDSGGPLVCLNDGRMTLVGIISWG
 ## LGCGQKDVPGVYTKVTNYLDWIRDNMRP"
-## 
+##
 ## [[2]]
 ## [1] "MGSNLSPQLCLMPFILGLLSGGVTTTPWSLARPQGSCSLEGVEIKGGSFRLLQEGQALEYVCPSGFYPYPVQ
 ## TRTCRSTGSWSTLKTQDQKTVRKAECRAIHCPRPHDFENGEYWPRSPYYNVSDEISFHCYDGYTLRGSANRTCQVNG
@@ -1229,7 +1237,7 @@ print(prots)
 ## HSIKVSVGGEKRDLEIEVVLFHPNYNINGKKEAGIPEFYDYDVALIKLKNKLKYGQTIRPICLPCTEGTTRALRLPP
 ## TTTCQQQKEELLPAQDIKALFVSEEEKKLTRKEVYIKNGDKKGSCERDAQYAPGYDKVKDISEVVTPRFLCTGGVSP
 ## YADPNTCRGDSGGPLIVHKRSRFIQVGVISWGVVDVCKNQKRQKQVPAHARDFHINLFQVLPWLKEKLQDEDLGFL"
-## 
+##
 ## [[3]]
 ## [1] "APPIQSRIIGGRECEKNSHPWQVAIYHYSSFQCGGVLVNPKWVLTAAHCKNDNYEVWLGRHNLFENENTAQF
 ## FGVTADFPHPGFNLSLLKXHTKADGKDYSHDLMLLRLQSPAKITDAVKVLELPTQEPELGSTCEASGWGSIEPGPDB
@@ -1259,7 +1267,7 @@ types are in the 20 default types, which returns a `TRUE` if all the
 amino acids in the sequence belongs to the 20 default types:
 
 ```{r, protcheck}
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 # a real sequence
 protcheck(x)
 # an artificial sequence
