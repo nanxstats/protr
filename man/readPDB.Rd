@@ -22,7 +22,7 @@ This function reads protein sequences in PDB (Protein Data Bank) format,
 and return the amino acid sequences represented by single-letter code.
 }
 \examples{
-Seq4HHB = readPDB(system.file("protseq/4HHB.pdb", package = "protr"))
+Seq4HHB <- readPDB(system.file("protseq/4HHB.pdb", package = "protr"))
 }
 \references{
 Protein Data Bank Contents Guide: Atomic Coordinate Entry Format Description,
@@ -36,5 +36,3 @@ protein sequences in FASTA format.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{PDB}
-\keyword{read}

@@ -18,6 +18,4 @@ for more information.
 }
 \examples{
 data(AACPSA)
-
 }
-\keyword{datasets}

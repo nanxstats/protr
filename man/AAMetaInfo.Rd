@@ -19,6 +19,4 @@ calculation in this package. Each column represents:
 }
 \examples{
 data(AAMetaInfo)
-
 }
-\keyword{datasets}

@@ -57,6 +57,3 @@ similarity between two groups of GO terms or two Entrez gene IDs.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{alignment}
-\keyword{parallel}
-\keyword{similarity}

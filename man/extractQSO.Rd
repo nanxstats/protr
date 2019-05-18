@@ -21,7 +21,7 @@ This function calculates the Quasi-Sequence-Order (QSO) descriptor
 (dim: \code{20 + 20 + (2 * nlag)}, default is 100).
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractQSO(x)
 }
 \references{
@@ -46,5 +46,3 @@ See \code{\link{extractSOCN}} for sequence-order-coupling numbers.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{QSO}
-\keyword{extract}

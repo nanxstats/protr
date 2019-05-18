@@ -11,6 +11,4 @@ used for scales extraction in this package.
 }
 \examples{
 data(AABurden)
-
 }
-\keyword{datasets}

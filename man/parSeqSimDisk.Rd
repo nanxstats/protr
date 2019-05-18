@@ -85,6 +85,3 @@ See \code{\link{parSeqSim}} for the in-memory version.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{alignment}
-\keyword{parallel}
-\keyword{similarity}

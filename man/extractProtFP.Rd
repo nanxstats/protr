@@ -38,13 +38,9 @@ select from the AAindex database by specify the numerical or character
 index of the properties in the AAindex database.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-fp = extractProtFP(
-  x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+fp <- extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{AAindex}
-\keyword{extract}
-\keyword{scales}

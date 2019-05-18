@@ -42,14 +42,9 @@ character index of the properties in the AAindex database.
 }
 \examples{
 # amino acid sequence with gaps
-x = readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
-fp = extractProtFPGap(
-  x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
+x <- readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
+fp <- extractProtFPGap(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{AAindex}
-\keyword{extract}
-\keyword{gap}
-\keyword{scales}

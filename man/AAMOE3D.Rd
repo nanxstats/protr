@@ -14,6 +14,4 @@ is included in this package. See \code{\link{OptAA3d}} for more information.
 }
 \examples{
 data(AAMOE3D)
-
 }
-\keyword{datasets}

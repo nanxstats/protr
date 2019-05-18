@@ -86,6 +86,3 @@ calculation based on Smith-Waterman local alignment.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{GO}
-\keyword{Ontology}
-\keyword{similarity}

@@ -43,10 +43,10 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.
 }
 \examples{
 # amino acid sequence with gaps
-x = readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
+x <- readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
 data(AAindex)
-AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-scales = extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+AAidxmat <- t(na.omit(as.matrix(AAindex[, 7:26])))
+scales <- extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \seealso{
 See \code{\link{extractProtFPGap}} for amino acid property based
@@ -55,8 +55,3 @@ scales descriptors (protein fingerprint) with gap support.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{PCA}
-\keyword{PCM}
-\keyword{extract}
-\keyword{gap}
-\keyword{scales}

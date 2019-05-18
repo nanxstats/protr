@@ -18,11 +18,10 @@ This function checks if the protein sequence's amino acid types
 are in the 20 default types.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-protcheck(x)  # TRUE
-protcheck(paste(x, "Z", sep = ""))  # FALSE
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+protcheck(x) # TRUE
+protcheck(paste(x, "Z", sep = "")) # FALSE
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{check}

@@ -29,10 +29,9 @@ are the positions of the specified amino acid in the sequence.
 This function extracts the segmentations from the protein sequence.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 protseg(x, aa = "R", k = 5)
 }
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{segmentation}

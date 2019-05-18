@@ -74,6 +74,3 @@ See \code{\link{parSeqSimDisk}} for the disk-based version.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{alignment}
-\keyword{parallel}
-\keyword{similarity}

@@ -29,13 +29,14 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 
 # use customized amino acid classification (normalized van der Waals volume)
-newclass = list(
+newclass <- list(
   c("G", "A", "S", "T", "P", "D", "C"),
   c("N", "V", "E", "Q", "I", "L"),
-  c("M", "H", "K", "F", "R", "Y", "W"))
+  c("M", "H", "K", "F", "R", "Y", "W")
+)
 
 extractCTriadClass(x, aaclass = newclass)
 }
@@ -48,6 +49,3 @@ Predicting Protein-protein Interactions Based Only on Sequences Information.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{Conjoint}
-\keyword{Triad}
-\keyword{extract}

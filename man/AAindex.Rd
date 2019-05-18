@@ -17,7 +17,4 @@ for more information.
 }
 \examples{
 data(AAindex)
-
 }
-\keyword{AAindex}
-\keyword{datasets}

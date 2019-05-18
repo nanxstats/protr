@@ -37,7 +37,7 @@ following sense.
 This function reads protein sequences in FASTA format.
 }
 \examples{
-P00750 = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))
+P00750 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))
 }
 \references{
 Pearson, W.R. and Lipman, D.J. (1988)
@@ -52,4 +52,3 @@ protein sequences from uniprot.org.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{FASTA}

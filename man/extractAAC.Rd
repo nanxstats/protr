@@ -16,7 +16,7 @@ A length 20 named vector
 This function calculates the Amino Acid Composition descriptor (dim: 20).
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractAAC(x)
 }
 \references{
@@ -32,5 +32,3 @@ for Dipeptide Composition and Tripeptide Composition descriptors.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{Composition}
-\keyword{extract}

@@ -10,6 +10,4 @@ PAM70 Matrix for the 20 amino acids. The matrix was extracted from the
 }
 \examples{
 data(AAPAM70)
-
 }
-\keyword{datasets}

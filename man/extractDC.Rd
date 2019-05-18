@@ -16,7 +16,7 @@ A length 400 named vector
 This function calculates the Dipeptide Composition descriptor (dim: 400).
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractDC(x)
 }
 \references{
@@ -32,6 +32,3 @@ for Amino Acid Composition and Tripeptide Composition descriptors.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{Composition}
-\keyword{Dipeptide}
-\keyword{extract}

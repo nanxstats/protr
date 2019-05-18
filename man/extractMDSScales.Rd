@@ -36,10 +36,10 @@ derived by Multidimensional Scaling (MDS).
 Users can provide customized amino acid property matrices.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 data(AATopo)
-tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
+tprops <- AATopo[, c(37:41, 43:47)] # select a set of topological descriptors
+mds <- extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 }
 \references{
 Venkatarajan, M. S., & Braun, W. (2001).
@@ -54,6 +54,3 @@ descriptors derived by Principal Components Analysis.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{MDS}
-\keyword{PCM}
-\keyword{extract}

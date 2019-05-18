@@ -26,10 +26,10 @@ for generating scale-based descriptors of the same length.
 Please see the references for details about auto cross covariance.
 }
 \examples{
-p = 8    # p is the scales number
-n = 200  # n is the amino acid number
-lag = 7  # the lag paramter
-mat = matrix(rnorm(p * n), nrow = p, ncol = n)
+p <- 8 # p is the scales number
+n <- 200 # n is the amino acid number
+lag <- 7 # the lag paramter
+mat <- matrix(rnorm(p * n), nrow = p, ncol = n)
 acc(mat, lag)
 }
 \references{
@@ -52,5 +52,3 @@ and \code{\link{extractProtFP}}.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{acc}
-\keyword{covariance}

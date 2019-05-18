@@ -40,10 +40,10 @@ and scales-based descriptors derived by 20+ classes of 2D and 3D
 molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 data(AAindex)
-AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+AAidxmat <- t(na.omit(as.matrix(AAindex[, 7:26])))
+scales <- extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 }
 \seealso{
 See \code{\link{extractDescScales}} scales descriptors based on
@@ -53,7 +53,3 @@ for amino acid property based scales descriptors (protein fingerprint).
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{PCA}
-\keyword{PCM}
-\keyword{extract}
-\keyword{scales}

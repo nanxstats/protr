@@ -23,7 +23,7 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractCTriad(x)
 }
 \references{
@@ -35,6 +35,3 @@ Predicting Protein-protein Interactions Based Only on Sequences Information.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{Conjoint}
-\keyword{Triad}
-\keyword{extract}

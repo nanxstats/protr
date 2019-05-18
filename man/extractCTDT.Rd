@@ -24,7 +24,7 @@ negative and positive control comparisons where relevant to help guide
 interpretation of the results.
 }
 \examples{
-x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 extractCTDT(x)
 }
 \references{
@@ -44,6 +44,3 @@ for Composition and Distribution of the CTD descriptors.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{CTD}
-\keyword{Transition}
-\keyword{extract}

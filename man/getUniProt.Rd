@@ -19,8 +19,9 @@ This function retrieves protein sequences from uniprot.org by protein ID(s).
 \dontrun{
 # Network latency may slow down this example
 # Only test this when your connection is fast enough
-ids = c("P00750", "P00751", "P00752")
-getUniProt(ids)}
+ids <- c("P00750", "P00751", "P00752")
+getUniProt(ids)
+}
 }
 \seealso{
 See \code{\link{readFASTA}} for reading FASTA format files.
@@ -28,4 +29,3 @@ See \code{\link{readFASTA}} for reading FASTA format files.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{UniProt}

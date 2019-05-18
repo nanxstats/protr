@@ -30,21 +30,21 @@ to interval (0, 1) by the transformation 1/(1+e^(-x)).
 }
 \examples{
 if (Sys.which("makeblastdb") == "" | Sys.which("psiblast") == "") {
-
   cat("Cannot find makeblastdb or psiblast. Please install NCBI Blast+")
-
 } else {
-
-  x = readFASTA(system.file(
-    "protseq/P00750.fasta", package = "protr"))[[1]]
-  dbpath = tempfile("tempdb", fileext = ".fasta")
+  x <- readFASTA(system.file(
+    "protseq/P00750.fasta",
+    package = "protr"
+  ))[[1]]
+  dbpath <- tempfile("tempdb", fileext = ".fasta")
   invisible(file.copy(from = system.file(
-    "protseq/Plasminogen.fasta", package = "protr"), to = dbpath))
+    "protseq/Plasminogen.fasta",
+    package = "protr"
+  ), to = dbpath))
 
-  pssmmat = extractPSSM(seq = x, database.path = dbpath)
-  pssmfeature = extractPSSMFeature(pssmmat)
+  pssmmat <- extractPSSM(seq = x, database.path = dbpath)
+  pssmfeature <- extractPSSMFeature(pssmmat)
   head(pssmfeature)
-
 }
 }
 \references{
@@ -62,7 +62,3 @@ Rangwala, Huzefa, and George Karypis.
 \author{
 Nan Xiao <\url{https://nanx.me}>
 }
-\keyword{Alignment}
-\keyword{Blast}
-\keyword{PSSM}
-\keyword{extract}

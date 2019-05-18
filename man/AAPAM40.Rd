@@ -10,6 +10,4 @@ PAM40 Matrix for the 20 amino acids. The matrix was extracted from the
 }
 \examples{
 data(AAPAM40)
-
 }
-\keyword{datasets}

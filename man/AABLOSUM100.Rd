@@ -10,6 +10,4 @@ BLOSUM100 Matrix for the 20 amino acids. The matrix was extracted from the
 }
 \examples{
 data(AABLOSUM100)
-
 }
-\keyword{datasets}
