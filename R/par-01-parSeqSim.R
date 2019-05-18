@@ -39,6 +39,8 @@
 #'
 #' @seealso See \code{\link{parSeqSimDisk}} for the disk-based version.
 #'
+#' @importFrom utils combn
+#'
 #' @export parSeqSim
 #'
 #' @examples

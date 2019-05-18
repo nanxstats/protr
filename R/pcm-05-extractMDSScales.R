@@ -30,6 +30,8 @@
 #' @seealso See \code{\link{extractScales}} for scales-based
 #' descriptors derived by Principal Components Analysis.
 #'
+#' @importFrom stats dist cmdscale
+#'
 #' @export extractMDSScales
 #'
 #' @references

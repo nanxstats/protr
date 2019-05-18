@@ -46,6 +46,9 @@
 #' @seealso See \code{\link{extractMoran}} and \code{\link{extractGeary}}
 #' for Moran autocorrelation descriptors and Geary autocorrelation descriptors.
 #'
+#' @importFrom stats sd
+#' @importFrom utils read.csv
+#'
 #' @export extractMoreauBroto
 #'
 #' @note For this descriptor type, users need to intelligently evaluate

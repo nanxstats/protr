@@ -47,6 +47,8 @@
 #' @seealso See \code{\link{extractProtFPGap}} for amino acid property based
 #' scales descriptors (protein fingerprint) with gap support.
 #'
+#' @importFrom stats prcomp predict
+#'
 #' @export extractScalesGap
 #'
 #' @examples

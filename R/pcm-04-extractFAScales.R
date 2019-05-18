@@ -31,6 +31,8 @@
 #'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
+#' @importFrom stats factanal
+#'
 #' @export extractFAScales
 #'
 #' @references

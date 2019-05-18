@@ -47,6 +47,8 @@
 #' for Moreau-Broto autocorrelation descriptors and
 #' Moran autocorrelation descriptors.
 #'
+#' @importFrom stats sd
+#'
 #' @export extractGeary
 #'
 #' @note For this descriptor type, users need to intelligently evaluate

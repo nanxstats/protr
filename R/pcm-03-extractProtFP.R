@@ -29,6 +29,8 @@
 #'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
+#' @importFrom stats na.omit
+#'
 #' @export extractProtFP
 #'
 #' @examples

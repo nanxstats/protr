@@ -35,6 +35,8 @@
 #' 20+ classes of molecular descriptors, and \code{\link{extractProtFP}}
 #' for amino acid property based scales descriptors (protein fingerprint).
 #'
+#' @importFrom stats prcomp predict
+#'
 #' @export extractScales
 #'
 #' @examples
