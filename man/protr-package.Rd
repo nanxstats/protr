@@ -2,38 +2,35 @@
 % Please edit documentation in R/protr-package.R
 \docType{package}
 \name{protr-package}
-\alias{protr-package}
 \alias{protr}
-\title{Generating Various Numerical Representation Schemes for Protein Sequences}
+\alias{protr-package}
+\title{protr: Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
-The protr package is a comprehensive toolkit for generating various
-numerical representation schemes of protein sequence.
-The descriptors are extensively utilized in bioinformatics and
-chemogenomics research. The commonly used descriptors include
-amino acid composition, autocorrelation, CTD, conjoint traid,
-quasi-sequence order, pseudo amino acid composition, and
-profile-based descriptors derived by Position-Specific Scoring Matrix (PSSM).
-The descriptors for proteochemometric (PCM) modeling include the scales-based
-descriptors derived by principal components analysis, factor analysis,
-multidimensional scaling, amino acid properties (AAindex), 20+ classes
-of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.),
-and BLOSUM/PAM matrix-derived descriptors. The protr package also
-integrates the function of parallelized similarity computation derived
-by pairwise protein sequence alignment and Gene Ontology (GO) semantic
-similarity measures.
+Comprehensive toolkit for generating various numerical
+    features of protein sequences described in Xiao et al. (2015)
+    <DOI:10.1093/bioinformatics/btv042>. For full functionality,
+    the software 'ncbi-blast+' is needed, see
+    <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>
+    for more information.
 }
-\note{
-The package vignette can be opened with \code{vignette("protr")}.
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://nanx.me/protr/}
+  \item \url{https://github.com/nanxstats/protr}
+  \item \url{http://protr.org}
+  \item Report bugs at \url{https://github.com/nanxstats/protr/issues}
+}
 
-The web server for this package, \code{ProtrWeb} can be accessed from:
-\url{http://protr.org}.
+}
+\author{
+\strong{Maintainer}: Nan Xiao \email{me@nanx.me} (0000-0002-0250-5673)
 
-Bug reports and feature requests should be sent to
-\url{https://github.com/nanxstats/protr/issues}.
+Authors:
+\itemize{
+  \item Qing-Song Xu \email{qsxu@csu.edu.cn}
+  \item Dong-Sheng Cao
 }
-\references{
-Xiao, N., Cao, D.-S., Zhu, M.-F., and Xu, Q.-S. (2015).
-protr/ProtrWeb: R package and web server for generating various
-numerical representation schemes of protein sequences.
-\emph{Bioinformatics} 31 (11), 1857--1859.
+
 }
+\keyword{internal}
