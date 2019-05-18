@@ -46,13 +46,13 @@ devtools::install_github("nanxstats/protr")
 
 [Browse the package vignette](https://nanx.me/protr/articles/protr.html) for a quick-start.
 
-## Shiny Web Application
+## Shiny App
 
 ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
 
 ProtrWeb is a user-friendly web application for computing the protein sequence descriptors (features) presented in the protr package.
 
-## Descriptors List
+## List of Supported Descriptors
 
 ### Commonly used descriptors
 
@@ -93,7 +93,7 @@ ProtrWeb is a user-friendly web application for computing the protein sequence d
   - Scales-based descriptors derived by multidimensional scaling
   - BLOSUM and PAM matrix-derived descriptors
 
-### Similarity Computation
+### Similarity computation
 
 Local and global pairwise sequence alignment for protein sequences:
 
@@ -116,12 +116,6 @@ GO semantic similarity measures:
 - 20+ pre-computed 2D and 3D descriptor sets for the 20 amino acids to use with the scales-based descriptors
 - BLOSUM and PAM matrices for the 20 amino acids
 - Meta information of the 20 amino acids
-
-## Links
-
-- Website: https://nanx.me/protr/
-- CRAN: https://cran.r-project.org/package=protr
-- GitHub: https://github.com/nanxstats/protr
 
 ## Contribute
 
