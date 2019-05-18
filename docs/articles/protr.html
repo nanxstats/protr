@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1>protr: R package for generating various numerical representation schemes of protein sequences</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2019-03-17</h4>
+            <h4 class="date">2019-05-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nanxstats/protr/blob/master/vignettes/protr.Rmd"><code>vignettes/protr.Rmd</code></a></small>
       <div class="hidden name"><code>protr.Rmd</code></div>
@@ -87,8 +87,11 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The protr package offers a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequences. The descriptors included are extensively utilized in bioinformatics and chemogenomics research. The commonly used descriptors listed in protr include amino acid composition, autocorrelation, CTD, conjoint traid, quasi-sequence order, pseudo amino acid composition, and profile-based descriptors derived by Position-Specific Scoring Matrix (PSSM). The descriptors for proteochemometric (PCM) modeling, includes the scales-based descriptors derived by principal components analysis, factor analysis, multidimensional scaling, amino acid properties (AAindex), 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and BLOSUM/PAM matrix-derived descriptors. The protr package also integrates the function of parallelized similarity computation derived by pairwise protein sequence alignment and Gene Ontology (GO) semantic similarity measures. ProtrWeb, the web application built on protr, can be accessed from <a href="http://protr.org" class="uri">http://protr.org</a>.</p>
-<p>If you find protr is useful in your research, please feel free to cite our paper:</p>
+<p>The protr package offers a unique and comprehensive toolkit for generating various numerical representation schemes of protein sequences. The descriptors included are extensively utilized in bioinformatics and chemogenomics research.</p>
+<p>The commonly used descriptors listed in protr include amino acid composition, autocorrelation, CTD, conjoint traid, quasi-sequence order, pseudo amino acid composition, and profile-based descriptors derived by Position-Specific Scoring Matrix (PSSM).</p>
+<p>The descriptors for proteochemometric (PCM) modeling, includes the scales-based descriptors derived by principal components analysis, factor analysis, multidimensional scaling, amino acid properties (AAindex), 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.), and BLOSUM/PAM matrix-derived descriptors.</p>
+<p>The protr package also implemented parallelized similarity computation derived by pairwise protein sequence alignment and Gene Ontology (GO) semantic similarity measures. ProtrWeb, the web application built on protr, can be accessed from <a href="http://protr.org" class="uri">http://protr.org</a>.</p>
+<p>If you find protr useful in your research, please feel free to cite our paper:</p>
 <blockquote>
 Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. <em>Bioinformatics</em> 31 (11), 1857-1859.
 </blockquote>
@@ -107,58 +110,62 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 <a class="sourceLine" id="cb1-12" title="12">  <span class="dt">url</span> = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}</a>
 <a class="sourceLine" id="cb1-13" title="13">}</a></code></pre></div>
 </div>
-<div id="an-example-workflow" class="section level1">
+<div id="an-example-predictive-modeling-workflow" class="section level1">
 <h1 class="hasAnchor">
-<a href="#an-example-workflow" class="anchor"></a>An Example Workflow</h1>
-<p>Here we use the subcellular localization dataset of human proteins presented in <span class="citation">Chou and Shen (2008)</span> to demonstrate the workflow of using protr.</p>
+<a href="#an-example-predictive-modeling-workflow" class="anchor"></a>An Example Predictive Modeling Workflow</h1>
+<p>Here we use the subcellular localization dataset of human proteins presented in <span class="citation">Chou and Shen (2008)</span> to demonstrate the basic usage of protr.</p>
 <p>The complete dataset includes 3,134 protein sequences (2,750 different proteins), classified into 14 human subcellular locations. We selected two classes of proteins as our benchmark dataset. Class 1 contains 325 <em>extracell</em> proteins, and class 2 includes 307 <em>mitochondrion</em> proteins. Here we aim to build a random forest classification model to classify these two types of proteins.</p>
 <p>First, we load the protr package, then read the protein sequences stored in two separated FASTA files with <code><a href="../reference/readFASTA.html">readFASTA()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"protr"</span>)</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co"># load FASTA files</span></a>
-<a class="sourceLine" id="cb2-4" title="4">extracell =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="st">"protseq/extracell.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))</a>
-<a class="sourceLine" id="cb2-6" title="6">mitonchon =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
-<a class="sourceLine" id="cb2-7" title="7">  <span class="st">"protseq/mitochondrion.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb2-4" title="4">extracell &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
+<a class="sourceLine" id="cb2-5" title="5">  <span class="st">"protseq/extracell.fasta"</span>,</a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="dt">package =</span> <span class="st">"protr"</span></a>
+<a class="sourceLine" id="cb2-7" title="7">))</a>
+<a class="sourceLine" id="cb2-8" title="8">mitonchon &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="st">"protseq/mitochondrion.fasta"</span>,</a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="dt">package =</span> <span class="st">"protr"</span></a>
+<a class="sourceLine" id="cb2-11" title="11">))</a></code></pre></div>
 <p>To read protein sequences stored in PDB format files, use <code><a href="../reference/readPDB.html">readPDB()</a></code> instead. The loaded sequences will be stored as two lists in R, and each component in the list is a character string representing one protein sequence. In this case, there are 325 <em>extracell</em> protein sequences and 306 <em>mitonchon</em> protein sequences:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(extracell)</a></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co">## [1] 325</span></a></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(mitonchon)</a></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">## [1] 306</span></a></code></pre></div>
 <p>To ensure that the protein sequences only have the 20 standard amino acid types which is usually required for the descriptor computation, we use the <code><a href="../reference/protcheck.html">protcheck()</a></code> function to do the amino acid type sanity check and remove the <em>non-standard</em> sequences:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">extracell =<span class="st"> </span>extracell[(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(extracell, protcheck))]</a>
-<a class="sourceLine" id="cb7-2" title="2">mitonchon =<span class="st"> </span>mitonchon[(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(mitonchon, protcheck))]</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">extracell &lt;-<span class="st"> </span>extracell[(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(extracell, protcheck))]</a>
+<a class="sourceLine" id="cb7-2" title="2">mitonchon &lt;-<span class="st"> </span>mitonchon[(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(mitonchon, protcheck))]</a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(extracell)</a></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">## [1] 323</span></a></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(mitonchon)</a></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">## [1] 304</span></a></code></pre></div>
 <p>Two protein sequences were removed from each class. For the remaining sequences, we calculate the Type II PseAAC descriptor, i.e., the amphiphilic pseudo amino acid composition (APseAAC) descriptor <span class="citation">(Chou, 2005)</span> and make class labels for classification modeling.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># calculate APseAAC descriptors</span></a>
-<a class="sourceLine" id="cb12-2" title="2">x1 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(extracell, extractAPAAC))</a>
-<a class="sourceLine" id="cb12-3" title="3">x2 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(mitonchon, extractAPAAC))</a>
-<a class="sourceLine" id="cb12-4" title="4">x  =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(x1, x2)</a>
+<a class="sourceLine" id="cb12-2" title="2">x1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(extracell, extractAPAAC))</a>
+<a class="sourceLine" id="cb12-3" title="3">x2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(mitonchon, extractAPAAC))</a>
+<a class="sourceLine" id="cb12-4" title="4">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(x1, x2)</a>
 <a class="sourceLine" id="cb12-5" title="5"></a>
 <a class="sourceLine" id="cb12-6" title="6"><span class="co"># make class labels</span></a>
-<a class="sourceLine" id="cb12-7" title="7">labels =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">0</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(extracell)), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">1</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(mitonchon))))</a></code></pre></div>
+<a class="sourceLine" id="cb12-7" title="7">labels &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">0</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(extracell)), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">1</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(mitonchon))))</a></code></pre></div>
 <p>In protr, the functions of commonly used descriptors for protein sequences and proteochemometric (PCM) modeling descriptors are named after <code>extract...()</code>.</p>
 <p>Next, we will split the data into a 75% training set and a 25% test set.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1001</span>)</a>
 <a class="sourceLine" id="cb13-2" title="2"></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="co"># split training and test set</span></a>
-<a class="sourceLine" id="cb13-4" title="4">tr.idx =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb13-4" title="4">tr.idx &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
 <a class="sourceLine" id="cb13-5" title="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x1), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x1) <span class="op">*</span><span class="st"> </span><span class="fl">0.75</span>)),</a>
 <a class="sourceLine" id="cb13-6" title="6">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x1) <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x2), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x2) <span class="op">*</span><span class="st"> </span><span class="fl">0.75</span>))</a>
 <a class="sourceLine" id="cb13-7" title="7">)</a>
-<a class="sourceLine" id="cb13-8" title="8">te.idx =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sets">setdiff</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x), tr.idx)</a>
+<a class="sourceLine" id="cb13-8" title="8">te.idx &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sets">setdiff</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x), tr.idx)</a>
 <a class="sourceLine" id="cb13-9" title="9"></a>
-<a class="sourceLine" id="cb13-10" title="10">x.tr =<span class="st"> </span>x[tr.idx, ]</a>
-<a class="sourceLine" id="cb13-11" title="11">x.te =<span class="st"> </span>x[te.idx, ]</a>
-<a class="sourceLine" id="cb13-12" title="12">y.tr =<span class="st"> </span>labels[tr.idx]</a>
-<a class="sourceLine" id="cb13-13" title="13">y.te =<span class="st"> </span>labels[te.idx]</a></code></pre></div>
+<a class="sourceLine" id="cb13-10" title="10">x.tr &lt;-<span class="st"> </span>x[tr.idx, ]</a>
+<a class="sourceLine" id="cb13-11" title="11">x.te &lt;-<span class="st"> </span>x[te.idx, ]</a>
+<a class="sourceLine" id="cb13-12" title="12">y.tr &lt;-<span class="st"> </span>labels[tr.idx]</a>
+<a class="sourceLine" id="cb13-13" title="13">y.te &lt;-<span class="st"> </span>labels[te.idx]</a></code></pre></div>
 <p>We will train a random forest classification model on the training set with 5-fold cross-validation, using the <code>randomForest</code> package.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"randomForest"</span>)</a>
-<a class="sourceLine" id="cb14-2" title="2">rf.fit =<span class="st"> </span><span class="kw">randomForest</span>(x.tr, y.tr, <span class="dt">cv.fold =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(rf.fit)</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" title="2">rf.fit &lt;-<span class="st"> </span><span class="kw">randomForest</span>(x.tr, y.tr, <span class="dt">cv.fold =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3">rf.fit</a></code></pre></div>
 <p>The training result is:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">## Call:</span></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="co">##  randomForest(x = x.tr, y = y.tr, cv.fold = 5)</span></a>
@@ -173,7 +180,7 @@ Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb
 <a class="sourceLine" id="cb15-11" title="11"><span class="co">## 1  72 156   0.3157895</span></a></code></pre></div>
 <p>With the model trained on the training set, we predict on the test set and plot the ROC curve with the <code>pROC</code> package, as is shown in Figure 1.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># predict on test set</span></a>
-<a class="sourceLine" id="cb16-2" title="2">rf.pred =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/predict">predict</a></span>(rf.fit, <span class="dt">newdata =</span> x.te, <span class="dt">type =</span> <span class="st">"prob"</span>)[, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb16-2" title="2">rf.pred &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/predict">predict</a></span>(rf.fit, <span class="dt">newdata =</span> x.te, <span class="dt">type =</span> <span class="st">"prob"</span>)[, <span class="dv">1</span>]</a>
 <a class="sourceLine" id="cb16-3" title="3"></a>
 <a class="sourceLine" id="cb16-4" title="4"><span class="co"># plot ROC curve</span></a>
 <a class="sourceLine" id="cb16-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"pROC"</span>)</a>
@@ -192,10 +199,9 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <div id="package-overview" class="section level1">
 <h1 class="hasAnchor">
 <a href="#package-overview" class="anchor"></a>Package Overview</h1>
-<p>The protr package <span class="citation">(Xiao <em>et al.</em>, 2015)</span> implemented most of the state-of-the-art protein sequence descriptors with R. Generally, each type of the descriptors (features) can be calculated with a function named <code>extractX()</code> in the protr package, where <code>X</code> stands for the abbrevation of the descriptor name. The descriptors and the function names implemented are listed below:</p>
+<p>The protr package <span class="citation">(Xiao <em>et al.</em>, 2015)</span> implemented most of the state-of-the-art protein sequence descriptors with R. Generally, each type of the descriptors (features) can be calculated with a function named <code>extractX()</code> in the protr package, where <code>X</code> stands for the abbrevation of the descriptor name. The descriptors are:</p>
 <ul>
-<li>
-<p>Amino acid composition</p>
+<li>Amino acid composition
 <ul>
 <li>
 <code><a href="../reference/extractAAC.html">extractAAC()</a></code> - Amino acid composition</li>
@@ -205,8 +211,7 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractTC.html">extractTC()</a></code> - Tripeptide composition</li>
 </ul>
 </li>
-<li>
-<p>Autocorrelation</p>
+<li>Autocorrelation
 <ul>
 <li>
 <code><a href="../reference/extractMoreauBroto.html">extractMoreauBroto()</a></code> - Normalized Moreau-Broto autocorrelation</li>
@@ -216,8 +221,7 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractGeary.html">extractGeary()</a></code> - Geary autocorrelation</li>
 </ul>
 </li>
-<li>
-<p>CTD descriptors</p>
+<li>CTD descriptors
 <ul>
 <li>
 <code><a href="../reference/extractCTDC.html">extractCTDC()</a></code> - Composition</li>
@@ -227,15 +231,13 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractCTDD.html">extractCTDD()</a></code> - Distribution</li>
 </ul>
 </li>
-<li>
-<p>Conjoint triad descriptors</p>
+<li>Conjoint triad descriptors
 <ul>
 <li>
 <code><a href="../reference/extractCTriad.html">extractCTriad()</a></code> - Conjoint triad descriptors</li>
 </ul>
 </li>
-<li>
-<p>Quasi-sequence-order descriptors</p>
+<li>Quasi-sequence-order descriptors
 <ul>
 <li>
 <code><a href="../reference/extractSOCN.html">extractSOCN()</a></code> - Sequence-order-coupling number</li>
@@ -243,8 +245,7 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractQSO.html">extractQSO()</a></code> - Quasi-sequence-order descriptors</li>
 </ul>
 </li>
-<li>
-<p>Pseudo-amino acid composition</p>
+<li>Pseudo-amino acid composition
 <ul>
 <li>
 <code><a href="../reference/extractPAAC.html">extractPAAC()</a></code> - Pseudo-amino acid composition (PseAAC)</li>
@@ -252,8 +253,7 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractAPAAC.html">extractAPAAC()</a></code> - Amphiphilic pseudo-amino acid composition (APseAAC)</li>
 </ul>
 </li>
-<li>
-<p>Profile-based descriptors</p>
+<li>Profile-based descriptors
 <ul>
 <li><code><a href="../reference/extractPSSM.html">extractPSSM()</a></code></li>
 <li><code><a href="../reference/extractPSSMAcc.html">extractPSSMAcc()</a></code></li>
@@ -264,7 +264,7 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <p>The descriptors commonly used in Proteochemometric Modeling (PCM) implemented in protr include:</p>
 <ul>
 <li>
-<p><code><a href="../reference/extractScales.html">extractScales()</a></code>, <code><a href="../reference/extractScalesGap.html">extractScalesGap()</a></code> - Scales-based descriptors derived by Principal Components Analysis</p>
+<code><a href="../reference/extractScales.html">extractScales()</a></code>, <code><a href="../reference/extractScalesGap.html">extractScalesGap()</a></code> - Scales-based descriptors derived by Principal Components Analysis
 <ul>
 <li>
 <code><a href="../reference/extractProtFP.html">extractProtFP()</a></code>, <code><a href="../reference/extractProtFPGap.html">extractProtFPGap()</a></code> - Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. <em>Protein Fingerprint</em>)</li>
@@ -272,9 +272,12 @@ Figure 1: ROC curve for the test set of protein subcellular localization data
 <code><a href="../reference/extractDescScales.html">extractDescScales()</a></code> - Scales-based descriptors derived by 20+ classes of 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)</li>
 </ul>
 </li>
-<li><p><code><a href="../reference/extractFAScales.html">extractFAScales()</a></code> - Scales-based descriptors derived by Factor Analysis</p></li>
-<li><p><code><a href="../reference/extractMDSScales.html">extractMDSScales()</a></code> - Scales-based descriptors derived by Multidimensional Scaling</p></li>
-<li><p><code><a href="../reference/extractBLOSUM.html">extractBLOSUM()</a></code> - BLOSUM and PAM matrix-derived descriptors</p></li>
+<li>
+<code><a href="../reference/extractFAScales.html">extractFAScales()</a></code> - Scales-based descriptors derived by Factor Analysis</li>
+<li>
+<code><a href="../reference/extractMDSScales.html">extractMDSScales()</a></code> - Scales-based descriptors derived by Multidimensional Scaling</li>
+<li>
+<code><a href="../reference/extractBLOSUM.html">extractBLOSUM()</a></code> - BLOSUM and PAM matrix-derived descriptors</li>
 </ul>
 <p>The protr package integrates the function of parallelized similarity score computation derived by local or global protein sequence alignment between a list of protein sequences, the sequence alignment computation is provided by <code>Biostrings</code>, the corresponding functions listed in the <code>protr</code> package include:</p>
 <ul>
@@ -311,10 +314,12 @@ f(r) = \frac{N_r}{N} \quad r = 1, 2, \ldots, 20.
 <p>As was described above, we can use the function <code><a href="../reference/extractAAC.html">extractAAC()</a></code> to extract the descriptors (features) from protein sequences:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"protr"</span>)</a>
 <a class="sourceLine" id="cb18-2" title="2"></a>
-<a class="sourceLine" id="cb18-3" title="3">x =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
-<a class="sourceLine" id="cb18-4" title="4">  <span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb18-5" title="5"></a>
-<a class="sourceLine" id="cb18-6" title="6"><span class="kw"><a href="../reference/extractAAC.html">extractAAC</a></span>(x)</a></code></pre></div>
+<a class="sourceLine" id="cb18-3" title="3">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
+<a class="sourceLine" id="cb18-4" title="4">  <span class="st">"protseq/P00750.fasta"</span>,</a>
+<a class="sourceLine" id="cb18-5" title="5">  <span class="dt">package =</span> <span class="st">"protr"</span></a>
+<a class="sourceLine" id="cb18-6" title="6">))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb18-7" title="7"></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="kw"><a href="../reference/extractAAC.html">extractAAC</a></span>(x)</a></code></pre></div>
 <pre><code>##          A          R          N          D          C          E 
 ## 0.06405694 0.07117438 0.03914591 0.05160142 0.06761566 0.04804270 
 ##          Q          G          H          I          L          K 
@@ -333,7 +338,7 @@ f(r) = \frac{N_r}{N} \quad r = 1, 2, \ldots, 20.
 f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
 \]</span></p>
 <p>where <span class="math inline">\(N_{rs}\)</span> is the number of dipeptide represented by amino acid type <span class="math inline">\(r\)</span> and type <span class="math inline">\(s\)</span>. Similar to <code><a href="../reference/extractAAC.html">extractAAC()</a></code>, here we use <code><a href="../reference/extractDC.html">extractDC()</a></code> to compute the descriptors:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">dc =<span class="st"> </span><span class="kw"><a href="../reference/extractDC.html">extractDC</a></span>(x)</a>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">dc &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractDC.html">extractDC</a></span>(x)</a>
 <a class="sourceLine" id="cb20-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(dc, <span class="dt">n =</span> 30L)</a></code></pre></div>
 <pre><code>##          AA          RA          NA          DA          CA          EA 
 ## 0.003565062 0.003565062 0.000000000 0.007130125 0.003565062 0.003565062 
@@ -355,7 +360,7 @@ f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
 f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
 \]</span></p>
 <p>where <span class="math inline">\(N_{rst}\)</span> is the number of tripeptides represented by amino acid type <span class="math inline">\(r\)</span>, <span class="math inline">\(s\)</span>, and <span class="math inline">\(t\)</span>. With function <code><a href="../reference/extractTC.html">extractTC()</a></code>, we can easily obtain the length-8000 descriptor, to save some space, here we also omitted the long outputs:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">tc =<span class="st"> </span><span class="kw"><a href="../reference/extractTC.html">extractTC</a></span>(x)</a>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">tc &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractTC.html">extractTC</a></span>(x)</a>
 <a class="sourceLine" id="cb22-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(tc, <span class="dt">n =</span> 36L)</a></code></pre></div>
 <pre><code>##         AAA         RAA         NAA         DAA         CAA         EAA 
 ## 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 0.000000000 
@@ -398,7 +403,7 @@ AC(d) = \sum_{i=1}^{N-d} P_i P_{i + d} \quad d = 1, 2, \ldots, \textrm{nlag}
 ATS(d) = \frac{AC(d)}{N-d} \quad d = 1, 2, \ldots, \textrm{nlag}
 \]</span></p>
 <p>The corresponding function for this descriptor is <code><a href="../reference/extractMoreauBroto.html">extractMoreauBroto()</a></code>. A typical call would be:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">moreau =<span class="st"> </span><span class="kw"><a href="../reference/extractMoreauBroto.html">extractMoreauBroto</a></span>(x)</a>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">moreau &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractMoreauBroto.html">extractMoreauBroto</a></span>(x)</a>
 <a class="sourceLine" id="cb24-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(moreau, <span class="dt">n =</span> 36L)</a></code></pre></div>
 <pre><code>##  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 ##      0.081573213     -0.016064817     -0.015982990     -0.025739038 
@@ -431,29 +436,32 @@ ATS(d) = \frac{AC(d)}{N-d} \quad d = 1, 2, \ldots, \textrm{nlag}
 </ul>
 <p>Users can change the property names of AAindex database with the argument <code>props</code>. The AAindex data shipped with protr can be loaded by <code><a href="https://www.rdocumentation.org/packages/utils/topics/data">data(AAindex)</a></code>, which has the detailed information of each property. With the argument <code>customprops</code> and <code>nlag</code>, users can specify their own properties and lag value to calculate with. For example:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># Define 3 custom properties</span></a>
-<a class="sourceLine" id="cb26-2" title="2">myprops =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb26-2" title="2">myprops &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
 <a class="sourceLine" id="cb26-3" title="3">  <span class="dt">AccNo =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span>),</a>
-<a class="sourceLine" id="cb26-4" title="4">  <span class="dt">A =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.62</span>,  <span class="fl">-0.5</span>, <span class="dv">15</span>),  <span class="dt">R =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">2.53</span>,   <span class="dv">3</span>, <span class="dv">101</span>),</a>
-<a class="sourceLine" id="cb26-5" title="5">  <span class="dt">N =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.78</span>,  <span class="fl">0.2</span>, <span class="dv">58</span>),  <span class="dt">D =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.9</span>,    <span class="dv">3</span>, <span class="dv">59</span>),</a>
-<a class="sourceLine" id="cb26-6" title="6">  <span class="dt">C =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.29</span>,    <span class="dv">-1</span>, <span class="dv">47</span>),  <span class="dt">E =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.74</span>,   <span class="dv">3</span>, <span class="dv">73</span>),</a>
-<a class="sourceLine" id="cb26-7" title="7">  <span class="dt">Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.85</span>,  <span class="fl">0.2</span>, <span class="dv">72</span>),  <span class="dt">G =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.48</span>,    <span class="dv">0</span>, <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb26-8" title="8">  <span class="dt">H =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.4</span>,  <span class="fl">-0.5</span>, <span class="dv">82</span>),  <span class="dt">I =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.38</span>, <span class="fl">-1.8</span>, <span class="dv">57</span>),</a>
-<a class="sourceLine" id="cb26-9" title="9">  <span class="dt">L =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.06</span>,  <span class="fl">-1.8</span>, <span class="dv">57</span>),  <span class="dt">K =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.5</span>,    <span class="dv">3</span>, <span class="dv">73</span>),</a>
-<a class="sourceLine" id="cb26-10" title="10">  <span class="dt">M =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.64</span>,  <span class="fl">-1.3</span>, <span class="dv">75</span>),  <span class="dt">F =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.19</span>, <span class="fl">-2.5</span>, <span class="dv">91</span>),</a>
-<a class="sourceLine" id="cb26-11" title="11">  <span class="dt">P =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.12</span>,     <span class="dv">0</span>, <span class="dv">42</span>),  <span class="dt">S =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.18</span>, <span class="fl">0.3</span>, <span class="dv">31</span>),</a>
-<a class="sourceLine" id="cb26-12" title="12">  <span class="dt">T =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">-0.4</span>, <span class="dv">45</span>),  <span class="dt">W =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.81</span>, <span class="fl">-3.4</span>, <span class="dv">130</span>),</a>
-<a class="sourceLine" id="cb26-13" title="13">  <span class="dt">Y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.26</span>,  <span class="fl">-2.3</span>, <span class="dv">107</span>), <span class="dt">V =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.08</span>, <span class="fl">-1.5</span>, <span class="dv">43</span>)</a>
+<a class="sourceLine" id="cb26-4" title="4">  <span class="dt">A =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.62</span>, <span class="fl">-0.5</span>, <span class="dv">15</span>), <span class="dt">R =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">2.53</span>, <span class="dv">3</span>, <span class="dv">101</span>),</a>
+<a class="sourceLine" id="cb26-5" title="5">  <span class="dt">N =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.78</span>, <span class="fl">0.2</span>, <span class="dv">58</span>), <span class="dt">D =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.9</span>, <span class="dv">3</span>, <span class="dv">59</span>),</a>
+<a class="sourceLine" id="cb26-6" title="6">  <span class="dt">C =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.29</span>, <span class="dv">-1</span>, <span class="dv">47</span>), <span class="dt">E =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.74</span>, <span class="dv">3</span>, <span class="dv">73</span>),</a>
+<a class="sourceLine" id="cb26-7" title="7">  <span class="dt">Q =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.85</span>, <span class="fl">0.2</span>, <span class="dv">72</span>), <span class="dt">G =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.48</span>, <span class="dv">0</span>, <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb26-8" title="8">  <span class="dt">H =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.4</span>, <span class="fl">-0.5</span>, <span class="dv">82</span>), <span class="dt">I =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.38</span>, <span class="fl">-1.8</span>, <span class="dv">57</span>),</a>
+<a class="sourceLine" id="cb26-9" title="9">  <span class="dt">L =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.06</span>, <span class="fl">-1.8</span>, <span class="dv">57</span>), <span class="dt">K =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">1.5</span>, <span class="dv">3</span>, <span class="dv">73</span>),</a>
+<a class="sourceLine" id="cb26-10" title="10">  <span class="dt">M =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.64</span>, <span class="fl">-1.3</span>, <span class="dv">75</span>), <span class="dt">F =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.19</span>, <span class="fl">-2.5</span>, <span class="dv">91</span>),</a>
+<a class="sourceLine" id="cb26-11" title="11">  <span class="dt">P =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.12</span>, <span class="dv">0</span>, <span class="dv">42</span>), <span class="dt">S =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.18</span>, <span class="fl">0.3</span>, <span class="dv">31</span>),</a>
+<a class="sourceLine" id="cb26-12" title="12">  <span class="dt">T =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">-0.4</span>, <span class="dv">45</span>), <span class="dt">W =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.81</span>, <span class="fl">-3.4</span>, <span class="dv">130</span>),</a>
+<a class="sourceLine" id="cb26-13" title="13">  <span class="dt">Y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.26</span>, <span class="fl">-2.3</span>, <span class="dv">107</span>), <span class="dt">V =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.08</span>, <span class="fl">-1.5</span>, <span class="dv">43</span>)</a>
 <a class="sourceLine" id="cb26-14" title="14">)</a>
 <a class="sourceLine" id="cb26-15" title="15"></a>
 <a class="sourceLine" id="cb26-16" title="16"><span class="co"># Use 4 properties in the AAindex database, and 3 cutomized properties</span></a>
-<a class="sourceLine" id="cb26-17" title="17">moreau2 =<span class="st"> </span><span class="kw"><a href="../reference/extractMoreauBroto.html">extractMoreauBroto</a></span>(</a>
-<a class="sourceLine" id="cb26-18" title="18">  x, <span class="dt">customprops =</span> myprops,</a>
-<a class="sourceLine" id="cb26-19" title="19">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb26-20" title="20">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
-<a class="sourceLine" id="cb26-21" title="21">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
-<a class="sourceLine" id="cb26-22" title="22">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span>))</a>
-<a class="sourceLine" id="cb26-23" title="23"></a>
-<a class="sourceLine" id="cb26-24" title="24"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(moreau2, <span class="dt">n =</span> 36L)</a></code></pre></div>
+<a class="sourceLine" id="cb26-17" title="17">moreau2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractMoreauBroto.html">extractMoreauBroto</a></span>(</a>
+<a class="sourceLine" id="cb26-18" title="18">  x,</a>
+<a class="sourceLine" id="cb26-19" title="19">  <span class="dt">customprops =</span> myprops,</a>
+<a class="sourceLine" id="cb26-20" title="20">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb26-21" title="21">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
+<a class="sourceLine" id="cb26-22" title="22">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
+<a class="sourceLine" id="cb26-23" title="23">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span></a>
+<a class="sourceLine" id="cb26-24" title="24">  )</a>
+<a class="sourceLine" id="cb26-25" title="25">)</a>
+<a class="sourceLine" id="cb26-26" title="26"></a>
+<a class="sourceLine" id="cb26-27" title="27"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(moreau2, <span class="dt">n =</span> 36L)</a></code></pre></div>
 <pre><code>##  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 ##      0.081573213     -0.016064817     -0.015982990     -0.025739038 
 ##  CIDH920105.lag5  CIDH920105.lag6  CIDH920105.lag7  CIDH920105.lag8 
@@ -489,14 +497,17 @@ I(d) = \frac{\frac{1}{N-d} \sum_{i=1}^{N-d} (P_i - \bar{P}') (P_{i+d} - \bar{P}'
 <p>With <code><a href="../reference/extractMoran.html">extractMoran()</a></code> (which has the identical parameters as <code><a href="../reference/extractMoreauBroto.html">extractMoreauBroto()</a></code>), we can compute the Moran autocorrelation descriptors (only print out the first 36 elements):</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># Use the 3 custom properties defined before</span></a>
 <a class="sourceLine" id="cb28-2" title="2"><span class="co"># and 4 properties in the AAindex database</span></a>
-<a class="sourceLine" id="cb28-3" title="3">moran =<span class="st"> </span><span class="kw"><a href="../reference/extractMoran.html">extractMoran</a></span>(</a>
-<a class="sourceLine" id="cb28-4" title="4">  x, <span class="dt">customprops =</span> myprops,</a>
-<a class="sourceLine" id="cb28-5" title="5">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb28-6" title="6">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
-<a class="sourceLine" id="cb28-7" title="7">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
-<a class="sourceLine" id="cb28-8" title="8">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span>))</a>
-<a class="sourceLine" id="cb28-9" title="9"></a>
-<a class="sourceLine" id="cb28-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(moran, <span class="dt">n =</span> 36L)</a></code></pre></div>
+<a class="sourceLine" id="cb28-3" title="3">moran &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractMoran.html">extractMoran</a></span>(</a>
+<a class="sourceLine" id="cb28-4" title="4">  x,</a>
+<a class="sourceLine" id="cb28-5" title="5">  <span class="dt">customprops =</span> myprops,</a>
+<a class="sourceLine" id="cb28-6" title="6">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb28-7" title="7">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
+<a class="sourceLine" id="cb28-8" title="8">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
+<a class="sourceLine" id="cb28-9" title="9">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span></a>
+<a class="sourceLine" id="cb28-10" title="10">  )</a>
+<a class="sourceLine" id="cb28-11" title="11">)</a>
+<a class="sourceLine" id="cb28-12" title="12"></a>
+<a class="sourceLine" id="cb28-13" title="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(moran, <span class="dt">n =</span> 36L)</a></code></pre></div>
 <pre><code>##  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 ##      0.062895724     -0.044827681     -0.045065117     -0.055955678 
 ##  CIDH920105.lag5  CIDH920105.lag6  CIDH920105.lag7  CIDH920105.lag8 
@@ -527,14 +538,17 @@ C(d) = \frac{\frac{1}{2(N-d)} \sum_{i=1}^{N-d} (P_i - P_{i+d})^2}{\frac{1}{N-1} 
 <p>For each amino acid index, there will be <span class="math inline">\(3 \times \textrm{nlag}\)</span> autocorrelation descriptors. The usage of <code><a href="../reference/extractGeary.html">extractGeary()</a></code> is exactly the same as <code><a href="../reference/extractMoreauBroto.html">extractMoreauBroto()</a></code> and <code><a href="../reference/extractMoran.html">extractMoran()</a></code>:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="co"># Use the 3 custom properties defined before</span></a>
 <a class="sourceLine" id="cb30-2" title="2"><span class="co"># and 4 properties in the AAindex database</span></a>
-<a class="sourceLine" id="cb30-3" title="3">geary =<span class="st"> </span><span class="kw"><a href="../reference/extractGeary.html">extractGeary</a></span>(</a>
-<a class="sourceLine" id="cb30-4" title="4">  x, <span class="dt">customprops =</span> myprops,</a>
-<a class="sourceLine" id="cb30-5" title="5">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb30-6" title="6">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
-<a class="sourceLine" id="cb30-7" title="7">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
-<a class="sourceLine" id="cb30-8" title="8">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span>))</a>
-<a class="sourceLine" id="cb30-9" title="9"></a>
-<a class="sourceLine" id="cb30-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(geary, <span class="dt">n =</span> 36L)</a></code></pre></div>
+<a class="sourceLine" id="cb30-3" title="3">geary &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractGeary.html">extractGeary</a></span>(</a>
+<a class="sourceLine" id="cb30-4" title="4">  x,</a>
+<a class="sourceLine" id="cb30-5" title="5">  <span class="dt">customprops =</span> myprops,</a>
+<a class="sourceLine" id="cb30-6" title="6">  <span class="dt">props =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb30-7" title="7">    <span class="st">"CIDH920105"</span>, <span class="st">"BHAR880101"</span>,</a>
+<a class="sourceLine" id="cb30-8" title="8">    <span class="st">"CHAM820101"</span>, <span class="st">"CHAM820102"</span>,</a>
+<a class="sourceLine" id="cb30-9" title="9">    <span class="st">"MyProp1"</span>, <span class="st">"MyProp2"</span>, <span class="st">"MyProp3"</span></a>
+<a class="sourceLine" id="cb30-10" title="10">  )</a>
+<a class="sourceLine" id="cb30-11" title="11">)</a>
+<a class="sourceLine" id="cb30-12" title="12"></a>
+<a class="sourceLine" id="cb30-13" title="13"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(geary, <span class="dt">n =</span> 36L)</a></code></pre></div>
 <pre><code>##  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 ##        0.9361830        1.0442920        1.0452843        1.0563467 
 ##  CIDH920105.lag5  CIDH920105.lag6  CIDH920105.lag7  CIDH920105.lag8 
@@ -867,7 +881,7 @@ d_i = \frac{f_i - \min\{\,f_1, f_2 , \ldots, f_{343}\,\}}{\max\{\,f_1, f_2, \ldo
 \]</span></p>
 <p>The numerical value of <span class="math inline">\(d_i\)</span> of each protein ranges from 0 to 1, which thereby enables the comparison between proteins. Accordingly, we obtain another vector space (designated <span class="math inline">\(\mathbf{D}\)</span>) consisting of <span class="math inline">\(d_i\)</span> to represent protein.</p>
 <p>To compute conjoint triads of protein sequences, we can simply use:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">ctriad =<span class="st"> </span><span class="kw"><a href="../reference/extractCTriad.html">extractCTriad</a></span>(x)</a>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">ctriad &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractCTriad.html">extractCTriad</a></span>(x)</a>
 <a class="sourceLine" id="cb38-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(ctriad, <span class="dt">n =</span> 65L)</a></code></pre></div>
 <pre><code>## VS111 VS211 VS311 VS411 VS511 VS611 VS711 VS121 VS221 VS321 VS421 VS521 
 ##   0.1   0.3   0.6   0.2   0.4   0.0   0.3   1.0   0.6   0.5   0.0   0.2 
@@ -1178,14 +1192,18 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 </ul>
 <p>Note that each of the scales-based descriptor functions are freely to combine with the more than 20 classes of 2D and 3D molecular descriptors to construct highly customized scales-based descriptors. Of course, these functions are designed to be flexible enough that users can provide totally self-defined property matrices to construct scales-based descriptors.</p>
 <p>For example, to compute the “topological scales” derived by PCA (using the first 5 principal components), one can use <code><a href="../reference/extractDescScales.html">extractDescScales()</a></code>:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">x =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
-<a class="sourceLine" id="cb48-2" title="2">  <span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb48-3" title="3"></a>
-<a class="sourceLine" id="cb48-4" title="4">descscales =<span class="st"> </span><span class="kw"><a href="../reference/extractDescScales.html">extractDescScales</a></span>(</a>
-<a class="sourceLine" id="cb48-5" title="5">  x, <span class="dt">propmat =</span> <span class="st">"AATopo"</span>,</a>
-<a class="sourceLine" id="cb48-6" title="6">  <span class="dt">index =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">37</span><span class="op">:</span><span class="dv">41</span>, <span class="dv">43</span><span class="op">:</span><span class="dv">47</span>),</a>
-<a class="sourceLine" id="cb48-7" title="7">  <span class="dt">pc =</span> <span class="dv">5</span>, <span class="dt">lag =</span> <span class="dv">7</span>, <span class="dt">silent =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>## Summary of the first 5 principal components:
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
+<a class="sourceLine" id="cb48-2" title="2">  <span class="st">"protseq/P00750.fasta"</span>,</a>
+<a class="sourceLine" id="cb48-3" title="3">  <span class="dt">package =</span> <span class="st">"protr"</span></a>
+<a class="sourceLine" id="cb48-4" title="4">))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb48-5" title="5"></a>
+<a class="sourceLine" id="cb48-6" title="6">descscales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractDescScales.html">extractDescScales</a></span>(</a>
+<a class="sourceLine" id="cb48-7" title="7">  x,</a>
+<a class="sourceLine" id="cb48-8" title="8">  <span class="dt">propmat =</span> <span class="st">"AATopo"</span>,</a>
+<a class="sourceLine" id="cb48-9" title="9">  <span class="dt">index =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">37</span><span class="op">:</span><span class="dv">41</span>, <span class="dv">43</span><span class="op">:</span><span class="dv">47</span>),</a>
+<a class="sourceLine" id="cb48-10" title="10">  <span class="dt">pc =</span> <span class="dv">5</span>, <span class="dt">lag =</span> <span class="dv">7</span>, <span class="dt">silent =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb48-11" title="11">)</a></code></pre></div>
+<pre><code>## Summary of the first 5 principal components: 
 ##                             PC1      PC2       PC3       PC4        PC5
 ## Standard deviation     2.581537 1.754133 0.4621854 0.1918666 0.08972087
 ## Proportion of Variance 0.666430 0.307700 0.0213600 0.0036800 0.00080000
@@ -1202,13 +1220,17 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 ##     scl1.lag3     scl2.lag3     scl3.lag3     scl4.lag3     scl5.lag3 
 ##  2.011431e-02 -9.211136e-02 -1.461755e-03  6.747801e-04  2.386782e-04</code></pre>
 <p>For another example, to compute the descriptors derived by the BLOSUM62 matrix and use the first 5 scales, one can use:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">x =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
-<a class="sourceLine" id="cb54-2" title="2">  <span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb54-3" title="3"></a>
-<a class="sourceLine" id="cb54-4" title="4">blosum =<span class="st"> </span><span class="kw"><a href="../reference/extractBLOSUM.html">extractBLOSUM</a></span>(</a>
-<a class="sourceLine" id="cb54-5" title="5">  x, <span class="dt">submat =</span> <span class="st">"AABLOSUM62"</span>,</a>
-<a class="sourceLine" id="cb54-6" title="6">  <span class="dt">k =</span> <span class="dv">5</span>, <span class="dt">lag =</span> <span class="dv">7</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>, <span class="dt">silent =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>## Relative importance of all the possible 20 scales:
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(</a>
+<a class="sourceLine" id="cb54-2" title="2">  <span class="st">"protseq/P00750.fasta"</span>,</a>
+<a class="sourceLine" id="cb54-3" title="3">  <span class="dt">package =</span> <span class="st">"protr"</span></a>
+<a class="sourceLine" id="cb54-4" title="4">))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb54-5" title="5"></a>
+<a class="sourceLine" id="cb54-6" title="6">blosum &lt;-<span class="st"> </span><span class="kw"><a href="../reference/extractBLOSUM.html">extractBLOSUM</a></span>(</a>
+<a class="sourceLine" id="cb54-7" title="7">  x,</a>
+<a class="sourceLine" id="cb54-8" title="8">  <span class="dt">submat =</span> <span class="st">"AABLOSUM62"</span>,</a>
+<a class="sourceLine" id="cb54-9" title="9">  <span class="dt">k =</span> <span class="dv">5</span>, <span class="dt">lag =</span> <span class="dv">7</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>, <span class="dt">silent =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb54-10" title="10">)</a></code></pre></div>
+<pre><code>## Relative importance of all the possible 20 scales: 
 ##  [1]  1.204960e+01  7.982007e+00  6.254364e+00  4.533706e+00  4.326286e+00
 ##  [6]  3.850579e+00  3.752197e+00  3.538207e+00  3.139155e+00  2.546405e+00
 ## [11]  2.373286e+00  1.666259e+00  1.553126e+00  1.263685e+00  1.024699e+00
@@ -1230,14 +1252,14 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a href="#similarity-calculation-by-sequence-alignment" class="anchor"></a>Similarity Calculation by Sequence Alignment</h1>
 <p>Similarity computation derived by local or global protein sequence alignment between a list of protein sequences is of great need in protein research. However, this type of pairwise similarity computation often computationally intensive, especially when there exists many protein sequences. Luckily, this process is also highly parallelizable, the protr package integrates the function of parallelized similarity computation derived by local or global protein sequence alignment between a list of protein sequences.</p>
 <p>The function <code><a href="../reference/twoSeqSim.html">twoSeqSim()</a></code> calculates the alignment result between two protein sequences. The function <code><a href="../reference/parSeqSim.html">parSeqSim()</a></code> calculates the pairwise similarity calculation with a list of protein sequences in parallel:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">s1 =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb60-2" title="2">s2 =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P08218.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb60-3" title="3">s3 =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P10323.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb60-4" title="4">s4 =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P20160.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb60-5" title="5">s5 =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/Q9NZP8.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb60-6" title="6">plist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(s1, s2, s3, s4, s5)</a>
-<a class="sourceLine" id="cb60-7" title="7">psimmat =<span class="st"> </span><span class="kw"><a href="../reference/parSeqSim.html">parSeqSim</a></span>(plist, <span class="dt">cores =</span> <span class="dv">4</span>, <span class="dt">type =</span> <span class="st">"local"</span>, <span class="dt">submat =</span> <span class="st">"BLOSUM62"</span>)</a>
-<a class="sourceLine" id="cb60-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(psimmat)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">s1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb60-2" title="2">s2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P08218.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb60-3" title="3">s3 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P10323.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb60-4" title="4">s4 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P20160.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb60-5" title="5">s5 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/Q9NZP8.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb60-6" title="6">plist &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(s1, s2, s3, s4, s5)</a>
+<a class="sourceLine" id="cb60-7" title="7">psimmat &lt;-<span class="st"> </span><span class="kw"><a href="../reference/parSeqSim.html">parSeqSim</a></span>(plist, <span class="dt">cores =</span> <span class="dv">4</span>, <span class="dt">type =</span> <span class="st">"local"</span>, <span class="dt">submat =</span> <span class="st">"BLOSUM62"</span>)</a>
+<a class="sourceLine" id="cb60-8" title="8">psimmat</a></code></pre></div>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="co">##            [,1]       [,2]       [,3]       [,4]       [,5]</span></a>
 <a class="sourceLine" id="cb61-2" title="2"><span class="co">## [1,] 1.00000000 0.11825938 0.10236985 0.04921696 0.03943488</span></a>
 <a class="sourceLine" id="cb61-3" title="3"><span class="co">## [2,] 0.11825938 1.00000000 0.18858241 0.12124217 0.06391103</span></a>
@@ -1259,26 +1281,26 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <p>The protr package also integrates the function of similarity score computation derived by Gene Ontology (GO) semantic similarity measures between a list of GO terms or Entrez Gene IDs.</p>
 <p>The function <code><a href="../reference/twoGOSim.html">twoGOSim()</a></code> calculates the similarity derived by GO-terms semantic similarity measures between two GO terms / Entrez Gene IDs, and the function <code><a href="../reference/parGOSim.html">parGOSim()</a></code> calculates the pairwise similarity with a list of GO terms / Entrez Gene IDs:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># By GO Terms</span></a>
-<a class="sourceLine" id="cb62-2" title="2">go1 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-2" title="2">go1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
 <a class="sourceLine" id="cb62-3" title="3">  <span class="st">"GO:0005215"</span>, <span class="st">"GO:0005488"</span>, <span class="st">"GO:0005515"</span>,</a>
 <a class="sourceLine" id="cb62-4" title="4">  <span class="st">"GO:0005625"</span>, <span class="st">"GO:0005802"</span>, <span class="st">"GO:0005905"</span></a>
 <a class="sourceLine" id="cb62-5" title="5">) <span class="co"># AP4B1</span></a>
-<a class="sourceLine" id="cb62-6" title="6">go2 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-6" title="6">go2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
 <a class="sourceLine" id="cb62-7" title="7">  <span class="st">"GO:0005515"</span>, <span class="st">"GO:0005634"</span>, <span class="st">"GO:0005681"</span>,</a>
 <a class="sourceLine" id="cb62-8" title="8">  <span class="st">"GO:0008380"</span>, <span class="st">"GO:0031202"</span></a>
 <a class="sourceLine" id="cb62-9" title="9">) <span class="co"># BCAS2</span></a>
-<a class="sourceLine" id="cb62-10" title="10">go3 =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
+<a class="sourceLine" id="cb62-10" title="10">go3 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
 <a class="sourceLine" id="cb62-11" title="11">  <span class="st">"GO:0003735"</span>, <span class="st">"GO:0005622"</span>, <span class="st">"GO:0005840"</span>,</a>
 <a class="sourceLine" id="cb62-12" title="12">  <span class="st">"GO:0006412"</span></a>
 <a class="sourceLine" id="cb62-13" title="13">) <span class="co"># PDE4DIP</span></a>
-<a class="sourceLine" id="cb62-14" title="14">golist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(go1, go2, go3)</a>
+<a class="sourceLine" id="cb62-14" title="14">golist &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(go1, go2, go3)</a>
 <a class="sourceLine" id="cb62-15" title="15"><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(golist, <span class="dt">type =</span> <span class="st">"go"</span>, <span class="dt">ont =</span> <span class="st">"CC"</span>, <span class="dt">measure =</span> <span class="st">"Wang"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="co">##       [,1]  [,2] [,3]</span></a>
 <a class="sourceLine" id="cb63-2" title="2"><span class="co">## [1,] 1.000 0.344 0.17</span></a>
 <a class="sourceLine" id="cb63-3" title="3"><span class="co">## [2,] 0.344 1.000 0.24</span></a>
 <a class="sourceLine" id="cb63-4" title="4"><span class="co">## [3,] 0.170 0.240 1.00</span></a></code></pre></div>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># By Entrez gene id</span></a>
-<a class="sourceLine" id="cb64-2" title="2">genelist =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"150"</span>, <span class="st">"151"</span>, <span class="st">"152"</span>, <span class="st">"1814"</span>, <span class="st">"1815"</span>, <span class="st">"1816"</span>))</a>
+<a class="sourceLine" id="cb64-2" title="2">genelist &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"150"</span>, <span class="st">"151"</span>, <span class="st">"152"</span>, <span class="st">"1814"</span>, <span class="st">"1815"</span>, <span class="st">"1816"</span>))</a>
 <a class="sourceLine" id="cb64-3" title="3"><span class="kw"><a href="../reference/parGOSim.html">parGOSim</a></span>(genelist, <span class="dt">type =</span> <span class="st">"gene"</span>, <span class="dt">ont =</span> <span class="st">"BP"</span>, <span class="dt">measure =</span> <span class="st">"Wang"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="co">##        150   151   152  1814  1815  1816</span></a>
 <a class="sourceLine" id="cb65-2" title="2"><span class="co">## 150  1.000 0.702 0.725 0.496 0.570 0.455</span></a>
@@ -1296,9 +1318,9 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <h2 class="hasAnchor">
 <a href="#retrieve-protein-sequences-from-uniprot" class="anchor"></a>Retrieve Protein Sequences from UniProt</h2>
 <p>This function <code><a href="../reference/getUniProt.html">getUniProt()</a></code> gets protein sequences from uniprot.org by protein ID(s). The input <code>ID</code> is a character vector specifying the protein ID(s). The returned sequences are stored in a list:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">ids =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"P00750"</span>, <span class="st">"P00751"</span>, <span class="st">"P00752"</span>)</a>
-<a class="sourceLine" id="cb66-2" title="2">prots =<span class="st"> </span><span class="kw"><a href="../reference/getUniProt.html">getUniProt</a></span>(ids)</a>
-<a class="sourceLine" id="cb66-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(prots)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">ids &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"P00750"</span>, <span class="st">"P00751"</span>, <span class="st">"P00752"</span>)</a>
+<a class="sourceLine" id="cb66-2" title="2">prots &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getUniProt.html">getUniProt</a></span>(ids)</a>
+<a class="sourceLine" id="cb66-3" title="3">prots</a></code></pre></div>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="co">## [[1]]</span></a>
 <a class="sourceLine" id="cb67-2" title="2"><span class="co">## [1] "MDAMKRGLCCVLLLCGAVFVSPSQEIHARFRRGARSYQVICRDEKTQMIYQQHQSWLRPVLRSNRVEYCWCN</span></a>
 <a class="sourceLine" id="cb67-3" title="3"><span class="co">## SGRAQCHSVPVKSCSEPRCFNGGTCQQALYFSDFVCQCPEGFAGKCCEIDTRATCYEDQGISYRGTWSTAESGAECT</span></a>
@@ -1308,7 +1330,7 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a class="sourceLine" id="cb67-7" title="7"><span class="co">## GEEEQKFEVEKYIVHKEFDDDTYDNDIALLQLKSDSSRCAQESSVVRTVCLPPADLQLPDWTECELSGYGKHEALSP</span></a>
 <a class="sourceLine" id="cb67-8" title="8"><span class="co">## FYSERLKEAHVRLYPSSRCTSQHLLNRTVTDNMLCAGDTRSGGPQANLHDACQGDSGGPLVCLNDGRMTLVGIISWG</span></a>
 <a class="sourceLine" id="cb67-9" title="9"><span class="co">## LGCGQKDVPGVYTKVTNYLDWIRDNMRP"</span></a>
-<a class="sourceLine" id="cb67-10" title="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb67-10" title="10"><span class="co">##</span></a>
 <a class="sourceLine" id="cb67-11" title="11"><span class="co">## [[2]]</span></a>
 <a class="sourceLine" id="cb67-12" title="12"><span class="co">## [1] "MGSNLSPQLCLMPFILGLLSGGVTTTPWSLARPQGSCSLEGVEIKGGSFRLLQEGQALEYVCPSGFYPYPVQ</span></a>
 <a class="sourceLine" id="cb67-13" title="13"><span class="co">## TRTCRSTGSWSTLKTQDQKTVRKAECRAIHCPRPHDFENGEYWPRSPYYNVSDEISFHCYDGYTLRGSANRTCQVNG</span></a>
@@ -1320,7 +1342,7 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <a class="sourceLine" id="cb67-19" title="19"><span class="co">## HSIKVSVGGEKRDLEIEVVLFHPNYNINGKKEAGIPEFYDYDVALIKLKNKLKYGQTIRPICLPCTEGTTRALRLPP</span></a>
 <a class="sourceLine" id="cb67-20" title="20"><span class="co">## TTTCQQQKEELLPAQDIKALFVSEEEKKLTRKEVYIKNGDKKGSCERDAQYAPGYDKVKDISEVVTPRFLCTGGVSP</span></a>
 <a class="sourceLine" id="cb67-21" title="21"><span class="co">## YADPNTCRGDSGGPLIVHKRSRFIQVGVISWGVVDVCKNQKRQKQVPAHARDFHINLFQVLPWLKEKLQDEDLGFL"</span></a>
-<a class="sourceLine" id="cb67-22" title="22"><span class="co">## </span></a>
+<a class="sourceLine" id="cb67-22" title="22"><span class="co">##</span></a>
 <a class="sourceLine" id="cb67-23" title="23"><span class="co">## [[3]]</span></a>
 <a class="sourceLine" id="cb67-24" title="24"><span class="co">## [1] "APPIQSRIIGGRECEKNSHPWQVAIYHYSSFQCGGVLVNPKWVLTAAHCKNDNYEVWLGRHNLFENENTAQF</span></a>
 <a class="sourceLine" id="cb67-25" title="25"><span class="co">## FGVTADFPHPGFNLSLLKXHTKADGKDYSHDLMLLRLQSPAKITDAVKVLELPTQEPELGSTCEASGWGSIEPGPDB</span></a>
@@ -1341,7 +1363,7 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 <h2 class="hasAnchor">
 <a href="#sanity-check-for-amino-acid-types" class="anchor"></a>Sanity Check for Amino Acid Types</h2>
 <p>The <code><a href="../reference/protcheck.html">protcheck()</a></code> function checks if the protein sequence’s amino acid types are in the 20 default types, which returns a <code>TRUE</code> if all the amino acids in the sequence belongs to the 20 default types:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">x =<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/readFASTA.html">readFASTA</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"protseq/P00750.fasta"</span>, <span class="dt">package =</span> <span class="st">"protr"</span>))[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb68-2" title="2"><span class="co"># a real sequence</span></a>
 <a class="sourceLine" id="cb68-3" title="3"><span class="kw"><a href="../reference/protcheck.html">protcheck</a></span>(x)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -1761,7 +1783,7 @@ Figure 8: A screenshot of the web application ProtrWeb
 <p>Schneider,G. and Wrede,P. (1994) The rational design of amino acid sequences by artificial neural networks and simulated molecular evolution: Do novo design of an idealized leader cleavage site. <em>Biophysical Journal</em>, <strong>66</strong>, 335–344.</p>
 </div>
 <div id="ref-shenjw">
-<p>Shen,J. <em>et al.</em> (2007) Predicting protein-protein interactions based only on sequences information. <em>Proceedings of the National Academy of Sciences</em>, <strong>104</strong>, 4337–4341.</p>
+<p>Shen,J.W. <em>et al.</em> (2007) Predicting protein-protein interactions based only on sequences information. <em>Proceedings of the National Academy of Sciences</em>, <strong>104</strong>, 4337–4341.</p>
 </div>
 <div id="ref-Xiao2015">
 <p>Xiao,N. <em>et al.</em> (2015) protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. <em>Bioinformatics</em>, <strong>31</strong>, 1857–1859.</p>
@@ -1779,7 +1801,7 @@ Figure 8: A screenshot of the web application ProtrWeb
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#an-example-workflow">An Example Workflow</a></li>
+      <li><a href="#an-example-predictive-modeling-workflow">An Example Predictive Modeling Workflow</a></li>
       <li><a href="#package-overview">Package Overview</a></li>
       <li>
 <a href="#commonly-used-descriptors">Commonly Used Descriptors</a><ul class="nav nav-pills nav-stacked">

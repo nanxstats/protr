@@ -69,7 +69,7 @@ molecular descriptors in the descriptor set." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -186,10 +186,12 @@ the selected principal components or not. Default is <code>TRUE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>descscales</span> <span class='kw'>=</span> <span class='fu'>extractDescScales</span>(
-  <span class='no'>x</span>, <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='st'>"AATopo"</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>37</span>:<span class='fl'>41</span>, <span class='fl'>43</span>:<span class='fl'>47</span>),
-  <span class='kw'>pc</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Summary of the first 5 principal components:
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
+<span class='no'>descscales</span> <span class='kw'>&lt;-</span> <span class='fu'>extractDescScales</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='st'>"AATopo"</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>37</span>:<span class='fl'>41</span>, <span class='fl'>43</span>:<span class='fl'>47</span>),
+  <span class='kw'>pc</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; Summary of the first 5 principal components: 
 #&gt;                             PC1      PC2       PC3       PC4        PC5
 #&gt; Standard deviation     2.581537 1.754133 0.4621854 0.1918666 0.08972087
 #&gt; Proportion of Variance 0.666430 0.307700 0.0213600 0.0036800 0.00080000

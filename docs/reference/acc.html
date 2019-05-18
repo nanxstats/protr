@@ -68,7 +68,7 @@ for generating scale-based descriptors of the same length." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -169,10 +169,10 @@ and <code><a href='extractProtFP.html'>extractProtFP</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>p</span> <span class='kw'>=</span> <span class='fl'>8</span>    <span class='co'># p is the scales number</span>
-<span class='no'>n</span> <span class='kw'>=</span> <span class='fl'>200</span>  <span class='co'># n is the amino acid number</span>
-<span class='no'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>  <span class='co'># the lag paramter</span>
-<span class='no'>mat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span>(<span class='no'>p</span> * <span class='no'>n</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='no'>n</span>)
+    <pre class="examples"><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fl'>8</span> <span class='co'># p is the scales number</span>
+<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>200</span> <span class='co'># n is the amino acid number</span>
+<span class='no'>lag</span> <span class='kw'>&lt;-</span> <span class='fl'>7</span> <span class='co'># the lag paramter</span>
+<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span>(<span class='no'>p</span> * <span class='no'>n</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='no'>p</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='no'>n</span>)
 <span class='fu'>acc</span>(<span class='no'>mat</span>, <span class='no'>lag</span>)</div><div class='output co'>#&gt;     scl1.lag1     scl2.lag1     scl3.lag1     scl4.lag1     scl5.lag1 
 #&gt; -1.014626e-02 -4.689789e-02 -2.692515e-02  1.647534e-02  9.724370e-02 
 #&gt;     scl6.lag1     scl7.lag1     scl8.lag1     scl1.lag2     scl2.lag2 

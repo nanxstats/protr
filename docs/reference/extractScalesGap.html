@@ -73,7 +73,7 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">protr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.2</span>
       </span>
     </div>
 
@@ -185,10 +185,10 @@ scales descriptors (protein fingerprint) with gap support.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># amino acid sequence with gaps</span>
-<span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/align.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))$<span class='no'>`IXI_235`</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"protseq/align.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))$<span class='no'>`IXI_235`</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>AAindex</span>)
-<span class='no'>AAidxmat</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.omit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>AAindex</span>[, <span class='fl'>7</span>:<span class='fl'>26</span>])))
-<span class='no'>scales</span> <span class='kw'>=</span> <span class='fu'>extractScalesGap</span>(<span class='no'>x</span>, <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='no'>AAidxmat</span>, <span class='kw'>pc</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Summary of the first 5 principal components:
+<span class='no'>AAidxmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.omit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>AAindex</span>[, <span class='fl'>7</span>:<span class='fl'>26</span>])))
+<span class='no'>scales</span> <span class='kw'>&lt;-</span> <span class='fu'>extractScalesGap</span>(<span class='no'>x</span>, <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='no'>AAidxmat</span>, <span class='kw'>pc</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Summary of the first 5 principal components: 
 #&gt;                             PC1      PC2      PC3      PC4     PC5
 #&gt; Standard deviation     12.38381 10.73268 7.742507 6.802462 5.22316
 #&gt; Proportion of Variance  0.28881  0.21693 0.112890 0.087140 0.05138
