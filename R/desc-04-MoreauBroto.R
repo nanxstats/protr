@@ -37,10 +37,6 @@
 #'
 #' @return A length \code{length(props) * nlag} named vector.
 #'
-#' @keywords extract normalized autocorrelation Moreau-Broto
-#'
-#' @aliases extractMoreauBroto
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractMoran}} and \code{\link{extractGeary}}
@@ -77,71 +73,78 @@
 #' \emph{American Journal of Physical Anthropology}, 129, 121-131.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' extractMoreauBroto(x)
 #'
-#' myprops = data.frame(
+#' myprops <- data.frame(
 #'   AccNo = c("MyProp1", "MyProp2", "MyProp3"),
-#'   A = c(0.62,  -0.5, 15),  R = c(-2.53,   3, 101),
-#'   N = c(-0.78,  0.2, 58),  D = c(-0.9,    3, 59),
-#'   C = c(0.29,    -1, 47),  E = c(-0.74,   3, 73),
-#'   Q = c(-0.85,  0.2, 72),  G = c(0.48,    0, 1),
-#'   H = c(-0.4,  -0.5, 82),  I = c(1.38, -1.8, 57),
-#'   L = c(1.06,  -1.8, 57),  K = c(-1.5,    3, 73),
-#'   M = c(0.64,  -1.3, 75),  F = c(1.19, -2.5, 91),
-#'   P = c(0.12,     0, 42),  S = c(-0.18, 0.3, 31),
-#'   T = c(-0.05, -0.4, 45),  W = c(0.81, -3.4, 130),
-#'   Y = c(0.26,  -2.3, 107), V = c(1.08, -1.5, 43))
+#'   A = c(0.62, -0.5, 15), R = c(-2.53, 3, 101),
+#'   N = c(-0.78, 0.2, 58), D = c(-0.9, 3, 59),
+#'   C = c(0.29, -1, 47), E = c(-0.74, 3, 73),
+#'   Q = c(-0.85, 0.2, 72), G = c(0.48, 0, 1),
+#'   H = c(-0.4, -0.5, 82), I = c(1.38, -1.8, 57),
+#'   L = c(1.06, -1.8, 57), K = c(-1.5, 3, 73),
+#'   M = c(0.64, -1.3, 75), F = c(1.19, -2.5, 91),
+#'   P = c(0.12, 0, 42), S = c(-0.18, 0.3, 31),
+#'   T = c(-0.05, -0.4, 45), W = c(0.81, -3.4, 130),
+#'   Y = c(0.26, -2.3, 107), V = c(1.08, -1.5, 43)
+#' )
 #'
 #' # Use 4 properties in the AAindex database, and 3 cutomized properties
 #' extractMoreauBroto(
-#'   x, customprops = myprops,
+#'   x,
+#'   customprops = myprops,
 #'   props = c(
 #'     "CIDH920105", "BHAR880101",
 #'     "CHAM820101", "CHAM820102",
-#'     "MyProp1", "MyProp2", "MyProp3")
+#'     "MyProp1", "MyProp2", "MyProp3"
+#'   )
 #' )
-
-extractMoreauBroto = function(
+extractMoreauBroto <- function(
   x, props = c(
-    'CIDH920105', 'BHAR880101', 'CHAM820101', 'CHAM820102',
-    'CHOC760101', 'BIGC670101', 'CHAM810101', 'DAYM780201'),
+    "CIDH920105", "BHAR880101", "CHAM820101", "CHAM820102",
+    "CHOC760101", "BIGC670101", "CHAM810101", "DAYM780201"
+  ),
   nlag = 30L, customprops = NULL) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
-
-  if (nchar(x) <= nlag)
-    warning('extractMoreauBroto: length of the sequence is <= nlag; NAs will be generated')
+  if (nchar(x) <= nlag) {
+    warning("extractMoreauBroto: length of the sequence is <= nlag; NAs will be generated")
+  }
 
   # 1. Compute Pr values for each type of property
 
-  AAidx = read.csv(
-    system.file('sysdata/AAidx.csv', package = 'protr'),
-    header = TRUE)
+  AAidx <- read.csv(
+    system.file("sysdata/AAidx.csv", package = "protr"),
+    header = TRUE
+  )
 
-  if (!is.null(customprops))
-    AAidx = rbind(AAidx, customprops)
+  if (!is.null(customprops)) {
+    AAidx <- rbind(AAidx, customprops)
+  }
 
-  aaidx = AAidx[, -1]
-  row.names(aaidx) = AAidx[, 1]
-  n = length(props)
-  pmean = rowMeans(aaidx[props, ])
-  psd   = apply(aaidx[props, ], 1, sd) * sqrt((20 - 1)/20)  # sd() uses (n-1)
+  aaidx <- AAidx[, -1]
+  row.names(aaidx) <- AAidx[, 1]
+  n <- length(props)
+  pmean <- rowMeans(aaidx[props, ])
+  psd <- apply(aaidx[props, ], 1, sd) * sqrt((20 - 1) / 20) # sd() uses (n-1)
 
-  Pr = data.frame(matrix(ncol = 20, nrow = n))
-  for (i in 1:n) Pr[i, ] = (aaidx[props[i], ] - pmean[i])/psd[i]
+  Pr <- data.frame(matrix(ncol = 20, nrow = n))
+  for (i in 1:n) Pr[i, ] <- (aaidx[props[i], ] - pmean[i]) / psd[i]
 
   # 2. Replace character with numbers, also applies to less than 20 AA occured
 
-  xSplitted = strsplit(x, split = '')[[1]]
-  AADict = c(
-    'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
-    'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
-  names(Pr) = AADict
+  xSplitted <- strsplit(x, split = "")[[1]]
+  AADict <- c(
+    "A", "R", "N", "D", "C", "E", "Q", "G", "H", "I",
+    "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"
+  )
+  names(Pr) <- AADict
 
-  P = vector('list', n)
-  for (i in 1:n) P[[i]] = xSplitted
+  P <- vector("list", n)
+  for (i in 1:n) P[[i]] <- xSplitted
 
   for (i in 1:n) {
     for (j in AADict) {
@@ -149,27 +152,29 @@ extractMoreauBroto = function(
     }
   }
 
-  P = lapply(P, as.numeric)
+  P <- lapply(P, as.numeric)
 
   # 3. Compute Moreau-Broto Autocorrelation Descriptor
 
-  MB = vector('list', n)
-  N  = length(xSplitted)
+  MB <- vector("list", n)
+  N <- length(xSplitted)
 
   for (i in 1:n) {
     for (j in 1:nlag) {
-      MB[[i]][j] = ifelse(
+      MB[[i]][j] <- ifelse(
         N - j > 0,
-        sum(P[[i]][1:(N - j)] * P[[i]][(1:(N - j)) + j])/(N - j),
-        NA)
+        sum(P[[i]][1:(N - j)] * P[[i]][(1:(N - j)) + j]) / (N - j),
+        NA
+      )
     }
   }
 
-  MB = unlist(MB)
+  MB <- unlist(MB)
 
-  names(MB) = as.vector(t(outer(
-    props, paste('.lag', 1:nlag, sep = ''), paste, sep = '')))
+  names(MB) <- as.vector(t(outer(
+    props, paste(".lag", 1:nlag, sep = ""), paste,
+    sep = ""
+  )))
 
   MB
-
 }

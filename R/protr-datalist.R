@@ -11,11 +11,8 @@
 #'
 #' @docType data
 #' @name AAindex
-#' @aliases AAindex
-#' @keywords AAindex datasets
 #' @examples
 #' data(AAindex)
-#'
 NULL
 
 #' OptAA3d.sdf - 20 Amino Acids Optimized with MOE 2011.10 (Semiempirical AM1)
@@ -24,10 +21,8 @@ NULL
 #'
 #' @docType data
 #' @name OptAA3d
-#' @aliases OptAA3d
-#' @keywords datasets
 #' @examples
-#' # This operation requires the rcdk package
+#' # this operation requires the rcdk package
 #' # require(rcdk)
 #' # optaa3d = load.molecules(system.file("sysdata/OptAA3d.sdf", package = "protr"))
 #' # view.molecule.2d(optaa3d[[1]])  # view the first AA
@@ -49,11 +44,8 @@ NULL
 #'
 #' @docType data
 #' @name AAMetaInfo
-#' @aliases AAMetaInfo
-#' @keywords datasets
 #' @examples
 #' data(AAMetaInfo)
-#'
 NULL
 
 #' 2D Descriptors for 20 Amino Acids calculated by MOE 2011.10
@@ -64,11 +56,8 @@ NULL
 #'
 #' @docType data
 #' @name AAMOE2D
-#' @aliases AAMOE2D
-#' @keywords datasets
 #' @examples
 #' data(AAMOE2D)
-#'
 NULL
 
 #' 3D Descriptors for 20 Amino Acids calculated by MOE 2011.10
@@ -82,11 +71,8 @@ NULL
 #'
 #' @docType data
 #' @name AAMOE3D
-#' @aliases AAMOE3D
-#' @keywords datasets
 #' @examples
 #' data(AAMOE3D)
-#'
 NULL
 
 #' CPSA Descriptors for 20 Amino Acids calculated by Discovery Studio
@@ -103,11 +89,8 @@ NULL
 #'
 #' @docType data
 #' @name AACPSA
-#' @aliases AACPSA
-#' @keywords datasets
 #' @examples
 #' data(AACPSA)
-#'
 NULL
 
 #' All 2D Descriptors for 20 Amino Acids calculated by Dragon
@@ -118,11 +101,8 @@ NULL
 #'
 #' @docType data
 #' @name AADescAll
-#' @aliases AADescAll
-#' @keywords datasets
 #' @examples
 #' data(AADescAll)
-#'
 NULL
 
 
@@ -135,11 +115,8 @@ NULL
 #'
 #' @docType data
 #' @name AA2DACOR
-#' @aliases AA2DACOR
-#' @keywords datasets
 #' @examples
 #' data(AA2DACOR)
-#'
 NULL
 
 #' 3D-MoRSE Descriptors for 20 Amino Acids calculated by Dragon
@@ -150,11 +127,8 @@ NULL
 #'
 #' @docType data
 #' @name AA3DMoRSE
-#' @aliases AA3DMoRSE
-#' @keywords datasets
 #' @examples
 #' data(AA3DMoRSE)
-#'
 NULL
 
 #' Atom-Centred Fragments Descriptors for 20 Amino Acids calculated by Dragon
@@ -165,11 +139,8 @@ NULL
 #'
 #' @docType data
 #' @name AAACF
-#' @aliases AAACF
-#' @keywords datasets
 #' @examples
 #' data(AAACF)
-#'
 NULL
 
 #' Burden Eigenvalues Descriptors for 20 Amino Acids calculated by Dragon
@@ -180,11 +151,8 @@ NULL
 #'
 #' @docType data
 #' @name AABurden
-#' @aliases AABurden
-#' @keywords datasets
 #' @examples
 #' data(AABurden)
-#'
 NULL
 
 #' Connectivity Indices Descriptors for 20 Amino Acids calculated by Dragon
@@ -195,11 +163,8 @@ NULL
 #'
 #' @docType data
 #' @name AAConn
-#' @aliases AAConn
-#' @keywords datasets
 #' @examples
 #' data(AAConn)
-#'
 NULL
 
 #' Constitutional Descriptors for 20 Amino Acids calculated by Dragon
@@ -210,11 +175,8 @@ NULL
 #'
 #' @docType data
 #' @name AAConst
-#' @aliases AAConst
-#' @keywords datasets
 #' @examples
 #' data(AAConst)
-#'
 NULL
 
 #' Edge Adjacency Indices Descriptors for 20 Amino Acids calculated by Dragon
@@ -225,11 +187,8 @@ NULL
 #'
 #' @docType data
 #' @name AAEdgeAdj
-#' @aliases AAEdgeAdj
-#' @keywords datasets
 #' @examples
 #' data(AAEdgeAdj)
-#'
 NULL
 
 #' Eigenvalue-Based Indices Descriptors for 20 Amino Acids calculated by Dragon
@@ -240,11 +199,8 @@ NULL
 #'
 #' @docType data
 #' @name AAEigIdx
-#' @aliases AAEigIdx
-#' @keywords datasets
 #' @examples
 #' data(AAEigIdx)
-#'
 NULL
 
 #' Functional Group Counts Descriptors for 20 Amino Acids calculated by Dragon
@@ -255,11 +211,8 @@ NULL
 #'
 #' @docType data
 #' @name AAFGC
-#' @aliases AAFGC
-#' @keywords datasets
 #' @examples
 #' data(AAFGC)
-#'
 NULL
 
 #' Geometrical Descriptors for 20 Amino Acids calculated by Dragon
@@ -270,11 +223,8 @@ NULL
 #'
 #' @docType data
 #' @name AAGeom
-#' @aliases AAGeom
-#' @keywords datasets
 #' @examples
 #' data(AAGeom)
-#'
 NULL
 
 #' GETAWAY Descriptors for 20 Amino Acids calculated by Dragon
@@ -285,11 +235,8 @@ NULL
 #'
 #' @docType data
 #' @name AAGETAWAY
-#' @aliases AAGETAWAY
-#' @keywords datasets
 #' @examples
 #' data(AAGETAWAY)
-#'
 NULL
 
 #' Information Indices Descriptors for 20 Amino Acids calculated by Dragon
@@ -300,11 +247,8 @@ NULL
 #'
 #' @docType data
 #' @name AAInfo
-#' @aliases AAInfo
-#' @keywords datasets
 #' @examples
 #' data(AAInfo)
-#'
 NULL
 
 #' Molecular Properties Descriptors for 20 Amino Acids calculated by Dragon
@@ -315,11 +259,8 @@ NULL
 #'
 #' @docType data
 #' @name AAMolProp
-#' @aliases AAMolProp
-#' @keywords datasets
 #' @examples
 #' data(AAMolProp)
-#'
 NULL
 
 #' Randic Molecular Profiles Descriptors for 20 Amino Acids calculated by Dragon
@@ -330,11 +271,8 @@ NULL
 #'
 #' @docType data
 #' @name AARandic
-#' @aliases AARandic
-#' @keywords datasets
 #' @examples
 #' data(AARandic)
-#'
 NULL
 
 #' RDF Descriptors for 20 Amino Acids calculated by Dragon
@@ -345,11 +283,8 @@ NULL
 #'
 #' @docType data
 #' @name AARDF
-#' @aliases AARDF
-#' @keywords datasets
 #' @examples
 #' data(AARDF)
-#'
 NULL
 
 #' Topological Descriptors for 20 Amino Acids calculated by Dragon
@@ -360,11 +295,8 @@ NULL
 #'
 #' @docType data
 #' @name AATopo
-#' @aliases AATopo
-#' @keywords datasets
 #' @examples
 #' data(AATopo)
-#'
 NULL
 
 #' Topological Charge Indices Descriptors for 20 Amino Acids calculated by Dragon
@@ -375,11 +307,8 @@ NULL
 #'
 #' @docType data
 #' @name AATopoChg
-#' @aliases AATopoChg
-#' @keywords datasets
 #' @examples
 #' data(AATopoChg)
-#'
 NULL
 
 #' Walk and Path Counts Descriptors for 20 Amino Acids calculated by Dragon
@@ -390,11 +319,8 @@ NULL
 #'
 #' @docType data
 #' @name AAWalk
-#' @aliases AAWalk
-#' @keywords datasets
 #' @examples
 #' data(AAWalk)
-#'
 NULL
 
 #' WHIM Descriptors for 20 Amino Acids calculated by Dragon
@@ -405,11 +331,8 @@ NULL
 #'
 #' @docType data
 #' @name AAWHIM
-#' @aliases AAWHIM
-#' @keywords datasets
 #' @examples
 #' data(AAWHIM)
-#'
 NULL
 
 
@@ -421,11 +344,8 @@ NULL
 #'
 #' @docType data
 #' @name AABLOSUM45
-#' @aliases AABLOSUM45
-#' @keywords datasets
 #' @examples
 #' data(AABLOSUM45)
-#'
 NULL
 
 #' BLOSUM50 Matrix for 20 Amino Acids
@@ -435,11 +355,8 @@ NULL
 #'
 #' @docType data
 #' @name AABLOSUM50
-#' @aliases AABLOSUM50
-#' @keywords datasets
 #' @examples
 #' data(AABLOSUM50)
-#'
 NULL
 
 #' BLOSUM62 Matrix for 20 Amino Acids
@@ -449,11 +366,8 @@ NULL
 #'
 #' @docType data
 #' @name AABLOSUM62
-#' @aliases AABLOSUM62
-#' @keywords datasets
 #' @examples
 #' data(AABLOSUM62)
-#'
 NULL
 
 #' BLOSUM80 Matrix for 20 Amino Acids
@@ -463,11 +377,8 @@ NULL
 #'
 #' @docType data
 #' @name AABLOSUM80
-#' @aliases AABLOSUM80
-#' @keywords datasets
 #' @examples
 #' data(AABLOSUM80)
-#'
 NULL
 
 #' BLOSUM100 Matrix for 20 Amino Acids
@@ -477,11 +388,8 @@ NULL
 #'
 #' @docType data
 #' @name AABLOSUM100
-#' @aliases AABLOSUM100
-#' @keywords datasets
 #' @examples
 #' data(AABLOSUM100)
-#'
 NULL
 
 #' PAM30 Matrix for 20 Amino Acids
@@ -491,11 +399,8 @@ NULL
 #'
 #' @docType data
 #' @name AAPAM30
-#' @aliases AAPAM30
-#' @keywords datasets
 #' @examples
 #' data(AAPAM30)
-#'
 NULL
 
 #' PAM40 Matrix for 20 Amino Acids
@@ -505,11 +410,8 @@ NULL
 #'
 #' @docType data
 #' @name AAPAM40
-#' @aliases AAPAM40
-#' @keywords datasets
 #' @examples
 #' data(AAPAM40)
-#'
 NULL
 
 #' PAM70 Matrix for 20 Amino Acids
@@ -519,11 +421,8 @@ NULL
 #'
 #' @docType data
 #' @name AAPAM70
-#' @aliases AAPAM70
-#' @keywords datasets
 #' @examples
 #' data(AAPAM70)
-#'
 NULL
 
 #' PAM120 Matrix for 20 Amino Acids
@@ -533,11 +432,8 @@ NULL
 #'
 #' @docType data
 #' @name AAPAM120
-#' @aliases AAPAM120
-#' @keywords datasets
 #' @examples
 #' data(AAPAM120)
-#'
 NULL
 
 #' PAM250 Matrix for 20 Amino Acids
@@ -547,9 +443,6 @@ NULL
 #'
 #' @docType data
 #' @name AAPAM250
-#' @aliases AAPAM250
-#' @keywords datasets
 #' @examples
 #' data(AAPAM250)
-#'
 NULL

@@ -25,10 +25,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (factors) selected.
 #'
-#' @keywords extract Factor PCM
-#'
-#' @aliases extractFAScales
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @importFrom stats factanal
@@ -42,38 +38,35 @@
 #' 102(18), 6395-6400.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' data(AATopo)
-#' tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-#' fa = extractFAScales(
-#'   x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
-
-extractFAScales = function(
-  x, propmat, factors, scores = 'regression',
+#' tprops <- AATopo[, c(37:41, 43:47)] # select a set of topological descriptors
+#' fa <- extractFAScales(x, propmat = tprops, factors = 5, lag = 7, silent = FALSE)
+extractFAScales <- function(
+  x, propmat, factors, scores = "regression",
   lag, scale = TRUE, silent = TRUE) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
+  factors <- min(factors, ncol(propmat), nrow(propmat))
 
-  factors = min(factors, ncol(propmat), nrow(propmat))
+  if (scale) propmat <- scale(propmat)
 
-  if (scale) propmat = scale(propmat)
+  prop.fa <- factanal(propmat, factors = factors, scores = scores)
+  prop.scores <- prop.fa$scores
 
-  prop.fa = factanal(propmat, factors = factors, scores = scores)
-  prop.scores = prop.fa$scores
+  accmat <- matrix(0, factors, nchar(x))
+  x.split <- strsplit(x, "")[[1]]
 
-  accmat = matrix(0, factors, nchar(x))
-  x.split = strsplit(x, '')[[1]]
+  for (i in 1:nchar(x)) accmat[, i] <- prop.scores[x.split[i], 1:factors]
 
-  for (i in 1:nchar(x)) accmat[, i] = prop.scores[x.split[i], 1:factors]
-
-  res = acc(accmat, lag)
+  res <- acc(accmat, lag)
 
   if (!silent) {
-    cat('Summary of the factor analysis result:\n')
+    cat("Summary of the factor analysis result:", "\n")
     print(prop.fa)
   }
 
-  return(res)
-
+  res
 }

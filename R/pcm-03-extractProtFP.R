@@ -23,10 +23,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (principal components) selected.
 #'
-#' @keywords extract scales AAindex
-#'
-#' @aliases extractProtFP
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @importFrom stats na.omit
@@ -34,22 +30,20 @@
 #' @export extractProtFP
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-#' fp = extractProtFP(
-#'   x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
-
-extractProtFP = function(
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' fp <- extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
+extractProtFP <- function(
   x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+  AAindex <- get("AAindex")
 
-  AAindex = get('AAindex')
+  if (!is.null(index)) {
+    propmat <- t(na.omit(as.matrix(AAindex[index, 7:26])))
+  }
 
-  if (!is.null(index))
-    propmat = t(na.omit(as.matrix(AAindex[index, 7:26])))
-
-  res = extractScales(
+  res <- extractScales(
     x = x, propmat = propmat, pc = pc,
-    lag = lag, scale = scale, silent = silent)
+    lag = lag, scale = scale, silent = silent
+  )
 
-  return(res)
-
+  res
 }

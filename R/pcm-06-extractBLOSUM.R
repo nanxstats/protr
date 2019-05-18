@@ -23,10 +23,6 @@
 #' @return  A length \code{lag * p^2} named vector, \code{p} is the number
 #' of scales selected.
 #'
-#' @keywords extract BLOSUM PAM PCM
-#'
-#' @aliases extractBLOSUM
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractBLOSUM
@@ -37,39 +33,36 @@
 #' Journal of Computational Biology, 16(5), 703--723.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-#' blosum = extractBLOSUM(
-#'   x, submat = "AABLOSUM62", k = 5, lag = 7, scale = TRUE, silent = FALSE)
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' blosum <- extractBLOSUM(x, submat = "AABLOSUM62", k = 5, lag = 7, scale = TRUE, silent = FALSE)
+extractBLOSUM <- function(
+  x, submat = "AABLOSUM62", k, lag, scale = TRUE, silent = TRUE) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-extractBLOSUM = function(
-  x, submat = 'AABLOSUM62', k, lag, scale = TRUE, silent = TRUE) {
+  k <- min(k, 20)
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
+  submat <- get(submat)
+  if (scale) submat <- scale(submat)
 
-  k = min(k, 20)
-
-  submat = get(submat)
-  if (scale) submat = scale(submat)
-
-  eig = eigen(submat)
-  A = eig$vectors
-  B = eig$values
-  rownames(A) = rownames(submat)
+  eig <- eigen(submat)
+  A <- eig$vectors
+  B <- eig$values
+  rownames(A) <- rownames(submat)
   # the equation: submat == A %*% diag(B) %*% t(A)
 
-  accmat = matrix(0, k, nchar(x))
-  x.split = strsplit(x, '')[[1]]
+  accmat <- matrix(0, k, nchar(x))
+  x.split <- strsplit(x, "")[[1]]
 
-  for (i in 1:nchar(x)) accmat[, i] = A[x.split[i], 1:k]
+  for (i in 1:nchar(x)) accmat[, i] <- A[x.split[i], 1:k]
 
-  res = acc(accmat, lag)
+  res <- acc(accmat, lag)
 
   if (!silent) {
-    cat('Relative importance of all the possible 20 scales:\n')
+    cat("Relative importance of all the possible 20 scales:", "\n")
     print(B)
   }
 
-  return(res)
-
+  res
 }

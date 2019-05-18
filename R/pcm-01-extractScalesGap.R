@@ -1,12 +1,11 @@
-.protcheckgap = function (x) {
+.protcheckgap <- function(x) {
+  AADict <- c(
+    "A", "R", "N", "D", "C", "E", "Q", "G", "H", "I",
+    "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V",
+    "-"
+  )
 
-  AADict = c(
-    'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
-    'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V',
-    '-')
-
-  all(strsplit(x, split = '')[[1]] %in% AADict)
-
+  all(strsplit(x, split = "")[[1]] %in% AADict)
 }
 
 #' Scales-Based Descriptors derived by Principal Components Analysis
@@ -38,10 +37,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (principal components) selected.
 #'
-#' @keywords extract scales PCA PCM gap
-#'
-#' @aliases extractScalesGap
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractProtFPGap}} for amino acid property based
@@ -53,38 +48,36 @@
 #'
 #' @examples
 #' # amino acid sequence with gaps
-#' x = readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
+#' x <- readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
 #' data(AAindex)
-#' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-#' scales = extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
-
-extractScalesGap = function(
+#' AAidxmat <- t(na.omit(as.matrix(AAindex[, 7:26])))
+#' scales <- extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+extractScalesGap <- function(
   x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
-
-  if (.protcheckgap(x) == FALSE)
+  if (.protcheckgap(x) == FALSE) {
     stop('x has unrecognized amino acid types. Note: use "-" to represent gaps.')
+  }
 
-  gapmat = t(matrix(rep(0L, ncol(propmat))))
-  row.names(gapmat) = '-'
-  propmat = rbind(propmat, gapmat)
+  gapmat <- t(matrix(rep(0L, ncol(propmat))))
+  row.names(gapmat) <- "-"
+  propmat <- rbind(propmat, gapmat)
 
-  pc = min(pc, ncol(propmat), nrow(propmat))
+  pc <- min(pc, ncol(propmat), nrow(propmat))
 
-  prop.pr = prcomp(propmat, scale = scale)
-  prop.pred = predict(prop.pr)
+  prop.pr <- prcomp(propmat, scale = scale)
+  prop.pred <- predict(prop.pr)
 
-  accmat = matrix(0, pc, nchar(x))
-  x.split = strsplit(x, '')[[1]]
+  accmat <- matrix(0, pc, nchar(x))
+  x.split <- strsplit(x, "")[[1]]
 
-  for (i in 1:nchar(x)) accmat[, i] = prop.pred[x.split[i], 1:pc]
+  for (i in 1:nchar(x)) accmat[, i] <- prop.pred[x.split[i], 1:pc]
 
-  res = acc(accmat, lag)
+  res <- acc(accmat, lag)
 
   if (!silent) {
-    cat('Summary of the first', pc,'principal components:\n')
+    cat("Summary of the first", pc, "principal components:", "\n")
     print(summary(prop.pr)$importance[, 1:pc])
   }
 
-  return(res)
-
+  res
 }

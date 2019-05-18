@@ -21,10 +21,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (dimensionality) selected.
 #'
-#' @keywords extract MDS PCM
-#'
-#' @aliases extractMDSScales
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractScales}} for scales-based
@@ -41,36 +37,34 @@
 #' Molecular modeling annual, 7(12), 445--453.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' data(AATopo)
-#' tprops = AATopo[, c(37:41, 43:47)]  # select a set of topological descriptors
-#' mds = extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
-
-extractMDSScales = function(
+#' tprops <- AATopo[, c(37:41, 43:47)] # select a set of topological descriptors
+#' mds <- extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
+extractMDSScales <- function(
   x, propmat, k, lag, scale = TRUE, silent = TRUE) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
+  k <- min(k, ncol(propmat) - 1, nrow(propmat) - 1)
 
-  k = min(k, ncol(propmat) - 1, nrow(propmat) - 1)
+  if (scale) propmat <- scale(propmat)
 
-  if (scale) propmat = scale(propmat)
+  d <- dist(propmat) # euclidean distances between the rows
+  mds <- cmdscale(d, k = k, eig = TRUE)
 
-  d = dist(propmat)  # euclidean distances between the rows
-  mds = cmdscale(d, k = k, eig = TRUE)
+  accmat <- matrix(0, k, nchar(x))
+  x.split <- strsplit(x, "")[[1]]
 
-  accmat = matrix(0, k, nchar(x))
-  x.split = strsplit(x, '')[[1]]
+  for (i in 1:nchar(x)) accmat[, i] <- mds$points[x.split[i], 1:k]
 
-  for (i in 1:nchar(x)) accmat[, i] = mds$points[x.split[i], 1:k]
-
-  res = acc(accmat, lag)
+  res <- acc(accmat, lag)
 
   if (!silent) {
-    cat('Eigenvalues computed during the scaling process:\n')
+    cat("Eigenvalues computed during the scaling process:", "\n")
     print(mds$eig)
   }
 
   res
-
 }

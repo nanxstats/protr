@@ -9,10 +9,6 @@
 #'
 #' @return A length \code{nlag * 2} named vector
 #'
-#' @keywords extract SOCN Order Coupling
-#'
-#' @aliases extractSOCN
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractQSO}} for quasi-sequence-order descriptors.
@@ -36,60 +32,63 @@
 #' \emph{Biophys Journal}, 1994, 66, 335-344.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' extractSOCN(x)
+extractSOCN <- function(x, nlag = 30) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-extractSOCN = function(x, nlag = 30) {
+  N <- nchar(x)
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
-
-  N = nchar(x)
-
-  if (N <= nlag)
+  if (N <= nlag) {
     stop('Length of the protein sequence must be greater than "nlag"')
+  }
 
-  DistMat1 = read.csv(system.file(
-    'sysdata/Schneider-Wrede.csv', package = 'protr'), header = TRUE)
-  DistMat2 = read.csv(system.file(
-    'sysdata/Grantham.csv', package = 'protr'), header = TRUE)
-  row.names(DistMat1) = as.character(DistMat1[, 1])
-  DistMat1 = DistMat1[, -1]
-  row.names(DistMat2) = as.character(DistMat2[, 1])
-  DistMat2 = DistMat2[, -1]
+  DistMat1 <- read.csv(system.file(
+    "sysdata/Schneider-Wrede.csv",
+    package = "protr"
+  ), header = TRUE)
+  DistMat2 <- read.csv(system.file(
+    "sysdata/Grantham.csv",
+    package = "protr"
+  ), header = TRUE)
+  row.names(DistMat1) <- as.character(DistMat1[, 1])
+  DistMat1 <- DistMat1[, -1]
+  row.names(DistMat2) <- as.character(DistMat2[, 1])
+  DistMat2 <- DistMat2[, -1]
 
-  xSplitted = strsplit(x, split = '')[[1]]
+  xSplitted <- strsplit(x, split = "")[[1]]
 
   # Compute Schneider.tau_d
 
-  tau1 = vector('list', nlag)
+  tau1 <- vector("list", nlag)
 
   for (d in 1:nlag) {
     for (i in 1:(N - d)) {
-      tau1[[d]][i] = (DistMat1[xSplitted[i], xSplitted[i + d]])^2
+      tau1[[d]][i] <- (DistMat1[xSplitted[i], xSplitted[i + d]])^2
     }
   }
 
-  tau1 = sapply(tau1, sum)
+  tau1 <- sapply(tau1, sum)
 
-  names(tau1) = paste('Schneider.lag', 1:nlag, sep = '')
+  names(tau1) <- paste("Schneider.lag", 1:nlag, sep = "")
 
   # Compute Grantham.tau_d
 
-  tau2 = vector('list', nlag)
+  tau2 <- vector("list", nlag)
 
   for (d in 1:nlag) {
     for (i in 1:(N - d)) {
-      tau2[[d]][i] = (DistMat2[xSplitted[i], xSplitted[i + d]])^2
+      tau2[[d]][i] <- (DistMat2[xSplitted[i], xSplitted[i + d]])^2
     }
   }
 
-  tau2 = sapply(tau2, sum)
+  tau2 <- sapply(tau2, sum)
 
-  names(tau2) = paste('Grantham.lag', 1:nlag, sep = '')
+  names(tau2) <- paste("Grantham.lag", 1:nlag, sep = "")
 
-  tau = c(tau1, tau2)
+  tau <- c(tau1, tau2)
 
   tau
-
 }

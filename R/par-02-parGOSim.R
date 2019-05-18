@@ -53,10 +53,6 @@
 #'
 #' @return Similarity value.
 #'
-#' @keywords GO Ontology similarity
-#'
-#' @aliases twoGOSim
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{parGOSim}} for protein similarity calculation
@@ -165,10 +161,6 @@ twoGOSim <- function(
 #' associated with proteins.
 #'
 #' @return A \code{n} x \code{n} similarity matrix.
-#'
-#' @keywords GO Ontology similarity
-#'
-#' @aliases parGOSim
 #'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'

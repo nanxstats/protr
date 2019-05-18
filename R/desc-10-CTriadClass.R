@@ -11,10 +11,6 @@
 #' @return A length \code{k^3} named vector, where \code{k} is the number
 #' of customized classes of the amino acids.
 #'
-#' @keywords extract Conjoint Triad
-#'
-#' @aliases extractCTriadClass
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractCTriadClass
@@ -32,69 +28,80 @@
 #' \emph{Proceedings of the National Academy of Sciences}. 007, 104, 4337--4341.
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #'
 #' # use customized amino acid classification (normalized van der Waals volume)
-#' newclass = list(
+#' newclass <- list(
 #'   c("G", "A", "S", "T", "P", "D", "C"),
 #'   c("N", "V", "E", "Q", "I", "L"),
-#'   c("M", "H", "K", "F", "R", "Y", "W"))
+#'   c("M", "H", "K", "F", "R", "Y", "W")
+#' )
 #'
 #' extractCTriadClass(x, aaclass = newclass)
+extractCTriadClass <- function(x, aaclass) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid type")
+  }
 
-extractCTriadClass = function(x, aaclass) {
+  nclass <- length(aaclass)
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid type')
-
-  nclass = length(aaclass)
-
-  vspace = expand.grid(1L:nclass, 1L:nclass, 1L:nclass)
-  veclen = nrow(vspace)
-  CTDict = vector('list', veclen)
+  vspace <- expand.grid(1L:nclass, 1L:nclass, 1L:nclass)
+  veclen <- nrow(vspace)
+  CTDict <- vector("list", veclen)
 
   for (i in 1L:veclen) {
-    tmp = as.vector(outer(
+    tmp <- as.vector(outer(
       aaclass[[vspace[i, 1L]]],
-      aaclass[[vspace[i, 2L]]], paste, sep = ''))
-    CTDict[[i]] = as.vector(outer(
-      tmp, aaclass[[vspace[i, 3L]]], paste, sep = ''))
+      aaclass[[vspace[i, 2L]]], paste,
+      sep = ""
+    ))
+    CTDict[[i]] <- as.vector(outer(
+      tmp, aaclass[[vspace[i, 3L]]], paste,
+      sep = ""
+    ))
   }
 
-  CTDict = unlist(CTDict)
+  CTDict <- unlist(CTDict)
 
-  classlen = sapply(aaclass, length)
-  CTIndexeach = rep(NA, veclen)
+  classlen <- sapply(aaclass, length)
+  CTIndexeach <- rep(NA, veclen)
 
-  for (i in 1L:veclen) CTIndexeach[i] = classlen[vspace[i, 1]] *
-    classlen[vspace[i, 2]] * classlen[vspace[i, 3]]
+  for (i in 1L:veclen) {
+    CTIndexeach[i] <- classlen[vspace[i, 1]] *
+      classlen[vspace[i, 2]] * classlen[vspace[i, 3]]
+  }
 
-  CTIndex = rep(1L:veclen, CTIndexeach)
+  CTIndex <- rep(1L:veclen, CTIndexeach)
 
-  xSplitted = strsplit(x, split = '')[[1L]]
-  n  = nchar(x)
-  CTAll = summary(factor(paste(paste(
-    xSplitted[-c(n, n-1L)], xSplitted[-c(1L, n)], sep = ''),
-    xSplitted[-c(1L, 2L)], sep = ''),
-    levels = CTDict), maxsum = length(CTDict) + 1L)
+  xSplitted <- strsplit(x, split = "")[[1L]]
+  n <- nchar(x)
+  CTAll <- summary(factor(paste(paste(
+    xSplitted[-c(n, n - 1L)], xSplitted[-c(1L, n)],
+    sep = ""
+  ),
+  xSplitted[-c(1L, 2L)],
+  sep = ""
+  ),
+  levels = CTDict
+  ), maxsum = length(CTDict) + 1L)
 
-  MatchedIndex = which(CTAll != 0L)
-  MatchedNames = names(CTAll[MatchedIndex])
-  MatchedTimes = as.integer(CTAll[MatchedIndex])
-  CTAll = rep(MatchedNames, times = MatchedTimes)
+  MatchedIndex <- which(CTAll != 0L)
+  MatchedNames <- names(CTAll[MatchedIndex])
+  MatchedTimes <- as.integer(CTAll[MatchedIndex])
+  CTAll <- rep(MatchedNames, times = MatchedTimes)
 
-  CT = rep(0L, veclen)
+  CT <- rep(0L, veclen)
 
   for (i in 1L:length(MatchedNames)) {
-    idx = CTIndex[which(CTDict == MatchedNames[i])]
-    CT[idx] = CT[idx] + MatchedTimes[i]
+    idx <- CTIndex[which(CTDict == MatchedNames[i])]
+    CT[idx] <- CT[idx] + MatchedTimes[i]
   }
 
-  CT = (CT - min(CT))/max(CT)
+  CT <- (CT - min(CT)) / max(CT)
 
-  names(CT) = paste0(
-    'VS', paste0(paste0(vspace[, 1], vspace[, 2]), vspace[, 3]))
+  names(CT) <- paste0(
+    "VS", paste0(paste0(vspace[, 1], vspace[, 2]), vspace[, 3])
+  )
 
   CT
-
 }

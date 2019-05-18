@@ -25,10 +25,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (principal components) selected.
 #'
-#' @keywords extract scales AAindex gap
-#'
-#' @aliases extractProtFPGap
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @importFrom stats na.omit
@@ -37,22 +33,20 @@
 #'
 #' @examples
 #' # amino acid sequence with gaps
-#' x = readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
-#' fp = extractProtFPGap(
-#'   x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
-
-extractProtFPGap = function(
+#' x <- readFASTA(system.file("protseq/align.fasta", package = "protr"))$`IXI_235`
+#' fp <- extractProtFPGap(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
+extractProtFPGap <- function(
   x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+  AAindex <- get("AAindex")
 
-  AAindex = get('AAindex')
+  if (!is.null(index)) {
+    propmat <- t(na.omit(as.matrix(AAindex[index, 7:26])))
+  }
 
-  if (!is.null(index))
-    propmat = t(na.omit(as.matrix(AAindex[index, 7:26])))
-
-  res = extractScalesGap(
+  res <- extractScalesGap(
     x = x, propmat = propmat, pc = pc,
-    lag = lag, scale = scale, silent = silent)
+    lag = lag, scale = scale, silent = silent
+  )
 
-  return(res)
-
+  res
 }

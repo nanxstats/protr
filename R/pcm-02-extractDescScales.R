@@ -34,29 +34,25 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales selected.
 #'
-#' @keywords extract scales PCM
-#'
-#' @aliases extractDescScales
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractDescScales
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-#' descscales = extractDescScales(
-#'   x, propmat = "AATopo", index = c(37:41, 43:47),
-#'   pc = 5, lag = 7, silent = FALSE)
-
-extractDescScales = function(
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' descscales <- extractDescScales(
+#'   x,
+#'   propmat = "AATopo", index = c(37:41, 43:47),
+#'   pc = 5, lag = 7, silent = FALSE
+#' )
+extractDescScales <- function(
   x, propmat, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+  propmat <- get(propmat)
+  if (!is.null(index)) propmat <- propmat[, index]
 
-  propmat = get(propmat)
-  if (!is.null(index)) propmat = propmat[, index]
+  res <- extractScales(
+    x = x, propmat = propmat, pc = pc, lag = lag, scale = scale, silent = silent
+  )
 
-  res = extractScales(
-    x = x, propmat = propmat, pc = pc, lag = lag, scale = scale, silent = silent)
-
-  return(res)
-
+  res
 }

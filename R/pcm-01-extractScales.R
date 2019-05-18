@@ -25,10 +25,6 @@
 #' @return A length \code{lag * p^2} named vector,
 #' \code{p} is the number of scales (principal components) selected.
 #'
-#' @keywords extract scales PCA PCM
-#'
-#' @aliases extractScales
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{extractDescScales}} scales descriptors based on
@@ -40,33 +36,31 @@
 #' @export extractScales
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' data(AAindex)
-#' AAidxmat = t(na.omit(as.matrix(AAindex[, 7:26])))
-#' scales = extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+#' AAidxmat <- t(na.omit(as.matrix(AAindex[, 7:26])))
+#' scales <- extractScales(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
+extractScales <- function(x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
+  if (protcheck(x) == FALSE) {
+    stop("x has unrecognized amino acid types")
+  }
 
-extractScales = function(x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
+  pc <- min(pc, ncol(propmat), nrow(propmat))
 
-  if (protcheck(x) == FALSE)
-    stop('x has unrecognized amino acid types')
+  prop.pr <- prcomp(propmat, scale = scale)
+  prop.pred <- predict(prop.pr)
 
-  pc = min(pc, ncol(propmat), nrow(propmat))
+  accmat <- matrix(0, pc, nchar(x))
+  x.split <- strsplit(x, "")[[1]]
 
-  prop.pr = prcomp(propmat, scale = scale)
-  prop.pred = predict(prop.pr)
+  for (i in 1:nchar(x)) accmat[, i] <- prop.pred[x.split[i], 1:pc]
 
-  accmat = matrix(0, pc, nchar(x))
-  x.split = strsplit(x, '')[[1]]
-
-  for (i in 1:nchar(x)) accmat[, i] = prop.pred[x.split[i], 1:pc]
-
-  res = acc(accmat, lag)
+  res <- acc(accmat, lag)
 
   if (!silent) {
-    cat('Summary of the first', pc,'principal components:\n')
+    cat("Summary of the first", pc, "principal components:", "\n")
     print(summary(prop.pr)$importance[, 1:pc])
   }
 
-  return(res)
-
+  res
 }

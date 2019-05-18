@@ -25,14 +25,13 @@
 #'   "MHGDTPTLHEYMLDLQPETTDLYCYEQLSDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS",
 #'   "MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSE-EEDEIDGPAGQAEPDRAHYNIVTFCCKCDSTLRLCVQS"
 #' )
-#'
 #' \dontrun{
 #' #' # gaps create issues for alignment
 #' parSeqSim(aaseq)
 #'
 #' # remove the gaps
 #' nogapseq <- removeGaps(aaseq)
-#' parSeqSim(nogapseq)}
-
+#' parSeqSim(nogapseq)
+#' }
 removeGaps <- function(x, pattern = "-", replacement = "", ...)
   gsub(pattern, replacement, x, ...)

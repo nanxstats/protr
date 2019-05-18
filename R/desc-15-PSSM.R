@@ -86,10 +86,6 @@
 #'
 #' @seealso \link{extractPSSMFeature} \link{extractPSSMAcc}
 #'
-#' @keywords extract PSSM Blast Alignment
-#'
-#' @aliases extractPSSM
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export extractPSSM
@@ -109,31 +105,30 @@
 #'
 #' @examples
 #' if (Sys.which("makeblastdb") == "" | Sys.which("psiblast") == "") {
-#'
 #'   cat("Cannot find makeblastdb or psiblast. Please install NCBI Blast+ first")
-#'
 #' } else {
-#'
-#'   x = readFASTA(system.file(
-#'     "protseq/P00750.fasta", package = "protr"))[[1]]
-#'   dbpath = tempfile("tempdb", fileext = ".fasta")
+#'   x <- readFASTA(system.file(
+#'     "protseq/P00750.fasta",
+#'     package = "protr"
+#'   ))[[1]]
+#'   dbpath <- tempfile("tempdb", fileext = ".fasta")
 #'   invisible(file.copy(from = system.file(
-#'     "protseq/Plasminogen.fasta", package = "protr"), to = dbpath))
+#'     "protseq/Plasminogen.fasta",
+#'     package = "protr"
+#'   ), to = dbpath))
 #'
-#'   pssmmat = extractPSSM(seq = x, database.path = dbpath)
+#'   pssmmat <- extractPSSM(seq = x, database.path = dbpath)
 #'
-#'   dim(pssmmat)  # 20 x 562 (P00750: length 562, 20 Amino Acids)
-#'
+#'   dim(pssmmat) # 20 x 562 (P00750: length 562, 20 Amino Acids)
 #' }
-
-extractPSSM = function(
+extractPSSM <- function(
   seq, start.pos = 1L, end.pos = nchar(seq),
   psiblast.path = NULL, makeblastdb.path = NULL,
   database.path = NULL, iter = 5, silent = TRUE,
   evalue = 10L, word.size = NULL,
   gapopen = NULL, gapextend = NULL,
-  matrix = 'BLOSUM62', threshold = NULL,
-  seg = 'no', soft.masking = FALSE,
+  matrix = "BLOSUM62", threshold = NULL,
+  seg = "no", soft.masking = FALSE,
   culling.limit = NULL, best.hit.overhang = NULL,
   best.hit.score.edge = NULL,
   xdrop.ungap = NULL, xdrop.gap = NULL,
@@ -141,137 +136,150 @@ extractPSSM = function(
   window.size = NULL, gap.trigger = 22L,
   num.threads = 1L, pseudocount = 0L,
   inclusion.ethresh = 0.002) {
+  if (Sys.which("makeblastdb") == "" & is.null(makeblastdb.path)) {
+    stop("Please install makeblastdb (included in NCBI BLAST+) or specify makeblastdb.path")
+  }
 
-  if (Sys.which('makeblastdb') == '' & is.null(makeblastdb.path))
-    stop('Please install makeblastdb (included in NCBI BLAST+) or specify makeblastdb.path')
+  if (Sys.which("psiblast") == "" & is.null(psiblast.path)) {
+    stop("Please install psiblast (included in NCBI BLAST+) or specify psiblast.path")
+  }
 
-  if (Sys.which('psiblast') == '' & is.null(psiblast.path))
-    stop('Please install psiblast (included in NCBI BLAST+) or specify psiblast.path')
+  makeblastdb.path <- if (!is.null(makeblastdb.path)) {
+    makeblastdb.path
+  } else {
+    Sys.which("makeblastdb")
+  }
+  psiblast.path <- if (!is.null(psiblast.path)) {
+    psiblast.path
+  } else {
+    Sys.which("psiblast")
+  }
 
-  makeblastdb.path = if (!is.null(makeblastdb.path))
-    makeblastdb.path else Sys.which('makeblastdb')
-  psiblast.path = if (!is.null(psiblast.path))
-    psiblast.path else Sys.which('psiblast')
+  if (is.null(database.path)) stop("Must specify the database (a FASTA file) path")
 
-  if (is.null(database.path)) stop('Must specify the database (a FASTA file) path')
-
-  N = end.pos - start.pos + 1L
+  N <- end.pos - start.pos + 1L
 
   # Prepare data for PSI-Blast
 
-  tmpdb = tempfile('protrPSIBlastDB')
+  tmpdb <- tempfile("protrPSIBlastDB")
 
-  cmddb = paste0(
-    shQuote(makeblastdb.path), ' -dbtype prot -in ',
-    shQuote(database.path), ' -out ', shQuote(tmpdb))
+  cmddb <- paste0(
+    shQuote(makeblastdb.path), " -dbtype prot -in ",
+    shQuote(database.path), " -out ", shQuote(tmpdb)
+  )
 
   if (silent == TRUE) system(cmddb, ignore.stdout = TRUE) else system(cmddb)
 
   # Basic parameters for PSI-Blast
 
-  tmp = tempfile('protrPSIBlast')
-  queryFasta = paste0(tmp, '.fasta')
-  PSSMfile = paste0(tmp, '.pssm')
-  querySeq = Biostrings::AAStringSet(seq)
+  tmp <- tempfile("protrPSIBlast")
+  queryFasta <- paste0(tmp, ".fasta")
+  PSSMfile <- paste0(tmp, ".pssm")
+  querySeq <- Biostrings::AAStringSet(seq)
   Biostrings::writeXStringSet(querySeq, queryFasta)
 
   # Additional parameters for PSI-Blast
 
   if (!is.null(evalue)) {
     if (evalue <= 0L) {
-      stop('evalue must be > 0')
+      stop("evalue must be > 0")
     }
   }
 
-  evalue.arg = ifelse(evalue == 10L, ' ', paste0(' -evalue ', evalue))
+  evalue.arg <- ifelse(evalue == 10L, " ", paste0(" -evalue ", evalue))
 
   if (!is.null(word.size)) {
     if (word.size < 2L | word.size >= 6L) {
-      stop('word.size must be an integer >= 2 and < 6')
+      stop("word.size must be an integer >= 2 and < 6")
     }
   }
 
-  word.size.arg = ifelse(is.null(word.size), ' ', paste0(' -word_size ', word.size))
+  word.size.arg <- ifelse(is.null(word.size), " ", paste0(" -word_size ", word.size))
 
-  gapopen.arg = ifelse(is.null(gapopen), ' ', paste0(' -gapopen ', gapopen))
-  gapextend.arg = ifelse(is.null(gapextend), ' ', paste0(' -gapextend ', gapextend))
+  gapopen.arg <- ifelse(is.null(gapopen), " ", paste0(" -gapopen ", gapopen))
+  gapextend.arg <- ifelse(is.null(gapextend), " ", paste0(" -gapextend ", gapextend))
 
-  matrix.arg = ifelse(matrix == 'BLOSUM62', ' ', paste0(' -matrix ', matrix))
+  matrix.arg <- ifelse(matrix == "BLOSUM62", " ", paste0(" -matrix ", matrix))
 
   if (!is.null(threshold)) {
     if (threshold < 0L) {
-      stop('threshold must be a real number >= 0')
+      stop("threshold must be a real number >= 0")
     }
   }
 
-  threshold.arg = ifelse(is.null(threshold), ' ', paste0(' -threshold ', threshold))
+  threshold.arg <- ifelse(is.null(threshold), " ", paste0(" -threshold ", threshold))
 
-  seg.arg = ifelse(seg == 'no', ' ', paste0(' -seg ', seg))
-  soft.masking.arg = ifelse(soft.masking == FALSE, ' ', ' -soft_masking true')
+  seg.arg <- ifelse(seg == "no", " ", paste0(" -seg ", seg))
+  soft.masking.arg <- ifelse(soft.masking == FALSE, " ", " -soft_masking true")
 
   if (!is.null(culling.limit)) {
     if (culling.limit < 0L) {
-      stop('culling.limit must be an integer >= 0')
+      stop("culling.limit must be an integer >= 0")
     }
   }
 
-  culling.limit.arg = ifelse(is.null(culling.limit), ' ', paste0(' -culling_limit ', culling.limit))
+  culling.limit.arg <- ifelse(is.null(culling.limit), " ", paste0(" -culling_limit ", culling.limit))
 
   if (!is.null(best.hit.overhang)) {
     if (best.hit.overhang < 0L | best.hit.overhang > 1.5) {
-      stop('best.hit.overhang must be a real number >= 0 and =< 0.5')
+      stop("best.hit.overhang must be a real number >= 0 and =< 0.5")
     }
   }
 
-  best.hit.overhang.arg = ifelse(is.null(best.hit.overhang), ' ', paste0(' -best_hit_overhang ', best.hit.overhang))
+  best.hit.overhang.arg <- ifelse(is.null(best.hit.overhang), " ", paste0(" -best_hit_overhang ", best.hit.overhang))
 
   if (!is.null(best.hit.score.edge)) {
     if (best.hit.score.edge < 0L | best.hit.score.edge > 1.5) {
-      stop('best.hit.score.edge must be a real number >= 0 and =< 0.5')
+      stop("best.hit.score.edge must be a real number >= 0 and =< 0.5")
     }
   }
 
-  best.hit.score.edge.arg = ifelse(is.null(best.hit.score.edge), ' ', paste0(' -best_hit_score_edge ', best.hit.score.edge))
+  best.hit.score.edge.arg <- ifelse(is.null(best.hit.score.edge), " ", paste0(" -best_hit_score_edge ", best.hit.score.edge))
 
-  xdrop.ungap.arg = ifelse(is.null(xdrop.ungap), ' ', paste0(' -xdrop_ungap ', xdrop.ungap))
-  xdrop.gap.arg = ifelse(is.null(xdrop.gap), ' ', paste0(' -xdrop_gap ', xdrop.gap))
-  xdrop.gap.final.arg = ifelse(is.null(xdrop.gap.final), ' ', paste0(' -xdrop_gap_final ', xdrop.gap.final))
-  window.size.arg = ifelse(is.null(window.size), ' ', paste0(' -window_size ', window.size))
-  gap.trigger.arg = ifelse(gap.trigger == 22L, ' ', paste0(' -gap_trigger ', gap.trigger))
-  num.threads.arg = ifelse(num.threads == 1L, ' ', paste0(' -num_threads ', num.threads))
-  pseudocount.arg = ifelse(pseudocount == 0L, ' ', paste0(' -pseudocount ', pseudocount))
-  inclusion.ethresh.arg = ifelse(inclusion.ethresh == 0.002, ' ', paste0(' -inclusion_ethresh ', inclusion.ethresh))
+  xdrop.ungap.arg <- ifelse(is.null(xdrop.ungap), " ", paste0(" -xdrop_ungap ", xdrop.ungap))
+  xdrop.gap.arg <- ifelse(is.null(xdrop.gap), " ", paste0(" -xdrop_gap ", xdrop.gap))
+  xdrop.gap.final.arg <- ifelse(is.null(xdrop.gap.final), " ", paste0(" -xdrop_gap_final ", xdrop.gap.final))
+  window.size.arg <- ifelse(is.null(window.size), " ", paste0(" -window_size ", window.size))
+  gap.trigger.arg <- ifelse(gap.trigger == 22L, " ", paste0(" -gap_trigger ", gap.trigger))
+  num.threads.arg <- ifelse(num.threads == 1L, " ", paste0(" -num_threads ", num.threads))
+  pseudocount.arg <- ifelse(pseudocount == 0L, " ", paste0(" -pseudocount ", pseudocount))
+  inclusion.ethresh.arg <- ifelse(inclusion.ethresh == 0.002, " ", paste0(" -inclusion_ethresh ", inclusion.ethresh))
 
   # Run PSI-Blast
 
-  cmdpsi = paste(
-    paste0(shQuote(psiblast.path),
-           ' -comp_based_stats 1 -db ', shQuote(tmpdb),
-           ' -query ', shQuote(queryFasta), ' -num_iterations ', iter,
-           ' -out_ascii_pssm ', shQuote(PSSMfile)),
-    paste0(evalue.arg, word.size.arg, gapopen.arg, gapextend.arg,
-           matrix.arg, threshold.arg, seg.arg, soft.masking.arg,
-           culling.limit.arg, best.hit.overhang.arg, best.hit.score.edge.arg,
-           xdrop.ungap.arg, xdrop.gap.arg, xdrop.gap.final.arg, window.size.arg,
-           gap.trigger.arg, num.threads.arg, pseudocount.arg,
-           inclusion.ethresh.arg))
+  cmdpsi <- paste(
+    paste0(
+      shQuote(psiblast.path),
+      " -comp_based_stats 1 -db ", shQuote(tmpdb),
+      " -query ", shQuote(queryFasta), " -num_iterations ", iter,
+      " -out_ascii_pssm ", shQuote(PSSMfile)
+    ),
+    paste0(
+      evalue.arg, word.size.arg, gapopen.arg, gapextend.arg,
+      matrix.arg, threshold.arg, seg.arg, soft.masking.arg,
+      culling.limit.arg, best.hit.overhang.arg, best.hit.score.edge.arg,
+      xdrop.ungap.arg, xdrop.gap.arg, xdrop.gap.final.arg, window.size.arg,
+      gap.trigger.arg, num.threads.arg, pseudocount.arg,
+      inclusion.ethresh.arg
+    )
+  )
 
   if (silent == TRUE) system(cmdpsi, ignore.stdout = TRUE) else system(cmdpsi)
 
-  PSSMraw = readLines(PSSMfile)
+  PSSMraw <- readLines(PSSMfile)
 
-  PSSMClean = function(x) {
-    y = unlist(strsplit(PSSMraw[x + 3], split = '\\s+'))
+  PSSMClean <- function(x) {
+    y <- unlist(strsplit(PSSMraw[x + 3], split = "\\s+"))
     -as.numeric(y[4L:23L])
   }
 
-  PSSMmat = sapply(start.pos:end.pos, PSSMClean)
+  PSSMmat <- sapply(start.pos:end.pos, PSSMClean)
 
-  AADict = c(
-    'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I',
-    'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V')
-  rownames(PSSMmat) = AADict
+  AADict <- c(
+    "A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
+    "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"
+  )
+  rownames(PSSMmat) <- AADict
 
   PSSMmat
-
 }

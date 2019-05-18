@@ -18,49 +18,47 @@
 #' segmentations (a character string), names of the list components
 #' are the positions of the specified amino acid in the sequence.
 #'
-#' @keywords segmentation
-#'
-#' @aliases protseg
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @export protseg
 #'
 #' @examples
-#' x = readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' protseg(x, aa = "R", k = 5)
-
-protseg = function(
+protseg <- function(
   x, aa = c(
-    'A', 'R', 'N', 'D', 'C',
-    'E', 'Q', 'G', 'H', 'I',
-    'L', 'K', 'M', 'F', 'P',
-    'S', 'T', 'W', 'Y', 'V'), k = 7) {
+    "A", "R", "N", "D", "C",
+    "E", "Q", "G", "H", "I",
+    "L", "K", "M", "F", "P",
+    "S", "T", "W", "Y", "V"
+  ), k = 7) {
+  aa <- match.arg(aa)
 
-  aa = match.arg(aa)
+  xSplitted <- strsplit(x, split = "")[[1]]
+  n <- nchar(x)
 
-  xSplitted = strsplit(x, split = '')[[1]]
-  n = nchar(x)
+  CenterIdx <- which(xSplitted == aa)
 
-  CenterIdx = which(xSplitted == aa)
-
-  if (length(CenterIdx) < 0.5)
-    stop(paste('Did not find AA', aa, 'in the sequence'))
-
-  CenterIdx = CenterIdx[(CenterIdx - k) > 0.5 & (CenterIdx + k) < (n + 0.5)]
-
-  if (length(CenterIdx) < 0.5)
-    stop(paste('Segmentation does not exist for amino acid', aa, 'and step', k))
-
-  segments = vector('list', length(CenterIdx))
-
-  for (i in 1:length(CenterIdx)) {
-    segments[[i]] = paste(
-      xSplitted[(CenterIdx[i] - k):(CenterIdx[i] + k)], collapse = '')
+  if (length(CenterIdx) < 0.5) {
+    stop(paste("Did not find AA", aa, "in the sequence"))
   }
 
-  names(segments) = as.character(CenterIdx)
+  CenterIdx <- CenterIdx[(CenterIdx - k) > 0.5 & (CenterIdx + k) < (n + 0.5)]
+
+  if (length(CenterIdx) < 0.5) {
+    stop(paste("Segmentation does not exist for amino acid", aa, "and step", k))
+  }
+
+  segments <- vector("list", length(CenterIdx))
+
+  for (i in 1:length(CenterIdx)) {
+    segments[[i]] <- paste(
+      xSplitted[(CenterIdx[i] - k):(CenterIdx[i] + k)],
+      collapse = ""
+    )
+  }
+
+  names(segments) <- as.character(CenterIdx)
 
   segments
-
 }

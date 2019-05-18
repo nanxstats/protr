@@ -31,10 +31,6 @@
 #'
 #' @return A \code{n} x \code{n} similarity matrix.
 #'
-#' @keywords alignment parallel similarity
-#'
-#' @aliases parSeqSim
-#'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
 #' @seealso See \code{\link{parSeqSimDisk}} for the disk-based version.
@@ -94,8 +90,9 @@ parSeqSim <- function(
 
   # convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist))
+  for (i in 1:length(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
+  }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
   diag(seqsimmat) <- 1
 
@@ -139,10 +136,6 @@ parSeqSim <- function(
 #' gap by 1. Defaults to 4.
 #'
 #' @return A \code{n} x \code{n} similarity matrix.
-#'
-#' @keywords alignment parallel similarity
-#'
-#' @aliases parSeqSimDisk
 #'
 #' @seealso See \code{\link{parSeqSim}} for the in-memory version.
 #'
@@ -215,8 +208,9 @@ parSeqSimDisk <- function(
 
   # convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist))
+  for (i in 1:length(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
+  }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
   diag(seqsimmat) <- 1
 
@@ -244,10 +238,6 @@ parSeqSimDisk <- function(
 #'
 #' @return An \code{Biostrings} object containing the alignment scores
 #' and other alignment information.
-#'
-#' @keywords alignment parallel similarity
-#'
-#' @aliases twoSeqSim
 #'
 #' @author Nan Xiao <\url{https://nanx.me}>
 #'
