@@ -1,3 +1,11 @@
+# protr 1.6-2 (2019-05-18)
+
+## Improvements
+
+- Switched to the tidyverse code style.
+- Updated GitHub repository links to reflect the handle change.
+- Removed AppVeyor CI due to the frequent Bioconductor dependency installation issues.
+
 # protr 1.6-1 (2019-02-24)
 
 ## Improvements
