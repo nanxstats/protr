@@ -5,9 +5,16 @@
 \title{Parallellized Protein Sequence Similarity Calculation based on
 Sequence Alignment (In-Memory Version)}
 \usage{
-parSeqSim(protlist, cores = 2, batches = 1, verbose = FALSE,
-  type = "local", submat = "BLOSUM62", gap.opening = 10,
-  gap.extension = 4)
+parSeqSim(
+  protlist,
+  cores = 2,
+  batches = 1,
+  verbose = FALSE,
+  type = "local",
+  submat = "BLOSUM62",
+  gap.opening = 10,
+  gap.extension = 4
+)
 }
 \arguments{
 \item{protlist}{A length \code{n} list containing \code{n} protein sequences,

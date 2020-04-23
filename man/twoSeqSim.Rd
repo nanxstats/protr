@@ -4,8 +4,14 @@
 \alias{twoSeqSim}
 \title{Protein Sequence Alignment for Two Protein Sequences}
 \usage{
-twoSeqSim(seq1, seq2, type = "local", submat = "BLOSUM62",
-  gap.opening = 10, gap.extension = 4)
+twoSeqSim(
+  seq1,
+  seq2,
+  type = "local",
+  submat = "BLOSUM62",
+  gap.opening = 10,
+  gap.extension = 4
+)
 }
 \arguments{
 \item{seq1}{Character string, containing one protein sequence.}

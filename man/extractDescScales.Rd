@@ -4,8 +4,15 @@
 \alias{extractDescScales}
 \title{Scales-Based Descriptors with 20+ classes of Molecular Descriptors}
 \usage{
-extractDescScales(x, propmat, index = NULL, pc, lag, scale = TRUE,
-  silent = TRUE)
+extractDescScales(
+  x,
+  propmat,
+  index = NULL,
+  pc,
+  lag,
+  scale = TRUE,
+  silent = TRUE
+)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.}

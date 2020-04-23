@@ -4,8 +4,15 @@
 \alias{twoGOSim}
 \title{Protein Similarity Calculation based on Gene Ontology (GO) Similarity}
 \usage{
-twoGOSim(id1, id2, type = c("go", "gene"), ont = c("MF", "BP", "CC"),
-  organism = "human", measure = "Resnik", combine = "BMA")
+twoGOSim(
+  id1,
+  id2,
+  type = c("go", "gene"),
+  ont = c("MF", "BP", "CC"),
+  organism = "human",
+  measure = "Resnik",
+  combine = "BMA"
+)
 }
 \arguments{
 \item{id1}{Character vector. When length > 1: each element is a GO term;

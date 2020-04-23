@@ -4,8 +4,15 @@
 \alias{extractFAScales}
 \title{Scales-Based Descriptors derived by Factor Analysis}
 \usage{
-extractFAScales(x, propmat, factors, scores = "regression", lag,
-  scale = TRUE, silent = TRUE)
+extractFAScales(
+  x,
+  propmat,
+  factors,
+  scores = "regression",
+  lag,
+  scale = TRUE,
+  silent = TRUE
+)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.}

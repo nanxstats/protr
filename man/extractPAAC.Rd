@@ -4,8 +4,13 @@
 \alias{extractPAAC}
 \title{Pseudo Amino Acid Composition (PseAAC) Descriptor}
 \usage{
-extractPAAC(x, props = c("Hydrophobicity", "Hydrophilicity",
-  "SideChainMass"), lambda = 30, w = 0.05, customprops = NULL)
+extractPAAC(
+  x,
+  props = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"),
+  lambda = 30,
+  w = 0.05,
+  customprops = NULL
+)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.}

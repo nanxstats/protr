@@ -5,8 +5,14 @@
 \title{Protein Similarity Calculation based on Gene Ontology
 (GO) Similarity}
 \usage{
-parGOSim(golist, type = c("go", "gene"), ont = c("MF", "BP", "CC"),
-  organism = "human", measure = "Resnik", combine = "BMA")
+parGOSim(
+  golist,
+  type = c("go", "gene"),
+  ont = c("MF", "BP", "CC"),
+  organism = "human",
+  measure = "Resnik",
+  combine = "BMA"
+)
 }
 \arguments{
 \item{golist}{A list, each component contains

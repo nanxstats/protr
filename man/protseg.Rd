@@ -4,8 +4,12 @@
 \alias{protseg}
 \title{Protein Sequence Segmentation/Partition}
 \usage{
-protseg(x, aa = c("A", "R", "N", "D", "C", "E", "Q", "G", "H", "I", "L",
-  "K", "M", "F", "P", "S", "T", "W", "Y", "V"), k = 7)
+protseg(
+  x,
+  aa = c("A", "R", "N", "D", "C", "E", "Q", "G", "H", "I", "L", "K", "M", "F", "P",
+    "S", "T", "W", "Y", "V"),
+  k = 7
+)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.}

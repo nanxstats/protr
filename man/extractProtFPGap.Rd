@@ -5,8 +5,7 @@
 \title{Amino Acid Properties Based Scales Descriptors (Protein Fingerprint)
 with Gap Support}
 \usage{
-extractProtFPGap(x, index = NULL, pc, lag, scale = TRUE,
-  silent = TRUE)
+extractProtFPGap(x, index = NULL, pc, lag, scale = TRUE, silent = TRUE)
 }
 \arguments{
 \item{x}{A character vector, as the input protein sequence.
