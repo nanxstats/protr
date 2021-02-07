@@ -9,6 +9,13 @@
 <title>Scales-Based Descriptors derived by Principal Components Analysis
 (with Gap Support) — extractScalesGap • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -51,6 +58,7 @@ This function implements the core computation procedure needed for
 the scales-based descriptors derived by AA-Properties (AAindex)
 and scales-based descriptors derived by 20+ classes of 2D and 3D
 molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -90,7 +98,7 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -107,7 +115,7 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -140,7 +148,7 @@ and scales-based descriptors derived by 20+ classes of 2D and 3D
 molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractScalesGap</span>(<span class='no'>x</span>, <span class='no'>propmat</span>, <span class='no'>pc</span>, <span class='no'>lag</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>extractScalesGap</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>propmat</span>, <span class='va'>pc</span>, <span class='va'>lag</span>, scale <span class='op'>=</span> <span class='cn'>TRUE</span>, silent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,7 +156,7 @@ molecular descriptors (Topological, WHIM, VHSE, etc.) in the protr package.</p>
     <tr>
       <th>x</th>
       <td><p>A character vector, as the input protein sequence.
-Use '<code>-</code>' to represent gaps in the sequence.</p></td>
+Use '<code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>' to represent gaps in the sequence.</p></td>
     </tr>
     <tr>
       <th>propmat</th>
@@ -187,13 +195,17 @@ the selected principal components or not. Default is <code>TRUE</code>.</p></td>
 
     <div class='dont-index'><p>See <code><a href='extractProtFPGap.html'>extractProtFPGap</a></code> for amino acid property based
 scales descriptors (protein fingerprint) with gap support.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># amino acid sequence with gaps</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/align.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))$<span class='no'>`IXI_235`</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>AAindex</span>)
-<span class='no'>AAidxmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>AAindex</span>[, <span class='fl'>7</span>:<span class='fl'>26</span>])))
-<span class='no'>scales</span> <span class='kw'>&lt;-</span> <span class='fu'>extractScalesGap</span>(<span class='no'>x</span>, <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='no'>AAidxmat</span>, <span class='kw'>pc</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Summary of the first 5 principal components: 
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/align.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>`IXI_235`</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>AAindex</span><span class='op'>)</span>
+<span class='va'>AAidxmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>AAindex</span><span class='op'>[</span>, <span class='fl'>7</span><span class='op'>:</span><span class='fl'>26</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>scales</span> <span class='op'>&lt;-</span> <span class='fu'>extractScalesGap</span><span class='op'>(</span><span class='va'>x</span>, propmat <span class='op'>=</span> <span class='va'>AAidxmat</span>, pc <span class='op'>=</span> <span class='fl'>5</span>, lag <span class='op'>=</span> <span class='fl'>7</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Summary of the first 5 principal components: 
 #&gt;                             PC1      PC2      PC3      PC4     PC5
 #&gt; Standard deviation     12.38381 10.73268 7.742507 6.802462 5.22316
 #&gt; Proportion of Variance  0.28881  0.21693 0.112890 0.087140 0.05138
@@ -213,7 +225,7 @@ scales descriptors (protein fingerprint) with gap support.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

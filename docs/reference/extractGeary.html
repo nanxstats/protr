@@ -8,6 +8,13 @@
 
 <title>Geary Autocorrelation Descriptor — extractGeary • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -44,6 +51,7 @@
 <meta property="og:title" content="Geary Autocorrelation Descriptor — extractGeary" />
 <meta property="og:description" content="This function calculates the Geary
 autocorrelation descriptor (dim: length(props) * nlag)." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -83,7 +91,7 @@ autocorrelation descriptor (dim: length(props) * nlag)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +108,7 @@ autocorrelation descriptor (dim: length(props) * nlag)." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,13 +135,13 @@ autocorrelation descriptor (dim: length(props) * nlag)." />
 autocorrelation descriptor (dim: <code>length(props) * nlag</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractGeary</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>props</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"CIDH920105"</span>, <span class='st'>"BHAR880101"</span>, <span class='st'>"CHAM820101"</span>, <span class='st'>"CHAM820102"</span>, <span class='st'>"CHOC760101"</span>,
-    <span class='st'>"BIGC670101"</span>, <span class='st'>"CHAM810101"</span>, <span class='st'>"DAYM780201"</span>),
-  <span class='kw'>nlag</span> <span class='kw'>=</span> <span class='fl'>30L</span>,
-  <span class='kw'>customprops</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>extractGeary</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  props <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"CIDH920105"</span>, <span class='st'>"BHAR880101"</span>, <span class='st'>"CHAM820101"</span>, <span class='st'>"CHAM820102"</span>, <span class='st'>"CHOC760101"</span>,
+    <span class='st'>"BIGC670101"</span>, <span class='st'>"CHAM810101"</span>, <span class='st'>"DAYM780201"</span><span class='op'>)</span>,
+  nlag <span class='op'>=</span> <span class='fl'>30L</span>,
+  customprops <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,7 +154,7 @@ autocorrelation descriptor (dim: <code>length(props) * nlag</code>).</p>
       <th>props</th>
       <td><p>A character vector, specifying the
 Accession Number of the target properties.
-8 properties are used by default, as listed below:</p><dl'>
+8 properties are used by default, as listed below:</p><dl>
 <dt>AccNo. CIDH920105</dt><dd><p>Normalized average hydrophobicity scales (Cid et al., 1992)</p></dd>
 <dt>AccNo. BHAR880101</dt><dd><p>Average flexibility indices (Bhaskaran-Ponnuswamy, 1988)</p></dd>
 <dt>AccNo. CHAM820101</dt><dd><p>Polarizability parameter (Charton-Charton, 1982)</p></dd>
@@ -211,10 +219,14 @@ an usage from an Amerindian tribal population.
     <div class='dont-index'><p>See <code><a href='extractMoreauBroto.html'>extractMoreauBroto</a></code> and <code><a href='extractMoran.html'>extractMoran</a></code>
 for Moreau-Broto autocorrelation descriptors and
 Moran autocorrelation descriptors.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='fu'>extractGeary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/P00750.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='fu'>extractGeary</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 #&gt;        0.9361830        1.0442920        1.0452843        1.0563467 
 #&gt;  CIDH920105.lag5  CIDH920105.lag6  CIDH920105.lag7  CIDH920105.lag8 
 #&gt;        0.9406031        1.0765517        1.0675786        0.9991363 
@@ -334,30 +346,31 @@ Moran autocorrelation descriptors.</p></div>
 #&gt;        0.9977120        0.9509454        1.0878960        1.0429411 
 #&gt; DAYM780201.lag27 DAYM780201.lag28 DAYM780201.lag29 DAYM780201.lag30 
 #&gt;        0.9938437        0.9506562        0.9532393        1.0463685 </div><div class='input'>
-<span class='no'>myprops</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>AccNo</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"MyProp1"</span>, <span class='st'>"MyProp2"</span>, <span class='st'>"MyProp3"</span>),
-  <span class='kw'>A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.62</span>, -<span class='fl'>0.5</span>, <span class='fl'>15</span>), <span class='kw'>R</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>2.53</span>, <span class='fl'>3</span>, <span class='fl'>101</span>),
-  <span class='kw'>N</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.78</span>, <span class='fl'>0.2</span>, <span class='fl'>58</span>), <span class='kw'>D</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.9</span>, <span class='fl'>3</span>, <span class='fl'>59</span>),
-  <span class='kw'>C</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.29</span>, -<span class='fl'>1</span>, <span class='fl'>47</span>), <span class='kw'>E</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.74</span>, <span class='fl'>3</span>, <span class='fl'>73</span>),
-  <span class='kw'>Q</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.85</span>, <span class='fl'>0.2</span>, <span class='fl'>72</span>), <span class='kw'>G</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.48</span>, <span class='fl'>0</span>, <span class='fl'>1</span>),
-  <span class='kw'>H</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.4</span>, -<span class='fl'>0.5</span>, <span class='fl'>82</span>), <span class='kw'>I</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.38</span>, -<span class='fl'>1.8</span>, <span class='fl'>57</span>),
-  <span class='kw'>L</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.06</span>, -<span class='fl'>1.8</span>, <span class='fl'>57</span>), <span class='kw'>K</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>1.5</span>, <span class='fl'>3</span>, <span class='fl'>73</span>),
-  <span class='kw'>M</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.64</span>, -<span class='fl'>1.3</span>, <span class='fl'>75</span>), <span class='kw'>F</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.19</span>, -<span class='fl'>2.5</span>, <span class='fl'>91</span>),
-  <span class='kw'>P</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.12</span>, <span class='fl'>0</span>, <span class='fl'>42</span>), <span class='kw'>S</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.18</span>, <span class='fl'>0.3</span>, <span class='fl'>31</span>),
-  <span class='kw'>T</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.05</span>, -<span class='fl'>0.4</span>, <span class='fl'>45</span>), <span class='kw'>W</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.81</span>, -<span class='fl'>3.4</span>, <span class='fl'>130</span>),
-  <span class='kw'>Y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.26</span>, -<span class='fl'>2.3</span>, <span class='fl'>107</span>), <span class='kw'>V</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.08</span>, -<span class='fl'>1.5</span>, <span class='fl'>43</span>)
-)
+<span class='va'>myprops</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  AccNo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"MyProp1"</span>, <span class='st'>"MyProp2"</span>, <span class='st'>"MyProp3"</span><span class='op'>)</span>,
+  A <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.62</span>, <span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>15</span><span class='op'>)</span>, R <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>2.53</span>, <span class='fl'>3</span>, <span class='fl'>101</span><span class='op'>)</span>,
+  N <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.78</span>, <span class='fl'>0.2</span>, <span class='fl'>58</span><span class='op'>)</span>, D <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.9</span>, <span class='fl'>3</span>, <span class='fl'>59</span><span class='op'>)</span>,
+  C <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.29</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>47</span><span class='op'>)</span>, E <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.74</span>, <span class='fl'>3</span>, <span class='fl'>73</span><span class='op'>)</span>,
+  Q <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.85</span>, <span class='fl'>0.2</span>, <span class='fl'>72</span><span class='op'>)</span>, G <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.48</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>,
+  H <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.4</span>, <span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>82</span><span class='op'>)</span>, I <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.38</span>, <span class='op'>-</span><span class='fl'>1.8</span>, <span class='fl'>57</span><span class='op'>)</span>,
+  L <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.06</span>, <span class='op'>-</span><span class='fl'>1.8</span>, <span class='fl'>57</span><span class='op'>)</span>, K <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1.5</span>, <span class='fl'>3</span>, <span class='fl'>73</span><span class='op'>)</span>,
+  M <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.64</span>, <span class='op'>-</span><span class='fl'>1.3</span>, <span class='fl'>75</span><span class='op'>)</span>, F <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.19</span>, <span class='op'>-</span><span class='fl'>2.5</span>, <span class='fl'>91</span><span class='op'>)</span>,
+  P <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.12</span>, <span class='fl'>0</span>, <span class='fl'>42</span><span class='op'>)</span>, S <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.18</span>, <span class='fl'>0.3</span>, <span class='fl'>31</span><span class='op'>)</span>,
+  T <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.05</span>, <span class='op'>-</span><span class='fl'>0.4</span>, <span class='fl'>45</span><span class='op'>)</span>, W <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.81</span>, <span class='op'>-</span><span class='fl'>3.4</span>, <span class='fl'>130</span><span class='op'>)</span>,
+  Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.26</span>, <span class='op'>-</span><span class='fl'>2.3</span>, <span class='fl'>107</span><span class='op'>)</span>, V <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.08</span>, <span class='op'>-</span><span class='fl'>1.5</span>, <span class='fl'>43</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'># Use 4 properties in the AAindex database, and 3 cutomized properties</span>
-<span class='fu'>extractGeary</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>customprops</span> <span class='kw'>=</span> <span class='no'>myprops</span>,
-  <span class='kw'>props</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+<span class='fu'>extractGeary</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  customprops <span class='op'>=</span> <span class='va'>myprops</span>,
+  props <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
     <span class='st'>"CIDH920105"</span>, <span class='st'>"BHAR880101"</span>,
     <span class='st'>"CHAM820101"</span>, <span class='st'>"CHAM820102"</span>,
     <span class='st'>"MyProp1"</span>, <span class='st'>"MyProp2"</span>, <span class='st'>"MyProp3"</span>
-  )
-)</div><div class='output co'>#&gt;  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
+  <span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt;  CIDH920105.lag1  CIDH920105.lag2  CIDH920105.lag3  CIDH920105.lag4 
 #&gt;        0.9361830        1.0442920        1.0452843        1.0563467 
 #&gt;  CIDH920105.lag5  CIDH920105.lag6  CIDH920105.lag7  CIDH920105.lag8 
 #&gt;        0.9406031        1.0765517        1.0675786        0.9991363 
@@ -478,7 +491,7 @@ Moran autocorrelation descriptors.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

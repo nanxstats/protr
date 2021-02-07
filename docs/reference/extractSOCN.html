@@ -8,6 +8,13 @@
 
 <title>Sequence-Order-Coupling Numbers — extractSOCN • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -44,6 +51,7 @@
 <meta property="og:title" content="Sequence-Order-Coupling Numbers — extractSOCN" />
 <meta property="og:description" content="This function calculates the Sequence-Order-Coupling Numbers
 (dim: nlag * 2, default is 60)." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -83,7 +91,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +108,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +135,7 @@
 (dim: <code>nlag * 2</code>, default is 60).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractSOCN</span>(<span class='no'>x</span>, <span class='kw'>nlag</span> <span class='kw'>=</span> <span class='fl'>30</span>)</pre>
+    <pre class="usage"><span class='fu'>extractSOCN</span><span class='op'>(</span><span class='va'>x</span>, nlag <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,10 +170,14 @@ Molecular Evolution: Do Novo Design of an Idealized Leader Cleavge Site.
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>See <code><a href='extractQSO.html'>extractQSO</a></code> for quasi-sequence-order descriptors.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='fu'>extractSOCN</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  Schneider.lag1  Schneider.lag2  Schneider.lag3  Schneider.lag4  Schneider.lag5 
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/P00750.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='fu'>extractSOCN</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  Schneider.lag1  Schneider.lag2  Schneider.lag3  Schneider.lag4  Schneider.lag5 
 #&gt;        204.2036        199.8708        206.8102        197.4828        193.3366 
 #&gt;  Schneider.lag6  Schneider.lag7  Schneider.lag8  Schneider.lag9 Schneider.lag10 
 #&gt;        208.1936        195.5476        200.9789        196.7110        193.9931 
@@ -204,7 +216,7 @@ Molecular Evolution: Do Novo Design of an Idealized Leader Cleavge Site.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

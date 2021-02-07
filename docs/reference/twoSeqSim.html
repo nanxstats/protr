@@ -8,6 +8,13 @@
 
 <title>Protein Sequence Alignment for Two Protein Sequences — twoSeqSim • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -43,6 +50,7 @@
 
 <meta property="og:title" content="Protein Sequence Alignment for Two Protein Sequences — twoSeqSim" />
 <meta property="og:description" content="This function implements the sequence alignment between two protein sequences." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -82,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -99,7 +107,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,14 +133,14 @@
     <p>This function implements the sequence alignment between two protein sequences.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>twoSeqSim</span>(
-  <span class='no'>seq1</span>,
-  <span class='no'>seq2</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"local"</span>,
-  <span class='kw'>submat</span> <span class='kw'>=</span> <span class='st'>"BLOSUM62"</span>,
-  <span class='kw'>gap.opening</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>gap.extension</span> <span class='kw'>=</span> <span class='fl'>4</span>
-)</pre>
+    <pre class="usage"><span class='fu'>twoSeqSim</span><span class='op'>(</span>
+  <span class='va'>seq1</span>,
+  <span class='va'>seq2</span>,
+  type <span class='op'>=</span> <span class='st'>"local"</span>,
+  submat <span class='op'>=</span> <span class='st'>"BLOSUM62"</span>,
+  gap.opening <span class='op'>=</span> <span class='fl'>10</span>,
+  gap.extension <span class='op'>=</span> <span class='fl'>4</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,19 +189,23 @@ and other alignment information.</p>
 protein similarity calculation based on sequence alignment.
 See <code><a href='twoGOSim.html'>twoGOSim</a></code> for calculating the GO semantic
 similarity between two groups of GO terms or two Entrez gene IDs.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='co'># Be careful when testing this since it involves sequence alignment</span>
 <span class='co'># and might produce unpredictable results in some environments</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"Biostrings"</span>)
-<span class='no'>s1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>s2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/P10323.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>seqalign</span> <span class='kw'>&lt;-</span> <span class='fu'>twoSeqSim</span>(<span class='no'>s1</span>, <span class='no'>s2</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>seqalign</span>)
-<span class='fu'>score</span>(<span class='no'>seqalign</span>)
-}</div></pre>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/Biostrings'>"Biostrings"</a></span><span class='op'>)</span>
+<span class='va'>s1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/P00750.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='va'>s2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/P10323.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='va'>seqalign</span> <span class='op'>&lt;-</span> <span class='fu'>twoSeqSim</span><span class='op'>(</span><span class='va'>s1</span>, <span class='va'>s2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>seqalign</span><span class='op'>)</span>
+<span class='fu'>score</span><span class='op'>(</span><span class='va'>seqalign</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -209,7 +221,7 @@ similarity between two groups of GO terms or two Entrez gene IDs.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

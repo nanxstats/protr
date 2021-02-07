@@ -9,6 +9,13 @@
 <title>Profile-based protein representation derived by PSSM
 (Position-Specific Scoring Matrix) and auto cross covariance — extractPSSMAcc • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -46,6 +53,7 @@
 (Position-Specific Scoring Matrix) and auto cross covariance — extractPSSMAcc" />
 <meta property="og:description" content="This function calculates the feature vector based on the PSSM
 by running PSI-Blast and auto cross covariance tranformation." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -85,7 +93,7 @@ by running PSI-Blast and auto cross covariance tranformation." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +110,7 @@ by running PSI-Blast and auto cross covariance tranformation." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,7 +138,7 @@ by running PSI-Blast and auto cross covariance tranformation." />
 by running PSI-Blast and auto cross covariance tranformation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractPSSMAcc</span>(<span class='no'>pssmmat</span>, <span class='no'>lag</span>)</pre>
+    <pre class="usage"><span class='fu'>extractPSSMAcc</span><span class='op'>(</span><span class='va'>pssmmat</span>, <span class='va'>lag</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,25 +170,29 @@ to latent structures.
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='extractPSSM.html'>extractPSSM</a> <a href='extractPSSMFeature.html'>extractPSSMFeature</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/Sys.which.html'>Sys.which</a></span>(<span class='st'>"makeblastdb"</span>) <span class='kw'>==</span> <span class='st'>""</span> <span class='kw'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.which.html'>Sys.which</a></span>(<span class='st'>"psiblast"</span>) <span class='kw'>==</span> <span class='st'>""</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"Cannot find makeblastdb or psiblast. Please install NCBI Blast+"</span>)
-} <span class='kw'>else</span> {
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.which.html'>Sys.which</a></span><span class='op'>(</span><span class='st'>"makeblastdb"</span><span class='op'>)</span> <span class='op'>==</span> <span class='st'>""</span> <span class='op'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.which.html'>Sys.which</a></span><span class='op'>(</span><span class='st'>"psiblast"</span><span class='op'>)</span> <span class='op'>==</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"Cannot find makeblastdb or psiblast. Please install NCBI Blast+"</span><span class='op'>)</span>
+<span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
+  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span>
     <span class='st'>"protseq/P00750.fasta"</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>
-  ))<span class='kw'>[[</span><span class='fl'>1</span>]]
-  <span class='no'>dbpath</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='st'>"tempdb"</span>, <span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".fasta"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(
+    package <span class='op'>=</span> <span class='st'>"protr"</span>
+  <span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+  <span class='va'>dbpath</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"tempdb"</span>, fileext <span class='op'>=</span> <span class='st'>".fasta"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span>
     <span class='st'>"protseq/Plasminogen.fasta"</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>
-  ), <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>dbpath</span>))
+    package <span class='op'>=</span> <span class='st'>"protr"</span>
+  <span class='op'>)</span>, to <span class='op'>=</span> <span class='va'>dbpath</span><span class='op'>)</span><span class='op'>)</span>
 
-  <span class='no'>pssmmat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='extractPSSM.html'>extractPSSM</a></span>(<span class='kw'>seq</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>database.path</span> <span class='kw'>=</span> <span class='no'>dbpath</span>)
-  <span class='no'>pssmacc</span> <span class='kw'>&lt;-</span> <span class='fu'>extractPSSMAcc</span>(<span class='no'>pssmmat</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>pssmacc</span>)
-}</div><div class='output co'>#&gt; Cannot find makeblastdb or psiblast. Please install NCBI Blast+</div></pre>
+  <span class='va'>pssmmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='extractPSSM.html'>extractPSSM</a></span><span class='op'>(</span>seq <span class='op'>=</span> <span class='va'>x</span>, database.path <span class='op'>=</span> <span class='va'>dbpath</span><span class='op'>)</span>
+  <span class='va'>pssmacc</span> <span class='op'>&lt;-</span> <span class='fu'>extractPSSMAcc</span><span class='op'>(</span><span class='va'>pssmmat</span>, lag <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>pssmacc</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; Cannot find makeblastdb or psiblast. Please install NCBI Blast+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -196,7 +208,7 @@ to latent structures.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

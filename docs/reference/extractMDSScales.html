@@ -8,6 +8,13 @@
 
 <title>Scales-Based Descriptors derived by Multidimensional Scaling — extractMDSScales • protr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -45,6 +52,7 @@
 <meta property="og:description" content="This function calculates scales-based descriptors
 derived by Multidimensional Scaling (MDS).
 Users can provide customized amino acid property matrices." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -84,7 +92,7 @@ Users can provide customized amino acid property matrices." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -101,7 +109,7 @@ Users can provide customized amino acid property matrices." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/nanxstats/protr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,7 +137,7 @@ derived by Multidimensional Scaling (MDS).
 Users can provide customized amino acid property matrices.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractMDSScales</span>(<span class='no'>x</span>, <span class='no'>propmat</span>, <span class='no'>k</span>, <span class='no'>lag</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>extractMDSScales</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>propmat</span>, <span class='va'>k</span>, <span class='va'>lag</span>, scale <span class='op'>=</span> <span class='cn'>TRUE</span>, silent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,12 +189,16 @@ Molecular modeling annual, 7(12), 445--453.</p>
 
     <div class='dont-index'><p>See <code><a href='extractScales.html'>extractScales</a></code> for scales-based
 descriptors derived by Principal Components Analysis.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"protseq/P00750.fasta"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"protr"</span>))<span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>AATopo</span>)
-<span class='no'>tprops</span> <span class='kw'>&lt;-</span> <span class='no'>AATopo</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>37</span>:<span class='fl'>41</span>, <span class='fl'>43</span>:<span class='fl'>47</span>)] <span class='co'># select a set of topological descriptors</span>
-<span class='no'>mds</span> <span class='kw'>&lt;-</span> <span class='fu'>extractMDSScales</span>(<span class='no'>x</span>, <span class='kw'>propmat</span> <span class='kw'>=</span> <span class='no'>tprops</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>lag</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Eigenvalues computed during the scaling process: 
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='readFASTA.html'>readFASTA</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"protseq/P00750.fasta"</span>, package <span class='op'>=</span> <span class='st'>"protr"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>AATopo</span><span class='op'>)</span>
+<span class='va'>tprops</span> <span class='op'>&lt;-</span> <span class='va'>AATopo</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>37</span><span class='op'>:</span><span class='fl'>41</span>, <span class='fl'>43</span><span class='op'>:</span><span class='fl'>47</span><span class='op'>)</span><span class='op'>]</span> <span class='co'># select a set of topological descriptors</span>
+<span class='va'>mds</span> <span class='op'>&lt;-</span> <span class='fu'>extractMDSScales</span><span class='op'>(</span><span class='va'>x</span>, propmat <span class='op'>=</span> <span class='va'>tprops</span>, k <span class='op'>=</span> <span class='fl'>5</span>, lag <span class='op'>=</span> <span class='fl'>7</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Eigenvalues computed during the scaling process: 
 #&gt;  [1]  1.266223e+02  5.846270e+01  4.058692e+00  6.994430e-01  1.529469e-01
 #&gt;  [6]  3.434787e-03  4.284842e-04  4.918500e-05  3.626185e-06  3.042621e-10
 #&gt; [11]  1.694106e-15  1.138489e-15  1.016035e-15  3.315250e-16 -2.060931e-16
@@ -206,7 +218,7 @@ descriptors derived by Principal Components Analysis.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
