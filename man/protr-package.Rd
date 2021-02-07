@@ -6,6 +6,8 @@
 \alias{protr-package}
 \title{protr: Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 Comprehensive toolkit for generating various numerical
     features of protein sequences described in Xiao et al. (2015)
     <DOI:10.1093/bioinformatics/btv042>. For full functionality,

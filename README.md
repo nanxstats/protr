@@ -1,4 +1,4 @@
-# protr  <a href="https://nanx.me/protr/"><img src="https://i.imgur.com/D0nDOWs.png" align="right" alt="logo" height="180" width="180" /></a>
+# protr  <a href="https://nanx.me/protr/"><img src="man/figures/logo.png" align="right" height="180" /></a>
 
 [![Build Status](https://travis-ci.org/nanxstats/protr.svg?branch=master)](https://travis-ci.org/nanxstats/protr)
 [![CRAN Version](https://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
