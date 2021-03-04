@@ -68,6 +68,8 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+          remotes::install_cran("BiocManager")
+          BiocManager::install(c("Biostrings", "GOSemSim", "org.Hs.eg.db"))
         shell: Rscript {0}
 
       - name: Check
