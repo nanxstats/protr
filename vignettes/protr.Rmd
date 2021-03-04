@@ -1,7 +1,6 @@
 ---
 title: "protr: R package for generating various numerical representation schemes of protein sequences"
 author: "Nan Xiao <<https://nanx.me>>"
-date: "`r Sys.Date()`"
 bibliography: protr.bib
 csl: bioinformatics.csl
 output:
