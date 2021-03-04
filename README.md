@@ -1,8 +1,10 @@
 # protr  <a href="https://nanx.me/protr/"><img src="man/figures/logo.png" align="right" height="180" /></a>
 
-[![Build Status](https://travis-ci.org/nanxstats/protr.svg?branch=master)](https://travis-ci.org/nanxstats/protr)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/nanxstats/protr/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/protr/actions)
 [![CRAN Version](https://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/protr)](https://cranlogs.r-pkg.org/badges/protr)
+<!-- badges: end -->
 
 Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <[DOI:10.1093/bioinformatics/btv042](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv042)> ([PDF](https://nanx.me/papers/protr.pdf)).
 
