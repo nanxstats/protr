@@ -7,12 +7,12 @@
 for 20 Amino Acids}
 \description{
 The data was extracted from the AAindex1 database ver 9.1
-(\url{ftp://ftp.genome.jp/pub/db/community/aaindex/aaindex1}) as of
-November, 2012 (Data Last Modified 2006-08-14).
+(\url{https://www.genome.jp/ftp/db/community/aaindex/old/ver9.1/aaindex1})
+as of November, 2012 (data last modified on 2006-08-14).
 }
 \details{
 With this dataset, users can investigate each property's accession number
-and other details. Visit \url{http://www.genome.jp/dbget/aaindex.html}
+and other details. See \url{https://www.genome.jp/aaindex/}
 for more information.
 }
 \examples{
