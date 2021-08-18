@@ -34,10 +34,10 @@
 #' fp <- extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 extractProtFP <- function(
   x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
-  AAindex <- get("AAindex")
+  propmat <- get("AAindex")
 
   if (!is.null(index)) {
-    propmat <- t(na.omit(as.matrix(AAindex[index, 7:26])))
+    propmat <- t(na.omit(as.matrix(propmat[index, 7:26])))
   }
 
   res <- extractScales(
