@@ -1,7 +1,0 @@
-language: r
-cache: packages
-r: bioc-release
-bioc_packages:
-  - Biostrings
-  - org.Hs.eg.db
-  - GOSemSim
