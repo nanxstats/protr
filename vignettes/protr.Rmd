@@ -82,7 +82,9 @@ stored in two separated FASTA files with `readFASTA()`:
 library("protr")
 
 # load FASTA files
-extracell <- readFASTA(system.file(
+# (system.file is for accessing example file in protr package, 
+# replace it with your path)
+extracell <- readFASTA(system.file(  
   "protseq/extracell.fasta",
   package = "protr"
 ))
