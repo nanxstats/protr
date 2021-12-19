@@ -1,4 +1,4 @@
-# protr  <a href="https://nanx.me/protr/"><img src="man/figures/logo.png" align="right" height="180" /></a>
+# protr  <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/nanxstats/protr/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/protr/actions)
@@ -42,8 +42,7 @@ install.packages("protr")
 Or try the latest version on GitHub:
 
 ```r
-# install.packages("devtools")
-devtools::install_github("nanxstats/protr")
+remotes::install_github("nanxstats/protr")
 ```
 
 [Browse the package vignette](https://nanx.me/protr/articles/protr.html) for a quick-start.

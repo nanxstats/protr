@@ -8,7 +8,7 @@ output:
     toc: true
     toc_float: true
     toc_depth: 4
-    number_sections: true
+    number_sections: false
     highlight: "textmate"
     css: "custom.css"
 vignette: >
@@ -16,7 +16,14 @@ vignette: >
   %\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequences}
 ---
 
-# Introduction
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE
+)
+```
+
+## Introduction
 
 The protr package offers a unique and comprehensive toolkit
 for generating various numerical representation schemes of protein
@@ -63,7 +70,7 @@ BibTeX entry:
 }
 ```
 
-# An Example Predictive Modeling Workflow
+## An example predictive modeling workflow
 
 Here we use the subcellular localization dataset of human proteins presented
 in @chou2008cell to demonstrate the basic usage of protr.
@@ -231,7 +238,7 @@ The area under the ROC curve (AUC) is:
 <img src="figures/roc.png" width="60%" class="img-responsive" align="center" alt="ROC curve for the test set of protein subcellular localization data">
 <p align="center">Figure 1: ROC curve for the test set of protein subcellular localization data</p>
 
-# Package Overview
+## Package overview
 
 The protr package [@Xiao2015] implemented most of the
 state-of-the-art protein sequence descriptors with R.
@@ -306,7 +313,7 @@ the parallelized pairwise similarity computation available.
 In the following sections, we will introduce the descriptors and function
 usage in this order.
 
-# Commonly Used Descriptors
+## Commonly used descriptors
 
 **Note**: Users need to intelligently evaluate the underlying details
 of the descriptors provided, instead of using protr with their data blindly,
@@ -325,7 +332,7 @@ A protein sequence can be partitioned equally into segments.
 The descriptors designed for the complete sequence, can be often
 applied to each individual segment.
 
-## Amino Acid Composition Descriptor
+### Amino acid composition descriptor
 
 The amino acid composition describes the fraction of each amino acid type
 within a protein sequence. The fractions of all 20 natural amino acids
@@ -357,7 +364,7 @@ Then extracted the AAC descriptors with `extractAAC()`.
 The result returned is a named vector, whose elements are tagged
 with the name of each amino acid.
 
-## Dipeptide Composition Descriptor
+### Dipeptide composition descriptor
 
 Dipeptide composition gives a 400-dimensional descriptor, defined as:
 
@@ -378,7 +385,7 @@ Here we only showed the first 30 elements of the result vector and omitted
 the rest of the result. The element names of the returned vector are
 self-explanatory as before.
 
-## Tripeptide Composition Descriptor
+### Tripeptide composition descriptor
 
 Tripeptide composition gives a 8000-dimensional descriptor, defined as:
 
@@ -396,7 +403,7 @@ tc <- extractTC(x)
 head(tc, n = 36L)
 ```
 
-## Autocorrelation Descriptors
+### Autocorrelation descriptors
 
 Autocorrelation descriptors are defined based on the distribution of amino
 acid properties along the sequence. The amino acid properties used here are
@@ -422,7 +429,7 @@ $$
 <img src="figures/AAindex.png" width="80%" class="img-responsive" align="center" alt="An illustrated example in the AAIndex database">
 <p align="center">Figure 2: An illustrated example in the AAIndex database</p>
 
-### Normalized Moreau-Broto autocorrelation descriptors
+#### Normalized Moreau-Broto autocorrelation descriptors
 
 For protein sequences, the Moreau-Broto autocorrelation descriptors
 can be defined as:
@@ -499,7 +506,7 @@ head(moreau2, n = 36L)
 About the standard input format of `props` and `customprops`,
 see `?extractMoreauBroto` for details.
 
-### Moran autocorrelation descriptors
+#### Moran autocorrelation descriptors
 
 For protein sequences, the Moran autocorrelation descriptors can be defined as:
 
@@ -537,7 +544,7 @@ moran <- extractMoran(
 head(moran, n = 36L)
 ```
 
-### Geary autocorrelation descriptors
+#### Geary autocorrelation descriptors
 
 Geary autocorrelation descriptors for protein sequences can be defined as:
 
@@ -568,7 +575,7 @@ geary <- extractGeary(
 head(geary, n = 36L)
 ```
 
-## Composition/Transition/Distribution
+### Composition/Transition/Distribution
 
 The CTD descriptors are developed by @dubchak1 and @dubchak2.
 
@@ -618,7 +625,7 @@ encoded as `32132223311311222222` according to its hydrophobicity.
 Three types of descriptors, _Composition_ (_C_), _Transition_ (_T_),
 and _Distribution_ (_D_) can be calculated for a given attribute as follows.
 
-### Composition
+#### Composition
 
 Composition is defined as the global percentage for each encoded class
 in the protein sequence. In the above example using the hydrophobicity
@@ -642,7 +649,7 @@ extractCTDC(x)
 The result shows the elements who are named as `PropertyNumber.GroupNumber`
 in the returned vector.
 
-### Transition
+#### Transition
 
 A transition from class 1 to 2 is the percent frequency with which 1 is
 followed by 2 or 2 is followed by 1 in the encoded sequences.
@@ -660,7 +667,7 @@ An example for `extractCTDT()`:
 extractCTDT(x)
 ```
 
-### Distribution
+#### Distribution
 
 The _distribution_ descriptor describes the distribution of each attribute
 in the sequence.
@@ -683,7 +690,7 @@ To compute the distribution descriptor, use `extractCTDD()`:
 extractCTDD(x)
 ```
 
-## Conjoint Triad Descriptors
+### Conjoint triad descriptors
 
 Conjoint triad descriptors are proposed by @shenjw.
 The conjoint triad descriptors were used to model protein-protein
@@ -781,12 +788,12 @@ head(ctriad, n = 65L)
 
 by which we only outputted the first 65 of total 343 dimension to save space.
 
-## Quasi-sequence-order Descriptors
+### Quasi-sequence-order descriptors
 
 The quasi-sequence-order descriptors are proposed by @chouqsoe.
 They are derived from the distance matrix between the 20 amino acids.
 
-### Sequence-order-coupling number
+#### Sequence-order-coupling number
 
 The $d$-th rank sequence-order-coupling number is defined as:
 
@@ -815,7 +822,7 @@ matrix by @grantham is also used here. So the descriptors dimension
 will be `nlag * 2`. The quasi-sequence-order descriptors described
 next also utilized the two matrices.
 
-### Quasi-sequence-order descriptors
+#### Quasi-sequence-order descriptors
 
 For each amino acid type, a quasi-sequence-order descriptor can be defined as:
 
@@ -843,7 +850,7 @@ extractQSO(x)
 where users can also specify the maximum lag with the argument `nlag`
 and the weighting factor with the argument `w`.
 
-## Pseudo-Amino Acid Composition (PseAAC)
+### Pseudo-amino acid composition (PseAAC)
 
 This group of descriptors are proposed by @choupaac. PseAAC descriptors
 are also named as the _type 1 pseudo-amino acid composition_. Let $H_1^o (i)$,
@@ -934,7 +941,7 @@ occurrence frequency" was not given. In this work, we define it as the
 occurrence frequency of amino acid in the sequence normalized to 100%
 and hence our calculated values are not the same as values by them.
 
-## Amphiphilic Pseudo-Amino Acid Composition (APseAAC)
+### Amphiphilic pseudo-amino acid composition (APseAAC)
 
 Amphiphilic Pseudo-Amino Acid Composition (APseAAC) was proposed in
 @choupaac. APseAAC is also recognized as the _type 2 pseudo-amino
@@ -983,7 +990,7 @@ extractAPAAC(x)
 
 This function has the same arguments as `extractPAAC()`.
 
-## Profile-Based Descriptors
+### Profile-based descriptors
 
 The profile-based descriptors for protein sequences are available in
 the protr package. The feature vectors of profile-based methods
@@ -994,7 +1001,7 @@ The functions `extractPSSM()`, `extractPSSMAcc()` and
 Users need to install the NCBI-BLAST+ software package first to make
 the functions fully functional.
 
-# Descriptors for Proteochemometric Modeling
+## Proteochemometric modeling descriptors
 
 Proteochemometric (PCM) modeling utilizes statistical modeling techniques
 to model ligand-target interaction space. The below descriptors implemented
@@ -1080,7 +1087,7 @@ of amino acid. The function `extractScalesGap()` and `extractProtFPGap()`
 can be used to deal with such gaps. See `?extractScalesGap` and
 `?extractProtFPGap` for details.
 
-# Similarity Calculation by Sequence Alignment
+## Similarity calculation by sequence alignment
 
 Similarity computation derived by local or global protein sequence alignment
 between a list of protein sequences is of great need in protein research.
@@ -1123,7 +1130,7 @@ overheads may exist and affect the performance. In our benchmarks, we used
 about 1,000 protein sequences on 64 CPU cores, and observed significant
 performance improvement comparing to the sequential computation.
 
-## Scaling up for a large number of sequences
+### Scaling up for a large number of sequences
 
 **`batches`**.
 A useful argument for reducing the memory usage is `batches`.
@@ -1148,7 +1155,7 @@ This could give you a relatively quick feedback about if the memory
 size is going to be sufficient, and how long the computation will
 take in total, after the first few batches.
 
-# Similarity Calculation by GO Semantic Similarity Measures
+## Similarity calculation by GO semantic similarity measures
 
 The protr package also integrates the function of similarity score
 computation derived by Gene Ontology (GO) semantic similarity measures
@@ -1200,11 +1207,11 @@ parGOSim(genelist, type = "gene", ont = "BP", measure = "Wang")
 ## 1816 0.455 0.551 0.538 0.473 0.505 1.000
 ```
 
-# Miscellaneous Tools
+## Miscellaneous tools
 
 In this section, we will briefly introduce some useful tools provided by the protr package.
 
-## Retrieve Protein Sequences from UniProt
+### Retrieve protein sequences from UniProt
 
 This function `getUniProt()` gets protein sequences from uniprot.org
 by protein ID(s). The input `ID` is a character vector specifying
@@ -1246,14 +1253,14 @@ prots
 ## IYTKLIFYLDWINDTITENP"
 ```
 
-## Read FASTA Format files
+### Read FASTA files
 
 The function `readFASTA()` provides a convenient way to read protein
 sequences stored in FASTA format files. See `?readFASTA` for details.
 The returned sequences are stored in a named list, whose components are
 named with the protein sequences' names.
 
-## Read PDB Format files
+### Read PDB files
 
 The Protein Data Bank (PDB) file format is a text file
 format describing the three dimensional structures of protein.
@@ -1261,7 +1268,7 @@ The function `readPDB()` provides the function to read
 protein sequences stored in PDB format files.
 See `?readPDB` for details.
 
-## Sanity Check for Amino Acid Types
+### Sanity check for amino acid types
 
 The `protcheck()` function checks if the protein sequence's amino acid
 types are in the 20 default types, which returns a `TRUE` if all the
@@ -1275,13 +1282,13 @@ protcheck(x)
 protcheck(paste(x, "Z", sep = ""))
 ```
 
-## Remove Gaps from Sequences
+### Remove gaps from sequences
 
 The `removeGaps()` function allows us to remove/replace gaps (`-`) or any
 "irregular" characters from amino acid sequences, to prepare them for
 feature extraction or sequence alignment based similarity computation.
 
-## Protein Sequence Partition
+### Protein sequence partition
 
 The `protseg()` function partitions the protein sequences to create
 sliding windows. This is usually required when creating feature vectors
@@ -1298,7 +1305,7 @@ See the example below:
 protseg(x, aa = "M", k = 5)
 ```
 
-## Auto Cross Covariance (ACC) Computation
+### Auto cross covariance computation
 
 Auto Cross Covariance (ACC) is extensively used in the scales-based
 descriptors computation, this approach calculates the auto covariance
@@ -1306,14 +1313,14 @@ and auto cross covariance for generating scale-based descriptors of
 the same length. Users can write their own scales-based descriptor
 functions with the help of `acc()` function in the protr package.
 
-## Pre-Computed 2D and 3D Descriptor Sets for the 20 Amino Acids
+### Pre-computed 2D and 3D descriptor sets for the 20 amino acids
 
 The protr package ships with more than 20 pre-computed 2D and 3D
 descriptor sets for the 20 amino acids to use with the scales-based
 descriptors. Please use `data(package = "protr")` to list all
 the datasets included in the protr package.
 
-## BLOSUM and PAM Matrices for the 20 Amino Acids
+### BLOSUM and PAM matrices for the 20 amino acids
 
 The BLOSUM and PAM matrices for the 20 amino acids can be used to calculate
 BLOSUM and PAM matrix-derived descriptors with function `extractBLOSUM()`,
@@ -1321,7 +1328,7 @@ the datasets are named in `AABLOSUM45`, `AABLOSUM50`,
 `AABLOSUM62`, `AABLOSUM80`, `AABLOSUM100`, `AAPAM30`,
 `AAPAM40`, `AAPAM70`, `AAPAM120`, and `AAPAM250`.
 
-## Metadata of the 20 Amino Acids
+### Metadata of the 20 amino acids
 
 As the reference, the `AAMetaInfo` dataset includes the meta information
 of the 20 amino acids used for the 2D and 3D descriptor calculation in the
@@ -1329,7 +1336,7 @@ protr package. This dataset include each amino acid's name, one-letter
 representation, three-letter representation, SMILE representation, PubChem
 CID and PubChem link. See `data(AAMetaInfo)` for details.
 
-# ProtrWeb
+## ProtrWeb
 
 The web service built on protr, namely ProtrWeb, is located at http://protr.org.
 
@@ -1343,7 +1350,7 @@ the protein sequence descriptors presented in the protr package.
 Source code repository for this Shiny web application:
 https://github.com/nanxstats/protrweb.
 
-# Summary
+## Summary
 
 The summary of the descriptors in the protr package are listed in
 Table 3.
@@ -1431,4 +1438,4 @@ datasets have already been filtered out.
   : Table 5: List of the pre-calculated descriptor sets of the 20 amino acids in
   protr
 
-# References
+## References

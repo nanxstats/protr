@@ -1,3 +1,8 @@
+url: https://nanx.me/protr/
+
+template:
+  bootstrap: 5
+
 reference:
   - title: "Protein/Peptide Sequence Descriptors"
     desc: >
