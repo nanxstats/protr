@@ -6,9 +6,9 @@
 \alias{protr-package}
 \title{protr: Generating Various Numerical Representation Schemes for Protein Sequences}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <DOI:10.1093/bioinformatics/btv042>. For full functionality, the software 'ncbi-blast+' is needed, see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download> for more information.
+Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) \doi{10.1093/bioinformatics/btv042}. For full functionality, the software 'ncbi-blast+' is needed, see \url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download} for more information.
 }
 \seealso{
 Useful links:
