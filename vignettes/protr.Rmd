@@ -408,7 +408,7 @@ head(tc, n = 36L)
 Autocorrelation descriptors are defined based on the distribution of amino
 acid properties along the sequence. The amino acid properties used here are
 various types of amino acids index (Retrieved from the
-[AAindex Database](http://www.genome.jp/dbget/aaindex.html),
+[AAindex database](https://www.genome.jp/dbget/aaindex.html),
 see @aaindex1999, @aaindex2000, and @aaindex2008; see Figure 2
 for an illustrated example). Three types of autocorrelation
 descriptors are defined here and described below.

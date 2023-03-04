@@ -90,7 +90,7 @@ extractGeary(
 }
 \references{
 AAindex: Amino acid index database.
-\url{http://www.genome.ad.jp/dbget/aaindex.html}
+\url{https://www.genome.jp/dbget/aaindex.html}
 
 Feng, Z.P. and Zhang, C.T. (2000)
 Prediction of membrane protein types based on the hydrophobic
