@@ -8,7 +8,7 @@
 
 Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <[DOI:10.1093/bioinformatics/btv042](https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btv042)> ([PDF](https://nanx.me/papers/protr.pdf)).
 
-## Paper Citation
+## Paper citation
 
 Formatted citation:
 
@@ -47,13 +47,13 @@ remotes::install_github("nanxstats/protr")
 
 [Browse the package vignette](https://nanx.me/protr/articles/protr.html) for a quick-start.
 
-## Shiny App
+## Shiny app
 
 ProtrWeb, the Shiny web application built on protr, can be accessed from [http://protr.org](http://protr.org).
 
 ProtrWeb is a user-friendly web application for computing the protein sequence descriptors (features) presented in the protr package.
 
-## List of Supported Descriptors
+## List of supported descriptors
 
 ### Commonly used descriptors
 
