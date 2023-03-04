@@ -1,7 +1,7 @@
 # protr  <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/nanxstats/protr/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/protr/actions)
+[![R-CMD-check](https://github.com/nanxstats/protr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nanxstats/protr/actions/workflows/R-CMD-check.yaml)
 [![CRAN Version](https://www.r-pkg.org/badges/version/protr)](https://cran.r-project.org/package=protr)
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/protr)](https://cranlogs.r-pkg.org/badges/protr)
 <!-- badges: end -->
