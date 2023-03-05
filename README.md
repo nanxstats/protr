@@ -120,4 +120,4 @@ GO semantic similarity measures:
 
 ## Contribute
 
-To contribute to this project, please take a look at the [Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+To contribute to this project, please take a look at the [Contributing Guidelines](https://nanx.me/protr/CONTRIBUTING.html) first. Please note that this project is released with a [Contributor Code of Conduct](https://nanx.me/protr/CONDUCT.html). By participating in this project you agree to abide by its terms.
