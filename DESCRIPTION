@@ -12,12 +12,12 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-0250-5673")),
     person("Qing-Song", "Xu", email = "qsxu@csu.edu.cn", role = c("aut")),
     person("Dong-Sheng", "Cao", role = "aut"))
-Maintainer: Nan Xiao <me@nanx.me>
 License: BSD_3_clause + file LICENSE
 URL: https://nanx.me/protr/, https://github.com/nanxstats/protr, http://protr.org
 BugReports: https://github.com/nanxstats/protr/issues
-SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
+Encoding: UTF-8
 LazyData: true
+SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
 VignetteBuilder: knitr
 Depends:
     R (>= 3.0.2)
@@ -29,5 +29,4 @@ Suggests:
     foreach,
     doParallel,
     org.Hs.eg.db
-Encoding: UTF-8
 RoxygenNote: 7.2.3
