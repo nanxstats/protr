@@ -1,14 +1,11 @@
-citHeader("To cite the protr package in your publication:")
-
-citEntry(
-entry="Article",
-title = "protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences",
-journal= "Bioinformatics",
-year = "2015",
-author = "Nan Xiao and Dong-Sheng Cao and Min-Feng Zhu and Qing-Song Xu",
-volume = "31",
-number = "11",
-pages = "1857--1859",
-doi = "10.1093/bioinformatics/btv042",
-textVersion = "Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. Bioinformatics 31 (11), 1857-1859."
+bibentry(
+  "Article",
+  title = "protr/{ProtrWeb}: {R} package and web server for generating various numerical representation schemes of protein sequences",
+  author = "Nan Xiao and Dong-Sheng Cao and Min-Feng Zhu and Qing-Song Xu",
+  year = 2015,
+  journal = "Bioinformatics",
+  volume = 31,
+  number = 11,
+  pages = "1857--1859",
+  doi = "10.1093/bioinformatics/btv042",
 )
