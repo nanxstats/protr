@@ -12,22 +12,20 @@ Comprehensive toolkit for generating various numerical features of protein seque
 
 Formatted citation:
 
-Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, and Qing-Song Xu. (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_ 31 (11), 1857-1859.
+Nan Xiao, Dong-Sheng Cao, Min-Feng Zhu, Qing-Song Xu (2015). protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences. _Bioinformatics_, **31**(11), 1857--1859.
 
 BibTeX entry:
 
 ```
 @article{Xiao2015,
-  author = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
-  title = {{protr/ProtrWeb: R package and web server for generating various numerical representation schemes of protein sequences}},
+  author  = {Xiao, Nan and Cao, Dong-Sheng and Zhu, Min-Feng and Xu, Qing-Song.},
+  title   = {protr/{ProtrWeb}: {R} package and web server for generating various numerical representation schemes of protein sequences},
   journal = {Bioinformatics},
-  year = {2015},
-  volume = {31},
-  number = {11},
-  pages = {1857--1859},
-  doi = {10.1093/bioinformatics/btv042},
-  issn = {1367-4803},
-  url = {http://bioinformatics.oxfordjournals.org/content/31/11/1857}
+  year    = {2015},
+  volume  = {31},
+  number  = {11},
+  pages   = {1857--1859},
+  doi     = {10.1093/bioinformatics/btv042}
 }
 ```
 
