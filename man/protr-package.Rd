@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) \doi{10.1093/bioinformatics/btv042}. For full functionality, the software 'ncbi-blast+' is needed, see \url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download} for more information.
+Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) \doi{10.1093/bioinformatics/btv042}. For full functionality, the software 'ncbi-blast+' is needed, see \url{https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html} for more information.
 }
 \seealso{
 Useful links:

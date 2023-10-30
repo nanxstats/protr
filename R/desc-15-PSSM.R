@@ -76,7 +76,7 @@
 #'
 #' The two command-line programs are included in the NCBI-BLAST+
 #' software package. To install NCBI Blast+ for your operating system, see
-#' \url{https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download}
+#' \url{https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html}
 #' for detailed instructions.
 #'
 #' Ubuntu/Debian users can directly use the command

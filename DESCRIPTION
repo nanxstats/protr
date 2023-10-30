@@ -5,7 +5,7 @@ Description: Comprehensive toolkit for generating various numerical
     features of protein sequences described in Xiao et al. (2015)
     <DOI:10.1093/bioinformatics/btv042>. For full functionality,
     the software 'ncbi-blast+' is needed, see
-    <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>
+    <https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html>
     for more information.
 Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
@@ -20,7 +20,7 @@ URL: https://nanx.me/protr/, https://github.com/nanxstats/protr, http://protr.or
 BugReports: https://github.com/nanxstats/protr/issues
 Encoding: UTF-8
 LazyData: true
-SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download>)
+SystemRequirements: ncbi-blast+ (see <https://blast.ncbi.nlm.nih.gov/doc/blast-help/downloadblastdata.html>)
 VignetteBuilder: knitr
 Depends:
     R (>= 3.0.2)
