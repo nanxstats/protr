@@ -11,7 +11,9 @@ Authors@R: c(
     person("Nan", "Xiao", email = "me@nanx.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0250-5673")),
     person("Qing-Song", "Xu", email = "qsxu@csu.edu.cn", role = c("aut")),
-    person("Dong-Sheng", "Cao", role = "aut"))
+    person("Dong-Sheng", "Cao", role = "aut"),
+    person("Sebastian", "Mueller", role = "ctb", 
+      comment = c(company = "Alva Genomics")))
 License: BSD_3_clause + file LICENSE
 URL: https://nanx.me/protr/, https://github.com/nanxstats/protr, http://protr.org
 BugReports: https://github.com/nanxstats/protr/issues
