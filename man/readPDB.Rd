@@ -27,7 +27,7 @@ Seq4HHB <- readPDB(system.file("protseq/4HHB.pdb", package = "protr"))
 \references{
 Protein Data Bank Contents Guide: Atomic Coordinate Entry Format Description,
 Version 3.30. Accessed 2013-06-26.
-\url{https://ftp.wwpdb.org/pub/pdb/doc/format_descriptions/Format_v33_Letter.pdf}
+\url{https://files.wwpdb.org/pub/pdb/doc/format_descriptions/Format_v33_Letter.pdf}
 }
 \seealso{
 See \code{\link{readFASTA}} for reading
