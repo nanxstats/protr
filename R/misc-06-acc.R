@@ -24,13 +24,13 @@
 #' @export acc
 #'
 #' @references
-#' Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg, M., & R\"{a}nnar, S. (1993).
+#' Wold, S., Jonsson, J., Sjorstrom, M., Sandberg, M., & Rannar, S. (1993).
 #' DNA and peptide sequences and chemical processes multivariately modelled
 #' by principal component analysis and partial least-squares projections
 #' to latent structures.
 #' \emph{Analytica chimica acta}, 277(2), 239--253.
 #'
-#' Sj\"{o}str\"{o}m, M., R\"{a}nnar, S., & Wieslander, A. (1995).
+#' Sjostrom, M., Rannar, S., & Wieslander, A. (1995).
 #' Polypeptide sequence property relationships in \emph{Escherichia coli}
 #' based on auto cross covariances.
 #' \emph{Chemometrics and intelligent laboratory systems}, 29(2), 295--305.

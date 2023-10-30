@@ -19,8 +19,8 @@
 #' @export extractPSSMAcc
 #'
 #' @references
-#' Wold, S., Jonsson, J., Sj\"{o}rstr\"{o}m, M., Sandberg,
-#' M., & R\"{a}nnar, S. (1993).
+#' Wold, S., Jonsson, J., Sjorstrom, M., Sandberg,
+#' M., & Rannar, S. (1993).
 #' DNA and peptide sequences and chemical processes multivariately modelled
 #' by principal component analysis and partial least-squares projections
 #' to latent structures.

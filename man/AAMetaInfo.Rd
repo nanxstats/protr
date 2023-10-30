@@ -8,13 +8,13 @@
 This dataset includes the meta information of
 the 20 amino acids used for the 2D and 3D descriptor
 calculation in this package. Each column represents:
-\itemize{
-\item{\code{AAName}} {Amino Acid Name}
-\item{\code{Short}} {One-Letter Representation}
-\item{\code{Abbreviation}} {Three-Letter Representation}
-\item{\code{mol}} {SMILE Representation}
-\item{\code{PUBCHEM_COMPOUND_CID}} {PubChem CID for the Amino Acid}
-\item{\code{PUBCHEM_LINK}} {PubChem Link for the Amino Acid}
+\describe{
+  \item{\code{AAName}}{Amino acid name}
+  \item{\code{Short}}{One-letter representation}
+  \item{\code{Abbreviation}}{Three-letter representation}
+  \item{\code{mol}}{SMILES representation}
+  \item{\code{PUBCHEM_COMPOUND_CID}}{PubChem CID for the amino acid}
+  \item{\code{PUBCHEM_LINK}}{PubChem link for the amino acid}
 }
 }
 \examples{
