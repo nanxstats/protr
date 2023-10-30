@@ -53,6 +53,7 @@ reference:
     contents:
     - parSeqSim
     - parSeqSimDisk
+    - crossSetSim
     - twoSeqSim
     - parGOSim
     - twoGOSim

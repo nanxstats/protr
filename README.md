@@ -98,6 +98,7 @@ Local and global pairwise sequence alignment for protein sequences:
 
 - Between two protein sequences
 - Parallelized pairwise similarity calculation with a list of protein sequences
+- Parallelized pairwise similarity calculation between two sets of protein sequences
 
 GO semantic similarity measures:
 

@@ -86,9 +86,9 @@ stored in two separated FASTA files with `readFASTA()`:
 library("protr")
 
 # load FASTA files
-# (system.file is for accessing example file in protr package, 
+# (system.file is for accessing example file in protr package,
 # replace it with your path)
-extracell <- readFASTA(system.file(  
+extracell <- readFASTA(system.file(
   "protseq/extracell.fasta",
   package = "protr"
 ))
@@ -291,6 +291,8 @@ provided by `Biostrings`, the corresponding functions listed in the
   list of protein sequences (in-memory version)
 - `parSeqSimDisk()` - Parallelized pairwise similarity calculation with a
   list of protein sequences (disk-based version)
+- `crossSetSim()` - Parallelized pairwise similarity calculation between
+  two sets of protein sequences (in-memory version)
 
 The protr package also integrates the function of parallelized similarity
 score computation derived by Gene Ontology (GO) semantic similarity measures
@@ -1096,8 +1098,7 @@ by local or global protein sequence alignment between a list of protein sequence
 
 The function `twoSeqSim()` calculates the alignment result between
 two protein sequences. The function `parSeqSim()` calculates
-the pairwise similarity calculation with a list of protein
-sequences in parallel:
+the pairwise similarity with a list of protein sequences in parallel:
 
 ```{r, eval = FALSE}
 s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
@@ -1118,6 +1119,9 @@ psimmat
 ## [4,] 0.04921696 0.12124217 0.05819984 1.00000000 0.05714638
 ## [5,] 0.03943488 0.06391103 0.06175942 0.05714638 1.00000000
 ```
+
+Similarly, the function `crossSetSim()` calculates the pairwise
+similarity between two sets of protein sequences in parallel.
 
 Note that for a small number of proteins, calculating their
 pairwise similarity scores derived by sequence alignment in parallel may
@@ -1389,14 +1393,14 @@ the $\lambda$ vlaue. The default is $\lambda = 30$.</p>
 The scales-based PCM descriptors in the protr package are
 listed in Table 4.
 
-  Derived by                      Descriptor Class                                                                                      Function Name                         
+  Derived by                      Descriptor Class                                                                                      Function Name
   ------------------------------- ----------------------------------------------------------------------------------------------------- ------------------------------------- --
-  Principal Components Analysis   Scales-based descriptors derived by Principal Components Analysis                                     extractScales(), extractScalesGap()   
-                                  Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. Protein Fingerprint)   extractProtFP(), extractProtFPGap()   
-                                  Scales-based descriptors derived by 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)   extractDescScales()                   
-  Factor Analysis                 Scales-based descriptors derived by Factor Analysis                                                   extractFAScales()                     
-  Multidimensional Scaling        Scales-based descriptors derived by Multidimensional Scaling                                          extractMDSScales()                    
-  Substitution Matrix             BLOSUM and PAM matrix-derived descriptors                                                             extractBLOSUM()                       
+  Principal Components Analysis   Scales-based descriptors derived by Principal Components Analysis                                     extractScales(), extractScalesGap()
+                                  Scales-based descriptors derived by amino acid properties from AAindex (a.k.a. Protein Fingerprint)   extractProtFP(), extractProtFPGap()
+                                  Scales-based descriptors derived by 2D and 3D molecular descriptors (Topological, WHIM, VHSE, etc.)   extractDescScales()
+  Factor Analysis                 Scales-based descriptors derived by Factor Analysis                                                   extractFAScales()
+  Multidimensional Scaling        Scales-based descriptors derived by Multidimensional Scaling                                          extractMDSScales()
+  Substitution Matrix             BLOSUM and PAM matrix-derived descriptors                                                             extractBLOSUM()
 
   : Table 4: List of PCM descriptors in protr
 
