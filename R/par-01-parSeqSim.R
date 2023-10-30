@@ -174,15 +174,18 @@ crossSetSim <- function(
 
   combinations <- expand.grid(seq_along(protlist1), seq_along(protlist2))
 
-  results <- foreach(
+  `%mydopar%` <- foreach::`%dopar%`
+  i <- NULL
+  results <- foreach::foreach(
     i = seq_len(nrow(combinations)),
     .combine = c,
+    .errorhandling = "pass",
     .packages = c("Biostrings")
-  ) %dopar% {
+  ) %mydopar% {
     idx1 <- combinations[i, 1]
     idx2 <- combinations[i, 2]
 
-    protr:::.seqPairSim(
+    .seqPairSim(
       c(idx1, idx2 + length(protlist1)),
       c(protlist1, protlist2),
       type,
