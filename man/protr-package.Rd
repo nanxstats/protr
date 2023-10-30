@@ -29,5 +29,10 @@ Authors:
   \item Dong-Sheng Cao
 }
 
+Other contributors:
+\itemize{
+  \item Sebastian Mueller (Alva Genomics) [contributor]
+}
+
 }
 \keyword{internal}

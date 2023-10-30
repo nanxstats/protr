@@ -2,7 +2,7 @@
 % Please edit documentation in R/par-01-parSeqSim.R
 \name{parSeqSim}
 \alias{parSeqSim}
-\title{Parallellized Protein Sequence Similarity Calculation based on
+\title{Parallellized Protein Sequence Similarity Calculation Based on
 Sequence Alignment (In-Memory Version)}
 \usage{
 parSeqSim(
@@ -53,8 +53,8 @@ gap by 1. Defaults to 4.}
 A \code{n} x \code{n} similarity matrix.
 }
 \description{
-This function implemented the parallellized version for calculating
-protein sequence similarity based on sequence alignment.
+Parallellized calculation of protein sequence similarity based on
+sequence alignment.
 }
 \examples{
 \dontrun{

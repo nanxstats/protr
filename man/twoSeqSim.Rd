@@ -35,11 +35,11 @@ in the alignment. Defaults to 10.}
 gap by 1. Defaults to 4.}
 }
 \value{
-An \code{Biostrings} object containing the alignment scores
-and other alignment information.
+A \code{Biostrings} object containing the alignment scores
+  and other alignment information.
 }
 \description{
-This function implements the sequence alignment between two protein sequences.
+Sequence alignment between two protein sequences.
 }
 \examples{
 \dontrun{
