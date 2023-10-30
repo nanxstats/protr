@@ -1,3 +1,10 @@
+# protr 1.7-0 (2023-10-30)
+
+## New features
+
+- `crossSetSim()` is added for calculating pairwise similarity between two sets
+  of protein sequence based on sequence alignment (thanks, @seb-mueller, #34).
+
 # protr 1.6-3 (2023-03-05)
 
 ## Bug fixes
