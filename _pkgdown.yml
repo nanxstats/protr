@@ -2,6 +2,8 @@ url: https://nanx.me/protr/
 
 template:
   bootstrap: 5
+  bslib:
+    preset: "bootstrap"
 
 reference:
   - title: "Protein/Peptide Sequence Descriptors"
