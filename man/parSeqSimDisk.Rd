@@ -2,7 +2,7 @@
 % Please edit documentation in R/par-01-parSeqSim.R
 \name{parSeqSimDisk}
 \alias{parSeqSimDisk}
-\title{Parallellized Protein Sequence Similarity Calculation Based on
+\title{Parallel Protein Sequence Similarity Calculation Based on
 Sequence Alignment (Disk-Based Version)}
 \usage{
 parSeqSimDisk(
@@ -35,7 +35,8 @@ in a single batch. Defaults to 1.}
 \item{path}{Directory for caching the results in each batch.
 Defaults to the temporary directory.}
 
-\item{verbose}{Print the computation progress?}
+\item{verbose}{Print the computation progress?
+Useful when \code{batches > 1}.}
 
 \item{type}{Type of alignment, default is \code{"local"},
 can be \code{"global"} or \code{"local"},
@@ -57,7 +58,7 @@ gap by 1. Defaults to 4.}
 A \code{n} x \code{n} similarity matrix.
 }
 \description{
-Parallellized calculation of protein sequence similarity based on
+Parallel calculation of protein sequence similarity based on
 sequence alignment.
 This version caches the partial results in each batch to the
 hard drive and merges the results together in the end, which

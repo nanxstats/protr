@@ -2,7 +2,7 @@
 % Please edit documentation in R/par-01-parSeqSim.R
 \name{crossSetSim}
 \alias{crossSetSim}
-\title{Parallellized Protein Sequence Similarity Calculation Between Two Sets
+\title{Parallel Protein Sequence Similarity Calculation Between Two Sets
 Based on Sequence Alignment (In-Memory Version)}
 \usage{
 crossSetSim(
@@ -48,7 +48,7 @@ gap by 1. Defaults to 4.}
 A \code{n} x \code{m} similarity matrix.
 }
 \description{
-Parallellized calculation of protein sequence similarity based on
+Parallel calculation of protein sequence similarity based on
 sequence alignment between two sets of protein sequences.
 }
 \examples{

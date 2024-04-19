@@ -1,7 +1,7 @@
-#' Parallellized Protein Sequence Similarity Calculation Based on
+#' Parallel Protein Sequence Similarity Calculation Based on
 #' Sequence Alignment (In-Memory Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment.
 #'
 #' @param protlist A length \code{n} list containing \code{n} protein sequences,
@@ -16,6 +16,7 @@
 #'   enough RAM to compute and hold all the pairwise similarities
 #'   in a single batch. Defaults to 1.
 #' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -63,15 +64,13 @@ parSeqSim <- function(
     type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
   doParallel::registerDoParallel(cores)
 
-  # generate lower matrix index
-  idx <- combn(1:length(protlist), 2)
+  # Generate lower matrix index
+  idx <- combn(seq_along(protlist), 2)
 
-  # split index into k batches
-  split2 <- function(x, k) split(x, sort(rank(x) %% k))
-  idxbatch <- split2(1:ncol(idx), batches)
+  # Split index into k batches
+  idxbatch <- split2(seq_len(ncol(idx)), batches)
 
-  # then use foreach parallelization
-  # input is all pair combinations (in each batch)
+  # Use foreach parallelization, input is all pair combinations (in each batch).
   `%mydopar%` <- foreach::`%dopar%`
   seqsimlist_batch <- vector("list", batches)
   for (k in 1:batches) {
@@ -85,12 +84,12 @@ parSeqSim <- function(
     }
   }
 
-  # merge all batches
+  # Merge all batches
   seqsimlist <- as.list(unlist(seqsimlist_batch))
 
-  # convert list to matrix
+  # Convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist)) {
+  for (i in seq_along(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
   }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
@@ -99,10 +98,10 @@ parSeqSim <- function(
   seqsimmat
 }
 
-#' Parallellized Protein Sequence Similarity Calculation Between Two Sets
+#' Parallel Protein Sequence Similarity Calculation Between Two Sets
 #' Based on Sequence Alignment (In-Memory Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment between two sets of protein sequences.
 #'
 #' @param protlist1 A length \code{n} list containing \code{n} protein sequences,
@@ -203,10 +202,10 @@ crossSetSim <- function(
   )
 }
 
-#' Parallellized Protein Sequence Similarity Calculation Based on
+#' Parallel Protein Sequence Similarity Calculation Based on
 #' Sequence Alignment (Disk-Based Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment.
 #' This version caches the partial results in each batch to the
 #' hard drive and merges the results together in the end, which
@@ -226,6 +225,7 @@ crossSetSim <- function(
 #' @param path Directory for caching the results in each batch.
 #'   Defaults to the temporary directory.
 #' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -278,15 +278,13 @@ parSeqSimDisk <- function(
 
   if (!dir.exists(path)) dir.create(path)
 
-  # generate lower matrix index
-  idx <- combn(1:length(protlist), 2)
+  # Generate lower matrix index
+  idx <- combn(seq_along(protlist), 2)
 
-  # split index into k batches
-  split2 <- function(x, k) split(x, sort(rank(x) %% k))
-  idxbatch <- split2(1:ncol(idx), batches)
+  # Split index into k batches
+  idxbatch <- split2(seq_len(ncol(idx)), batches)
 
-  # then use foreach parallelization
-  # input is all pair combinations (in each batch)
+  # Use foreach parallelization, input is all pair combinations (in each batch).
   `%mydopar%` <- foreach::`%dopar%`
   for (k in 1:batches) {
     if (verbose) cat("Starting batch", k, "of", batches, "\n")
@@ -297,22 +295,22 @@ parSeqSimDisk <- function(
         rev(idx[, i]), protlist, type, submat, gap.opening, gap.extension
       )
     }
-    # save each batch's results to disk
+    # Save each batch's results to disk
     saveRDS(seqsimlist_batch_tmp, file = paste0(path, "/protr_batch_", k, ".rds"))
   }
 
-  # read from disk
+  # Read from disk
   seqsimlist_batch <- vector("list", batches)
   for (k in 1:batches) {
     seqsimlist_batch[[k]] <- readRDS(paste0(path, "/protr_batch_", k, ".rds"))
   }
 
-  # merge all batches
+  # Merge all batches
   seqsimlist <- as.list(unlist(seqsimlist_batch))
 
-  # convert list to matrix
+  # Convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist)) {
+  for (i in seq_along(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
   }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
@@ -367,7 +365,7 @@ parSeqSimDisk <- function(
 twoSeqSim <- function(
     seq1, seq2, type = "local", submat = "BLOSUM62",
     gap.opening = 10, gap.extension = 4) {
-  # sequence alignment for two protein sequences
+  # Sequence alignment for two protein sequences
   s1 <- try(Biostrings::AAString(seq1), silent = TRUE)
   s2 <- try(Biostrings::AAString(seq2), silent = TRUE)
   s12 <- try(
@@ -432,3 +430,5 @@ twoSeqSim <- function(
 
   sim
 }
+
+split2 <- function(x, k) split(x, sort(rank(x) %% k))
