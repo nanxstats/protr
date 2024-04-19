@@ -31,7 +31,7 @@ BibTeX entry:
 
 ## Installation
 
-To install `protr` from CRAN:
+To install protr from CRAN:
 
 ```r
 install.packages("protr")
