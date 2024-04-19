@@ -12,8 +12,9 @@ output:
     highlight: "textmate"
     css: "custom.css"
 vignette: >
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{protr: R package for generating various numerical representation schemes of protein sequences}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include=FALSE}
@@ -283,7 +284,7 @@ The protr package integrates the function of parallelized similarity score
 computation derived by local or global protein sequence alignment between
 a list of protein sequences, the sequence alignment computation is
 provided by `Biostrings`, the corresponding functions listed in the
-`protr` package include:
+protr package include:
 
 - `twoSeqSim()` - Similarity calculation derived by sequence alignment
   between two protein sequences

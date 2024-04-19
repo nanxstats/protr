@@ -1,11 +1,11 @@
-# protr 1.7-0 (2023-10-30)
+# protr 1.7-0
 
 ## New features
 
 - `crossSetSim()` is added for calculating pairwise similarity between two sets
   of protein sequence based on sequence alignment (thanks, @seb-mueller, #34).
 
-# protr 1.6-3 (2023-03-05)
+# protr 1.6-3
 
 ## Bug fixes
 
@@ -21,7 +21,7 @@
 - Fixed broken or moved links in function documentation and vignettes.
 - Replaced the original logo with a new hex sticker logo.
 
-# protr 1.6-2 (2019-05-18)
+# protr 1.6-2
 
 ## Improvements
 
@@ -29,7 +29,7 @@
 - Updated GitHub repository links to reflect the handle change.
 - Removed AppVeyor CI due to the frequent Bioconductor dependency installation issues.
 
-# protr 1.6-1 (2019-02-24)
+# protr 1.6-1
 
 ## Improvements
 
@@ -53,7 +53,7 @@
 - Fixed an issue in `parGOSim()` that will create minor numerical
   inconsistencies in results due to argument matching.
 
-# protr 1.6-0 (2019-02-11)
+# protr 1.6-0
 
 ## Bug fixes
 
@@ -62,7 +62,7 @@
   Issues in the code examples are also fixed.
   We thank Denisa Duma for the feedback.
 
-# protr 1.5-2 (2018-11-21)
+# protr 1.5-2
 
 ## Bug fixes
 
@@ -76,7 +76,7 @@
 - Added floating TOC and new CSS style in the vignette to improve navigation
   and readability.
 
-# protr 1.5-1 (2018-07-12)
+# protr 1.5-1
 
 ## New features
 
@@ -85,7 +85,7 @@
   for feature extraction or sequence alignment based similarity computation.
   We thank Dr. Maisa Pinheiro for the feedback.
 
-# protr 1.5-0 (2017-11-17)
+# protr 1.5-0
 
 ## Bug fixes
 
@@ -98,27 +98,27 @@
 
 - General fixes and improvements for the package vignette.
 
-# protr 1.4-2 (2017-09-28)
+# protr 1.4-2
 
 ## Improvements
 
 - Functions are now organized into sections on the documentation website (<https://nanx.me/protr/reference/>).
 - Use system font stack instead of Google Fonts in vignettes to avoid pandoc SSL issue.
 
-# protr 1.4-1 (2017-07-08)
+# protr 1.4-1
 
 ## Improvements
 
 - Converted table images to Markdown tables in the vignette.
 - Updated the screenshot of protrweb in the vignette.
 
-# protr 1.4-0 (2017-06-06)
+# protr 1.4-0
 
 ## Improvements
 
 - Migrated from Sweave-based PDF vignette to knitr-based HTML vignette.
 
-# protr 1.3-0 (2017-05-07)
+# protr 1.3-0
 
 ## Improvements
 
@@ -126,7 +126,7 @@
 - Better R code formatting.
 - Better function documentation and vignette formatting.
 
-# protr 1.2-1 (2016-12-29)
+# protr 1.2-1
 
 ## Improvements
 
@@ -134,14 +134,14 @@
 - Added Windows continuous integration support using AppVeyor.
 - Better R file naming scheme.
 
-# protr 1.2-0 (2016-11-12)
+# protr 1.2-0
 
 ## Improvements
 
 - Added continuous integration.
 - Code code style improvements.
 
-# protr 1.1-1 (2015-12-29)
+# protr 1.1-1
 
 ## Bug fixes
 
@@ -149,13 +149,15 @@
   1. Use <http://protr.org>.
   2. Remove all inaccessible URLs.
 
-# protr 1.1-0 (2015-12-28)
+# protr 1.1-0
+
+2015-12-28
 
 ## Bug fixes
 
 - Bug fix in `extractCTDD()`.
 
-# protr 1.0-1 (2015-11-26)
+# protr 1.0-1
 
 ## Bug fixes
 
@@ -165,13 +167,15 @@
 
 - Added citation information.
 
-# protr 0.5-1 (2014-12-22)
+# protr 0.5-1
 
 ## Improvements
 
 - Minor improvements and fixes for documentation.
 
-# protr 0.5-0 (2014-12-18)
+# protr 0.5-0
+
+2014-12-18
 
 ## Improvements
 
@@ -179,31 +183,35 @@
 - Documentation improvements.
 - Other minor improvements.
 
-# protr 0.4-1 (2014-10-10)
+# protr 0.4-1
 
 ## Improvements
 
 - General documentation improvements.
 
-# protr 0.4-0 (2014-09-20)
+# protr 0.4-0
+
+2014-09-20
 
 ## New features
 
 - Added profile-based descriptors derived by PSSM.
 
-# protr 0.3-0 (2014-06-20)
+# protr 0.3-0
+
+2014-06-20
 
 ## Improvements
 
 - Added an example workflow using protr in the vignette.
 
-# protr 0.2-1 (2014-01-25)
+# protr 0.2-1
 
 ## Improvements
 
 - Added a `LICENSE` file according to CRAN policies.
 
-# protr 0.2-0 (2013-12-10)
+# protr 0.2-0
 
 ## New features
 
@@ -221,7 +229,7 @@
 - Initial version of Auto Cross Covariance (ACC) for generating scales-based descriptors of the same length.
 - Introducing ProtWeb, the web service based on protr: <http://protr.org>.
 
-# protr 0.1-0 (2012-11-18)
+# protr 0.1-0
 
 ## New features
 

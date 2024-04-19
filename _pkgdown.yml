@@ -6,9 +6,9 @@ template:
     preset: "bootstrap"
 
 reference:
-  - title: "Protein/Peptide Sequence Descriptors"
+  - title: "Protein and peptide sequence descriptors"
     desc: >
-      Functions for calculating protein/peptide sequence descirptors.
+      Functions for calculating protein/peptide sequence descriptors.
     contents:
     - extractAAC
     - extractDC
@@ -28,15 +28,15 @@ reference:
     - extractQSO
     - extractPAAC
     - extractAPAAC
-  - title: "Profile-Based Protein/Peptide Sequence Descriptors"
+  - title: "Profile-based protein and peptide sequence descriptors"
     desc: >
-      Functions for calculating the profile-based (PSSM) descirptors.
+      Functions for calculating the profile-based (PSSM) descriptors.
     contents:
     - extractPSSM
     - extractPSSMAcc
     - extractPSSMFeature
     - acc
-  - title: "Proteochemometric Modeling (PCM) Descriptors"
+  - title: "Proteochemometric Modeling (PCM) descriptors"
     desc: >
       Functions for calculating proteochemometric modeling (PCM) descriptors.
     contents:
@@ -48,7 +48,7 @@ reference:
     - extractFAScales
     - extractMDSScales
     - extractBLOSUM
-  - title: "Similarity Measures between Proteins"
+  - title: "Similarity measures between proteins"
     desc: >
       Functions for calculating protein sequence alignment based
       similarity measures and GO-based semantic similarity measures.
@@ -59,9 +59,9 @@ reference:
     - twoSeqSim
     - parGOSim
     - twoGOSim
-  - title: "Helper Functions for Pre-Processing Protein Sequences"
+  - title: "Pre-process protein sequences"
     desc: >
-      Functions for pre-processing protein sequences.
+      Helper Functions for pre-processing protein sequences.
     contents:
     - getUniProt
     - readFASTA
@@ -70,7 +70,7 @@ reference:
     - protseg
     - removeGaps
     - protr-package
-  - title: "Precomputed Molecular Descriptors for the 20 Amino Acids"
+  - title: "Precomputed molecular descriptors for the 20 amino acids"
     desc: >
       Precomputed molecular descriptors for the 20 amino acids.
     contents:
@@ -100,7 +100,7 @@ reference:
     - AATopoChg
     - AAWalk
     - AAWHIM
-  - title: "BLOSUM and PAM matrices for the 20 Amino Acids"
+  - title: "BLOSUM and PAM matrices for the 20 amino acids"
     desc: >
       BLOSUM and PAM matrices for the 20 amino acids.
     contents:
