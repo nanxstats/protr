@@ -1,4 +1,4 @@
-^zzz\.Rproj$
+^.*\.Rproj$
 ^\.Rproj\.user$
 
 ^_pkgdown\.yml$
