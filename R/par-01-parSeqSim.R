@@ -113,6 +113,13 @@ parSeqSim <- function(
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
 #'   default is \code{2}. Users can use the \code{detectCores()} function
 #'   in the \code{parallel} package to see how many cores they could use.
+#' @param batches Integer. How many batches should we split the
+#'   similarity computations into. This is useful when you have a large
+#'   number of protein sequences, enough number of CPU cores, but not
+#'   enough RAM to compute and hold all the similarities
+#'   in a single batch. Defaults to 1.
+#' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -166,6 +173,8 @@ crossSetSim <- function(
     protlist1, protlist2,
     type = "local",
     cores = 2,
+    batches = 1,
+    verbose = FALSE,
     submat = "BLOSUM62",
     gap.opening = 10,
     gap.extension = 4) {
@@ -173,26 +182,36 @@ crossSetSim <- function(
 
   combinations <- expand.grid(seq_along(protlist1), seq_along(protlist2))
 
-  `%mydopar%` <- foreach::`%dopar%`
-  i <- NULL
-  results <- foreach::foreach(
-    i = seq_len(nrow(combinations)),
-    .combine = c,
-    .errorhandling = "pass",
-    .packages = c("Biostrings")
-  ) %mydopar% {
-    idx1 <- combinations[i, 1]
-    idx2 <- combinations[i, 2]
+  # Split combinations into k batches
+  combinations_batch <- split2(seq_len(nrow(combinations)), batches)
 
-    .seqPairSim(
-      c(idx1, idx2 + length(protlist1)),
-      c(protlist1, protlist2),
-      type,
-      submat,
-      gap.opening,
-      gap.extension
-    )
+  i <- NULL
+  results_batch <- vector("list", batches)
+  `%mydopar%` <- foreach::`%dopar%`
+  for (k in 1:batches) {
+    if (verbose) cat("Starting batch", k, "of", batches, "\n")
+    results_batch[[k]] <- foreach::foreach(
+      i = combinations_batch[[k]],
+      .combine = c,
+      .errorhandling = "pass",
+      .packages = c("Biostrings")
+    ) %mydopar% {
+      idx1 <- combinations[i, 1]
+      idx2 <- combinations[i, 2]
+
+      .seqPairSim(
+        c(idx1, idx2 + length(protlist1)),
+        c(protlist1, protlist2),
+        type,
+        submat,
+        gap.opening,
+        gap.extension
+      )
+    }
   }
+
+  # Merge all batches
+  results <- as.list(unlist(results_batch))
 
   matrix(
     results,

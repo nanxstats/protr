@@ -10,6 +10,8 @@ crossSetSim(
   protlist2,
   type = "local",
   cores = 2,
+  batches = 1,
+  verbose = FALSE,
   submat = "BLOSUM62",
   gap.opening = 10,
   gap.extension = 4
@@ -32,6 +34,15 @@ sequence. Unknown sequences should be represented as \code{""}.}
 \item{cores}{Integer. The number of CPU cores to use for parallel execution,
 default is \code{2}. Users can use the \code{detectCores()} function
 in the \code{parallel} package to see how many cores they could use.}
+
+\item{batches}{Integer. How many batches should we split the
+similarity computations into. This is useful when you have a large
+number of protein sequences, enough number of CPU cores, but not
+enough RAM to compute and hold all the similarities
+in a single batch. Defaults to 1.}
+
+\item{verbose}{Print the computation progress?
+Useful when \code{batches > 1}.}
 
 \item{submat}{Substitution matrix, default is \code{"BLOSUM62"},
 can be one of \code{"BLOSUM45"}, \code{"BLOSUM50"}, \code{"BLOSUM62"},
