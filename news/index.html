@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">protr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,20 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.7-1" id="protr-17-1">protr 1.7-1<a class="anchor" aria-label="anchor" href="#protr-17-1"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-7-1">New features<a class="anchor" aria-label="anchor" href="#new-features-1-7-1"></a></h3>
+<ul><li>
+<p><code><a href="../reference/crossSetSim.html">crossSetSim()</a></code> now gains two new arguments <code>batches</code> and <code>verbose</code>.</p>
+<p>The <code>batches</code> argument allows users to split the similarity computations into multiple batches, which is useful when dealing with a large number of sequences and limited RAM. The <code>verbose</code> argument enables progress updates during the computation. This brings <code><a href="../reference/crossSetSim.html">crossSetSim()</a></code> to feature parity with <code><a href="../reference/parSeqSim.html">parSeqSim()</a></code>. (thanks, <a href="https://github.com/ofleitas" class="external-link">@ofleitas</a>, <a href="https://github.com/nanxstats/protr/issues/41" class="external-link">#41</a>)</p>
+</li>
+<li>
+<p>A new function <code><a href="../reference/crossSetSimDisk.html">crossSetSimDisk()</a></code> has been implemented as a disk-based version of <code><a href="../reference/crossSetSim.html">crossSetSim()</a></code>.</p>
+<p>This function follows a similar approach to <code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code>, where partial results from each batch are cached on the hard drive and merged at the end. This allows for processing larger protein sequence sets that may not fit into RAM (<a href="https://github.com/nanxstats/protr/issues/41" class="external-link">#41</a>).</p>
+</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.7-0" id="protr-17-0">protr 1.7-0<a class="anchor" aria-label="anchor" href="#protr-17-0"></a></h2><p class="text-muted">CRAN release: 2023-10-30</p>
 <div class="section level3">
 <h3 id="new-features-1-7-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-7-0"></a></h3>
@@ -59,11 +73,11 @@
 <h2 class="pkg-version" data-toc-text="1.6-3" id="protr-16-3">protr 1.6-3<a class="anchor" aria-label="anchor" href="#protr-16-3"></a></h2><p class="text-muted">CRAN release: 2023-03-05</p>
 <div class="section level3">
 <h3 id="bug-fixes-1-6-3">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-6-3"></a></h3>
-<ul><li>Fixed a minor bug in <code><a href="../reference/extractProtFP.html">extractProtFP()</a></code> and <code><a href="../reference/extractProtFPGap.html">extractProtFPGap()</a></code> when <code>index = NULL</code> (thanks, <a href="https://github.com/fcampelo" class="external-link">@fcampelo</a> <a href="https://github.com/nanxstats/protr/pull/30" class="external-link">#30</a>).</li>
+<ul><li>Fixed a minor bug in <code><a href="../reference/extractProtFP.html">extractProtFP()</a></code> and <code><a href="../reference/extractProtFPGap.html">extractProtFPGap()</a></code> when <code>index = NULL</code> (thanks, <a href="https://github.com/fcampelo" class="external-link">@fcampelo</a>, <a href="https://github.com/nanxstats/protr/issues/30" class="external-link">#30</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="improvements-1-6-3">Improvements<a class="anchor" aria-label="anchor" href="#improvements-1-6-3"></a></h3>
-<ul><li>Added a comment about <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code> usage to avoid confusion (thanks, <a href="https://github.com/jonalv" class="external-link">@jonalv</a> <a href="https://github.com/nanxstats/protr/pull/31" class="external-link">#31</a>).</li>
+<ul><li>Added a comment about <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code> usage to avoid confusion (thanks, <a href="https://github.com/jonalv" class="external-link">@jonalv</a>, <a href="https://github.com/nanxstats/protr/issues/31" class="external-link">#31</a>).</li>
 <li>Replaced previous CI/CD solutions with GitHub Actions workflows.</li>
 <li>Fixed broken or moved links in function documentation and vignettes.</li>
 <li>Replaced the original logo with a new hex sticker logo.</li>
