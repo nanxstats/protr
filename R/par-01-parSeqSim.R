@@ -1,21 +1,22 @@
-#' Parallellized Protein Sequence Similarity Calculation Based on
+#' Parallel Protein Sequence Similarity Calculation Based on
 #' Sequence Alignment (In-Memory Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment.
 #'
 #' @param protlist A length \code{n} list containing \code{n} protein sequences,
 #'   each component of the list is a character string, storing one protein
 #'   sequence. Unknown sequences should be represented as \code{""}.
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
-#'   default is \code{2}. Users can use the \code{detectCores()} function
-#'   in the \code{parallel} package to see how many cores they could use.
+#'   default is \code{2}. Users can use the \code{availableCores()} function
+#'   in the parallelly package to see how many cores they could use.
 #' @param batches Integer. How many batches should we split the pairwise
 #'   similarity computations into. This is useful when you have a large
 #'   number of protein sequences, enough number of CPU cores, but not
-#'   enough RAM to compute and hold all the pairwise similarities
-#'   in a single batch. Defaults to 1.
+#'   enough RAM to compute and fit all the pairwise similarities
+#'   into a single batch. Defaults to 1.
 #' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -42,7 +43,7 @@
 #' @examples
 #' \dontrun{
 #'
-#' # Be careful when testing this since it involves parallelisation
+#' # Be careful when testing this since it involves parallelization
 #' # and might produce unpredictable results in some environments
 #'
 #' library("Biostrings")
@@ -63,15 +64,13 @@ parSeqSim <- function(
     type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
   doParallel::registerDoParallel(cores)
 
-  # generate lower matrix index
-  idx <- combn(1:length(protlist), 2)
+  # Generate lower matrix index
+  idx <- combn(seq_along(protlist), 2)
 
-  # split index into k batches
-  split2 <- function(x, k) split(x, sort(rank(x) %% k))
-  idxbatch <- split2(1:ncol(idx), batches)
+  # Split index into k batches
+  idxbatch <- split2(seq_len(ncol(idx)), batches)
 
-  # then use foreach parallelization
-  # input is all pair combinations (in each batch)
+  # Use foreach parallelization, input is all pair combinations (in each batch).
   `%mydopar%` <- foreach::`%dopar%`
   seqsimlist_batch <- vector("list", batches)
   for (k in 1:batches) {
@@ -85,12 +84,12 @@ parSeqSim <- function(
     }
   }
 
-  # merge all batches
+  # Merge all batches
   seqsimlist <- as.list(unlist(seqsimlist_batch))
 
-  # convert list to matrix
+  # Convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist)) {
+  for (i in seq_along(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
   }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
@@ -99,10 +98,10 @@ parSeqSim <- function(
   seqsimmat
 }
 
-#' Parallellized Protein Sequence Similarity Calculation Between Two Sets
+#' Parallel Protein Sequence Similarity Calculation Between Two Sets
 #' Based on Sequence Alignment (In-Memory Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment between two sets of protein sequences.
 #'
 #' @param protlist1 A length \code{n} list containing \code{n} protein sequences,
@@ -112,8 +111,15 @@ parSeqSim <- function(
 #'   each component of the list is a character string, storing one protein
 #'   sequence. Unknown sequences should be represented as \code{""}.
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
-#'   default is \code{2}. Users can use the \code{detectCores()} function
-#'   in the \code{parallel} package to see how many cores they could use.
+#'   default is \code{2}. Users can use the \code{availableCores()} function
+#'   in the parallelly package to see how many cores they could use.
+#' @param batches Integer. How many batches should we split the
+#'   similarity computations into. This is useful when you have a large
+#'   number of protein sequences, enough number of CPU cores, but not
+#'   enough RAM to compute and fit all the similarities
+#'   into a single batch. Defaults to 1.
+#' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -138,7 +144,7 @@ parSeqSim <- function(
 #' @examples
 #' \dontrun{
 #'
-#' # Be careful when testing this since it involves parallelisation
+#' # Be careful when testing this since it involves parallelization
 #' # and might produce unpredictable results in some environments
 #'
 #' library("Biostrings")
@@ -167,6 +173,8 @@ crossSetSim <- function(
     protlist1, protlist2,
     type = "local",
     cores = 2,
+    batches = 1,
+    verbose = FALSE,
     submat = "BLOSUM62",
     gap.opening = 10,
     gap.extension = 4) {
@@ -174,26 +182,36 @@ crossSetSim <- function(
 
   combinations <- expand.grid(seq_along(protlist1), seq_along(protlist2))
 
-  `%mydopar%` <- foreach::`%dopar%`
-  i <- NULL
-  results <- foreach::foreach(
-    i = seq_len(nrow(combinations)),
-    .combine = c,
-    .errorhandling = "pass",
-    .packages = c("Biostrings")
-  ) %mydopar% {
-    idx1 <- combinations[i, 1]
-    idx2 <- combinations[i, 2]
+  # Split combinations into k batches
+  combinations_batch <- split2(seq_len(nrow(combinations)), batches)
 
-    .seqPairSim(
-      c(idx1, idx2 + length(protlist1)),
-      c(protlist1, protlist2),
-      type,
-      submat,
-      gap.opening,
-      gap.extension
-    )
+  i <- NULL
+  results_batch <- vector("list", batches)
+  `%mydopar%` <- foreach::`%dopar%`
+  for (k in 1:batches) {
+    if (verbose) cat("Starting batch", k, "of", batches, "\n")
+    results_batch[[k]] <- foreach::foreach(
+      i = combinations_batch[[k]],
+      .combine = c,
+      .errorhandling = "pass",
+      .packages = c("Biostrings")
+    ) %mydopar% {
+      idx1 <- combinations[i, 1]
+      idx2 <- combinations[i, 2]
+
+      .seqPairSim(
+        c(idx1, idx2 + length(protlist1)),
+        c(protlist1, protlist2),
+        type,
+        submat,
+        gap.opening,
+        gap.extension
+      )
+    }
   }
+
+  # Merge all batches
+  results <- as.list(unlist(results_batch))
 
   matrix(
     results,
@@ -203,12 +221,12 @@ crossSetSim <- function(
   )
 }
 
-#' Parallellized Protein Sequence Similarity Calculation Based on
+#' Parallel Protein Sequence Similarity Calculation Based on
 #' Sequence Alignment (Disk-Based Version)
 #'
-#' Parallellized calculation of protein sequence similarity based on
+#' Parallel calculation of protein sequence similarity based on
 #' sequence alignment.
-#' This version caches the partial results in each batch to the
+#' This version offloads the partial results in each batch to the
 #' hard drive and merges the results together in the end, which
 #' reduces the memory usage.
 #'
@@ -216,16 +234,17 @@ crossSetSim <- function(
 #'   each component of the list is a character string, storing one protein
 #'   sequence. Unknown sequences should be represented as \code{""}.
 #' @param cores Integer. The number of CPU cores to use for parallel execution,
-#'   default is \code{2}. Users can use the \code{detectCores()} function
-#'   in the \code{parallel} package to see how many cores they could use.
+#'   default is \code{2}. Users can use the \code{availableCores()} function
+#'   in the parallelly package to see how many cores they could use.
 #' @param batches Integer. How many batches should we split the pairwise
 #'   similarity computations into. This is useful when you have a large
 #'   number of protein sequences, enough number of CPU cores, but not
-#'   enough RAM to compute and hold all the pairwise similarities
-#'   in a single batch. Defaults to 1.
+#'   enough RAM to compute and fit all the pairwise similarities
+#'   into a single batch. Defaults to 1.
 #' @param path Directory for caching the results in each batch.
 #'   Defaults to the temporary directory.
 #' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
 #' @param type Type of alignment, default is \code{"local"},
 #'   can be \code{"global"} or \code{"local"},
 #'   where \code{"global"} represents Needleman-Wunsch global alignment;
@@ -250,7 +269,7 @@ crossSetSim <- function(
 #' @examples
 #' \dontrun{
 #'
-#' # Be careful when testing this since it involves parallelisation
+#' # Be careful when testing this since it involves parallelization
 #' # and might produce unpredictable results in some environments
 #'
 #' library("Biostrings")
@@ -278,15 +297,13 @@ parSeqSimDisk <- function(
 
   if (!dir.exists(path)) dir.create(path)
 
-  # generate lower matrix index
-  idx <- combn(1:length(protlist), 2)
+  # Generate lower matrix index
+  idx <- combn(seq_along(protlist), 2)
 
-  # split index into k batches
-  split2 <- function(x, k) split(x, sort(rank(x) %% k))
-  idxbatch <- split2(1:ncol(idx), batches)
+  # Split index into k batches
+  idxbatch <- split2(seq_len(ncol(idx)), batches)
 
-  # then use foreach parallelization
-  # input is all pair combinations (in each batch)
+  # Use foreach parallelization, input is all pair combinations (in each batch).
   `%mydopar%` <- foreach::`%dopar%`
   for (k in 1:batches) {
     if (verbose) cat("Starting batch", k, "of", batches, "\n")
@@ -297,28 +314,155 @@ parSeqSimDisk <- function(
         rev(idx[, i]), protlist, type, submat, gap.opening, gap.extension
       )
     }
-    # save each batch's results to disk
+    # Save each batch's results to disk
     saveRDS(seqsimlist_batch_tmp, file = paste0(path, "/protr_batch_", k, ".rds"))
   }
 
-  # read from disk
+  # Read from disk
   seqsimlist_batch <- vector("list", batches)
   for (k in 1:batches) {
     seqsimlist_batch[[k]] <- readRDS(paste0(path, "/protr_batch_", k, ".rds"))
   }
 
-  # merge all batches
+  # Merge all batches
   seqsimlist <- as.list(unlist(seqsimlist_batch))
 
-  # convert list to matrix
+  # Convert list to matrix
   seqsimmat <- matrix(0, length(protlist), length(protlist))
-  for (i in 1:length(seqsimlist)) {
+  for (i in seq_along(seqsimlist)) {
     seqsimmat[idx[2, i], idx[1, i]] <- seqsimlist[[i]]
   }
   seqsimmat[upper.tri(seqsimmat)] <- t(seqsimmat)[upper.tri(t(seqsimmat))]
   diag(seqsimmat) <- 1
 
   seqsimmat
+}
+
+#' Parallel Protein Sequence Similarity Calculation Between Two Sets
+#' Based on Sequence Alignment (Disk-Based Version)
+#'
+#' Parallel calculation of protein sequence similarity based on
+#' sequence alignment between two sets of protein sequences.
+#' This version offloads the partial results in each batch to the
+#' hard drive and merges the results together in the end, which
+#' reduces the memory usage.
+#'
+#' @param protlist1 A length \code{n} list containing \code{n} protein sequences,
+#'   each component of the list is a character string, storing one protein
+#'   sequence. Unknown sequences should be represented as \code{""}.
+#' @param protlist2 A length \code{n} list containing \code{m} protein sequences,
+#'   each component of the list is a character string, storing one protein
+#'   sequence. Unknown sequences should be represented as \code{""}.
+#' @param cores Integer. The number of CPU cores to use for parallel execution,
+#'   default is \code{2}. Users can use the \code{availableCores()} function
+#'   in the parallelly package to see how many cores they could use.
+#' @param batches Integer. How many batches should we split the pairwise
+#'   similarity computations into. This is useful when you have a large
+#'   number of protein sequences, enough number of CPU cores, but not
+#'   enough RAM to compute and fit all the pairwise similarities
+#'   into a single batch. Defaults to 1.
+#' @param path Directory for caching the results in each batch.
+#'   Defaults to the temporary directory.
+#' @param verbose Print the computation progress?
+#'   Useful when \code{batches > 1}.
+#' @param type Type of alignment, default is \code{"local"},
+#'   can be \code{"global"} or \code{"local"},
+#'   where \code{"global"} represents Needleman-Wunsch global alignment;
+#'   \code{"local"} represents Smith-Waterman local alignment.
+#' @param submat Substitution matrix, default is \code{"BLOSUM62"},
+#'   can be one of \code{"BLOSUM45"}, \code{"BLOSUM50"}, \code{"BLOSUM62"},
+#'   \code{"BLOSUM80"}, \code{"BLOSUM100"}, \code{"PAM30"},
+#'   \code{"PAM40"}, \code{"PAM70"}, \code{"PAM120"}, or \code{"PAM250"}.
+#' @param gap.opening The cost required to open a gap of any length
+#'   in the alignment. Defaults to 10.
+#' @param gap.extension The cost to extend the length of an existing
+#'   gap by 1. Defaults to 4.
+#'
+#' @return A \code{n} x \code{m} similarity matrix.
+#'
+#' @seealso See \code{\link{crossSetSim}} for the in-memory version.
+#'
+#' @author Nan Xiao <\url{https://nanx.me}>
+#'
+#' @export crossSetSimDisk
+#'
+#' @examples
+#' \dontrun{
+#'
+#' # Be careful when testing this since it involves parallelization
+#' # and might produce unpredictable results in some environments
+#'
+#' library("Biostrings")
+#' library("foreach")
+#' library("doParallel")
+#'
+#' s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
+#' s2 <- readFASTA(system.file("protseq/P08218.fasta", package = "protr"))[[1]]
+#' s3 <- readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
+#' s4 <- readFASTA(system.file("protseq/P20160.fasta", package = "protr"))[[1]]
+#' s5 <- readFASTA(system.file("protseq/Q9NZP8.fasta", package = "protr"))[[1]]
+#'
+#' set.seed(1010)
+#' plist1 <- as.list(c(s1, s2, s3, s4, s5)[sample(1:5, 100, replace = TRUE)])
+#' plist2 <- as.list(c(s1, s2, s3, s4, s5)[sample(1:5, 100, replace = TRUE)])
+#' psimmat <- crossSetSimDisk(
+#'   plist1, plist2,
+#'   cores = 2, batches = 10, verbose = TRUE,
+#'   type = "local", submat = "BLOSUM62"
+#' )
+#' }
+crossSetSimDisk <- function(
+    protlist1, protlist2,
+    cores = 2, batches = 1, path = tempdir(), verbose = FALSE,
+    type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
+  doParallel::registerDoParallel(cores)
+
+  if (!dir.exists(path)) dir.create(path)
+
+  combinations <- expand.grid(seq_along(protlist1), seq_along(protlist2))
+
+  # Split combinations into batches
+  combinations_batch <- split2(seq_len(nrow(combinations)), batches)
+
+  i <- NULL
+  `%mydopar%` <- foreach::`%dopar%`
+  for (k in 1:batches) {
+    if (verbose) cat("Starting batch", k, "of", batches, "\n")
+    results_batch_tmp <- foreach::foreach(
+      i = combinations_batch[[k]],
+      .errorhandling = "pass"
+    ) %mydopar% {
+      idx1 <- combinations[i, 1]
+      idx2 <- combinations[i, 2]
+
+      .seqPairSim(
+        c(idx1, idx2 + length(protlist1)),
+        c(protlist1, protlist2),
+        type,
+        submat,
+        gap.opening,
+        gap.extension
+      )
+    }
+    # Save each batch's results to disk
+    saveRDS(results_batch_tmp, file = paste0(path, "/crossSetSim_batch_", k, ".rds"))
+  }
+
+  # Read from disk
+  results_batch <- vector("list", batches)
+  for (k in 1:batches) {
+    results_batch[[k]] <- readRDS(paste0(path, "/crossSetSim_batch_", k, ".rds"))
+  }
+
+  # Merge all batches
+  results <- as.list(unlist(results_batch))
+
+  matrix(
+    results,
+    nrow = length(protlist2),
+    ncol = length(protlist1),
+    byrow = TRUE
+  )
 }
 
 #' Protein Sequence Alignment for Two Protein Sequences
@@ -367,7 +511,7 @@ parSeqSimDisk <- function(
 twoSeqSim <- function(
     seq1, seq2, type = "local", submat = "BLOSUM62",
     gap.opening = 10, gap.extension = 4) {
-  # sequence alignment for two protein sequences
+  # Sequence alignment for two protein sequences
   s1 <- try(Biostrings::AAString(seq1), silent = TRUE)
   s2 <- try(Biostrings::AAString(seq2), silent = TRUE)
   s12 <- try(
@@ -432,3 +576,5 @@ twoSeqSim <- function(
 
   sim
 }
+
+split2 <- function(x, k) split(x, sort(rank(x) %% k))

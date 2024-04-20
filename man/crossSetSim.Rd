@@ -2,7 +2,7 @@
 % Please edit documentation in R/par-01-parSeqSim.R
 \name{crossSetSim}
 \alias{crossSetSim}
-\title{Parallellized Protein Sequence Similarity Calculation Between Two Sets
+\title{Parallel Protein Sequence Similarity Calculation Between Two Sets
 Based on Sequence Alignment (In-Memory Version)}
 \usage{
 crossSetSim(
@@ -10,6 +10,8 @@ crossSetSim(
   protlist2,
   type = "local",
   cores = 2,
+  batches = 1,
+  verbose = FALSE,
   submat = "BLOSUM62",
   gap.opening = 10,
   gap.extension = 4
@@ -30,8 +32,17 @@ sequence. Unknown sequences should be represented as \code{""}.}
 \code{"local"} represents Smith-Waterman local alignment.}
 
 \item{cores}{Integer. The number of CPU cores to use for parallel execution,
-default is \code{2}. Users can use the \code{detectCores()} function
-in the \code{parallel} package to see how many cores they could use.}
+default is \code{2}. Users can use the \code{availableCores()} function
+in the parallelly package to see how many cores they could use.}
+
+\item{batches}{Integer. How many batches should we split the
+similarity computations into. This is useful when you have a large
+number of protein sequences, enough number of CPU cores, but not
+enough RAM to compute and fit all the similarities
+into a single batch. Defaults to 1.}
+
+\item{verbose}{Print the computation progress?
+Useful when \code{batches > 1}.}
 
 \item{submat}{Substitution matrix, default is \code{"BLOSUM62"},
 can be one of \code{"BLOSUM45"}, \code{"BLOSUM50"}, \code{"BLOSUM62"},
@@ -48,13 +59,13 @@ gap by 1. Defaults to 4.}
 A \code{n} x \code{m} similarity matrix.
 }
 \description{
-Parallellized calculation of protein sequence similarity based on
+Parallel calculation of protein sequence similarity based on
 sequence alignment between two sets of protein sequences.
 }
 \examples{
 \dontrun{
 
-# Be careful when testing this since it involves parallelisation
+# Be careful when testing this since it involves parallelization
 # and might produce unpredictable results in some environments
 
 library("Biostrings")

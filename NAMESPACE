@@ -2,6 +2,7 @@
 
 export(acc)
 export(crossSetSim)
+export(crossSetSimDisk)
 export(extractAAC)
 export(extractAPAAC)
 export(extractBLOSUM)
