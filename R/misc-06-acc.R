@@ -7,7 +7,6 @@
 #' @param mat A \code{p * n} matrix. Each row represents one scale
 #' (total \code{p} scales), each column represents one amino acid position
 #' (total \code{n} amino acids).
-#'
 #' @param lag The lag parameter. Must be less than the amino acids.
 #'
 #' @return A length \code{lag * p^2} named vector, the element names are
