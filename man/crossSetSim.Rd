@@ -32,14 +32,14 @@ sequence. Unknown sequences should be represented as \code{""}.}
 \code{"local"} represents Smith-Waterman local alignment.}
 
 \item{cores}{Integer. The number of CPU cores to use for parallel execution,
-default is \code{2}. Users can use the \code{detectCores()} function
-in the \code{parallel} package to see how many cores they could use.}
+default is \code{2}. Users can use the \code{availableCores()} function
+in the parallelly package to see how many cores they could use.}
 
 \item{batches}{Integer. How many batches should we split the
 similarity computations into. This is useful when you have a large
 number of protein sequences, enough number of CPU cores, but not
-enough RAM to compute and hold all the similarities
-in a single batch. Defaults to 1.}
+enough RAM to compute and fit all the similarities
+into a single batch. Defaults to 1.}
 
 \item{verbose}{Print the computation progress?
 Useful when \code{batches > 1}.}
@@ -65,7 +65,7 @@ sequence alignment between two sets of protein sequences.
 \examples{
 \dontrun{
 
-# Be careful when testing this since it involves parallelisation
+# Be careful when testing this since it involves parallelization
 # and might produce unpredictable results in some environments
 
 library("Biostrings")
