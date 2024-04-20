@@ -1,3 +1,24 @@
+# protr 1.7-1
+
+## New features
+
+- `crossSetSim()` now gains two new arguments `batches` and `verbose`.
+
+  The `batches` argument allows users to split the similarity computations
+  into multiple batches, which is useful when dealing with
+  a large number of sequences and limited RAM.
+  The `verbose` argument enables progress updates during the computation.
+  This brings `crossSetSim()` to feature parity with `parSeqSim()`.
+  (thanks, @ofleitas, #41)
+
+- A new function `crossSetSimDisk()` has been implemented as a disk-based
+  version of `crossSetSim()`.
+
+  This function follows a similar approach to `parSeqSimDisk()`,
+  where partial results from each batch are cached on the hard drive and
+  merged at the end. This allows for processing larger protein sequence
+  sets that may not fit into RAM (#41).
+
 # protr 1.7-0
 
 ## New features
@@ -10,13 +31,12 @@
 ## Bug fixes
 
 - Fixed a minor bug in `extractProtFP()` and `extractProtFPGap()`
-  when `index = NULL` (thanks, @fcampelo
-  [#30](https://github.com/nanxstats/protr/pull/30)).
+  when `index = NULL` (thanks, @fcampelo, #30).
 
 ## Improvements
 
 - Added a comment about `system.file()` usage to avoid confusion
-  (thanks, @jonalv [#31](https://github.com/nanxstats/protr/pull/31)).
+  (thanks, @jonalv, #31).
 - Replaced previous CI/CD solutions with GitHub Actions workflows.
 - Fixed broken or moved links in function documentation and vignettes.
 - Replaced the original logo with a new hex sticker logo.
