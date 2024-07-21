@@ -1,3 +1,14 @@
+# protr 1.7-2
+
+## Improvements
+
+- Running `citation("protr")` now gives better output with the BibTeX
+  citation key. This is improved by adding the `key` argument to the
+  `bibentry()` call in `inst/CITATION` (#49).
+- Revised `vignette("protr")` to fix typos and grammar issues.
+  Updated images to use `knitr::include_graphics()` chunks,
+  resolving pkgdown 2.1.0 accessibility hints for missing alt text (#50).
+
 # protr 1.7-1
 
 ## New features
