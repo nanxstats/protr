@@ -2,7 +2,6 @@
 title: "protr: R package for generating various numerical representation schemes of protein sequences"
 author: "Nan Xiao <<https://nanx.me>>"
 bibliography: protr.bib
-csl: bioinformatics.csl
 output:
   rmarkdown::html_document:
     toc: true
@@ -86,17 +85,21 @@ stored in two separated FASTA files with `readFASTA()`:
 ```{r}
 library("protr")
 
-# load FASTA files
-# (system.file is for accessing example file in protr package,
-# replace it with your path)
-extracell <- readFASTA(system.file(
-  "protseq/extracell.fasta",
-  package = "protr"
-))
-mitonchon <- readFASTA(system.file(
-  "protseq/mitochondrion.fasta",
-  package = "protr"
-))
+# Load FASTA files
+# Note that `system.file()` is for accessing example files
+# in the protr package. Replace it with your own file path.
+extracell <- readFASTA(
+  system.file(
+    "protseq/extracell.fasta",
+    package = "protr"
+  )
+)
+mitonchon <- readFASTA(
+  system.file(
+    "protseq/mitochondrion.fasta",
+    package = "protr"
+  )
+)
 ```
 
 To read protein sequences stored in PDB format files, use `readPDB()` instead.
@@ -153,12 +156,12 @@ i.e., the amphiphilic pseudo amino acid composition (APseAAC) descriptor
 [@chouapaac] and make class labels for classification modeling.
 
 ```{r, eval = FALSE}
-# calculate APseAAC descriptors
+# Calculate APseAAC descriptors
 x1 <- t(sapply(extracell, extractAPAAC))
 x2 <- t(sapply(mitonchon, extractAPAAC))
 x <- rbind(x1, x2)
 
-# make class labels
+# Make class labels
 labels <- as.factor(c(rep(0, length(extracell)), rep(1, length(mitonchon))))
 ```
 
@@ -171,7 +174,7 @@ Next, we will split the data into a 75% training set and a 25% test set.
 ```{r, eval = FALSE}
 set.seed(1001)
 
-# split training and test set
+# Split training and test set
 tr.idx <- c(
   sample(1:nrow(x1), round(nrow(x1) * 0.75)),
   sample(nrow(x1) + 1:nrow(x2), round(nrow(x2) * 0.75))
@@ -214,10 +217,10 @@ and plot the ROC curve with the `pROC` package, as is shown
 in Figure 1.
 
 ```{r, eval = FALSE}
-# predict on test set
+# Predict on test set
 rf.pred <- predict(rf.fit, newdata = x.te, type = "prob")[, 1]
 
-# plot ROC curve
+# Plot ROC curve
 library("pROC")
 plot.roc(y.te, rf.pred, grid = TRUE, print.auc = TRUE)
 ```
@@ -1278,9 +1281,9 @@ amino acids in the sequence belongs to the 20 default types:
 
 ```{r, protcheck}
 x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
-# a real sequence
+# A real sequence
 protcheck(x)
-# an artificial sequence
+# An artificial sequence
 protcheck(paste(x, "Z", sep = ""))
 ```
 
