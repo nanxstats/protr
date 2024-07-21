@@ -75,14 +75,16 @@ extractCTriadClass <- function(x, aaclass) {
 
   xSplitted <- strsplit(x, split = "")[[1L]]
   n <- nchar(x)
-  CTAll <- summary(factor(paste(paste(
-    xSplitted[-c(n, n - 1L)], xSplitted[-c(1L, n)],
-    sep = ""
-  ),
-  xSplitted[-c(1L, 2L)],
-  sep = ""
-  ),
-  levels = CTDict
+  CTAll <- summary(factor(
+    paste(
+      paste(
+        xSplitted[-c(n, n - 1L)], xSplitted[-c(1L, n)],
+        sep = ""
+      ),
+      xSplitted[-c(1L, 2L)],
+      sep = ""
+    ),
+    levels = CTDict
   ), maxsum = length(CTDict) + 1L)
 
   MatchedIndex <- which(CTAll != 0L)

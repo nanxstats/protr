@@ -36,7 +36,7 @@
 #' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' blosum <- extractBLOSUM(x, submat = "AABLOSUM62", k = 5, lag = 7, scale = TRUE, silent = FALSE)
 extractBLOSUM <- function(
-  x, submat = "AABLOSUM62", k, lag, scale = TRUE, silent = TRUE) {
+    x, submat = "AABLOSUM62", k, lag, scale = TRUE, silent = TRUE) {
   if (protcheck(x) == FALSE) {
     stop("x has unrecognized amino acid type")
   }

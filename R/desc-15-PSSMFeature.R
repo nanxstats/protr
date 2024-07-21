@@ -52,7 +52,6 @@
 #'   head(pssmfeature)
 #' }
 extractPSSMFeature <- function(pssmmat) {
-
   # Normalize PSSM scores to (0, 1)
   res <- as.vector(1 / (1 + exp(pssmmat)))
 

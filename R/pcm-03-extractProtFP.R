@@ -33,7 +33,7 @@
 #' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' fp <- extractProtFP(x, index = c(160:165, 258:296), pc = 5, lag = 7, silent = FALSE)
 extractProtFP <- function(
-  x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+    x, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
   propmat <- get("AAindex")
 
   if (!is.null(index)) {

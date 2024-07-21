@@ -53,7 +53,7 @@
 #' AAidxmat <- t(na.omit(as.matrix(AAindex[, 7:26])))
 #' scales <- extractScalesGap(x, propmat = AAidxmat, pc = 5, lag = 7, silent = FALSE)
 extractScalesGap <- function(
-  x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
+    x, propmat, pc, lag, scale = TRUE, silent = TRUE) {
   if (.protcheckgap(x) == FALSE) {
     stop('x has unrecognized amino acid types. Note: use "-" to represent gaps.')
   }

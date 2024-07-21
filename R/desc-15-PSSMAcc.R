@@ -45,7 +45,6 @@
 #'   tail(pssmacc)
 #' }
 extractPSSMAcc <- function(pssmmat, lag) {
-
   # Normalize PSSM scores to (0, 1)
   mat <- 1 / (1 + exp(pssmmat))
 

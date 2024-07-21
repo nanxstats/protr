@@ -74,8 +74,8 @@ extractCTDDClass <- function(x, aagroup1, aagroup2, aagroup3) {
   }
 
   if ((length(aagroup1) != length(aagroup2) |
-       length(aagroup1) != length(aagroup3)) |
-      (length(aagroup2) != length(aagroup3))) {
+    length(aagroup1) != length(aagroup3)) |
+    (length(aagroup2) != length(aagroup3))) {
     stop("The three groups must have the same property numbers")
   }
 

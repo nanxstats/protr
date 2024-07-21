@@ -6,9 +6,9 @@ template:
     preset: "bootstrap"
 
 reference:
-  - title: "Protein and peptide sequence descriptors"
+  - title: "Protein sequence descriptors"
     desc: >
-      Functions for calculating protein/peptide sequence descriptors.
+      Calculate protein and peptide sequence descriptors.
     contents:
     - extractAAC
     - extractDC
@@ -28,17 +28,17 @@ reference:
     - extractQSO
     - extractPAAC
     - extractAPAAC
-  - title: "Profile-based protein and peptide sequence descriptors"
+  - title: "PSSM descriptors"
     desc: >
-      Functions for calculating the profile-based (PSSM) descriptors.
+      Calculate PSSM (profile-based) protein and peptide sequence descriptors.
     contents:
     - extractPSSM
     - extractPSSMAcc
     - extractPSSMFeature
     - acc
-  - title: "Proteochemometric Modeling (PCM) descriptors"
+  - title: "PCM descriptors"
     desc: >
-      Functions for calculating proteochemometric modeling (PCM) descriptors.
+      Calculate PCM (proteochemometric modeling) descriptors.
     contents:
     - extractScales
     - extractScalesGap
@@ -50,7 +50,7 @@ reference:
     - extractBLOSUM
   - title: "Similarity measures between proteins"
     desc: >
-      Functions for calculating protein sequence alignment based
+      Calculate protein sequence alignment based
       similarity measures and GO-based semantic similarity measures.
     contents:
     - parSeqSim
@@ -62,7 +62,7 @@ reference:
     - twoGOSim
   - title: "Pre-process protein sequences"
     desc: >
-      Helper Functions for pre-processing protein sequences.
+      Helper functions for pre-processing protein sequences.
     contents:
     - getUniProt
     - readFASTA
@@ -71,7 +71,7 @@ reference:
     - protseg
     - removeGaps
     - protr-package
-  - title: "Precomputed molecular descriptors for the 20 amino acids"
+  - title: "Precomputed molecular descriptors"
     desc: >
       Precomputed molecular descriptors for the 20 amino acids.
     contents:
@@ -101,7 +101,7 @@ reference:
     - AATopoChg
     - AAWalk
     - AAWHIM
-  - title: "BLOSUM and PAM matrices for the 20 amino acids"
+  - title: "BLOSUM and PAM matrices"
     desc: >
       BLOSUM and PAM matrices for the 20 amino acids.
     contents:

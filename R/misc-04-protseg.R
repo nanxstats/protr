@@ -26,12 +26,12 @@
 #' x <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' protseg(x, aa = "R", k = 5)
 protseg <- function(
-  x, aa = c(
-    "A", "R", "N", "D", "C",
-    "E", "Q", "G", "H", "I",
-    "L", "K", "M", "F", "P",
-    "S", "T", "W", "Y", "V"
-  ), k = 7) {
+    x, aa = c(
+      "A", "R", "N", "D", "C",
+      "E", "Q", "G", "H", "I",
+      "L", "K", "M", "F", "P",
+      "S", "T", "W", "Y", "V"
+    ), k = 7) {
   aa <- match.arg(aa)
 
   xSplitted <- strsplit(x, split = "")[[1]]
