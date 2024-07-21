@@ -101,8 +101,8 @@
 #'   )
 #' )
 extractPAAC <- function(
-  x, props = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"),
-  lambda = 30, w = 0.05, customprops = NULL) {
+    x, props = c("Hydrophobicity", "Hydrophilicity", "SideChainMass"),
+    lambda = 30, w = 0.05, customprops = NULL) {
   if (protcheck(x) == FALSE) {
     stop("x has unrecognized amino acid type")
   }

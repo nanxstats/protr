@@ -33,5 +33,6 @@
 #' nogapseq <- removeGaps(aaseq)
 #' parSeqSim(nogapseq)
 #' }
-removeGaps <- function(x, pattern = "-", replacement = "", ...)
+removeGaps <- function(x, pattern = "-", replacement = "", ...) {
   gsub(pattern, replacement, x, ...)
+}

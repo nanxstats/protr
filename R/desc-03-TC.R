@@ -930,8 +930,8 @@ extractTC <- function(x) {
   n <- nchar(x)
   TC <- summary(factor(
     paste(paste(xSplitted[-c(n, n - 1)], xSplitted[-c(1, n)], sep = ""),
-          xSplitted[-c(1, 2)],
-          sep = ""
+      xSplitted[-c(1, 2)],
+      sep = ""
     ),
     levels = TCDict
   ), maxsum = 8001) / (n - 2)

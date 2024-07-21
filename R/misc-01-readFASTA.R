@@ -41,9 +41,8 @@
 #' @examples
 #' P00750 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))
 readFASTA <- function(
-  file = system.file("protseq/P00750.fasta", package = "protr"),
-  legacy.mode = TRUE, seqonly = FALSE) {
-
+    file = system.file("protseq/P00750.fasta", package = "protr"),
+    legacy.mode = TRUE, seqonly = FALSE) {
   # Read the FASTA file as a vector of strings
   lines <- readLines(file)
 
@@ -74,7 +73,9 @@ readFASTA <- function(
     function(i) paste(lines[start[i]:end[i]], collapse = "")
   )
 
-  if (seqonly) return(sequences)
+  if (seqonly) {
+    return(sequences)
+  }
 
   # Read sequence names
   nomseq <- lapply(seq_len(nseq), function(i) {

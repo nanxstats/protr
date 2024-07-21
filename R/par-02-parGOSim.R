@@ -82,10 +82,10 @@
 #' twoGOSim(gene1, gene2, type = "gene", ont = "BP", measure = "Lin")
 #' }
 twoGOSim <- function(
-  id1, id2,
-  type = c("go", "gene"),
-  ont = c("MF", "BP", "CC"), organism = "human",
-  measure = "Resnik", combine = "BMA") {
+    id1, id2,
+    type = c("go", "gene"),
+    ont = c("MF", "BP", "CC"), organism = "human",
+    measure = "Resnik", combine = "BMA") {
   type <- match.arg(type)
   ont <- match.arg(ont)
   godb <- suppressMessages(GOSemSim::godata(OrgDb = .orgdb[organism], ont = ont, computeIC = TRUE))
@@ -117,10 +117,11 @@ twoGOSim <- function(
     id2good <- 1:length(golist[[id2]])
     gid1 <- as.character(golist[[id1]][id1good])
     gid2 <- as.character(golist[[id2]][id2good])
-    res <- try(suppressWarnings(
-      GOSemSim::mgoSim(gid1, gid2, semData = godb, measure = measure, combine = combine)
-    ),
-    silent = TRUE
+    res <- try(
+      suppressWarnings(
+        GOSemSim::mgoSim(gid1, gid2, semData = godb, measure = measure, combine = combine)
+      ),
+      silent = TRUE
     )
     if (is.numeric(res)) {
       sim <- res
@@ -204,10 +205,10 @@ twoGOSim <- function(
 #' parGOSim(genelist, type = "gene", ont = "BP", measure = "Wang")
 #' }
 parGOSim <- function(
-  golist,
-  type = c("go", "gene"),
-  ont = c("MF", "BP", "CC"), organism = "human",
-  measure = "Resnik", combine = "BMA") {
+    golist,
+    type = c("go", "gene"),
+    ont = c("MF", "BP", "CC"), organism = "human",
+    measure = "Resnik", combine = "BMA") {
   type <- match.arg(type)
   ont <- match.arg(ont)
   godb <- suppressMessages(GOSemSim::godata(OrgDb = .orgdb[organism], ont = ont, computeIC = TRUE))

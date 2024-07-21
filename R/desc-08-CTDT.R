@@ -88,12 +88,13 @@ extractCTDT <- function(x) {
   # Combine single amino acids by a 2-length step
 
   for (i in 1:7) G[[i]] <- paste(G[[i]][-n], G[[i]][-1], sep = "")
-  G <- lapply(G, function(x)
+  G <- lapply(G, function(x) {
     factor(x, levels = c(
       "G1G2", "G2G1", "G1G3",
       "G3G1", "G2G3", "G3G2",
       "G1G1", "G2G2", "G3G3"
-    )))
+    ))
+  })
 
   GSummary <- lapply(G, summary)
 

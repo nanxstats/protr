@@ -1781,14 +1781,16 @@ extractCTriad <- function(x) {
 
   xSplitted <- strsplit(x, split = "")[[1]]
   n <- nchar(x)
-  CTAll <- summary(factor(paste(paste(
-    xSplitted[-c(n, n - 1)], xSplitted[-c(1, n)],
-    sep = ""
-  ),
-  xSplitted[-c(1, 2)],
-  sep = ""
-  ),
-  levels = CTDict
+  CTAll <- summary(factor(
+    paste(
+      paste(
+        xSplitted[-c(n, n - 1)], xSplitted[-c(1, n)],
+        sep = ""
+      ),
+      xSplitted[-c(1, 2)],
+      sep = ""
+    ),
+    levels = CTDict
   ), maxsum = 8001)
 
   MatchedIndex <- which(CTAll != 0)

@@ -46,7 +46,7 @@
 #'   pc = 5, lag = 7, silent = FALSE
 #' )
 extractDescScales <- function(
-  x, propmat, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
+    x, propmat, index = NULL, pc, lag, scale = TRUE, silent = TRUE) {
   propmat <- get(propmat)
   if (!is.null(index)) propmat <- propmat[, index]
 

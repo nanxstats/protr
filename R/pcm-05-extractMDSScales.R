@@ -42,7 +42,7 @@
 #' tprops <- AATopo[, c(37:41, 43:47)] # select a set of topological descriptors
 #' mds <- extractMDSScales(x, propmat = tprops, k = 5, lag = 7, silent = FALSE)
 extractMDSScales <- function(
-  x, propmat, k, lag, scale = TRUE, silent = TRUE) {
+    x, propmat, k, lag, scale = TRUE, silent = TRUE) {
   if (protcheck(x) == FALSE) {
     stop("x has unrecognized amino acid type")
   }
