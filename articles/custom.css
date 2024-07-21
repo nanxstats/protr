@@ -1,5 +1,3 @@
-/* custom css style for Nan Xiao's R package vignettes */
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
@@ -13,12 +11,18 @@ h1.title {
   padding-bottom: 10px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #212529;
   font-weight: 700;
 }
 
-h1, h1.title {
+h1,
+h1.title {
   font-size: 30px;
 }
 
@@ -66,7 +70,9 @@ a {
   color: #4582EC;
 }
 
-a:hover, a:focus, a:active {
+a:hover,
+a:focus,
+a:active {
   color: #1559CF;
 }
 
@@ -74,11 +80,13 @@ a:focus {
   outline: thin dotted;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
   outline: 0;
 }
 
-pre, code {
+pre,
+code {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background-color: #f8f9fa;
   border: none;
@@ -86,7 +94,9 @@ pre, code {
 
 /* float toc */
 
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
   background-color: #4582EC;
   border-color: #4582EC;
 }
@@ -108,7 +118,8 @@ p.caption {
   color: #4287c7;
 }
 
-.remark-code, .remark-inline-code {
+.remark-code,
+.remark-inline-code {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background-color: #c8c8c8;
 }
@@ -122,11 +133,14 @@ p.caption {
   padding-top: 110px;
 }
 
-.title-slide h1, .title-slide h2, .title-slide h3 {
+.title-slide h1,
+.title-slide h2,
+.title-slide h3 {
   color: #585858;
 }
 
-.title-slide h1, .title-slide h2 {
+.title-slide h1,
+.title-slide h2 {
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 80px;
@@ -142,7 +156,8 @@ p.caption {
   background-color: #789d57;
 }
 
-.dark-green h2, .dark-green h1 {
+.dark-green h2,
+.dark-green h1 {
   color: #fff;
 }
 
@@ -150,7 +165,8 @@ p.caption {
   background-color: #585858;
 }
 
-.dark-gray h2, .dark-gray h1 {
+.dark-gray h2,
+.dark-gray h1 {
   color: #fff;
 }
 
@@ -163,7 +179,8 @@ p.caption {
   float: left;
 }
 
-.left-column h2:last-of-type, .left-column h3:last-child {
+.left-column h2:last-of-type,
+.left-column h3:last-child {
   color: #000;
 }
 
@@ -187,7 +204,9 @@ p.caption {
   clear: both;
 }
 
-img, video, iframe {
+img,
+video,
+iframe {
   max-width: 100%;
 }
 
@@ -205,10 +224,13 @@ table thead th {
   border-bottom: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
 }
 
-thead, tfoot, tr:nth-child(even) {
+thead,
+tfoot,
+tr:nth-child(even) {
   background: #eee
 }

@@ -1,273 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://nanx.me/protr/404.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/articles/protr.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AA2DACOR.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AA3DMoRSE.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAACF.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABLOSUM100.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABLOSUM45.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABLOSUM50.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABLOSUM62.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABLOSUM80.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AABurden.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AACPSA.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAConn.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAConst.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AADescAll.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAEdgeAdj.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAEigIdx.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAFGC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAGETAWAY.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAGeom.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAInfo.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAMOE2D.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAMOE3D.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAMetaInfo.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAMolProp.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAPAM120.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAPAM250.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAPAM30.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAPAM40.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAPAM70.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AARDF.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AARandic.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AATopo.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AATopoChg.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAWHIM.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAWalk.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/AAindex.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/ACC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/OptAA3d.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/crossSetSim.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/crossSetSimDisk.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractAAC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractAPAAC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractBLOSUM.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDCClass.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDD.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDDClass.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDT.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTDTClass.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTriad.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractCTriadClass.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractDC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractDescScales.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractFAScales.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractGeary.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractMDSScales.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractMoran.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractMoreauBroto.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractPAAC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractPSSM.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractPSSMAcc.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractPSSMFeature.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractProtFP.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractProtFPGap.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractQSO.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractSOCN.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractScales.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractScalesGap.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/extractTC.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/getUniProt.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/parGOSim.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/parSeqSim.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/parSeqSimDisk.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/protcheck.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/protr-package.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/protseg.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/readFASTA.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/readPDB.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/removeGaps.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/twoGOSim.html</loc>
-  </url>
-  <url>
-    <loc>https://nanx.me/protr/reference/twoSeqSim.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://nanx.me/protr/404.html</loc></url>
+<url><loc>https://nanx.me/protr/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://nanx.me/protr/CONTRIBUTING.html</loc></url>
+<url><loc>https://nanx.me/protr/LICENSE-text.html</loc></url>
+<url><loc>https://nanx.me/protr/articles/index.html</loc></url>
+<url><loc>https://nanx.me/protr/articles/protr.html</loc></url>
+<url><loc>https://nanx.me/protr/authors.html</loc></url>
+<url><loc>https://nanx.me/protr/index.html</loc></url>
+<url><loc>https://nanx.me/protr/news/index.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AA2DACOR.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AA3DMoRSE.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAACF.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABLOSUM100.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABLOSUM45.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABLOSUM50.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABLOSUM62.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABLOSUM80.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AABurden.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AACPSA.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAConn.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAConst.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AADescAll.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAEdgeAdj.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAEigIdx.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAFGC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAGETAWAY.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAGeom.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAInfo.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAMOE2D.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAMOE3D.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAMetaInfo.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAMolProp.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAPAM120.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAPAM250.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAPAM30.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAPAM40.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAPAM70.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AARDF.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AARandic.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AATopo.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AATopoChg.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAWHIM.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAWalk.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/AAindex.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/ACC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/OptAA3d.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/crossSetSim.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/crossSetSimDisk.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractAAC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractAPAAC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractBLOSUM.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDCClass.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDD.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDDClass.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDT.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTDTClass.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTriad.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractCTriadClass.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractDC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractDescScales.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractFAScales.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractGeary.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractMDSScales.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractMoran.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractMoreauBroto.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractPAAC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractPSSM.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractPSSMAcc.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractPSSMFeature.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractProtFP.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractProtFPGap.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractQSO.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractSOCN.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractScales.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractScalesGap.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/extractTC.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/getUniProt.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/index.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/parGOSim.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/parSeqSim.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/parSeqSimDisk.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/protcheck.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/protr-package.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/protseg.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/readFASTA.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/readPDB.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/removeGaps.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/twoGOSim.html</loc></url>
+<url><loc>https://nanx.me/protr/reference/twoSeqSim.html</loc></url>
 </urlset>
+
