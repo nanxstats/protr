@@ -77,11 +77,12 @@ bioinformatics and chemogenomics research.</p>
 composition, autocorrelation, CTD, conjoint traid, quasi-sequence order,
 pseudo amino acid composition, and profile-based descriptors derived by
 Position-Specific Scoring Matrix (PSSM).</p>
-<p>The descriptors for proteochemometric (PCM) modeling, includes the
+<p>The descriptors for proteochemometric (PCM) modeling include the
 scales-based descriptors derived by principal components analysis,
 factor analysis, multidimensional scaling, amino acid properties
-(AAindex), 20+ classes of 2D and 3D molecular descriptors (Topological,
-WHIM, VHSE, etc.), and BLOSUM/PAM matrix-derived descriptors.</p>
+(AAindex), 20+ classes of 2D and 3D molecular descriptors (for example,
+Topological, WHIM, VHSE, among others), and BLOSUM/PAM matrix-derived
+descriptors.</p>
 <p>The protr package also implemented parallelized similarity
 computation derived by pairwise protein sequence alignment and Gene
 Ontology (GO) semantic similarity measures. ProtrWeb, the web
@@ -109,14 +110,14 @@ numerical representation schemes of protein sequences.
 <div class="section level2">
 <h2 id="an-example-predictive-modeling-workflow">An example predictive modeling workflow<a class="anchor" aria-label="anchor" href="#an-example-predictive-modeling-workflow"></a>
 </h2>
-<p>Here we use the subcellular localization dataset of human proteins
+<p>Here, we use the subcellular localization dataset of human proteins
 presented in <span class="citation">Chou and Shen (2008)</span> to
 demonstrate the basic usage of protr.</p>
 <p>The complete dataset includes 3,134 protein sequences (2,750
-different proteins), classified into 14 human subcellular locations. We
+different proteins) classified into 14 human subcellular locations. We
 selected two classes of proteins as our benchmark dataset. Class 1
-contains 325 <em>extracell</em> proteins, and class 2 includes 307
-<em>mitochondrion</em> proteins. Here we aim to build a random forest
+contains 325 <em>extracell</em> proteins and class 2 includes 307
+<em>mitochondrion</em> proteins. We aim to build a random forest
 classification model to classify these two types of proteins.</p>
 <p>First, we load the protr package, then read the protein sequences
 stored in two separated FASTA files with <code><a href="../reference/readFASTA.html">readFASTA()</a></code>:</p>
@@ -140,10 +141,9 @@ stored in two separated FASTA files with <code><a href="../reference/readFASTA.h
 <span><span class="op">)</span></span></code></pre></div>
 <p>To read protein sequences stored in PDB format files, use
 <code><a href="../reference/readPDB.html">readPDB()</a></code> instead. The loaded sequences will be stored as
-two lists in R, and each component in the list is a character string
-representing one protein sequence. In this case, there are 325
-<em>extracell</em> protein sequences and 306 <em>mitonchon</em> protein
-sequences:</p>
+two lists in R, and each component is a character string representing
+one protein sequence. In this case, there are 325 <em>extracell</em>
+protein sequences and 306 <em>mitonchon</em> protein sequences:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">extracell</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -153,7 +153,7 @@ sequences:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## [1] 306</span></span></code></pre></div>
 <p>To ensure that the protein sequences only have the 20 standard amino
-acid types which is usually required for the descriptor computation, we
+acid types, which is usually required for the descriptor computation, we
 use the <code><a href="../reference/protcheck.html">protcheck()</a></code> function to do the amino acid type
 sanity check and remove the <em>non-standard</em> sequences:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -236,19 +236,21 @@ shown in Figure 1.</p>
 <span><span class="co">##</span></span>
 <span><span class="co">## Data: rf.pred in 81 controls (y.te 0) &gt; 76 cases (y.te 1).</span></span>
 <span><span class="co">## Area under the curve: 0.8697</span></span></code></pre></div>
-<img src="figures/roc.png" width="60%" class="img-responsive" align="center" alt="ROC curve for the test set of protein subcellular localization data"><p align="center">
+<div class="figure" style="text-align: center">
+<img src="figures/roc.png" alt="Figure 1: ROC curve for the test set of protein subcellular localization data." width="60%"><p class="caption">
 Figure 1: ROC curve for the test set of protein subcellular localization
-data
+data.
 </p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="package-overview">Package overview<a class="anchor" aria-label="anchor" href="#package-overview"></a>
 </h2>
 <p>The protr package <span class="citation">(Xiao et al. 2015)</span>
 implemented most of the state-of-the-art protein sequence descriptors
-with R. Generally, each type of the descriptors (features) can be
+with R. Generally, each type of the descriptor (feature) can be
 calculated with a function named <code>extractX()</code> in the protr
-package, where <code>X</code> stands for the abbrevation of the
+package, where <code>X</code> stands for the abbreviation of the
 descriptor name. The descriptors are:</p>
 <ul>
 <li>Amino acid composition
@@ -343,9 +345,9 @@ descriptors</li>
 </ul>
 <p>The protr package integrates the function of parallelized similarity
 score computation derived by local or global protein sequence alignment
-between a list of protein sequences, the sequence alignment computation
-is provided by <code>Biostrings</code>, the corresponding functions
-listed in the protr package include:</p>
+between a list of protein sequences; Biostrings provides the sequence
+alignment computation, and the corresponding functions listed in the
+protr package include:</p>
 <ul>
 <li>
 <code><a href="../reference/twoSeqSim.html">twoSeqSim()</a></code> - Similarity calculation derived by
@@ -361,11 +363,11 @@ calculation with a list of protein sequences (disk-based version)</li>
 calculation between two sets of protein sequences (in-memory
 version)</li>
 </ul>
-<p>The protr package also integrates the function of parallelized
-similarity score computation derived by Gene Ontology (GO) semantic
-similarity measures between a list of GO terms / Entrez Gene IDs, the GO
-similarity computation is provided by <code>GOSemSim</code>, the
-corresponding functions listed in the protr package include:</p>
+<p>protr also integrates the function for parallelized similarity score
+computation derived by Gene Ontology (GO) semantic similarity measures
+between a list of GO terms / Entrez Gene IDs, the GO similarity
+computation is provided by GOSemSim, the corresponding functions listed
+in the protr package include:</p>
 <ul>
 <li>
 <code><a href="../reference/twoGOSim.html">twoGOSim()</a></code> - Similarity calculation derived by GO-terms
@@ -376,21 +378,20 @@ IDs;</li>
 list of GO terms / Entrez Gene IDs.</li>
 </ul>
 <p>To use the <code><a href="../reference/parSeqSim.html">parSeqSim()</a></code> function, we suggest the users to
-install the packages <code>foreach</code> and <code>doParallel</code>
-first, in order to make the parallelized pairwise similarity computation
-available.</p>
+install the packages foreach and doParallel first in order to make the
+parallelized pairwise similarity computation available.</p>
 <p>In the following sections, we will introduce the descriptors and
 function usage in this order.</p>
 </div>
 <div class="section level2">
 <h2 id="commonly-used-descriptors">Commonly used descriptors<a class="anchor" aria-label="anchor" href="#commonly-used-descriptors"></a>
 </h2>
-<p><strong>Note</strong>: Users need to intelligently evaluate the
-underlying details of the descriptors provided, instead of using protr
-with their data blindly, especially for the descriptor types with more
+<p><strong>Note</strong>: Users need to evaluate the underlying details
+of the descriptors provided intelligently, instead of using protr with
+their data blindly, especially for the descriptor types that have more
 flexibility. It would be wise for the users to use some negative and
-positive control comparisons where relevant to help guide interpretation
-of the results.</p>
+positive control comparisons where relevant to help guide the
+interpretation of the results.</p>
 <p>A protein or peptide sequence with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
 amino acid residues can be generally represented as
@@ -411,17 +412,18 @@ are used to represent the amino acid type. The computed descriptors are
 roughly categorized into 4 groups according to their major
 applications.</p>
 <p>A protein sequence can be partitioned equally into segments. The
-descriptors designed for the complete sequence, can be often applied to
+descriptors designed for the complete sequence can often be applied to
 each individual segment.</p>
 <div class="section level3">
 <h3 id="amino-acid-composition-descriptor">Amino acid composition descriptor<a class="anchor" aria-label="anchor" href="#amino-acid-composition-descriptor"></a>
 </h3>
 <p>The amino acid composition describes the fraction of each amino acid
 type within a protein sequence. The fractions of all 20 natural amino
-acids are calculated as:</p>
+acids are calculated as follows:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>N</mi><mi>r</mi></msub><mi>N</mi></mfrac><mspace width="1.0em"></mspace><mi>r</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>20</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
 f(r) = \frac{N_r}{N} \quad r = 1, 2, \ldots, 20.
-</annotation></semantics></math> where
+</annotation></semantics></math></p>
+<p>where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>r</mi></msub><annotation encoding="application/x-tex">N_r</annotation></semantics></math>
 is the number of the amino acid type
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
@@ -446,10 +448,10 @@ protein sequences:</p>
 <span><span class="co">#&gt; 0.08185053 0.03024911 0.03558719 0.07651246 0.03914591 0.01245552 0.03202847 </span></span>
 <span><span class="co">#&gt;          P          S          T          W          Y          V </span></span>
 <span><span class="co">#&gt; 0.05338078 0.08896797 0.04448399 0.02313167 0.04270463 0.04982206</span></span></code></pre></div>
-<p>Here, with the function <code><a href="../reference/readFASTA.html">readFASTA()</a></code> we loaded a single
+<p>Here, using the function <code><a href="../reference/readFASTA.html">readFASTA()</a></code>, we loaded a single
 protein sequence (P00750, Tissue-type plasminogen activator) from a
-FASTA format file. Then extracted the AAC descriptors with
-<code><a href="../reference/extractAAC.html">extractAAC()</a></code>. The result returned is a named vector, whose
+FASTA format file. Then, we extracted the AAC descriptors with
+<code><a href="../reference/extractAAC.html">extractAAC()</a></code>. The result returned is a named vector whose
 elements are tagged with the name of each amino acid.</p>
 </div>
 <div class="section level3">
@@ -462,12 +464,12 @@ f(r, s) = \frac{N_{rs}}{N - 1} \quad r, s = 1, 2, \ldots, 20.
 </annotation></semantics></math></p>
 <p>where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mrow><mi>r</mi><mi>s</mi></mrow></msub><annotation encoding="application/x-tex">N_{rs}</annotation></semantics></math>
-is the number of dipeptide represented by amino acid type
+is the number of dipeptides represented by amino acid type
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
 and type
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
-Similar to <code><a href="../reference/extractAAC.html">extractAAC()</a></code>, here we use
-<code><a href="../reference/extractDC.html">extractDC()</a></code> to compute the descriptors:</p>
+Similar to <code><a href="../reference/extractAAC.html">extractAAC()</a></code>, we use <code><a href="../reference/extractDC.html">extractDC()</a></code> to
+compute the descriptors:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extractDC.html">extractDC</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dc</span>, n <span class="op">=</span> <span class="fl">30L</span><span class="op">)</span></span>
@@ -481,14 +483,14 @@ Similar to <code><a href="../reference/extractAAC.html">extractAAC()</a></code>,
 <span><span class="co">#&gt; 0.000000000 0.000000000 0.003565062 0.007130125 0.005347594 0.001782531 </span></span>
 <span><span class="co">#&gt;          CR          ER          QR          GR          HR          IR </span></span>
 <span><span class="co">#&gt; 0.005347594 0.005347594 0.000000000 0.007130125 0.001782531 0.003565062</span></span></code></pre></div>
-<p>Here we only showed the first 30 elements of the result vector and
+<p>Here, we only showed the first 30 elements of the result vector and
 omitted the rest of the result. The element names of the returned vector
-are self-explanatory as before.</p>
+are self-explanatory, as before.</p>
 </div>
 <div class="section level3">
 <h3 id="tripeptide-composition-descriptor">Tripeptide composition descriptor<a class="anchor" aria-label="anchor" href="#tripeptide-composition-descriptor"></a>
 </h3>
-<p>Tripeptide composition gives a 8000-dimensional descriptor, defined
+<p>Tripeptide composition gives an 8000-dimensional descriptor, defined
 as:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>N</mi><mrow><mi>r</mi><mi>s</mi><mi>t</mi></mrow></msub><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mspace width="1.0em"></mspace><mi>r</mi><mo>,</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">
 f(r, s, t) = \frac{N_{rst}}{N - 2} \quad r, s, t = 1, 2, \ldots, 20
@@ -500,7 +502,7 @@ is the number of tripeptides represented by amino acid type
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
-With function <code><a href="../reference/extractTC.html">extractTC()</a></code>, we can easily obtain the
+With the function <code><a href="../reference/extractTC.html">extractTC()</a></code>, we can easily obtain the
 length-8000 descriptor, to save some space, here we also omitted the
 long outputs:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -540,9 +542,11 @@ is the average of the property of the 20 amino acids:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>P</mi><mo accent="true">‾</mo></mover><mo>=</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msub><mi>P</mi><mi>r</mi></msub></mrow><mn>20</mn></mfrac><mspace width="1.0em"></mspace><mtext mathvariant="normal">and</mtext><mspace width="1.0em"></mspace><mi>σ</mi><mo>=</mo><msqrt><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>P</mi><mi>r</mi></msub><mo>−</mo><mover><mi>P</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">
 \bar{P} = \frac{\sum_{r=1}^{20} P_r}{20} \quad \textrm{and} \quad \sigma = \sqrt{\frac{1}{2} \sum_{r=1}^{20} (P_r - \bar{P})^2}
 </annotation></semantics></math></p>
-<img src="figures/AAindex.png" width="80%" class="img-responsive" align="center" alt="An illustrated example in the AAIndex database"><p align="center">
-Figure 2: An illustrated example in the AAIndex database
+<div class="figure" style="text-align: center">
+<img src="figures/AAindex.png" alt="Figure 2: An illustrated example in the AAIndex database." width="80%"><p class="caption">
+Figure 2: An illustrated example in the AAIndex database.
 </p>
+</div>
 <div class="section level4">
 <h4 id="normalized-moreau-broto-autocorrelation-descriptors">Normalized Moreau-Broto autocorrelation descriptors<a class="anchor" aria-label="anchor" href="#normalized-moreau-broto-autocorrelation-descriptors"></a>
 </h4>
@@ -603,10 +607,10 @@ Tripeptide</li>
 <li>AccNo. CHAM810101 - Steric Parameter</li>
 <li>AccNo. DAYM780201 - Relative Mutability</li>
 </ul>
-<p>Users can change the property names of AAindex database with the
+<p>Users can change the property names of the AAindex database with the
 argument <code>props</code>. The AAindex data shipped with protr can be
-loaded by <code>data(AAindex)</code>, which has the detailed information
-of each property. With the argument <code>customprops</code> and
+loaded by <code>data(AAindex)</code> which has detailed information on
+each property. With the arguments <code>customprops</code> and
 <code>nlag</code>, users can specify their own properties and lag value
 to calculate with. For example:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
@@ -625,7 +629,7 @@ to calculate with. For example:</p>
 <span>  Y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.26</span>, <span class="op">-</span><span class="fl">2.3</span>, <span class="fl">107</span><span class="op">)</span>, V <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.08</span>, <span class="op">-</span><span class="fl">1.5</span>, <span class="fl">43</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Use 4 properties in the AAindex database, and 3 cutomized properties</span></span>
+<span><span class="co"># Use 4 properties in the AAindex database and 3 customized properties</span></span>
 <span><span class="va">moreau2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extractMoreauBroto.html">extractMoreauBroto</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  customprops <span class="op">=</span> <span class="va">myprops</span>,</span>
@@ -784,25 +788,27 @@ exactly the same as <code><a href="../reference/extractMoreauBroto.html">extract
 <p>The CTD descriptors are developed by <span class="citation">Dubchak
 et al. (1995)</span> and <span class="citation">Dubchak et al.
 (1999)</span>.</p>
-<img src="figures/CTD.png" width="100%" class="img-responsive" align="center" alt="CTD descriptors"><p align="left">
+<div class="figure" style="text-align: center">
+<img src="figures/CTD.png" alt="Figure 3: The sequence of a hypothetic protein indicating the construction of composition, transition, and distribution descriptors of a protein. The sequence index indicates the position of an amino acid in the sequence. The index for each type of amino acid in the sequence (`1`, `2` or `3`) indicates the position of the first, second, third, ... of that type of amino acid. 1/2 transition indicates the position of `12` or `21` pairs in the sequence (1/3 and 2/3 are defined similarly)." width="100%"><p class="caption">
 Figure 3: The sequence of a hypothetic protein indicating the
 construction of composition, transition, and distribution descriptors of
-a protein. Sequence index indicates the position of an amino acid in the
-sequence. The index for each type of amino acids in the sequence
+a protein. The sequence index indicates the position of an amino acid in
+the sequence. The index for each type of amino acid in the sequence
 (<code>1</code>, <code>2</code> or <code>3</code>) indicates the
 position of the first, second, third, … of that type of amino acid. 1/2
 transition indicates the position of <code>12</code> or <code>21</code>
-pairs in the sequence (1/3 and 2/3 are defined in the same way).
+pairs in the sequence (1/3 and 2/3 are defined similarly).
 </p>
+</div>
 <p><strong>Step 1: Sequence Encoding</strong></p>
-<p>The amino acids are categorized into three classes according to its
-attribute, and each amino acid is encoded by one of the indices 1, 2, 3
+<p>The amino acids are categorized into three classes according to their
+attributes, and each amino acid is encoded by one of the indices 1, 2, 3
 according to which class it belongs. The attributes used here include
 hydrophobicity, normalized van der Waals volume, polarity, and
 polarizability. The corresponding classification for each attribute is
 listed in Table 1.</p>
 <table class="table">
-<caption>Table 1: Amino acid attributes, and the three-group
+<caption>Table 1: Amino acid attributes and the three-group
 classification of the 20 amino acids by each attribute</caption>
 <thead><tr class="header">
 <th></th>
@@ -909,7 +915,7 @@ can be calculated for a given attribute as follows.</p>
 <h4 id="composition">Composition<a class="anchor" aria-label="anchor" href="#composition"></a>
 </h4>
 <p>Composition is defined as the global percentage for each encoded
-class in the protein sequence. In the above example using the
+class in the protein sequence. In the above example, using the
 hydrophobicity classification, the numbers for encoded classes
 <code>1</code>, <code>2</code>, <code>3</code> are 5, 10, and 5, so that
 the compositions for them will be
@@ -946,7 +952,7 @@ is the length of the sequence. An example for
 <span><span class="co">#&gt;             0.38967972             0.29537367             0.31494662 </span></span>
 <span><span class="co">#&gt;   solventaccess.Group1   solventaccess.Group2   solventaccess.Group3 </span></span>
 <span><span class="co">#&gt;             0.43060498             0.29715302             0.27224199</span></span></code></pre></div>
-<p>The result shows the elements who are named as
+<p>The result shows the elements that are named as
 <code>PropertyNumber.GroupNumber</code> in the returned vector.</p>
 </div>
 <div class="section level4">
@@ -982,10 +988,10 @@ is the length of the sequence. An example for
 </h4>
 <p>The <em>distribution</em> descriptor describes the distribution of
 each attribute in the sequence.</p>
-<p>There are five “distribution” descriptors for each attribute and they
-are the position percents in the whole sequence for the first residue,
-25% residues, 50% residues, 75% residues, and 100% residues for a
-certain encoded class. For example, there are 10 residues encoded as
+<p>There are five “distribution” descriptors for each attribute, and
+they are the position percent in the whole sequence for the first
+residue, 25% residues, 50% residues, 75% residues, and 100% residues for
+a certain encoded class. For example, there are 10 residues encoded as
 <code>2</code> in the above example, the positions for the first residue
 <code>2</code>, the 2nd residue <code>2</code> (25% * 10 = 2), the 5th
 <code>2</code> residue (50% * 10 = 5), the 7th <code>2</code> (75% * 10
@@ -1068,8 +1074,8 @@ follows:</p>
 <p>Electrostatic and hydrophobic interactions dominate protein-protein
 interactions. These two kinds of interactions may be reflected by the
 dipoles and volumes of the side chains of amino acids, respectively.
-Accordingly, these two parameters were calculated by using the
-density-functional theory method B3LYP/6-31G and molecular modeling
+Accordingly, these two parameters were calculated using the
+density-functional theory method B3LYP/6-31G and the molecular modeling
 approach. Based on the dipoles and volumes of the side chains, the 20
 amino acids can be clustered into seven classes (See Table 2). Amino
 acids within the same class likely involve synonymous mutations because
@@ -1160,7 +1166,7 @@ form disulfide bonds.
 <p>The conjoint triad descriptors considered the properties of one amino
 acid and its vicinal amino acids and regarded any three continuous amino
 acids as a unit. Thus, the triads can be differentiated according to the
-classes of amino acids, i.e., triads composed by three amino acids
+classes of amino acids, i.e., triads composed of three amino acids
 belonging to the same classes, such as ART and VKS, can be treated
 identically. To conveniently represent a protein, we first use a binary
 space
@@ -1180,7 +1186,7 @@ dimension of
 is the frequency of type
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>
 appearing in the protein sequence. For the amino acids that have been
-catogorized into seven classes, the size of
+categorized into seven classes, the size of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐕</mi><annotation encoding="application/x-tex">\mathbf{V}</annotation></semantics></math>
 should be
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>×</mo><mn>7</mn><mo>×</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">7 \times 7 \times 7</annotation></semantics></math>;
@@ -1190,7 +1196,8 @@ The detailed description for
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐕</mi><annotation encoding="application/x-tex">\mathbf{V}</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐅</mi><annotation encoding="application/x-tex">\mathbf{F}</annotation></semantics></math>)
 is illustrated in Figure 4.</p>
-<img src="figures/ctriad.png" width="100%" class="img-responsive" align="center"><p align="left">
+<div class="figure" style="text-align: center">
+<img src="figures/ctriad.png" alt="Figure 4: Schematic diagram for constructing the vector space ($\mathbf{V}$, $\mathbf{F}$) of protein sequences. $\mathbf{V}$ is the vector space of the sequence features; each feature ($v_i$) represents a triad composed of three consecutive amino acids; $\mathbf{F}$ is the frequency vector corresponding to $\mathbf{V}$, and the value of the $i$-th dimension of $\mathbf{F} (f_i)$ is the frequency that $v_i$ triad appeared in the protein sequence." width="100%"><p class="caption">
 Figure 4: Schematic diagram for constructing the vector space
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐕</mi><annotation encoding="application/x-tex">\mathbf{V}</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐅</mi><annotation encoding="application/x-tex">\mathbf{F}</annotation></semantics></math>)
@@ -1210,6 +1217,7 @@ is the frequency that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>
 triad appeared in the protein sequence.
 </p>
+</div>
 <p>Clearly, each protein correlates to the length (number of amino
 acids) of protein. In general, a long protein would have a large value
 of
@@ -1225,15 +1233,13 @@ d_i = \frac{f_i - \min\{\,f_1, f_2 , \ldots, f_{343}\,\}}{\max\{\,f_1, f_2, \ldo
 </annotation></semantics></math></p>
 <p>The numerical value of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>i</mi></msub><annotation encoding="application/x-tex">d_i</annotation></semantics></math>
-of each protein ranges from 0 to 1, which thereby enables the comparison
-between proteins. Accordingly, we obtain another vector space
-(designated
+of each protein ranges from 0 to 1, enabling the comparison between
+proteins. Accordingly, we obtain another vector space (designated
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐃</mi><annotation encoding="application/x-tex">\mathbf{D}</annotation></semantics></math>)
 consisting of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>i</mi></msub><annotation encoding="application/x-tex">d_i</annotation></semantics></math>
 to represent protein.</p>
-<p>To compute conjoint triads of protein sequences, we can simply
-use:</p>
+<p>To compute conjoint triads of protein sequences, we can use:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ctriad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extractCTriad.html">extractCTriad</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ctriad</span>, n <span class="op">=</span> <span class="fl">65L</span><span class="op">)</span></span>
@@ -1247,8 +1253,8 @@ use:</p>
 <span><span class="co">#&gt;   0.2   0.0   0.1   0.1   0.3   0.1   0.0   0.1   0.0   0.1   0.8   0.4   0.4 </span></span>
 <span><span class="co">#&gt; VS412 VS512 VS612 VS712 VS122 VS222 VS322 VS422 VS522 VS622 VS722 VS132 VS232 </span></span>
 <span><span class="co">#&gt;   0.6   0.1   0.5   0.2   0.8   0.5   0.2   0.3   0.2   0.0   0.2   0.1   0.3</span></span></code></pre></div>
-<p>by which we only outputted the first 65 of total 343 dimension to
-save space.</p>
+<p>by which we only outputted the first 65 of 343 dimensions to save
+space.</p>
 </div>
 <div class="section level3">
 <h3 id="quasi-sequence-order-descriptors">Quasi-sequence-order descriptors<a class="anchor" aria-label="anchor" href="#quasi-sequence-order-descriptors"></a>
@@ -1303,7 +1309,7 @@ sequence-order-coupling numbers:</p>
 <span><span class="co">#&gt;    6382281.0000    6276521.0000    6537634.0000    6442991.0000    6350157.0000</span></span></code></pre></div>
 <p>Users can also specify the maximum lag value with the
 <code>nlag</code> argument.</p>
-<p><strong>Note</strong>: In addition to Schneider-Wrede physicochemical
+<p><strong>Note</strong>: Besides the Schneider-Wrede physicochemical
 distance matrix <span class="citation">(Schneider and Wrede 1994)</span>
 used by Kuo-Chen Chou, another chemical distance matrix by <span class="citation">Grantham (1974)</span> is also used here. So the
 descriptors dimension will be <code>nlag * 2</code>. The
@@ -1331,7 +1337,8 @@ quasi-sequence-order are defined as:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>d</mi></msub><mo>=</mo><mfrac><mrow><mi>w</mi><msub><mi>τ</mi><mrow><mi>d</mi><mo>−</mo><mn>20</mn></mrow></msub></mrow><mrow><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msub><mi>f</mi><mi>r</mi></msub><mo>+</mo><mi>w</mi><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><mtext mathvariant="normal">maxlag</mtext></munderover><msub><mi>τ</mi><mi>d</mi></msub></mrow></mfrac><mspace width="1.0em"></mspace><mi>d</mi><mo>=</mo><mn>21</mn><mo>,</mo><mn>22</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>20</mn><mo>+</mo><mtext mathvariant="normal">maxlag</mtext></mrow><annotation encoding="application/x-tex">
 X_d = \frac{w \tau_{d-20}}{\sum_{r=1}^{20} f_r + w \sum_{d=1}^{\textrm{maxlag}} \tau_d} \quad d = 21, 22, \ldots, 20 + \textrm{maxlag}
 </annotation></semantics></math></p>
-<img src="figures/QSO.png" width="75%" class="img-responsive" align="center"><p align="left">
+<div class="figure" style="text-align: center">
+<img src="figures/QSO.png" alt="Figure 5: A schematic drawing to show (a) the 1st-rank, (b) the 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a protein sequence. (a) Reflects the coupling mode between all the most contiguous residues, (b) that between all the 2nd most contiguous residues, and (c) that between all the 3rd most contiguous residues. This figure is from @chouqsoe." width="75%"><p class="caption">
 Figure 5: A schematic drawing to show (a) the 1st-rank, (b) the
 2nd-rank, and (3) the 3rd-rank sequence-order-coupling mode along a
 protein sequence. (a) Reflects the coupling mode between all the most
@@ -1339,6 +1346,7 @@ contiguous residues, (b) that between all the 2nd most contiguous
 residues, and (c) that between all the 3rd most contiguous residues.
 This figure is from <span class="citation">Chou (2000)</span>.
 </p>
+</div>
 <p>A minimal example for <code><a href="../reference/extractQSO.html">extractQSO()</a></code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/extractQSO.html">extractQSO</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -1390,7 +1398,7 @@ This figure is from <span class="citation">Chou (2000)</span>.
 <div class="section level3">
 <h3 id="pseudo-amino-acid-composition-pseaac">Pseudo-amino acid composition (PseAAC)<a class="anchor" aria-label="anchor" href="#pseudo-amino-acid-composition-pseaac"></a>
 </h3>
-<p>This group of descriptors are proposed by <span class="citation">Chou
+<p>This group of descriptors is proposed by <span class="citation">Chou
 (2001)</span>. PseAAC descriptors are also named as the <em>type 1
 pseudo-amino acid composition</em>. Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>H</mi><mn>1</mn><mi>o</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">H_1^o (i)</annotation></semantics></math>,
@@ -1399,8 +1407,8 @@ pseudo-amino acid composition</em>. Let
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">i=1, 2, 3, \ldots, 20</annotation></semantics></math>)
 be the original hydrophobicity values, the original hydrophilicity
 values and the original side chain masses of the 20 natural amino acids,
-respectively. They are converted to following qualities by a standard
-conversion:</p>
+respectively. They are converted to the following qualities by a
+standard conversion:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><msubsup><mi>H</mi><mn>1</mn><mi>o</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msubsup><mi>H</mi><mn>1</mn><mi>o</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><msqrt><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msup><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>H</mi><mn>1</mn><mi>o</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msubsup><mi>H</mi><mn>1</mn><mi>o</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup></mrow><mn>20</mn></mfrac></msqrt></mfrac></mrow><annotation encoding="application/x-tex">
 H_1 (i) = \frac{H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i)}{\sqrt{\frac{\sum_{i=1}^{20} [H_1^o (i) - \frac{1}{20} \sum_{i=1}^{20} H_1^o (i) ]^2}{20}}}
 </annotation></semantics></math></p>
@@ -1412,23 +1420,24 @@ are normalized as
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M (i)</annotation></semantics></math>
 in the same way.</p>
-<img src="figures/PAAC.png" width="75%" class="img-responsive" align="center"><p align="left">
+<div class="figure" style="text-align: center">
+<img src="figures/PAAC.png" alt="Figure 6: A schematic drawing to show (a) the first-tier, (b) the second-tier, and (3) the third-tier sequence order correlation mode along a protein sequence. Panel (a) reflects the correlation mode between all the most contiguous residues, panel (b) between all the second-most contiguous residues, and panel (c) between all the third-most contiguous residues. This figure is from @choupaac." width="75%"><p class="caption">
 Figure 6: A schematic drawing to show (a) the first-tier, (b) the
-second-tier, and (3) the third-tiersequence order correlation mode along
-a protein sequence. Panel (a) reflects the correlation mode between all
-the most contiguous residues, panel (b) that between all the second-most
-contiguous residues, and panel (c) that between all the third-most
-contiguous residues. This figure is from <span class="citation">Chou
-(2001)</span>.
+second-tier, and (3) the third-tier sequence order correlation mode
+along a protein sequence. Panel (a) reflects the correlation mode
+between all the most contiguous residues, panel (b) between all the
+second-most contiguous residues, and panel (c) between all the
+third-most contiguous residues. This figure is from <span class="citation">Chou (2001)</span>.
 </p>
-<p>Then, a correlation function can be defines as</p>
+</div>
+<p>Then, a correlation function can be defined as</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Θ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo>,</mo><msub><mi>R</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo minsize="2.4" maxsize="2.4" stretchy="false" form="prefix">{</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>H</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>H</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>H</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>H</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup><mo minsize="2.4" maxsize="2.4" stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">
 \Theta (R_i, R_j) = \frac{1}{3} \bigg\{ [ H_1 (R_i) - H_1 (R_j) ]^2 + [ H_2 (R_i) - H_2 (R_j) ]^2 + [ M (R_i) - M (R_j) ]^2 \bigg\}
 </annotation></semantics></math></p>
-<p>This correlation function is actually an average value for the three
-amino acid properties: hydrophobicity value, hydrophilicity value and
-side chain mass. Therefore, we can extend this definition of correlation
-functions for one amino acid property or for a set of
+<p>This correlation function is an average value for the three amino
+acid properties: hydrophobicity, hydrophilicity, and side chain mass.
+Therefore, we can extend this definition of correlation functions for
+one amino acid property or for a set of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 amino acid properties.</p>
 <p>For one amino acid property, the correlation can be defined as:</p>
@@ -1472,7 +1481,7 @@ be the normalized occurrence frequency of the 20 amino acids in the
 protein sequence, a set of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>+</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">20 + \lambda</annotation></semantics></math>
 descriptors called the pseudo-amino acid composition for a protein
-sequence can be defines as:</p>
+sequence can be defined as:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>c</mi></msub><mo>=</mo><mfrac><msub><mi>f</mi><mi>c</mi></msub><mrow><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msub><mi>f</mi><mi>r</mi></msub><mo>+</mo><mi>w</mi><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>λ</mi></munderover><msub><mi>θ</mi><mi>j</mi></msub></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&lt;</mo><mi>c</mi><mo>&lt;</mo><mn>20</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
 X_c = \frac{f_c}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{\lambda} \theta_j} \quad (1 &lt; c &lt; 20)
 </annotation></semantics></math></p>
@@ -1508,18 +1517,18 @@ descriptors directly:</p>
 <span><span class="co">#&gt;    0.02476967    0.02342389    0.02431684    0.02610300    0.02626722 </span></span>
 <span><span class="co">#&gt; Xc2.lambda.26 Xc2.lambda.27 Xc2.lambda.28 Xc2.lambda.29 Xc2.lambda.30 </span></span>
 <span><span class="co">#&gt;    0.02457082    0.02343049    0.02588823    0.02490463    0.02451951</span></span></code></pre></div>
-<p>The <code><a href="../reference/extractPAAC.html">extractPAAC()</a></code> fucntion also provides the additional
+<p>The <code><a href="../reference/extractPAAC.html">extractPAAC()</a></code> function also provides the additional
 arguments <code>props</code> and <code>customprops</code>, which are
 similar to those arguments for Moreau-Broto/Moran/Geary autocorrelation
 descriptors. For their minor differences, please see
 <code>?extracPAAC</code>. Users can specify the lambda parameter and the
-weighting factor with arguments <code>lambda</code> and
+weighting factor with the arguments <code>lambda</code> and
 <code>w</code>.</p>
 <p><strong>Note</strong>: In the work of Kuo-Chen Chou, the definition
 for “normalized occurrence frequency” was not given. In this work, we
-define it as the occurrence frequency of amino acid in the sequence
-normalized to 100% and hence our calculated values are not the same as
-values by them.</p>
+define it as the occurrence frequency of amino acids in the sequence
+normalized to 100%, and hence, our calculated values are not the same as
+their values.</p>
 </div>
 <div class="section level3">
 <h3 id="amphiphilic-pseudo-amino-acid-composition-apseaac">Amphiphilic pseudo-amino acid composition (APseAAC)<a class="anchor" aria-label="anchor" href="#amphiphilic-pseudo-amino-acid-composition-apseaac"></a>
@@ -1537,7 +1546,7 @@ functions are defined as:</p>
 H_{i, j}^1  &amp; = H_1 (i) H_1 (j)\\
 H_{i, j}^2  &amp; = H_2 (i) H_2 (j)
 \end{align*}</annotation></semantics></math></p>
-<p>From these qualities, sequence order factors can be defines as:</p>
+<p>From these qualities, sequence order factors can be defined as:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mn>3</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mn>2</mn></mrow><mn>1</mn></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mn>2</mn></mrow><mn>2</mn></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>…</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mrow><mn>2</mn><mi>λ</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mi>λ</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mi>λ</mi></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mi>λ</mi></mrow><mn>1</mn></msubsup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mrow><mn>2</mn><mi>λ</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mrow><mi>N</mi><mo>−</mo><mi>λ</mi></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>N</mi><mo>−</mo><mi>λ</mi></mrow></munderover><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>i</mi><mo>+</mo><mi>λ</mi></mrow><mn>2</mn></msubsup></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align*}
 \tau_1  &amp; = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^1\\
 \tau_2  &amp; = \frac{1}{N-1} \sum_{i=1}^{N-1} H_{i, i+1}^2\\
@@ -1547,7 +1556,8 @@ H_{i, j}^2  &amp; = H_2 (i) H_2 (j)
 \tau_{2 \lambda - 1} &amp; = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^1\\
 \tau_{2 \lambda}     &amp; = \frac{1}{N-\lambda} \sum_{i=1}^{N-\lambda} H_{i, i+\lambda}^2
 \end{align*}</annotation></semantics></math></p>
-<img src="figures/APAAC.png" width="100%" class="img-responsive" align="center"><p align="left">
+<div class="figure" style="text-align: center">
+<img src="figures/APAAC.png" alt="Figure 7: A schematic diagram to show (**a1**/**a2**) the first-rank, (**b1**/**b2**) the second-rank and (**c1**/**c2**) the third-rank sequence-order-coupling mode along a protein sequence through a hydrophobicity/hydrophilicity correlation function, where $H_{i, j}^1$ and $H_{i, j}^2$ are given by Equation (3). Panel (a1/a2) reflects the coupling mode between all the most contiguous residues, panel (b1/b2) between all the second-most contiguous residues, and panel (c1/c2) between all the third-most contiguous residues. This figure is from @chouapaac." width="75%"><p class="caption">
 Figure 7: A schematic diagram to show
 (<strong>a1</strong>/<strong>a2</strong>) the first-rank,
 (<strong>b1</strong>/<strong>b2</strong>) the second-rank and
@@ -1558,10 +1568,11 @@ hydrophobicity/hydrophilicity correlation function, where
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>H</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mn>2</mn></msubsup><annotation encoding="application/x-tex">H_{i, j}^2</annotation></semantics></math>
 are given by Equation (3). Panel (a1/a2) reflects the coupling mode
-between all the most contiguous residues, panel (b1/b2) that between all
-the second-most contiguous residues and panel (c1/c2) that between all
-the third-most contiguous residues. This figure is from <span class="citation">Chou (2005)</span>.
+between all the most contiguous residues, panel (b1/b2) between all the
+second-most contiguous residues, and panel (c1/c2) between all the
+third-most contiguous residues. This figure is from <span class="citation">Chou (2005)</span>.
 </p>
+</div>
 <p>Then a set of descriptors called <em>Amphiphilic Pseudo-Amino Acid
 Composition</em> (<em>APseAAC</em>) are defined as:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>c</mi></msub><mo>=</mo><mfrac><msub><mi>f</mi><mi>c</mi></msub><mrow><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mn>20</mn></munderover><msub><mi>f</mi><mi>r</mi></msub><mo>+</mo><mi>w</mi><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>λ</mi></mrow></munderover><msub><mi>τ</mi><mi>j</mi></msub></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&lt;</mo><mi>c</mi><mo>&lt;</mo><mn>20</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
@@ -1572,7 +1583,7 @@ P_c = \frac{w \tau_u}{\sum_{r=1}^{20} f_r + w \sum_{j=1}^{2 \lambda} \tau_j} \qu
 </annotation></semantics></math></p>
 <p>where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
-is the weighting factor. Its default value is set to
+is the weighting factor, its default value is set to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">w = 0.5</annotation></semantics></math>
 in protr.</p>
 <p>A minimal example for <code>extracAPAAC()</code> is:</p>
@@ -1640,10 +1651,10 @@ in protr.</p>
 </h3>
 <p>The profile-based descriptors for protein sequences are available in
 the protr package. The feature vectors of profile-based methods were
-based on the PSSM by running PSI-BLAST, and often show good performance.
+based on the PSSM by running PSI-BLAST and often show good performance.
 See <span class="citation">Ye, Wang, and Altschul (2011)</span> and
 <span class="citation">Rangwala and Karypis (2005)</span> for details.
-The functions <code><a href="../reference/extractPSSM.html">extractPSSM()</a></code>, <code><a href="../reference/extractPSSMAcc.html">extractPSSMAcc()</a></code>
+The functions <code><a href="../reference/extractPSSM.html">extractPSSM()</a></code>, <code><a href="../reference/extractPSSMAcc.html">extractPSSMAcc()</a></code>,
 and <code><a href="../reference/extractPSSMFeature.html">extractPSSMFeature()</a></code> are used to generate these
 descriptors. Users need to install the NCBI-BLAST+ software package
 first to make the functions fully functional.</p>
@@ -1652,10 +1663,10 @@ first to make the functions fully functional.</p>
 <div class="section level2">
 <h2 id="proteochemometric-modeling-descriptors">Proteochemometric modeling descriptors<a class="anchor" aria-label="anchor" href="#proteochemometric-modeling-descriptors"></a>
 </h2>
-<p>Proteochemometric (PCM) modeling utilizes statistical modeling
-techniques to model ligand-target interaction space. The below
-descriptors implemented in protr are extensively used in
-Proteochemometric modeling.</p>
+<p>Proteochemometric (PCM) modeling utilizes statistical modeling to
+model the ligand-target interaction space. The below descriptors
+implemented in protr are extensively used in proteochemometric
+modeling.</p>
 <ul>
 <li>
 <p>Scales-based descriptors derived by Principal Components
@@ -1672,11 +1683,11 @@ molecular descriptors (Topological, WHIM, VHSE, etc.)</li>
 Scaling</p></li>
 <li><p>BLOSUM and PAM matrix-derived descriptors</p></li>
 </ul>
-<p>Note that each of the scales-based descriptor functions are freely to
-combine with the more than 20 classes of 2D and 3D molecular descriptors
-to construct highly customized scales-based descriptors. Of course,
-these functions are designed to be flexible enough that users can
-provide totally self-defined property matrices to construct scales-based
+<p>Note that every scales-based descriptor function can freely combine
+more than 20 classes of 2D and 3D molecular descriptors to construct
+highly customized scales-based descriptors. Of course, these functions
+are designed to be flexible enough that users can provide totally
+self-defined property matrices to construct scales-based
 descriptors.</p>
 <p>For example, to compute the “topological scales” derived by PCA
 (using the first 5 principal components), one can use
@@ -1698,15 +1709,14 @@ descriptors.</p>
 <span><span class="co">#&gt; Standard deviation     2.581537 1.754133 0.4621854 0.1918666 0.08972087</span></span>
 <span><span class="co">#&gt; Proportion of Variance 0.666430 0.307700 0.0213600 0.0036800 0.00080000</span></span>
 <span><span class="co">#&gt; Cumulative Proportion  0.666430 0.974130 0.9954900 0.9991700 0.99998000</span></span></code></pre></div>
-<p>the argument <code>propmat</code> involkes the <code>AATopo</code>
-dataset shipped with the protr package, and the argument
-<code>index</code> selects the 37 to 41 and the 43 to 47 columns
-(molecular descriptors) in the <code>AATopo</code> dataset to use, the
-parameter <code>lag</code> was set for the Auto Cross Covariance (ACC)
-for generating scales-based descriptors of the same length. At last, we
-printed the summary of the first 5 principal components (standard
-deviation, proportion of variance, cumulative proportion of
-variance).</p>
+<p>The <code>propmat</code> argument invokes the <code>AATopo</code>
+dataset shipped with the protr package. The argument <code>index</code>
+selects the 37 to 41 and the 43 to 47 columns (molecular descriptors) in
+the <code>AATopo</code> dataset to use. The parameter <code>lag</code>
+was set for the Auto Cross Covariance (ACC) to generate scales-based
+descriptors of the same length. At last, we printed the summary of the
+first 5 principal components (standard deviation, proportion of
+variance, cumulative proportion of variance).</p>
 <p>The result is a length 175 named vector, which is consistent with the
 descriptors before:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
@@ -1748,8 +1758,8 @@ BLOSUM62 matrix and use the first 5 scales, one can use:</p>
 <span><span class="co">#&gt; -0.0014919096  0.0032873726  0.0011734162 -0.0021758536 -0.0018127568 </span></span>
 <span><span class="co">#&gt;     scl1.lag3     scl2.lag3     scl3.lag3     scl4.lag3     scl5.lag3 </span></span>
 <span><span class="co">#&gt; -0.0029413528  0.0001494193  0.0003298806 -0.0017877430 -0.0051044133</span></span></code></pre></div>
-<p><strong>Dealing with gaps.</strong> In proteochemometrics, (sequence
-alignment) gaps can be very useful, since a gap in a certain position
+<p><strong>Dealing with gaps.</strong> In proteochemometrics (sequence
+alignment), gaps can be very useful since a gap in a certain position
 contains information. The protr package has built-in support for such
 gaps. We deal with the gaps by using a dummy descriptor to code for the
 21st type of amino acid. The function <code><a href="../reference/extractScalesGap.html">extractScalesGap()</a></code>
@@ -1763,9 +1773,9 @@ for details.</p>
 <p>Similarity computation derived by local or global protein sequence
 alignment between a list of protein sequences is of great need in
 protein research. However, this type of pairwise similarity computation
-often computationally intensive, especially when there exists many
-protein sequences. Luckily, this process is also highly parallelizable,
-the protr package integrates the function of parallelized similarity
+is often computationally intensive, especially when many protein
+sequences exist. Luckily, this process is also highly parallelizable.
+The protr package integrates the function of parallelized similarity
 computation derived by local or global protein sequence alignment
 between a list of protein sequences.</p>
 <p>The function <code><a href="../reference/twoSeqSim.html">twoSeqSim()</a></code> calculates the alignment result
@@ -1793,19 +1803,19 @@ pairwise similarity between two sets of protein sequences in
 parallel.</p>
 <p>Note that for a small number of proteins, calculating their pairwise
 similarity scores derived by sequence alignment in parallel may not
-significantly reduce the overall computation time, since each of the
-task only requires a relatively small time to finish, thus,
-computational overheads may exist and affect the performance. In our
-benchmarks, we used about 1,000 protein sequences on 64 CPU cores, and
-observed significant performance improvement comparing to the sequential
+significantly reduce the overall computation time since each task only
+requires a relatively short time to finish. Thus, computational
+overheads may exist and affect the performance. In our benchmarks, we
+used about 1,000 protein sequences on 64 CPU cores and observed
+significant performance improvement compared to the sequential
 computation.</p>
 <div class="section level3">
 <h3 id="scaling-up-for-a-large-number-of-sequences">Scaling up for a large number of sequences<a class="anchor" aria-label="anchor" href="#scaling-up-for-a-large-number-of-sequences"></a>
 </h3>
 <p><strong><code>batches</code></strong>. A useful argument for reducing
-the memory usage is <code>batches</code>. It splits the similarity
+memory usage is <code>batches</code>. It splits the similarity
 computations into smaller batches. A larger batch number reduces the
-memory need for each parallel process, but also adds the overhead of
+memory need for each parallel process but also adds the overhead of
 forking new processes. This is a trade-off between time (CPU) and space
 (memory). Also, use <code>verbose = TRUE</code> to print the computation
 progress.</p>
@@ -1814,24 +1824,24 @@ computations over an even larger number of protein sequences, please try
 <code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code> and set <code>batches</code> to a large
 number. Unlike the in-memory version, this disk-based function caches
 the partial results in each batch to the hard drive and merges all the
-results together in the end, which further reduces the memory usage.</p>
+results together in the end, which further reduces memory usage.</p>
 <p><strong>Example</strong>. Let’s assume we have 20,000 sequences. By
 setting <code>cores = 64</code> and <code>batches = 10000</code> in
 <code><a href="../reference/parSeqSimDisk.html">parSeqSimDisk()</a></code>, the workload will be around
 <code>20000^2/2/64/10000 = 312.5</code> alignments per batch per core.
-This could give you a relatively quick feedback about if the memory size
-is going to be sufficient, and how long the computation will take in
-total, after the first few batches.</p>
+This could give you relatively quick feedback about whether the memory
+size is going to be sufficient, and how long the computation will take
+in total after the first few batches.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="similarity-calculation-by-go-semantic-similarity-measures">Similarity calculation by GO semantic similarity measures<a class="anchor" aria-label="anchor" href="#similarity-calculation-by-go-semantic-similarity-measures"></a>
 </h2>
-<p>The protr package also integrates the function of similarity score
+<p>The protr package also integrates the function for similarity score
 computation derived by Gene Ontology (GO) semantic similarity measures
 between a list of GO terms or Entrez Gene IDs.</p>
 <p>The function <code><a href="../reference/twoGOSim.html">twoGOSim()</a></code> calculates the similarity
-derived by GO-terms semantic similarity measures between two GO terms /
+derived by GO terms semantic similarity measures between two GO terms /
 Entrez Gene IDs, and the function <code><a href="../reference/parGOSim.html">parGOSim()</a></code> calculates the
 pairwise similarity with a list of GO terms / Entrez Gene IDs:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
@@ -1871,8 +1881,8 @@ pairwise similarity with a list of GO terms / Entrez Gene IDs:</p>
 <div class="section level2">
 <h2 id="miscellaneous-tools">Miscellaneous tools<a class="anchor" aria-label="anchor" href="#miscellaneous-tools"></a>
 </h2>
-<p>In this section, we will briefly introduce some useful tools provided
-by the protr package.</p>
+<p>In this section, we will briefly introduce some useful tools the
+protr package provides.</p>
 <div class="section level3">
 <h3 id="retrieve-protein-sequences-from-uniprot">Retrieve protein sequences from UniProt<a class="anchor" aria-label="anchor" href="#retrieve-protein-sequences-from-uniprot"></a>
 </h3>
@@ -1925,17 +1935,17 @@ names.</p>
 <div class="section level3">
 <h3 id="read-pdb-files">Read PDB files<a class="anchor" aria-label="anchor" href="#read-pdb-files"></a>
 </h3>
-<p>The Protein Data Bank (PDB) file format is a text file format
-describing the three dimensional structures of protein. The function
-<code><a href="../reference/readPDB.html">readPDB()</a></code> provides the function to read protein sequences
+<p>The Protein Data Bank (PDB) file format is a text file format that
+describes the three-dimensional structures of proteins. The
+<code><a href="../reference/readPDB.html">readPDB()</a></code> function allows you to read protein sequences
 stored in PDB format files. See <code><a href="../reference/readPDB.html">?readPDB</a></code> for details.</p>
 </div>
 <div class="section level3">
 <h3 id="sanity-check-for-amino-acid-types">Sanity check for amino acid types<a class="anchor" aria-label="anchor" href="#sanity-check-for-amino-acid-types"></a>
 </h3>
 <p>The <code><a href="../reference/protcheck.html">protcheck()</a></code> function checks if the protein
-sequence’s amino acid types are in the 20 default types, which returns a
-<code>TRUE</code> if all the amino acids in the sequence belongs to the
+sequence’s amino acid types are in the 20 default types, which returns
+<code>TRUE</code> if all the amino acids in the sequence belong to the
 20 default types:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/readFASTA.html">readFASTA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"protseq/P00750.fasta"</span>, package <span class="op">=</span> <span class="st">"protr"</span><span class="op">)</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
@@ -1951,8 +1961,8 @@ sequence’s amino acid types are in the 20 default types, which returns a
 </h3>
 <p>The <code><a href="../reference/removeGaps.html">removeGaps()</a></code> function allows us to remove/replace
 gaps (<code>-</code>) or any “irregular” characters from amino acid
-sequences, to prepare them for feature extraction or sequence alignment
-based similarity computation.</p>
+sequences to prepare them for feature extraction or sequence
+alignment-based similarity computation.</p>
 </div>
 <div class="section level3">
 <h3 id="protein-sequence-partition">Protein sequence partition<a class="anchor" aria-label="anchor" href="#protein-sequence-partition"></a>
@@ -1960,13 +1970,12 @@ based similarity computation.</p>
 <p>The <code><a href="../reference/protseg.html">protseg()</a></code> function partitions the protein sequences
 to create sliding windows. This is usually required when creating
 feature vectors for machine learning tasks. Users can specify a sequence
-<code>x</code>, and a character <code>aa</code>, one of the 20 amino
-acid types, and a positive integer <code>k</code>, which controls the
-window size (half of the window).</p>
-<p>This function returns a named list, each component contains one of
-the segmentations (a character string), names of the list components are
-the positions of the specified amino acid in the sequence. See the
-example below:</p>
+<code>x</code>, a character <code>aa</code> (one of the 20 amino acid
+types), and a positive integer <code>k</code>, which controls the window
+size (half of the window).</p>
+<p>This function returns a named list. Each component contains one of
+the segmentations (a character string). Names of the list components are
+the positions of the specified amino acid in the sequence.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/protseg.html">protseg</a></span><span class="op">(</span><span class="va">x</span>, aa <span class="op">=</span> <span class="st">"M"</span>, k <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`48`</span></span>
@@ -2013,30 +2022,33 @@ calculate BLOSUM and PAM matrix-derived descriptors with function
 <div class="section level3">
 <h3 id="metadata-of-the-20-amino-acids">Metadata of the 20 amino acids<a class="anchor" aria-label="anchor" href="#metadata-of-the-20-amino-acids"></a>
 </h3>
-<p>As the reference, the <code>AAMetaInfo</code> dataset includes the
-meta information of the 20 amino acids used for the 2D and 3D descriptor
-calculation in the protr package. This dataset include each amino acid’s
-name, one-letter representation, three-letter representation, SMILE
-representation, PubChem CID and PubChem link. See
+<p>As the reference, the <code>AAMetaInfo</code> dataset contains
+metadata of the 20 amino acids used for the 2D and 3D descriptor
+calculation in the protr package. This dataset includes each amino
+acid’s name, one-letter representation, three-letter representation,
+SMILE representation, PubChem CID, and PubChem link. See
 <code>data(AAMetaInfo)</code> for details.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="protrweb">ProtrWeb<a class="anchor" aria-label="anchor" href="#protrweb"></a>
 </h2>
-<p>The web service built on protr, namely ProtrWeb, is located at <a href="http://protr.org" class="external-link uri">http://protr.org</a>.</p>
-<p>ProtrWeb (Figure 8) does not require any knowledge of programming for
-the user. It is a user-friendly web application for computing the
-protein sequence descriptors presented in the protr package.</p>
-<img src="figures/protrweb.png" width="100%" class="img-responsive" align="center" alt="ProtrWeb"><p align="center">
-Figure 8: A screenshot of the web application ProtrWeb
+<p>The web application built on protr, namely ProtrWeb, is available at
+<a href="http://protr.org" class="external-link uri">http://protr.org</a>.</p>
+<p>ProtrWeb does not require the user to have any programming knowledge.
+It is a user-friendly web application that computes the protein sequence
+descriptors in the protr package.</p>
+<div class="figure" style="text-align: center">
+<img src="figures/protrweb.png" alt="Figure 8: A screenshot of the web application ProtrWeb." width="100%"><p class="caption">
+Figure 8: A screenshot of the web application ProtrWeb.
 </p>
+</div>
 <p>Source code repository for this Shiny web application: <a href="https://github.com/nanxstats/protrweb" class="external-link uri">https://github.com/nanxstats/protrweb</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
-<p>The summary of the descriptors in the protr package are listed in
+<p>The summary of the descriptors in the protr package is listed in
 Table 3.</p>
 <table class="table">
 <caption>Table 3: List of commonly used descriptors in protr</caption>
@@ -2143,7 +2155,7 @@ Table 3.</p>
 <p align="left">
 <sup>1</sup> The number depends on the choice of the number of
 properties of amino acids and the choice of the maximum values of the
-<code>lag</code>. The default is use 8 types of properties and
+<code>lag</code>. The default is to use 8 types of properties and
 <code>lag = 30</code>.
 </p>
 <p align="left">
@@ -2158,7 +2170,7 @@ and
 <sup>3</sup> The number depends on the choice of the number of the set
 of amino acid properties and the choice of the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
-value. The default is use 3 types of properties proposed by Kuo-Chen
+value. The default is to use 3 types of properties proposed by Kuo-Chen
 Chou and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">\lambda = 30</annotation></semantics></math>.
 </p>
