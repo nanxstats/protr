@@ -2,15 +2,15 @@
 # - `is_installed()`
 # - `get_package_version()`
 # - `system_file_cached()`
-# were sourced from the shiny package version 1.8.0, available at
-# <https://github.com/rstudio/shiny>.
+# were sourced from the staticimports package version 0.0.0.9001, available at
+# <https://github.com/wch/staticimports>.
 #
 # For the original version of these functions, please see:
-# <https://github.com/rstudio/shiny/blob/v1.8.0/R/staticimports.R>.
+# <https://github.com/wch/staticimports/blob/35ceec8d9d9429d9244aedc3ee6a1e8d62d59f79/inst/staticexports/package.R>.
 #
-# The shiny package is licensed under the GNU General Public License version 3.
+# The staticimports package is licensed under the MIT license.
 # For more details on the license, see
-# <https://github.com/rstudio/shiny/blob/main/LICENSE>.
+# <https://github.com/wch/staticimports/blob/35ceec8d9d9429d9244aedc3ee6a1e8d62d59f79/LICENSE.md>.
 
 is_installed <- function(pkg, version = NULL) {
   installed <- isNamespaceLoaded(pkg) || nzchar(system_file_cached(package = pkg))
