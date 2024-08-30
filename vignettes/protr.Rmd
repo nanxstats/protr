@@ -292,8 +292,8 @@ implemented in protr include:
 
 The protr package integrates the function of parallelized similarity score
 computation derived by local or global protein sequence alignment between
-a list of protein sequences; Biostrings provides the sequence alignment
-computation, and the corresponding functions listed in the
+a list of protein sequences; Biostrings and pwalign provide the sequence
+alignment computation, and the corresponding functions listed in the
 protr package include:
 
 - `twoSeqSim()` - Similarity calculation derived by sequence alignment

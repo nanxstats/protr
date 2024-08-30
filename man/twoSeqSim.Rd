@@ -46,7 +46,9 @@ Sequence alignment between two protein sequences.
 
 # Be careful when testing this since it involves sequence alignment
 # and might produce unpredictable results in some environments
+
 library("Biostrings")
+
 s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 s2 <- readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
 seqalign <- twoSeqSim(s1, s2)
