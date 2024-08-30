@@ -1,3 +1,14 @@
+# protr 1.7-3
+
+## Improvements
+
+- For sequence similarity calculations using pairwise sequence alignment,
+  the Biostrings version is now detected at runtime to determine if the
+  pwalign package is needed. This is because the relevant components have been
+  moved from Biostrings to pwalign since Bioconductor 3.19 and Biostrings 2.72.0.
+  This enhancement ensures that protr works properly regardless of the versions
+  of R, Bioconductor, and Biostrings installed (thanks, @ecrespoSSF, #52).
+
 # protr 1.7-2
 
 ## Improvements
