@@ -501,7 +501,9 @@ crossSetSimDisk <- function(
 #'
 #' # Be careful when testing this since it involves sequence alignment
 #' # and might produce unpredictable results in some environments
+#'
 #' library("Biostrings")
+#'
 #' s1 <- readFASTA(system.file("protseq/P00750.fasta", package = "protr"))[[1]]
 #' s2 <- readFASTA(system.file("protseq/P10323.fasta", package = "protr"))[[1]]
 #' seqalign <- twoSeqSim(s1, s2)
@@ -514,8 +516,9 @@ twoSeqSim <- function(
   # Sequence alignment for two protein sequences
   s1 <- try(Biostrings::AAString(seq1), silent = TRUE)
   s2 <- try(Biostrings::AAString(seq2), silent = TRUE)
+  pwa <- resolve_pwa()
   s12 <- try(
-    Biostrings::pairwiseAlignment(
+    pwa(
       s1, s2,
       type = type, substitutionMatrix = submat,
       gapOpening = gap.opening, gapExtension = gap.extension
@@ -537,8 +540,9 @@ twoSeqSim <- function(
   } else {
     s1 <- try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
     s2 <- try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
+    pwa <- resolve_pwa()
     s12 <- try(
-      Biostrings::pairwiseAlignment(
+      pwa(
         s1, s2,
         type = type, substitutionMatrix = submat, scoreOnly = TRUE,
         gapOpening = gap.opening, gapExtension = gap.extension
@@ -546,7 +550,7 @@ twoSeqSim <- function(
       silent = TRUE
     )
     s11 <- try(
-      Biostrings::pairwiseAlignment(
+      pwa(
         s1, s1,
         type = type, substitutionMatrix = submat, scoreOnly = TRUE,
         gapOpening = gap.opening, gapExtension = gap.extension
@@ -554,7 +558,7 @@ twoSeqSim <- function(
       silent = TRUE
     )
     s22 <- try(
-      Biostrings::pairwiseAlignment(
+      pwa(
         s2, s2,
         type = type, substitutionMatrix = submat, scoreOnly = TRUE,
         gapOpening = gap.opening, gapExtension = gap.extension
