@@ -69,7 +69,7 @@ system_file_cached <- local({
 # pairwiseAlignment() has moved from Biostrings to pwalign in Biostrings >= 2.72.0.
 # To maximize backward compatibility, we determine which package to use by
 # detecting the installation status and version Biostrings at runtime,
-# so that protr can works on any R/Bioconductor/Biostrings version.
+# so that protr can work on any R/Bioconductor/Biostrings version.
 is_biostrings_installed <- function() {
   is_installed("Biostrings")
 }
