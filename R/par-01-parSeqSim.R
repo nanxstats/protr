@@ -62,6 +62,8 @@ parSeqSim <- function(
     protlist,
     cores = 2, batches = 1, verbose = FALSE,
     type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
+  invisible(resolve_pwa())
+
   doParallel::registerDoParallel(cores)
 
   # Generate lower matrix index
@@ -178,6 +180,8 @@ crossSetSim <- function(
     submat = "BLOSUM62",
     gap.opening = 10,
     gap.extension = 4) {
+  invisible(resolve_pwa())
+
   doParallel::registerDoParallel(cores)
 
   combinations <- expand.grid(seq_along(protlist1), seq_along(protlist2))
@@ -293,6 +297,8 @@ parSeqSimDisk <- function(
     protlist,
     cores = 2, batches = 1, path = tempdir(), verbose = FALSE,
     type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
+  invisible(resolve_pwa())
+
   doParallel::registerDoParallel(cores)
 
   if (!dir.exists(path)) dir.create(path)
@@ -415,6 +421,8 @@ crossSetSimDisk <- function(
     protlist1, protlist2,
     cores = 2, batches = 1, path = tempdir(), verbose = FALSE,
     type = "local", submat = "BLOSUM62", gap.opening = 10, gap.extension = 4) {
+  invisible(resolve_pwa())
+
   doParallel::registerDoParallel(cores)
 
   if (!dir.exists(path)) dir.create(path)
@@ -513,10 +521,11 @@ crossSetSimDisk <- function(
 twoSeqSim <- function(
     seq1, seq2, type = "local", submat = "BLOSUM62",
     gap.opening = 10, gap.extension = 4) {
+  pwa <- resolve_pwa()
+
   # Sequence alignment for two protein sequences
   s1 <- try(Biostrings::AAString(seq1), silent = TRUE)
   s2 <- try(Biostrings::AAString(seq2), silent = TRUE)
-  pwa <- resolve_pwa()
   s12 <- try(
     pwa(
       s1, s2,
@@ -531,6 +540,8 @@ twoSeqSim <- function(
 
 .seqPairSim <- function(
     twoid, protlist, type, submat, gap.opening, gap.extension) {
+  pwa <- resolve_pwa()
+
   id1 <- twoid[1]
   id2 <- twoid[2]
 
@@ -540,7 +551,6 @@ twoSeqSim <- function(
   } else {
     s1 <- try(Biostrings::AAString(protlist[[id1]]), silent = TRUE)
     s2 <- try(Biostrings::AAString(protlist[[id2]]), silent = TRUE)
-    pwa <- resolve_pwa()
     s12 <- try(
       pwa(
         s1, s2,
