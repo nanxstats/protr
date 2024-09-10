@@ -1,3 +1,13 @@
+# protr 1.7-4
+
+## Improvements
+
+- Improved dependency error handling for similarity calculation functions
+  that use pairwise sequence alignment (#56):
+  - Added upfront checks for Biostrings and pwalign dependencies.
+  - Now they throw clear errors early if dependency conditions are not met.
+  - The new behavior prevents error messages from appearing in results.
+
 # protr 1.7-3
 
 ## Improvements
@@ -132,7 +142,7 @@
 ## Bug fixes
 
 - Resolved a critical bug due to improper `ifelse` conditioning
-  ([3f6e106](https://github.com/nanxstats/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4)) for the
+  (nanxstats/protr@3f6e106) for the
   distribution descriptor in CTD. We thank Jielu Yan from
   the University of Macau for kindly reporting this issue.
 
