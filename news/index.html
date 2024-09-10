@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">protr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7-4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,17 @@
       <small>Source: <a href="https://github.com/nanxstats/protr/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.7-4" id="protr-17-4">protr 1.7-4<a class="anchor" aria-label="anchor" href="#protr-17-4"></a></h2>
+<div class="section level3">
+<h3 id="improvements-1-7-4">Improvements<a class="anchor" aria-label="anchor" href="#improvements-1-7-4"></a></h3>
+<ul><li>Improved dependency error handling for similarity calculation functions that use pairwise sequence alignment (<a href="https://github.com/nanxstats/protr/issues/56" class="external-link">#56</a>):
+<ul><li>Added upfront checks for Biostrings and pwalign dependencies.</li>
+<li>Now they throw clear errors early if dependency conditions are not met.</li>
+<li>The new behavior prevents error messages from appearing in results.</li>
+</ul></li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.7-3" id="protr-17-3">protr 1.7-3<a class="anchor" aria-label="anchor" href="#protr-17-3"></a></h2><p class="text-muted">CRAN release: 2024-08-30</p>
 <div class="section level3">
@@ -137,7 +148,7 @@
 <h2 class="pkg-version" data-toc-text="1.5-0" id="protr-15-0">protr 1.5-0<a class="anchor" aria-label="anchor" href="#protr-15-0"></a></h2><p class="text-muted">CRAN release: 2017-11-18</p>
 <div class="section level3">
 <h3 id="bug-fixes-1-5-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-5-0"></a></h3>
-<ul><li>Resolved a critical bug due to improper <code>ifelse</code> conditioning (<a href="https://github.com/nanxstats/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4" class="external-link">3f6e106</a>) for the distribution descriptor in CTD. We thank Jielu Yan from the University of Macau for kindly reporting this issue.</li>
+<ul><li>Resolved a critical bug due to improper <code>ifelse</code> conditioning (<a href="mailto:nanxstats/protr@3f6e106" class="email">nanxstats/protr@3f6e106</a>) for the distribution descriptor in CTD. We thank Jielu Yan from the University of Macau for kindly reporting this issue.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="improvements-1-5-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-1-5-0"></a></h3>
