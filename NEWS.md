@@ -1,3 +1,13 @@
+# protr 1.7-4
+
+## Improvements
+
+- Improved dependency error handling for similarity calculation functions
+  that use pairwise sequence alignment (#56):
+  - Added upfront checks for Biostrings and pwalign dependencies.
+  - Now they throw clear errors early if dependency conditions are not met.
+  - The new behavior prevents error messages from appearing in results.
+
 # protr 1.7-3
 
 ## Improvements
