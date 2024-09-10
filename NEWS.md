@@ -142,7 +142,7 @@
 ## Bug fixes
 
 - Resolved a critical bug due to improper `ifelse` conditioning
-  ([3f6e106](https://github.com/nanxstats/protr/commit/3f6e106c93ab9f28c532547f68b3cd9d5cc3d9b4)) for the
+  (nanxstats/protr@3f6e106) for the
   distribution descriptor in CTD. We thank Jielu Yan from
   the University of Macau for kindly reporting this issue.
 
