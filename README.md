@@ -6,7 +6,7 @@
 [![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/protr)](https://cranlogs.r-pkg.org/badges/protr)
 <!-- badges: end -->
 
-Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) <[DOI:10.1093/bioinformatics/btv042](https://doi.org/10.1093/bioinformatics/btv042)> ([PDF](https://nanx.me/papers/protr.pdf)).
+Comprehensive toolkit for generating various numerical features of protein sequences described in Xiao et al. (2015) ([PDF](https://nanx.me/papers/protr.pdf)).
 
 ## Paper citation
 
