@@ -1,3 +1,10 @@
+# protr 1.7-5
+
+## Maintenance
+
+- Remove named comment for non-ORCID/ROR identifiers in `DESCRIPTION` to avoid
+  `R CMD check` note reported only in Debian r-devel environments (#60).
+
 # protr 1.7-4
 
 ## Improvements
