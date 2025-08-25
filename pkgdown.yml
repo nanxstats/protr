@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   protr: protr.html
-last_built: 2025-08-22T18:08Z
+last_built: 2025-08-25T20:29Z
 urls:
   reference: https://nanx.me/protr/reference
   article: https://nanx.me/protr/articles
